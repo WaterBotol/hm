@@ -1,0 +1,63 @@
+<!--
+id: sample-mean
+title: Distribution of the sample mean
+short: Sample means
+summary: The sample mean as a random variable, its mean μ and standard deviation σ/√n, the central limit theorem (approximately normal for large n, exactly normal for normal populations), and simulating sample means to see the distribution narrow as n grows.
+keywords: sample mean, X bar, distribution of sample mean, sampling distribution, standard error, sigma over root n, central limit theorem, CLT, large sample, n at least 30, normal population, simulation, random sample, population mean, population standard deviation, independent identically distributed
+dotpoints: the sample mean as a random variable | E(X̄) = μ and sd(X̄) = σ/√n | the central limit theorem and the approximate normality of X̄ | simulation of repeated random sampling
+-->
+<h2>The sample mean is a random variable</h2>
+<p>Take a random sample \(X_1, \dots, X_n\) from a population with mean \(\mu\) and sd \(\sigma\). The sample mean \(\bar X = \frac{X_1 + \dots + X_n}{n}\) changes from sample to sample.</p>
+<div class="eq"><div class="eq-label">Mean and sd of X̄</div>\[ E(\bar X) = \mu, \qquad \operatorname{sd}(\bar X) = \frac{\sigma}{\sqrt n} \]<p>From linear combinations: \(\operatorname{Var}(\bar X) = \frac{1}{n^2}\cdot n\sigma^2 = \frac{\sigma^2}{n}\).</p></div>
+<aside class="c-def" data-title="Central limit theorem"><p>For large \(n\) (rule of thumb \(n \ge 30\)), \(\bar X\) is <strong>approximately normal</strong>, \(\bar X \sim N\left(\mu, \frac{\sigma^2}{n}\right)\), whatever the shape of the population. If the population itself is normal, \(\bar X\) is exactly normal for any \(n\).</p></aside>
+<div class="sim" data-sim="sampleMeans"></div>
+<div class="we" data-title="Probability for a sample mean" data-marks="3">
+<div class="we-q"><p>Battery lifetimes have mean 40 hours and sd 6 hours (distribution unknown). A random sample of 36 batteries is tested. Find the approximate probability that the sample mean exceeds 42 hours.</p></div>
+<div class="we-t"><p>\(n = 36\) is large, so by the CLT \(\bar X \approx N\left(40, \left(\frac{6}{6}\right)^2\right) = N(40, 1)\).</p></div>
+<div class="we-s" data-f="\operatorname{sd}(\bar X) = \sigma/\sqrt n"><p>\(\operatorname{sd}(\bar X) = \frac{6}{\sqrt{36}} = 1\).</p></div>
+<div class="we-a"><p>\(\Pr(\bar X &gt; 42) = \Pr(Z &gt; 2) \approx 0.0228\).</p></div>
+</div>
+<div class="we" data-title="Choosing a sample size" data-marks="3">
+<div class="we-q"><p>A population has \(\sigma = 15\). How large must \(n\) be for \(\operatorname{sd}(\bar X)\) to be at most 2?</p></div>
+<div class="we-t"><p>Solve \(\frac{15}{\sqrt n} \le 2\) and round <em>up</em>.</p></div>
+<div class="we-s"><p>\(\sqrt n \ge 7.5 \Rightarrow n \ge 56.25\).</p></div>
+<div class="we-a"><p>\(n = 57\).</p></div>
+</div>
+<aside class="c-trap"><p>Use \(\frac{\sigma}{\sqrt n}\) for questions about \(\bar X\), but plain \(\sigma\) for a single observation. "One battery lasts over 42 h" and "the mean of 36 lasts over 42 h" are very different probabilities (≈0.37 vs ≈0.023).</p></aside>
+<aside class="c-exam"><p>VCAA wants the distribution stated explicitly: "\(\bar X\) is approximately normal with mean 40 and sd 1" plus the reason (CLT, large \(n\), or normal population). Quadrupling \(n\) halves the sd.</p></aside>
+
+<h2>Practice</h2>
+<div class="mcq" data-ans="A" data-level="core">
+<div class="mcq-q"><p>A population has \(\mu = 80\), \(\sigma = 12\). For samples of size 16, \(\operatorname{sd}(\bar X) =\)</p></div>
+<ol><li>3</li><li>0.75</li><li>12</li><li>9</li></ol>
+<div class="mcq-x"><p>\(\frac{12}{4} = 3\).</p></div>
+</div>
+<div class="mcq" data-ans="C" data-level="core">
+<div class="mcq-q"><p>To halve the standard deviation of the sample mean, the sample size must be</p></div>
+<ol><li>halved</li><li>doubled</li><li>multiplied by 4</li><li>squared</li></ol>
+<div class="mcq-x"><p>\(\frac{\sigma}{\sqrt{4n}} = \frac12\cdot\frac{\sigma}{\sqrt n}\).</p></div>
+</div>
+<div class="mcq" data-ans="D" data-level="trick">
+<div class="mcq-q"><p>A population is strongly right-skewed. For random samples of size 4, the distribution of \(\bar X\) is</p></div>
+<ol><li>exactly normal</li><li>approximately normal by the CLT</li><li>uniform</li><li>likely still skewed; the CLT needs a larger \(n\)</li></ol>
+<div class="mcq-x"><p>\(n = 4\) is too small for the CLT to rescue a skewed population.</p></div>
+</div>
+<div class="mcq" data-ans="B" data-level="hard">
+<div class="mcq-q"><p>Heights are \(N(170, 8^2)\) cm. The probability that the mean of 4 randomly chosen people is between 166 and 174 cm is closest to</p></div>
+<ol><li>0.38</li><li>0.68</li><li>0.95</li><li>0.99</li></ol>
+<div class="mcq-x"><p>\(\operatorname{sd}(\bar X) = 4\): within one sd, ≈ 0.68.</p></div>
+</div>
+<div class="pq" data-level="core" data-marks="3">
+<div class="pq-q"><p>Bags of rice have mass mean 1002 g and sd 4 g. For a random sample of 64 bags, find the approximate probability the sample mean is less than 1001 g.</p></div>
+<div class="pq-s"><p>\(\operatorname{sd}(\bar X) = \frac{4}{8} = 0.5\). [1]</p><p>By the CLT, \(\bar X \approx N(1002, 0.5^2)\). [1]</p><p>\(\Pr(\bar X &lt; 1001) = \Pr(Z &lt; -2) \approx 0.0228\). [1]</p></div>
+</div>
+<div class="pq" data-level="exam" data-marks="3">
+<div class="pq-q"><p>Waiting times have mean 5 min and sd 5 min (exponential-like). For a sample of 100 waits, find \(c\) such that \(\Pr(\bar X &gt; c) = 0.05\).</p></div>
+<div class="pq-s"><p>CLT: \(\bar X \approx N(5, 0.5^2)\). [1]</p><p>\(c = 5 + 1.6449(0.5)\). [1]</p><p>\(c \approx 5.82\) min. [1]</p></div>
+</div>
+<h2>Summary</h2>
+<ul>
+  <li>\(E(\bar X) = \mu\), \(\operatorname{sd}(\bar X) = \frac{\sigma}{\sqrt n}\).</li>
+  <li>CLT: \(\bar X\) approx normal for large \(n\) (≈30+); exactly normal if the population is normal.</li>
+  <li>Bigger \(n\) → narrower distribution; ×4 sample size halves the sd.</li>
+</ul>

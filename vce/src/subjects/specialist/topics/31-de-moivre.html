@@ -1,0 +1,96 @@
+<!--
+id: de-moivre
+title: De Moivre’s theorem, powers and roots
+short: De Moivre & roots
+summary: De Moivre’s theorem and its proof by induction for integer powers, powers of complex numbers in polar form, the n-th roots of unity and of other complex numbers, and their geometric pattern as a regular polygon on a circle in the complex plane.
+keywords: de moivre, de moivre's theorem, powers of complex numbers, roots of complex numbers, nth roots, roots of unity, cube roots of unity, regular polygon, cis, polar form, z^n = a, solve z^n, geometric representation, proof by induction de moivre, sum of roots of unity
+dotpoints: De Moivre’s theorem, proof for integral powers, powers and roots of complex numbers in polar form, and their geometric representation and interpretation | the n-th roots of unity and other complex numbers and their location in the complex plane
+-->
+<h2>De Moivre’s theorem</h2>
+<div class="eq"><div class="eq-label">De Moivre</div>\[ (r\operatorname{cis}\theta)^n = r^n\operatorname{cis}(n\theta), \quad n \in \mathbb{Z} \]<p>It follows from "moduli multiply, arguments add" applied \(n\) times.</p></div>
+<div class="we" data-title="Proof by induction (n ∈ ℕ)" data-marks="4">
+<div class="we-q"><p>Prove that \((\operatorname{cis}\theta)^n = \operatorname{cis}(n\theta)\) for all \(n \in \mathbb{N}\).</p></div>
+<div class="we-t"><p>The inductive step multiplies \(\operatorname{cis}(k\theta)\) by \(\operatorname{cis}\theta\) and uses the compound angle formulas to combine them.</p></div>
+<div class="we-s"><p>Base \(n = 1\): \((\operatorname{cis}\theta)^1 = \operatorname{cis}\theta\). True.</p></div>
+<div class="we-s"><p>Assume \((\operatorname{cis}\theta)^k = \operatorname{cis}(k\theta)\).</p></div>
+<div class="we-s" data-f="\cos(A + B) = \cos A\cos B - \sin A\sin B ;; \sin(A + B) = \sin A\cos B + \cos A\sin B"><p>\((\operatorname{cis}\theta)^{k+1} = \operatorname{cis}(k\theta)\operatorname{cis}\theta = (\cos k\theta\cos\theta - \sin k\theta\sin\theta) + i(\sin k\theta\cos\theta + \cos k\theta\sin\theta)\).</p></div>
+<div class="we-a"><p>\(= \cos((k + 1)\theta) + i\sin((k + 1)\theta) = \operatorname{cis}((k + 1)\theta)\). By induction, true for all \(n \in \mathbb{N}\). \(\blacksquare\) (For negative \(n\), use \(\frac{1}{\operatorname{cis}\theta} = \operatorname{cis}(-\theta)\).)</p></div>
+</div>
+
+<h2>Powers</h2>
+<div class="we" data-title="A large power" data-marks="3">
+<div class="we-q"><p>Find \((1 - i)^{10}\) in Cartesian form.</p></div>
+<div class="we-t"><p>Convert to polar, apply De Moivre, then reduce the argument to the principal range before converting back.</p></div>
+<div class="we-s"><p>\(1 - i = \sqrt2\operatorname{cis}\left(-\frac\pi4\right)\).</p></div>
+<div class="we-s" data-f="(r\operatorname{cis}\theta)^n = r^n\operatorname{cis}(n\theta)"><p>\((1 - i)^{10} = (\sqrt2)^{10}\operatorname{cis}\left(-\frac{10\pi}{4}\right) = 32\operatorname{cis}\left(-\frac{5\pi}{2}\right) = 32\operatorname{cis}\left(-\frac\pi2\right)\).</p></div>
+<div class="we-a"><p>\(= 32(0 - i) = -32i\).</p></div>
+</div>
+<div class="we" data-title="When is a power real?" data-marks="2">
+<div class="we-q"><p>Find the smallest positive integer \(n\) such that \((\sqrt3 + i)^n\) is real and negative.</p></div>
+<div class="we-t"><p>\((\sqrt3 + i)^n = 2^n\operatorname{cis}\frac{n\pi}{6}\). It's real and negative when the argument is an odd multiple of \(\pi\).</p></div>
+<div class="we-s"><p>Need \(\frac{n\pi}{6} = \pi, 3\pi, \dots\), i.e. \(n = 6, 18, \dots\)</p></div>
+<div class="we-a"><p>Smallest: \(n = 6\), giving \(2^6\operatorname{cis}\pi = -64\).</p></div>
+</div>
+
+<h2>Roots</h2>
+<div class="eq"><div class="eq-label">Solving \(z^n = r\operatorname{cis}\theta\)</div>\[ z = r^{1/n}\operatorname{cis}\left(\frac{\theta + 2k\pi}{n}\right), \quad k = 0, 1, \dots, n - 1 \]<p>There are exactly \(n\) distinct roots. They lie on a circle of radius \(r^{1/n}\), equally spaced \(\frac{2\pi}{n}\) apart: the vertices of a regular \(n\)-gon.</p></div>
+<div class="we" data-title="Cube roots" data-marks="3">
+<div class="we-q"><p>Solve \(z^3 = -8i\), giving answers in polar form, then in Cartesian form.</p></div>
+<div class="we-t"><p>Write \(-8i\) in polar form, add multiples of \(2\pi\) to the argument, divide by 3, and choose \(k\) values that land in \((-\pi, \pi]\).</p></div>
+<div class="we-s"><p>\(-8i = 8\operatorname{cis}\left(-\frac\pi2 + 2k\pi\right)\). So \(z = 2\operatorname{cis}\left(-\frac\pi6 + \frac{2k\pi}{3}\right)\).</p></div>
+<div class="we-s"><p>\(k = -1, 0, 1\): arguments \(-\frac{5\pi}{6}, -\frac\pi6, \frac\pi2\).</p></div>
+<div class="we-a"><p>\(z = 2\operatorname{cis}\left(-\frac{5\pi}{6}\right) = -\sqrt3 - i\), \(z = 2\operatorname{cis}\left(-\frac\pi6\right) = \sqrt3 - i\), \(z = 2\operatorname{cis}\frac\pi2 = 2i\). They form an equilateral triangle on the circle \(|z| = 2\).</p></div>
+</div>
+<div class="sim" data-sim="complexRoots"></div>
+
+<h2>Roots of unity</h2>
+<p>The \(n\)th roots of unity solve \(z^n = 1\): \(z = \operatorname{cis}\frac{2k\pi}{n}\). If \(\omega = \operatorname{cis}\frac{2\pi}{n}\), the roots are \(1, \omega, \omega^2, \dots, \omega^{n-1}\).</p>
+<div class="eq"><div class="eq-label">Sum of the roots</div>\[ 1 + \omega + \omega^2 + \dots + \omega^{n-1} = 0 \quad (n \ge 2) \]<p>Because \(z^n - 1 = (z - 1)(z^{n-1} + \dots + z + 1)\), and \(\omega \ne 1\) is a root. Geometrically, the polygon's vertices balance at the origin.</p></div>
+<aside class="c-key"><p>Once you have one root of \(z^n = w\), get the rest by rotating by \(\frac{2\pi}{n}\) repeatedly (multiplying by \(\omega\)). Roots of a real number come in conjugate pairs.</p></aside>
+<aside class="c-trap"><p>Divide <strong>all</strong> of \(\theta + 2k\pi\) by \(n\): the roots of \(z^4 = 16\operatorname{cis}\frac\pi3\) have arguments \(\frac{\pi}{12} + \frac{k\pi}{2}\), not \(\frac{\pi}{3} + \frac{k\pi}{2}\). And take the real \(n\)th root of the modulus: \(16^{1/4} = 2\).</p></aside>
+<aside class="c-exam"><p>Common VCAA tasks: plot the roots on an Argand diagram (draw the circle, mark equal spacing); find the area or perimeter of the polygon they form; or use one given root to find the others.</p></aside>
+
+<h2>Practice</h2>
+<div class="mcq" data-ans="C" data-level="core">
+<div class="mcq-q"><p>\(\left(2\operatorname{cis}\frac{\pi}{8}\right)^4\) equals</p></div>
+<ol><li>\(8i\)</li><li>\(16\)</li><li>\(16i\)</li><li>\(8\operatorname{cis}\frac{\pi}{2}\)</li></ol>
+<div class="mcq-x"><p>\(2^4\operatorname{cis}\frac{4\pi}{8} = 16\operatorname{cis}\frac\pi2 = 16i\).</p></div>
+</div>
+<div class="mcq" data-ans="B" data-level="core">
+<div class="mcq-q"><p>The solutions of \(z^6 = 64\) lie on a circle of radius</p></div>
+<ol><li>64</li><li>2</li><li>8</li><li>\(\sqrt{64}\)</li></ol>
+<div class="mcq-x"><p>\(64^{1/6} = 2\).</p></div>
+</div>
+<div class="mcq" data-ans="A" data-level="hard">
+<div class="mcq-q"><p>One root of \(z^4 = w\) is \(1 + i\). Another root is</p></div>
+<ol><li>\(-1 + i\)</li><li>\(1 - 2i\)</li><li>\(2i\)</li><li>\(\sqrt2\)</li></ol>
+<div class="mcq-x"><p>Rotate by \(\frac{2\pi}{4} = \frac\pi2\): multiply by \(i\): \(i(1 + i) = -1 + i\).</p></div>
+</div>
+<div class="mcq" data-ans="D" data-level="trick">
+<div class="mcq-q"><p>If \(\omega\) is a complex cube root of unity (\(\omega \ne 1\)), then \(1 + \omega + \omega^2\) equals</p></div>
+<ol><li>1</li><li>3</li><li>\(\omega^3\)</li><li>0</li></ol>
+<div class="mcq-x"><p>Sum of the roots of \(z^3 - 1 = 0\) is 0 (and \(\omega^3 = 1\), so C is 1).</p></div>
+</div>
+<div class="mcq" data-ans="C" data-level="exam">
+<div class="mcq-q"><p>The roots of \(z^5 = 32\) are joined to form a regular pentagon. The length of each side is</p></div>
+<ol><li>\(2\sin\frac{\pi}{5}\)</li><li>\(2\)</li><li>\(4\sin\frac{\pi}{5}\)</li><li>\(4\cos\frac{\pi}{5}\)</li></ol>
+<div class="mcq-x"><p>Radius 2, central angle \(\frac{2\pi}{5}\): chord \(= 2r\sin\frac{\pi}{5} = 4\sin\frac\pi5\).</p></div>
+</div>
+<div class="pq" data-level="core" data-marks="2">
+<div class="pq-q"><p>Express \((-1 + i)^8\) in Cartesian form.</p></div>
+<div class="pq-s"><p>\(-1 + i = \sqrt2\operatorname{cis}\frac{3\pi}{4}\); power: \(16\operatorname{cis}6\pi\). [1]</p><p>\(= 16\). [1]</p></div>
+</div>
+<div class="pq" data-level="hard" data-marks="3">
+<div class="pq-q"><p>Solve \(z^4 = -16\) for \(z \in \mathbb{C}\), giving answers in Cartesian form.</p></div>
+<div class="pq-s"><p>\(-16 = 16\operatorname{cis}(\pi + 2k\pi)\), so \(z = 2\operatorname{cis}\left(\frac\pi4 + \frac{k\pi}{2}\right)\). [1]</p><p>Arguments \(\pm\frac\pi4, \pm\frac{3\pi}{4}\). [1]</p><p>\(z = \pm\sqrt2 \pm \sqrt2 i\) (all four sign combinations). [1]</p></div>
+</div>
+<div class="pq" data-level="exam" data-marks="3">
+<div class="pq-q"><p>Use De Moivre’s theorem to show that \(\cos 3\theta = 4\cos^3\theta - 3\cos\theta\).</p></div>
+<div class="pq-s"><p>\(\cos 3\theta + i\sin 3\theta = (\cos\theta + i\sin\theta)^3\). [1]</p><p>Real part of the expansion: \(\cos^3\theta - 3\cos\theta\sin^2\theta\). [1]</p><p>\(= \cos^3\theta - 3\cos\theta(1 - \cos^2\theta) = 4\cos^3\theta - 3\cos\theta\). [1]</p></div>
+</div>
+<h2>Summary</h2>
+<ul>
+  <li>\((r\operatorname{cis}\theta)^n = r^n\operatorname{cis}n\theta\); reduce arguments to \((-\pi, \pi]\).</li>
+  <li>\(z^n = r\operatorname{cis}\theta\): \(z = r^{1/n}\operatorname{cis}\frac{\theta + 2k\pi}{n}\), \(n\) roots evenly spaced on a circle.</li>
+  <li>Roots of unity sum to 0; rotate one root by \(\frac{2\pi}{n}\) to get the next.</li>
+</ul>

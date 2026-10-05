@@ -1,0 +1,92 @@
+<!--
+id: complex-plane
+title: Subsets of the complex plane
+short: Regions in the complex plane
+summary: Describing and sketching sets of complex numbers: lines, circles, rays and regions defined by Re(z), Im(z), |z − a| and Arg(z − a), perpendicular bisectors from |z − a| = |z − b|, converting to Cartesian equations, and finding intersections and extreme values of |z| on a set.
+keywords: complex plane, Argand diagram, locus, loci, region, circle, |z - a| = r, perpendicular bisector, |z - a| = |z - b|, ray, Arg(z - a), half-plane, Re(z), Im(z), shade region, cartesian equation, intersection, maximum modulus, minimum modulus, subset
+dotpoints: geometric representation and interpretation of complex numbers and sets of complex numbers in the complex plane (used with De Moivre’s theorem, roots and factorisation)
+-->
+<h2>Distance is modulus</h2>
+<p>\(|z - a|\) is the distance between the points \(z\) and \(a\) in the complex plane. Almost every set here is built from that idea.</p>
+<div class="tbl"><table>
+<thead><tr><th>Set</th><th>Picture</th><th>Cartesian (\(z = x + yi\))</th></tr></thead>
+<tbody>
+<tr><td>\(|z - (a + bi)| = r\)</td><td>circle, centre \((a, b)\), radius \(r\)</td><td>\((x - a)^2 + (y - b)^2 = r^2\)</td></tr>
+<tr><td>\(|z - (a + bi)| \le r\)</td><td>closed disc</td><td>\((x - a)^2 + (y - b)^2 \le r^2\)</td></tr>
+<tr><td>\(|z - u| = |z - w|\)</td><td>perpendicular bisector of \(u\) and \(w\)</td><td>a straight line</td></tr>
+<tr><td>\(\operatorname{Arg}(z - a) = \theta\)</td><td>ray from \(a\) (not including \(a\)) at angle \(\theta\)</td><td>half-line</td></tr>
+<tr><td>\(\operatorname{Re}(z) = k\), \(\operatorname{Im}(z) &gt; k\)</td><td>vertical line, half-plane above a horizontal line</td><td>\(x = k\), \(y &gt; k\)</td></tr>
+</tbody></table></div>
+<aside class="c-trap"><p>\(|z + 2 - i|\) is the distance from \(-2 + i\), not from \(2 - i\): write it as \(|z - (-2 + i)|\) first. And a ray \(\operatorname{Arg}(z - a) = \theta\) excludes its endpoint \(a\) (Arg of 0 is undefined): draw an open circle there.</p></aside>
+
+<h2>Circles and lines</h2>
+<div class="we" data-title="Perpendicular bisector to Cartesian form" data-marks="3">
+<div class="we-q"><p>Find the Cartesian equation of \(\{z : |z - 2| = |z + 4i|\}\) and describe it.</p></div>
+<div class="we-t"><p>It's the set of points equidistant from \(2\) and \(-4i\): the perpendicular bisector of the segment joining \((2, 0)\) and \((0, -4)\). Substitute \(z = x + yi\), square both sides and simplify.</p></div>
+<div class="we-s"><p>\((x - 2)^2 + y^2 = x^2 + (y + 4)^2\).</p></div>
+<div class="we-s"><p>\(-4x + 4 = 8y + 16 \Rightarrow 4x + 8y + 12 = 0\).</p></div>
+<div class="we-a"><p>\(x + 2y + 3 = 0\), i.e. \(y = -\frac12 x - \frac32\): a line through the midpoint \((1, -2)\), perpendicular to the segment (gradient 2).</p></div>
+</div>
+<div class="we" data-title="A circle from a ratio of distances" data-marks="3">
+<div class="we-q"><p>Show that \(\{z : |z - 3| = 2|z|\}\) is a circle and find its centre and radius.</p></div>
+<div class="we-t"><p>When the two distances aren't equal, the set is a circle (an Apollonius circle). Substitute, square, then complete the square.</p></div>
+<div class="we-s"><p>\((x - 3)^2 + y^2 = 4(x^2 + y^2) \Rightarrow 3x^2 + 3y^2 + 6x - 9 = 0 \Rightarrow x^2 + 2x + y^2 = 3\).</p></div>
+<div class="we-a"><p>\((x + 1)^2 + y^2 = 4\): centre \(-1\) (the point \((-1, 0)\)), radius 2.</p></div>
+</div>
+
+<h2>Rays and regions</h2>
+<div class="we" data-title="Intersection of a ray and a circle" data-marks="3">
+<div class="we-q"><p>Find the point where \(\operatorname{Arg}(z) = \frac{\pi}{4}\) meets \(|z - 2| = 2\).</p></div>
+<div class="we-t"><p>The ray is \(y = x\) with \(x &gt; 0\). Substitute into the circle's Cartesian equation and reject solutions not on the ray.</p></div>
+<div class="we-s"><p>Circle: \((x - 2)^2 + y^2 = 4\). With \(y = x\): \(2x^2 - 4x = 0 \Rightarrow x = 0\) or \(x = 2\).</p></div>
+<div class="we-a"><p>\(x = 0\) is the origin, which isn't on the ray. So the intersection is \(z = 2 + 2i\).</p></div>
+</div>
+<div class="we" data-title="Greatest and least modulus on a circle" data-marks="2">
+<div class="we-q"><p>For \(z\) on the circle \(|z - (3 + 4i)| = 2\), find the maximum and minimum values of \(|z|\).</p></div>
+<div class="we-t"><p>\(|z|\) is the distance from the origin. The nearest and farthest points of a circle from a point lie on the line through that point and the centre: distance to the centre ± radius.</p></div>
+<div class="we-s"><p>Distance from 0 to the centre: \(|3 + 4i| = 5\).</p></div>
+<div class="we-a"><p>\(\max|z| = 5 + 2 = 7\), \(\min|z| = 5 - 2 = 3\).</p></div>
+</div>
+<aside class="c-key"><p>Regions: "\(\le\)" or "\(\ge\)" gives a shaded region with a solid boundary; "\(&lt;\)" or "\(&gt;\)" a dashed boundary. \(|z - a| &lt; |z - b|\) is the half-plane on \(a\)'s side of the bisector. \(\frac{\pi}{6} \le \operatorname{Arg}(z) \le \frac{\pi}{3}\) is a wedge from the origin.</p></aside>
+<aside class="c-exam"><p>Exam 1 questions often combine this with roots: "the roots of \(z^3 = 8i\) lie on which circle?", or "sketch \(\{z : |z| \le 2\} \cap \{z : \operatorname{Re}(z) \ge 1\}\) and find its area". Label key points with exact coordinates.</p></aside>
+
+<h2>Practice</h2>
+<div class="mcq" data-ans="B" data-level="core">
+<div class="mcq-q"><p>The set \(\{z : |z + 1 - 2i| = 3\}\) is a circle with centre</p></div>
+<ol><li>\((1, -2)\)</li><li>\((-1, 2)\)</li><li>\((1, 2)\)</li><li>\((-1, -2)\)</li></ol>
+<div class="mcq-x"><p>\(|z - (-1 + 2i)| = 3\).</p></div>
+</div>
+<div class="mcq" data-ans="D" data-level="core">
+<div class="mcq-q"><p>\(\{z : |z - i| = |z + i|\}\) is</p></div>
+<ol><li>the imaginary axis</li><li>the circle \(|z| = 1\)</li><li>the line \(y = x\)</li><li>the real axis</li></ol>
+<div class="mcq-x"><p>Points equidistant from \(i\) and \(-i\): the perpendicular bisector, the real axis.</p></div>
+</div>
+<div class="mcq" data-ans="A" data-level="trick">
+<div class="mcq-q"><p>The set \(\{z : \operatorname{Arg}(z - 1) = \frac{\pi}{2}\}\) is</p></div>
+<ol><li>the vertical half-line above \(1\), not including \(1\)</li><li>the line \(x = 1\)</li><li>the vertical half-line above \(1\), including \(1\)</li><li>the half-line \(y = x - 1\), \(x &gt; 1\)</li></ol>
+<div class="mcq-x"><p>A ray from \(1\) at angle \(\frac\pi2\); the endpoint is excluded.</p></div>
+</div>
+<div class="mcq" data-ans="C" data-level="hard">
+<div class="mcq-q"><p>The minimum value of \(|z - 4|\) for \(z\) on the circle \(|z| = 1\) is</p></div>
+<ol><li>4</li><li>5</li><li>3</li><li>1</li></ol>
+<div class="mcq-x"><p>Distance from 4 to the centre 0 is 4; minus the radius 1.</p></div>
+</div>
+<div class="pq" data-level="core" data-marks="2">
+<div class="pq-q"><p>Find the Cartesian equation of \(\{z : |z - 1 + i| = |z - 3 - i|\}\).</p></div>
+<div class="pq-s"><p>\((x - 1)^2 + (y + 1)^2 = (x - 3)^2 + (y - 1)^2\). [1]</p><p>\(-2x + 2y + 2 = -6x - 2y + 10 \Rightarrow 4x + 4y = 8\), i.e. \(y = 2 - x\). [1]</p></div>
+</div>
+<div class="pq" data-level="hard" data-marks="3">
+<div class="pq-q"><p>Find the area of the region \(\{z : |z| \le 2\} \cap \{z : \operatorname{Re}(z) \ge 1\}\).</p></div>
+<div class="pq-s"><p>A circular segment of the disc of radius 2 cut off by \(x = 1\). The chord meets the circle at \(1 \pm \sqrt3 i\), subtending angle \(\frac{2\pi}{3}\) at the centre. [1]</p><p>Segment area \(= \frac12 r^2(\theta - \sin\theta) = 2\left(\frac{2\pi}{3} - \frac{\sqrt3}{2}\right)\). [1]</p><p>\(= \frac{4\pi}{3} - \sqrt3\). [1]</p></div>
+</div>
+<div class="pq" data-level="exam" data-marks="3">
+<div class="pq-q"><p>Find the complex numbers satisfying both \(|z| = \sqrt2\) and \(|z - 1| = |z - i|\).</p></div>
+<div class="pq-s"><p>The bisector of \(1\) and \(i\) is \(y = x\). [1]</p><p>\(x^2 + x^2 = 2 \Rightarrow x = \pm1\). [1]</p><p>\(z = 1 + i\) or \(z = -1 - i\). [1]</p></div>
+</div>
+<h2>Summary</h2>
+<ul>
+  <li>\(|z - a|\) is distance from \(a\): circles, discs and bisectors follow.</li>
+  <li>\(\operatorname{Arg}(z - a) = \theta\) is a ray from \(a\), endpoint excluded.</li>
+  <li>Convert with \(z = x + yi\) and square both sides; complete the square for circles.</li>
+  <li>Max/min distance to a circle: distance to centre ± radius.</li>
+</ul>

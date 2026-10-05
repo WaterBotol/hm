@@ -1,0 +1,120 @@
+<!--
+id: antidiff
+title: Techniques of antidifferentiation
+short: Integration techniques
+summary: The Specialist toolkit for antiderivatives and definite integrals: 1/x to log|x|, inverse circular forms, substitution u = g(x) (including changing the terminals), trigonometric identities for powers of sin and cos, and partial fractions, with a strategy for choosing the right technique.
+keywords: antidifferentiation, integration, integral, substitution, u substitution, change of variable, change terminals, log|x|, 1/x, inverse circular integral, arcsin integral, arctan integral, 1/(a^2+x^2), 1/sqrt(a^2-x^2), sin^2, cos^2, odd powers of sin, partial fractions integration, definite integral, technique
+dotpoints: anti-differentiation of 1/x to obtain logₑ|x| | anti-differentiation of 1/√(a² − x²) and a/(a² + x²) by recognition that they are derivatives of corresponding inverse circular functions | use of the substitution u = g(x) to anti-differentiate expressions | use of the trigonometric identities sin²(ax) = ½(1 − cos(2ax)), cos²(ax) = ½(1 + cos(2ax)) in anti-differentiation techniques | anti-differentiation using partial fractions of rational functions | numerical and symbolic integration using technology
+-->
+<h2>Standard forms</h2>
+<div class="tbl"><table>
+<thead><tr><th>\(f(x)\)</th><th>\(\int f(x)\,dx\)</th></tr></thead>
+<tbody>
+<tr><td>\(\dfrac{1}{x}\)</td><td>\(\log_e|x| + c\)</td></tr>
+<tr><td>\(\dfrac{1}{ax + b}\)</td><td>\(\dfrac1a\log_e|ax + b| + c\)</td></tr>
+<tr><td>\(\dfrac{1}{\sqrt{a^2 - x^2}}\)</td><td>\(\sin^{-1}\!\left(\dfrac{x}{a}\right) + c\)</td></tr>
+<tr><td>\(\dfrac{-1}{\sqrt{a^2 - x^2}}\)</td><td>\(\cos^{-1}\!\left(\dfrac{x}{a}\right) + c\)</td></tr>
+<tr><td>\(\dfrac{a}{a^2 + x^2}\)</td><td>\(\tan^{-1}\!\left(\dfrac{x}{a}\right) + c\)</td></tr>
+<tr><td>\(\sec^2(ax)\)</td><td>\(\dfrac1a\tan(ax) + c\)</td></tr>
+</tbody></table></div>
+<div class="we" data-title="Inverse circular forms" data-marks="3">
+<div class="we-q"><p>Find (a) \(\displaystyle\int \frac{1}{\sqrt{9 - x^2}}dx\), (b) \(\displaystyle\int \frac{1}{4 + x^2}dx\), (c) \(\displaystyle\int \frac{1}{\sqrt{1 - 4x^2}}dx\).</p></div>
+<div class="we-t"><p>Match each to a standard form. For (b), the sheet form has \(a\) in the numerator, so adjust the constant. For (c), factor out the 4 to get \(a^2 - x^2\).</p></div>
+<div class="we-s" data-f="\int \dfrac{1}{\sqrt{a^2 - x^2}}dx = \sin^{-1}\dfrac xa + c"><p>(a) \(\sin^{-1}\frac{x}{3} + c\).</p></div>
+<div class="we-s" data-f="\int \dfrac{a}{a^2 + x^2}dx = \tan^{-1}\dfrac xa + c"><p>(b) \(\frac12\int\frac{2}{4 + x^2}dx = \frac12\tan^{-1}\frac{x}{2} + c\).</p></div>
+<div class="we-a"><p>(c) \(\sqrt{1 - 4x^2} = 2\sqrt{\frac14 - x^2}\), so \(\frac12\sin^{-1}\frac{x}{1/2} + c = \frac12\sin^{-1}(2x) + c\).</p></div>
+</div>
+
+<h2>Substitution \(u = g(x)\)</h2>
+<p>Look for a function and (a multiple of) its derivative: \(\int f(g(x))\,g'(x)\,dx = \int f(u)\,du\).</p>
+<div class="we" data-title="Substitution" data-marks="3">
+<div class="we-q"><p>Find \(\displaystyle\int x\sqrt{x^2 + 3}\,dx\).</p></div>
+<div class="we-t"><p>The inside of the root, \(x^2 + 3\), has derivative \(2x\), and \(x\) is outside. Let \(u = x^2 + 3\), so \(x\,dx = \frac12 du\).</p></div>
+<div class="we-s"><p>\(u = x^2 + 3,\ \frac{du}{dx} = 2x\).</p></div>
+<div class="we-s"><p>\(\int \frac12 u^{1/2}\,du = \frac13 u^{3/2} + c\).</p></div>
+<div class="we-a"><p>\(= \frac13(x^2 + 3)^{3/2} + c\).</p></div>
+</div>
+<div class="we" data-title="Definite integral: change the terminals" data-marks="3">
+<div class="we-q"><p>Evaluate \(\displaystyle\int_0^{\pi/2} \sin x\cos^3 x\,dx\).</p></div>
+<div class="we-t"><p>Let \(u = \cos x\), \(du = -\sin x\,dx\). Change the \(x\)-terminals to \(u\)-terminals so you never have to substitute back.</p></div>
+<div class="we-s"><p>\(x = 0 \to u = 1\); \(x = \frac\pi2 \to u = 0\).</p></div>
+<div class="we-s"><p>\(\int_1^0 -u^3\,du = \int_0^1 u^3\,du\).</p></div>
+<div class="we-a"><p>\(= \left[\frac{u^4}{4}\right]_0^1 = \frac14\).</p></div>
+</div>
+<div class="we" data-title="A linear substitution x in terms of u" data-marks="3">
+<div class="we-q"><p>Find \(\displaystyle\int x\sqrt{x - 1}\,dx\) using \(u = x - 1\).</p></div>
+<div class="we-t"><p>Here the \(x\) outside isn't a derivative of the inside. Instead express it in \(u\): \(x = u + 1\), then expand and integrate powers.</p></div>
+<div class="we-s"><p>\(\int (u + 1)u^{1/2}\,du = \int (u^{3/2} + u^{1/2})\,du\).</p></div>
+<div class="we-a"><p>\(= \frac25 u^{5/2} + \frac23 u^{3/2} + c = \frac25(x - 1)^{5/2} + \frac23(x - 1)^{3/2} + c\).</p></div>
+</div>
+
+<h2>Trigonometric powers</h2>
+<div class="eq"><div class="eq-label">Identities for integration</div>\[ \sin^2(ax) = \tfrac12\big(1 - \cos(2ax)\big) \qquad \cos^2(ax) = \tfrac12\big(1 + \cos(2ax)\big) \]<p>Even powers: use these identities. Odd powers: split off one factor and use \(\sin^2 + \cos^2 = 1\), then substitute.</p></div>
+<div class="we" data-title="Even power" data-marks="2">
+<div class="we-q"><p>Evaluate \(\displaystyle\int_0^{\pi} \sin^2 x\,dx\).</p></div>
+<div class="we-t"><p>Replace \(\sin^2 x\) with \(\frac12(1 - \cos 2x)\), which integrates directly.</p></div>
+<div class="we-s"><p>\(\frac12\int_0^\pi (1 - \cos 2x)\,dx = \frac12\left[x - \frac12\sin 2x\right]_0^\pi\).</p></div>
+<div class="we-a"><p>\(= \frac{\pi}{2}\).</p></div>
+</div>
+<div class="we" data-title="Odd power" data-marks="3">
+<div class="we-q"><p>Find \(\displaystyle\int \cos^3 x\,dx\).</p></div>
+<div class="we-t"><p>Write \(\cos^3 x = \cos x(1 - \sin^2 x)\), then \(u = \sin x\), \(du = \cos x\,dx\).</p></div>
+<div class="we-s"><p>\(\int (1 - u^2)\,du = u - \frac{u^3}{3} + c\).</p></div>
+<div class="we-a"><p>\(= \sin x - \frac13\sin^3 x + c\).</p></div>
+</div>
+
+<h2>Partial fractions</h2>
+<div class="we" data-title="Integrate with partial fractions" data-marks="3">
+<div class="we-q"><p>Find \(\displaystyle\int \frac{5x + 1}{(x - 1)(x + 2)}dx\).</p></div>
+<div class="we-t"><p>From <a href="#partial-fractions">partial fractions</a>, this is \(\frac{2}{x - 1} + \frac{3}{x + 2}\). Each integrates to a log.</p></div>
+<div class="we-s"><p>\(\int\left(\frac{2}{x - 1} + \frac{3}{x + 2}\right)dx\).</p></div>
+<div class="we-a"><p>\(= 2\log_e|x - 1| + 3\log_e|x + 2| + c\).</p></div>
+</div>
+<aside class="c-key"><p>Strategy: (1) standard form? (2) function × its derivative → substitution; (3) power of sin/cos → identity or split; (4) rational → divide, then partial fractions or inverse tan/log forms; (5) product of unrelated functions → <a href="#by-parts">integration by parts</a>. In Exam 2, CAS does it, but VCAA still asks you to "show" a substitution step.</p></aside>
+<aside class="c-trap"><p>\(\int\frac{1}{x^2 + 4}dx\) is an arctan, but \(\int\frac{x}{x^2 + 4}dx = \frac12\log_e(x^2 + 4)\) is a log (numerator is a multiple of the denominator's derivative). And forgetting to change terminals in a substitution gives the wrong value.</p></aside>
+
+<h2>Practice</h2>
+<div class="mcq" data-ans="B" data-level="core">
+<div class="mcq-q"><p>\(\displaystyle\int \frac{3}{9 + x^2}dx\) is</p></div>
+<ol><li>\(3\tan^{-1}\frac{x}{3} + c\)</li><li>\(\tan^{-1}\frac{x}{3} + c\)</li><li>\(\frac13\tan^{-1}\frac{x}{3} + c\)</li><li>\(\tan^{-1}(3x) + c\)</li></ol>
+<div class="mcq-x"><p>Exactly the form \(\frac{a}{a^2 + x^2}\) with \(a = 3\).</p></div>
+</div>
+<div class="mcq" data-ans="D" data-level="core">
+<div class="mcq-q"><p>Using \(u = x^2 + 1\), \(\displaystyle\int_0^1 \frac{x}{x^2 + 1}dx\) becomes</p></div>
+<ol><li>\(\int_0^1 \frac1u\,du\)</li><li>\(2\int_1^2 \frac1u\,du\)</li><li>\(\int_1^2 \frac1u\,du\)</li><li>\(\frac12\int_1^2 \frac1u\,du\)</li></ol>
+<div class="mcq-x"><p>\(x\,dx = \frac12 du\); terminals \(0 \to 1\), \(1 \to 2\).</p></div>
+</div>
+<div class="mcq" data-ans="A" data-level="trick">
+<div class="mcq-q"><p>\(\displaystyle\int \cos^2(3x)\,dx\) is</p></div>
+<ol><li>\(\frac{x}{2} + \frac{1}{12}\sin(6x) + c\)</li><li>\(\frac13\cos^3(3x) + c\)</li><li>\(\frac{x}{2} + \frac16\sin(6x) + c\)</li><li>\(\frac{x}{2} - \frac{1}{12}\sin(6x) + c\)</li></ol>
+<div class="mcq-x"><p>\(\frac12\int(1 + \cos 6x)dx = \frac x2 + \frac{1}{12}\sin 6x + c\).</p></div>
+</div>
+<div class="mcq" data-ans="C" data-level="hard">
+<div class="mcq-q"><p>\(\displaystyle\int_0^{1/2} \frac{1}{\sqrt{1 - x^2}}dx\) equals</p></div>
+<ol><li>\(\frac{\pi}{3}\)</li><li>\(\frac12\)</li><li>\(\frac{\pi}{6}\)</li><li>\(\frac{\pi}{4}\)</li></ol>
+<div class="mcq-x"><p>\(\sin^{-1}\frac12 - \sin^{-1}0 = \frac\pi6\).</p></div>
+</div>
+<div class="mcq" data-ans="B" data-level="exam">
+<div class="mcq-q"><p>Using a suitable substitution, \(\displaystyle\int_1^{e} \frac{(\log_e x)^2}{x}dx\) equals</p></div>
+<ol><li>\(1\)</li><li>\(\frac13\)</li><li>\(\frac{e^3}{3}\)</li><li>\(\frac12\)</li></ol>
+<div class="mcq-x"><p>\(u = \log_e x\), \(du = \frac{dx}{x}\): \(\int_0^1 u^2\,du = \frac13\).</p></div>
+</div>
+<div class="pq" data-level="core" data-marks="2">
+<div class="pq-q"><p>Find \(\displaystyle\int \frac{2x}{(x^2 - 5)^3}dx\).</p></div>
+<div class="pq-s"><p>\(u = x^2 - 5\): \(\int u^{-3}\,du = -\frac{1}{2u^2} + c\). [1]</p><p>\(= -\dfrac{1}{2(x^2 - 5)^2} + c\). [1]</p></div>
+</div>
+<div class="pq" data-level="hard" data-marks="3">
+<div class="pq-q"><p>Evaluate \(\displaystyle\int_0^{\pi/4} \tan x\,dx\) exactly.</p></div>
+<div class="pq-s"><p>\(\tan x = \frac{\sin x}{\cos x}\); \(u = \cos x\), \(du = -\sin x\,dx\). [1]</p><p>\(\int_1^{1/\sqrt2} -\frac1u\,du = \left[-\log_e u\right]_1^{1/\sqrt2}\). [1]</p><p>\(= -\log_e\frac{1}{\sqrt2} = \frac12\log_e 2\). [1]</p></div>
+</div>
+<div class="pq" data-level="exam" data-marks="4">
+<div class="pq-q"><p>Use the substitution \(u = 2x + 1\) to evaluate \(\displaystyle\int_0^4 \frac{x}{\sqrt{2x + 1}}dx\).</p></div>
+<div class="pq-s"><p>\(x = \frac{u - 1}{2}\), \(dx = \frac12 du\); terminals \(1\) to \(9\). [1]</p><p>\(\int_1^9 \frac{u - 1}{2\sqrt u}\cdot\frac12 du = \frac14\int_1^9 (u^{1/2} - u^{-1/2})du\). [1]</p><p>\(= \frac14\left[\frac23 u^{3/2} - 2u^{1/2}\right]_1^9 = \frac14\left[(18 - 6) - (\frac23 - 2)\right]\). [1]</p><p>\(= \frac14\cdot\frac{40}{3} = \frac{10}{3}\). [1]</p></div>
+</div>
+<h2>Summary</h2>
+<ul>
+  <li>\(\frac1x \to \log_e|x|\); \(\frac{1}{\sqrt{a^2 - x^2}} \to \sin^{-1}\frac xa\); \(\frac{a}{a^2 + x^2} \to \tan^{-1}\frac xa\).</li>
+  <li>Substitution: \(u\) = the inside function; change terminals for definite integrals.</li>
+  <li>Even trig powers → double-angle identities; odd powers → split one off and substitute.</li>
+  <li>Rational functions → divide, partial fractions, logs and arctans.</li>
+</ul>

@@ -1,0 +1,96 @@
+<!--
+id: diff-techniques
+title: Derivatives of inverse circular functions, second derivatives and curve sketching
+short: Differentiation techniques
+summary: Derivatives of arcsin, arccos and arctan (with the chain rule), second derivatives and the notations f''(x) and d²y/dx², concavity and points of inflection, and how the graph of a function relates to the graphs of its derivative and its antiderivatives.
+keywords: derivative of arcsin, derivative of arccos, derivative of arctan, inverse circular derivatives, second derivative, d2y/dx2, f double prime, concavity, concave up, concave down, point of inflection, stationary point of inflection, curve sketching, graph of derivative, graph of antiderivative, gradient function
+dotpoints: derivatives of inverse circular functions | second derivatives, use of notations f''(x) and d²y/dx², and their application to the analysis of graphs of functions, including points of inflection and concavity | the relationship between the graph of a function and the graphs of its anti-derivative functions
+-->
+<h2>Derivatives of the inverse circular functions</h2>
+<div class="eq"><div class="eq-label">On the formula sheet</div>\[ \frac{d}{dx}\sin^{-1}\!\left(\frac{x}{a}\right) = \frac{1}{\sqrt{a^2 - x^2}} \qquad \frac{d}{dx}\cos^{-1}\!\left(\frac{x}{a}\right) = \frac{-1}{\sqrt{a^2 - x^2}} \qquad \frac{d}{dx}\tan^{-1}\!\left(\frac{x}{a}\right) = \frac{a}{a^2 + x^2} \]<p>(\(a &gt; 0\); the first two for \(|x| &lt; a\).) With \(a = 1\): \(\frac{1}{\sqrt{1 - x^2}}\), \(\frac{-1}{\sqrt{1 - x^2}}\), \(\frac{1}{1 + x^2}\).</p></div>
+<div class="we" data-title="Where the arcsin derivative comes from" data-marks="3">
+<div class="we-q"><p>Show that \(\dfrac{d}{dx}\sin^{-1}x = \dfrac{1}{\sqrt{1 - x^2}}\) for \(-1 &lt; x &lt; 1\).</p></div>
+<div class="we-t"><p>Let \(y = \sin^{-1}x\), so \(\sin y = x\). Differentiate \(x\) with respect to \(y\), flip it, and use \(\cos y \ge 0\) on the range \([-\frac\pi2, \frac\pi2]\) to choose the positive square root.</p></div>
+<div class="we-s" data-f="\dfrac{dy}{dx} = \dfrac{1}{dx/dy}"><p>\(x = \sin y \Rightarrow \frac{dx}{dy} = \cos y\), so \(\frac{dy}{dx} = \frac{1}{\cos y}\).</p></div>
+<div class="we-s"><p>\(\cos y = \sqrt{1 - \sin^2 y} = \sqrt{1 - x^2}\) (positive, since \(y \in (-\frac\pi2, \frac\pi2)\)).</p></div>
+<div class="we-a"><p>\(\dfrac{dy}{dx} = \dfrac{1}{\sqrt{1 - x^2}}\). \(\blacksquare\)</p></div>
+</div>
+<div class="we" data-title="Chain rule with inverse circular functions" data-marks="3">
+<div class="we-q"><p>Differentiate (a) \(y = \tan^{-1}(3x)\), (b) \(y = \cos^{-1}(\sqrt x)\), (c) \(y = x\sin^{-1}x\).</p></div>
+<div class="we-t"><p>Treat the inside as \(u\): \(\frac{d}{dx}\tan^{-1}u = \frac{u'}{1 + u^2}\), \(\frac{d}{dx}\cos^{-1}u = \frac{-u'}{\sqrt{1 - u^2}}\). Part (c) is a product.</p></div>
+<div class="we-s" data-f="\dfrac{d}{dx}\tan^{-1} u = \dfrac{u&#x27;}{1 + u^2}"><p>(a) \(\dfrac{3}{1 + 9x^2}\).</p></div>
+<div class="we-s" data-f="\dfrac{d}{dx}\cos^{-1} u = \dfrac{-u&#x27;}{\sqrt{1 - u^2}}"><p>(b) \(\dfrac{-\frac{1}{2\sqrt x}}{\sqrt{1 - x}} = \dfrac{-1}{2\sqrt{x}\sqrt{1 - x}}\), for \(0 &lt; x &lt; 1\).</p></div>
+<div class="we-a" data-f="\dfrac{d}{dx}(uv) = u&#x27;v + uv&#x27;"><p>(c) \(\sin^{-1}x + \dfrac{x}{\sqrt{1 - x^2}}\).</p></div>
+</div>
+<aside class="c-trap"><p>\(\frac{d}{dx}\tan^{-1}\left(\frac x2\right) = \frac{2}{4 + x^2}\), not \(\frac{1}{4 + x^2}\). Use the formula-sheet form carefully, or the chain rule: \(\frac{1/2}{1 + x^2/4} = \frac{2}{4 + x^2}\).</p></aside>
+
+<h2>Second derivatives and concavity</h2>
+<div class="eq"><div class="eq-label">Concavity</div>\[ f''(x) &gt; 0:\ \text{concave up (gradient increasing)} \qquad f''(x) &lt; 0:\ \text{concave down} \]<p>A <strong>point of inflection</strong> is where concavity changes: \(f''\) changes sign (usually \(f'' = 0\) there). If also \(f' = 0\), it's a <strong>stationary point of inflection</strong>.</p></div>
+<div class="we" data-title="Find the inflection points" data-marks="4">
+<div class="we-q"><p>For \(f(x) = x e^{-x}\), find where the graph is concave down and the coordinates of the point of inflection.</p></div>
+<div class="we-t"><p>Differentiate twice with the product rule, factorise, and solve \(f''(x) &lt; 0\). The sign of \(f''\) is set by the polynomial factor, since \(e^{-x} &gt; 0\).</p></div>
+<div class="we-s" data-f="\dfrac{d}{dx}(uv) = u&#x27;v + uv&#x27;"><p>\(f'(x) = e^{-x} - xe^{-x} = (1 - x)e^{-x}\).</p></div>
+<div class="we-s"><p>\(f''(x) = -e^{-x} - (1 - x)e^{-x} = (x - 2)e^{-x}\).</p></div>
+<div class="we-a"><p>Concave down for \(x &lt; 2\), concave up for \(x &gt; 2\). Inflection point \((2, 2e^{-2})\).</p></div>
+</div>
+<div class="we" data-title="Second derivative test" data-marks="3">
+<div class="we-q"><p>Find and classify the stationary points of \(y = x^3 - 6x^2 + 9x + 1\).</p></div>
+<div class="we-t"><p>Solve \(y' = 0\), then the sign of \(y''\) at each point tells you its nature (if \(y'' = 0\), use a sign table of \(y'\) instead).</p></div>
+<div class="we-s"><p>\(y' = 3x^2 - 12x + 9 = 3(x - 1)(x - 3) = 0 \Rightarrow x = 1, 3\).</p></div>
+<div class="we-s"><p>\(y'' = 6x - 12\): \(y''(1) = -6 &lt; 0\), \(y''(3) = 6 &gt; 0\).</p></div>
+<div class="we-a"><p>Local maximum \((1, 5)\), local minimum \((3, 1)\). Inflection at \(x = 2\), point \((2, 3)\).</p></div>
+</div>
+
+<h2>Graphs of a function, its derivative and its antiderivatives</h2>
+<ul>
+  <li>Where \(f\) has a stationary point, \(f'\) crosses or touches the \(x\)-axis.</li>
+  <li>Where \(f\) has an inflection point, \(f'\) has a turning point.</li>
+  <li>If \(F' = f\): where \(f = 0\) (and changes sign), \(F\) has a turning point; where \(f\) has a turning point, \(F\) has an inflection point; where \(f &gt; 0\), \(F\) is increasing.</li>
+  <li>Antiderivatives differ by a constant: their graphs are vertical translations of each other.</li>
+</ul>
+<aside class="c-exam"><p>VCAA multiple choice often shows the graph of \(f'\) and asks about \(f\) (or shows \(f\) and asks about an antiderivative). Read off: sign of \(f'\) → increasing/decreasing; \(x\)-intercepts of \(f'\) → stationary points; turning points of \(f'\) → inflection points of \(f\).</p></aside>
+
+<h2>Practice</h2>
+<div class="mcq" data-ans="B" data-level="core">
+<div class="mcq-q"><p>\(\dfrac{d}{dx}\sin^{-1}\!\left(\dfrac{x}{3}\right)\) is</p></div>
+<ol><li>\(\frac{1}{3\sqrt{9 - x^2}}\)</li><li>\(\frac{1}{\sqrt{9 - x^2}}\)</li><li>\(\frac{3}{\sqrt{9 - x^2}}\)</li><li>\(\frac{1}{\sqrt{1 - x^2}}\)</li></ol>
+<div class="mcq-x"><p>Formula sheet with \(a = 3\).</p></div>
+</div>
+<div class="mcq" data-ans="D" data-level="core">
+<div class="mcq-q"><p>\(\dfrac{d}{dx}\tan^{-1}(x^2)\) is</p></div>
+<ol><li>\(\frac{1}{1 + x^4}\)</li><li>\(\frac{2x}{1 + x^2}\)</li><li>\(\frac{1}{1 + x^2}\)</li><li>\(\frac{2x}{1 + x^4}\)</li></ol>
+<div class="mcq-x"><p>\(\frac{u'}{1 + u^2}\) with \(u = x^2\).</p></div>
+</div>
+<div class="mcq" data-ans="A" data-level="trick">
+<div class="mcq-q"><p>For \(f(x) = x^4\), \(f''(0) = 0\). At \(x = 0\) the graph has</p></div>
+<ol><li>a local minimum</li><li>a stationary point of inflection</li><li>a non-stationary point of inflection</li><li>a local maximum</li></ol>
+<div class="mcq-x"><p>\(f''(x) = 12x^2 \ge 0\) doesn't change sign, so no inflection; \(f'\) changes from negative to positive: a minimum.</p></div>
+</div>
+<div class="mcq" data-ans="C" data-level="hard">
+<div class="mcq-q"><p>The graph of \(y = f'(x)\) is a parabola with a minimum at \(x = 2\) and \(x\)-intercepts at \(x = 0\) and \(x = 4\). The graph of \(y = f(x)\) has</p></div>
+<ol><li>a local minimum at \(x = 2\)</li><li>local maxima at \(x = 0\) and \(x = 4\)</li><li>a local maximum at \(x = 0\), a local minimum at \(x = 4\) and an inflection point at \(x = 2\)</li><li>a local minimum at \(x = 0\) and a local maximum at \(x = 4\)</li></ol>
+<div class="mcq-x"><p>\(f'\) goes \(+\) to \(-\) at 0 (max), \(-\) to \(+\) at 4 (min); its turning point at 2 is an inflection of \(f\).</p></div>
+</div>
+<div class="mcq" data-ans="B" data-level="exam">
+<div class="mcq-q"><p>If \(y = \cos^{-1}(2x)\), then \(\dfrac{dy}{dx}\) at \(x = \frac14\) is</p></div>
+<ol><li>\(-\frac{2}{\sqrt3}\)</li><li>\(-\frac{4}{\sqrt3}\)</li><li>\(\frac{4}{\sqrt3}\)</li><li>\(-\frac{1}{\sqrt3}\)</li></ol>
+<div class="mcq-x"><p>\(\frac{-2}{\sqrt{1 - 4x^2}} = \frac{-2}{\sqrt{3/4}} = \frac{-4}{\sqrt3}\).</p></div>
+</div>
+<div class="pq" data-level="core" data-marks="2" data-f="\dfrac{d}{dx}\tan^{-1} u = \dfrac{u&#x27;}{1 + u^2}">
+<div class="pq-q"><p>Find the gradient of \(y = \tan^{-1}(2x)\) at \(x = \frac12\).</p></div>
+<div class="pq-s"><p>\(\frac{dy}{dx} = \frac{2}{1 + 4x^2}\). [1]</p><p>At \(x = \frac12\): \(\frac{2}{2} = 1\). [1]</p></div>
+</div>
+<div class="pq" data-level="hard" data-marks="3">
+<div class="pq-q"><p>Show that \(y = \tan^{-1}x\) has a point of inflection at the origin.</p></div>
+<div class="pq-s"><p>\(y' = (1 + x^2)^{-1}\), \(y'' = \dfrac{-2x}{(1 + x^2)^2}\). [1]</p><p>\(y''(0) = 0\); \(y'' &gt; 0\) for \(x &lt; 0\) and \(y'' &lt; 0\) for \(x &gt; 0\). [1]</p><p>Concavity changes at \((0, 0)\), which is on the graph, so it's a point of inflection. [1]</p></div>
+</div>
+<div class="pq" data-level="exam" data-marks="4">
+<div class="pq-q"><p>Let \(f(x) = \sin^{-1}x + \sin^{-1}\sqrt{1 - x^2}\) for \(0 &lt; x &lt; 1\). Show that \(f'(x) = 0\) and hence find the value of \(f(x)\).</p></div>
+<div class="pq-s"><p>\(\frac{d}{dx}\sin^{-1}\sqrt{1 - x^2} = \dfrac{\frac{-x}{\sqrt{1 - x^2}}}{\sqrt{1 - (1 - x^2)}} = \dfrac{-x}{x\sqrt{1 - x^2}} = \dfrac{-1}{\sqrt{1 - x^2}}\) (since \(x &gt; 0\)). [2]</p><p>So \(f'(x) = \frac{1}{\sqrt{1 - x^2}} - \frac{1}{\sqrt{1 - x^2}} = 0\), and \(f\) is constant. [1]</p><p>\(f\!\left(\frac{1}{\sqrt2}\right) = \frac\pi4 + \frac\pi4 = \frac\pi2\). [1]</p></div>
+</div>
+<h2>Summary</h2>
+<ul>
+  <li>\(\frac{d}{dx}\sin^{-1}u = \frac{u'}{\sqrt{1 - u^2}}\), \(\frac{d}{dx}\cos^{-1}u = \frac{-u'}{\sqrt{1 - u^2}}\), \(\frac{d}{dx}\tan^{-1}u = \frac{u'}{1 + u^2}\).</li>
+  <li>\(f'' &gt; 0\) concave up; inflection where \(f''\) changes sign.</li>
+  <li>Graph of \(f'\): zeros ↔ stationary points of \(f\); turning points ↔ inflections of \(f\).</li>
+</ul>

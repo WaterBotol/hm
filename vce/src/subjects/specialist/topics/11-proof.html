@@ -1,0 +1,135 @@
+<!--
+id: proof
+title: Proof techniques: direct, cases, contrapositive, contradiction
+short: Proof techniques
+summary: How to write VCAA-standard proofs: direct proof from definitions, proof by cases, proof by contrapositive, proof by contradiction (including the classic irrationality of √2 and infinitely many primes), with proofs about divisibility, parity, inequalities and rational numbers.
+keywords: proof, direct proof, proof by cases, proof by contrapositive, proof by contradiction, irrational, root 2, infinitely many primes, divisibility, even, odd, parity, inequality, AM-GM, rational, integer, prove, show that, QED, deduction
+dotpoints: natural deduction and proof techniques: direct proofs using a sequence of direct implications, proof by cases, proof by contradiction, and proof by contrapositive | proofs involving divisibility, inequalities, sequences, complex numbers, vectors and calculus
+-->
+<h2>What a proof needs</h2>
+<p>A proof is a chain of statements, each following from definitions, given facts or earlier steps, ending at the result. Markers want to see the <strong>definitions written as algebra</strong> and each step justified.</p>
+<div class="tbl"><table>
+<thead><tr><th>Idea</th><th>Write it as</th></tr></thead>
+<tbody>
+<tr><td>\(n\) is even</td><td>\(n = 2k,\ k \in \mathbb{Z}\)</td></tr>
+<tr><td>\(n\) is odd</td><td>\(n = 2k + 1,\ k \in \mathbb{Z}\)</td></tr>
+<tr><td>\(a\) divides \(b\) (\(a \mid b\))</td><td>\(b = ak,\ k \in \mathbb{Z}\)</td></tr>
+<tr><td>\(x\) is rational</td><td>\(x = \dfrac{p}{q},\ p, q \in \mathbb{Z},\ q \ne 0\), in lowest terms if needed</td></tr>
+<tr><td>consecutive integers</td><td>\(n,\ n + 1,\ n + 2\)</td></tr>
+</tbody></table></div>
+<aside class="c-trap"><p>Use a <strong>different letter</strong> for each unknown integer. "Let \(m = 2k\) and \(n = 2k\)" secretly assumes \(m = n\). Write \(m = 2a\), \(n = 2b\).</p></aside>
+
+<h2>Direct proof</h2>
+<p>Assume the hypothesis, then deduce the conclusion step by step.</p>
+<div class="we" data-title="Direct proof: sum of an odd and an even" data-marks="2">
+<div class="we-q"><p>Prove that the sum of an even integer and an odd integer is odd.</p></div>
+<div class="we-t"><p>Write each number using its definition with separate letters, add, then rearrange into the form \(2(\text{integer}) + 1\).</p></div>
+<div class="we-s" data-f="\text{even} = 2a,\ \text{odd} = 2b + 1"><p>Let \(m = 2a\) and \(n = 2b + 1\) where \(a, b \in \mathbb{Z}\).</p></div>
+<div class="we-a"><p>\(m + n = 2a + 2b + 1 = 2(a + b) + 1\). Since \(a + b \in \mathbb{Z}\), \(m + n\) is odd. \(\blacksquare\)</p></div>
+</div>
+<div class="we" data-title="Direct proof of an inequality" data-marks="3">
+<div class="we-q"><p>Prove that for all positive reals \(a, b\): \(\dfrac{a + b}{2} \ge \sqrt{ab}\).</p></div>
+<div class="we-t"><p>Inequality proofs are cleanest when you start from something obviously true, like a square being non-negative, and work forwards. Here \((\sqrt a - \sqrt b)^2 \ge 0\) expands to exactly what's needed.</p></div>
+<div class="we-s" data-f="(x - y)^2 \ge 0"><p>For real \(\sqrt a, \sqrt b\): \((\sqrt a - \sqrt b)^2 \ge 0\).</p></div>
+<div class="we-s"><p>Expand: \(a - 2\sqrt{ab} + b \ge 0\), so \(a + b \ge 2\sqrt{ab}\).</p></div>
+<div class="we-a"><p>Divide by 2: \(\dfrac{a + b}{2} \ge \sqrt{ab}\), with equality only when \(a = b\). \(\blacksquare\)</p></div>
+</div>
+<aside class="c-trap"><p>Don't start from the result and work to "\(0 \le 0\)" without making every step reversible. Starting from what you're proving and reaching something true proves nothing on its own. Either work forwards, or say clearly that each step is an equivalence (\(\Leftrightarrow\)).</p></aside>
+
+<h2>Proof by cases</h2>
+<p>Split into cases that cover every possibility (odd/even, positive/negative, remainders on division by 3), and prove each.</p>
+<div class="we" data-title="Cases: n² + n is even" data-marks="2">
+<div class="we-q"><p>Prove that \(n^2 + n\) is even for every integer \(n\).</p></div>
+<div class="we-t"><p>Every integer is odd or even, so two cases cover everything. (A slicker direct proof: \(n^2 + n = n(n + 1)\), a product of consecutive integers, one of which is even.)</p></div>
+<div class="we-s"><p>Case \(n = 2k\): \(n^2 + n = 4k^2 + 2k = 2(2k^2 + k)\), even.</p></div>
+<div class="we-a"><p>Case \(n = 2k + 1\): \(n^2 + n = 4k^2 + 4k + 1 + 2k + 1 = 2(2k^2 + 3k + 1)\), even. Both cases hold. \(\blacksquare\)</p></div>
+</div>
+
+<h2>Proof by contrapositive</h2>
+<p>To prove \(P \Rightarrow Q\), prove \(\neg Q \Rightarrow \neg P\). Use it when the conclusion's negation gives you something concrete to work with.</p>
+<div class="we" data-title="Contrapositive: if n² is even then n is even" data-marks="3">
+<div class="we-q"><p>Prove that for every integer \(n\), if \(n^2\) is even then \(n\) is even.</p></div>
+<div class="we-t"><p>Directly, "\(n^2\) even" doesn't easily tell you about \(n\). The contrapositive, "if \(n\) is odd then \(n^2\) is odd", lets you write \(n = 2k + 1\) and square it.</p></div>
+<div class="we-s"><p>Contrapositive: if \(n\) is odd then \(n^2\) is odd.</p></div>
+<div class="we-s"><p>Let \(n = 2k + 1\). Then \(n^2 = 4k^2 + 4k + 1 = 2(2k^2 + 2k) + 1\), which is odd.</p></div>
+<div class="we-a"><p>The contrapositive is true, so the original statement is true. \(\blacksquare\)</p></div>
+</div>
+
+<h2>Proof by contradiction</h2>
+<p>Assume the statement is false, deduce something impossible, and conclude the assumption was wrong.</p>
+<div class="we" data-title="√2 is irrational" data-marks="4">
+<div class="we-q"><p>Prove that \(\sqrt 2\) is irrational.</p></div>
+<div class="we-t"><p>Suppose it is rational in lowest terms. Squaring shows both numerator and denominator must be even, which contradicts "lowest terms". This uses the contrapositive result above (\(p^2\) even means \(p\) even).</p></div>
+<div class="we-s"><p>Assume \(\sqrt 2 = \dfrac{p}{q}\), with \(p, q \in \mathbb{Z}\), \(q \ne 0\), and no common factor.</p></div>
+<div class="we-s"><p>Then \(p^2 = 2q^2\), so \(p^2\) is even, so \(p\) is even: \(p = 2k\).</p></div>
+<div class="we-s"><p>Substitute: \(4k^2 = 2q^2 \Rightarrow q^2 = 2k^2\), so \(q\) is even too.</p></div>
+<div class="we-a"><p>Both \(p\) and \(q\) are even, contradicting "no common factor". So \(\sqrt 2\) is irrational. \(\blacksquare\)</p></div>
+</div>
+<div class="we" data-title="There are infinitely many primes" data-marks="3">
+<div class="we-q"><p>Prove that there are infinitely many prime numbers.</p></div>
+<div class="we-t"><p>Assume there are finitely many and build a number that none of them divides. Multiplying all the primes and adding 1 does it: dividing by any of the primes leaves remainder 1.</p></div>
+<div class="we-s"><p>Assume the primes are \(p_1, p_2, \dots, p_k\) (finitely many). Let \(N = p_1 p_2 \cdots p_k + 1\).</p></div>
+<div class="we-s"><p>Dividing \(N\) by any \(p_i\) leaves remainder 1, so no \(p_i\) divides \(N\). But \(N &gt; 1\) has a prime factor, which isn't on the list.</p></div>
+<div class="we-a"><p>Contradiction, so there are infinitely many primes. \(\blacksquare\)</p></div>
+</div>
+<aside class="c-exam"><p>State the method in your first line ("Assume, for contradiction, that…", "We prove the contrapositive…"), and end with a clear conclusion. VCAA marks often split as: correct set-up, correct algebra, correct conclusion. A missing conclusion line can cost the last mark.</p></aside>
+<aside class="c-key"><p>Choosing a method: <strong>direct</strong> when the hypothesis gives you algebra to work with; <strong>contrapositive</strong> when the conclusion is a "not" or hard to start from; <strong>contradiction</strong> for "is irrational", "there is no", "infinitely many"; <strong>cases</strong> when parity, sign or remainders matter; <strong>counterexample</strong> to disprove a "for all".</p></aside>
+
+<h2>Practice</h2>
+<div class="mcq" data-ans="B" data-level="core">
+<div class="mcq-q"><p>To prove "if \(3n + 2\) is odd then \(n\) is odd" by contrapositive, you would assume</p></div>
+<ol><li>\(n\) is odd</li><li>\(n\) is even</li><li>\(3n + 2\) is even</li><li>\(3n + 2\) is odd and \(n\) is even</li></ol>
+<div class="mcq-x"><p>Contrapositive: if \(n\) is even then \(3n + 2\) is even. So assume \(n = 2k\). (D is how a contradiction proof would start.)</p></div>
+</div>
+
+<div class="mcq" data-ans="D" data-level="core">
+<div class="mcq-q"><p>A proof by contradiction that \(\sqrt 3\) is irrational begins by assuming</p></div>
+<ol><li>\(\sqrt 3\) is irrational</li><li>\(\sqrt 3 = 3k\) for an integer \(k\)</li><li>\(\sqrt 3\) is an integer</li><li>\(\sqrt 3 = \frac{p}{q}\) for integers \(p, q\), \(q \ne 0\), with no common factors</li></ol>
+<div class="mcq-x"><p>Assume the opposite of the claim: that it's rational, in lowest terms.</p></div>
+</div>
+
+<div class="mcq" data-ans="A" data-level="trick">
+<div class="mcq-q"><p>A student "proves" \(1 = 2\) by: let \(a = b\); then \(a^2 - b^2 = ab - b^2\), so \((a + b)(a - b) = b(a - b)\), so \(a + b = b\), so \(2b = b\). The error is</p></div>
+<ol><li>dividing by \(a - b\), which is zero</li><li>factorising \(a^2 - b^2\)</li><li>assuming \(a = b\)</li><li>subtracting \(b^2\) from both sides</li></ol>
+<div class="mcq-x"><p>Since \(a = b\), \(a - b = 0\) and division by zero is invalid.</p></div>
+</div>
+
+<div class="mcq" data-ans="C" data-level="hard">
+<div class="mcq-q"><p>Which is the best counterexample to "if \(n\) is prime then \(2^n - 1\) is prime"?</p></div>
+<ol><li>\(n = 4\)</li><li>\(n = 2\)</li><li>\(n = 11\)</li><li>\(n = 7\)</li></ol>
+<div class="mcq-x"><p>\(2^{11} - 1 = 2047 = 23 \times 89\). \(n = 4\) isn't prime, so it doesn't test the claim; 2 and 7 give primes 3 and 127.</p></div>
+</div>
+
+<div class="mcq" data-ans="B" data-level="exam">
+<div class="mcq-q"><p>To prove that \(n^3 - n\) is divisible by 3 for every integer \(n\) by cases, the most efficient cases are</p></div>
+<ol><li>\(n\) even and \(n\) odd</li><li>\(n = 3k\), \(n = 3k + 1\) and \(n = 3k + 2\)</li><li>\(n &gt; 0\), \(n = 0\) and \(n &lt; 0\)</li><li>\(n\) prime and \(n\) not prime</li></ol>
+<div class="mcq-x"><p>Divisibility by 3 depends on the remainder mod 3. (Or directly: \(n^3 - n = (n - 1)n(n + 1)\), three consecutive integers.)</p></div>
+</div>
+
+<div class="pq" data-level="core" data-marks="2">
+<div class="pq-q"><p>Prove that the product of two odd integers is odd.</p></div>
+<div class="pq-s"><p>Let \(m = 2a + 1\), \(n = 2b + 1\). Then \(mn = 4ab + 2a + 2b + 1\). [1]</p><p>\(= 2(2ab + a + b) + 1\), which is odd since \(2ab + a + b \in \mathbb{Z}\). [1]</p></div>
+</div>
+
+<div class="pq" data-level="hard" data-marks="3">
+<div class="pq-q"><p>Prove by contradiction that there are no integers \(m, n\) with \(4m + 6n = 1\).</p></div>
+<div class="pq-s"><p>Assume integers \(m, n\) exist with \(4m + 6n = 1\). [1]</p><p>Then \(2(2m + 3n) = 1\), so 1 is even. [1]</p><p>This is a contradiction, so no such integers exist. [1]</p></div>
+</div>
+
+<div class="pq" data-level="exam" data-marks="3">
+<div class="pq-q"><p>Prove that for all real \(x\), \(x^2 + 1 \ge 2x\), and state when equality holds.</p></div>
+<div class="pq-s"><p>\(x^2 + 1 - 2x = (x - 1)^2\). [1]</p><p>A square is never negative, so \((x - 1)^2 \ge 0\), giving \(x^2 + 1 \ge 2x\). [1]</p><p>Equality when \(x - 1 = 0\), i.e. \(x = 1\). [1]</p></div>
+</div>
+
+<div class="pq" data-level="exam" data-marks="4">
+<div class="pq-q"><p>Prove that \(\log_2 3\) is irrational.</p></div>
+<div class="pq-s"><p>Assume \(\log_2 3 = \frac pq\) with \(p, q\) positive integers (it's positive since \(3 &gt; 1\)). [1]</p><p>Then \(2^{p/q} = 3\), so \(2^p = 3^q\). [1]</p><p>The left side is even (\(p \ge 1\)) and the right side is odd. [1]</p><p>Contradiction, so \(\log_2 3\) is irrational. [1]</p></div>
+</div>
+
+<h2>Summary</h2>
+<ul>
+  <li>Translate definitions into algebra with separate letters: \(2a\), \(2b + 1\), \(b = ak\), \(\frac pq\).</li>
+  <li>Direct for straightforward deductions; cases for parity/remainders; contrapositive when the "not" is easier.</li>
+  <li>Contradiction: assume the opposite, reach an impossibility, conclude.</li>
+  <li>For inequalities, work forwards from something true like a square \(\ge 0\).</li>
+</ul>

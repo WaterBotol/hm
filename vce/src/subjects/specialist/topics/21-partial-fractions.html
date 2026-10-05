@@ -1,0 +1,91 @@
+<!--
+id: partial-fractions
+title: Rational functions and partial fractions
+short: Partial fractions
+summary: Expressing rational functions of low degree as sums of partial fractions: distinct linear factors, repeated linear factors, irreducible quadratic factors, and improper fractions that need polynomial division first, with the cover-up method and why it matters for integration.
+keywords: partial fractions, rational function, proper fraction, improper fraction, polynomial division, long division, repeated linear factor, irreducible quadratic, cover-up method, heaviside, decompose, A/(x-a) + B/(x-b), numerator degree, denominator degree
+dotpoints: rational functions and the expression of rational functions of low degree as sums of partial fractions
+-->
+<h2>Rational functions</h2>
+<p>A rational function is a quotient of polynomials, \(f(x) = \dfrac{P(x)}{Q(x)}\). It's <strong>proper</strong> if \(\deg P &lt; \deg Q\), otherwise <strong>improper</strong>. Partial fractions split a proper rational function into simpler pieces you can graph and integrate.</p>
+<div class="eq"><div class="eq-label">The forms</div>\[ \frac{px + q}{(x - a)(x - b)} = \frac{A}{x - a} + \frac{B}{x - b} \]
+\[ \frac{px^2 + qx + r}{(x - a)^2(x - b)} = \frac{A}{x - a} + \frac{B}{(x - a)^2} + \frac{C}{x - b} \]
+\[ \frac{px^2 + qx + r}{(x - a)(x^2 + c)} = \frac{A}{x - a} + \frac{Bx + C}{x^2 + c} \quad (c &gt; 0,\ \text{irreducible}) \]</div>
+<aside class="c-key"><p>Each factor gets a numerator one degree lower than itself: linear factors get constants, irreducible quadratics get \(Bx + C\). A repeated factor \((x - a)^2\) needs <strong>both</strong> \(\frac{A}{x - a}\) and \(\frac{B}{(x - a)^2}\).</p></aside>
+
+<h2>Distinct linear factors</h2>
+<div class="we" data-title="Cover-up method" data-marks="2">
+<div class="we-q"><p>Express \(\dfrac{5x + 1}{(x - 1)(x + 2)}\) in partial fractions.</p></div>
+<div class="we-t"><p>Multiply both sides by the denominator to get \(5x + 1 = A(x + 2) + B(x - 1)\). Substituting each root kills one term at a time. (Covering up the factor and substituting its root gives the same thing faster.)</p></div>
+<div class="we-s" data-f="5x + 1 = A(x + 2) + B(x - 1)"><p>\(x = 1\): \(6 = 3A \Rightarrow A = 2\). \(x = -2\): \(-9 = -3B \Rightarrow B = 3\).</p></div>
+<div class="we-a"><p>\(\dfrac{5x + 1}{(x - 1)(x + 2)} = \dfrac{2}{x - 1} + \dfrac{3}{x + 2}\). Check at \(x = 0\): LHS \(= -\frac12\), RHS \(= -2 + \frac32 = -\frac12\). ✓</p></div>
+</div>
+
+<h2>Repeated linear factors</h2>
+<div class="we" data-title="A repeated factor" data-marks="3">
+<div class="we-q"><p>Express \(\dfrac{x + 5}{(x + 1)^2(x - 1)}\) in partial fractions.</p></div>
+<div class="we-t"><p>Set up three terms. Substituting the roots finds two constants; compare coefficients (or substitute another value) for the third.</p></div>
+<div class="we-s" data-f="x + 5 = A(x + 1)(x - 1) + B(x - 1) + C(x + 1)^2"><p>\(x = 1\): \(6 = 4C \Rightarrow C = \frac32\). \(x = -1\): \(4 = -2B \Rightarrow B = -2\).</p></div>
+<div class="we-s"><p>\(x^2\) coefficients: \(0 = A + C \Rightarrow A = -\frac32\).</p></div>
+<div class="we-a"><p>\(\dfrac{x + 5}{(x + 1)^2(x - 1)} = -\dfrac{3}{2(x + 1)} - \dfrac{2}{(x + 1)^2} + \dfrac{3}{2(x - 1)}\).</p></div>
+</div>
+
+<h2>Irreducible quadratic factors</h2>
+<div class="we" data-title="A linear and a quadratic factor" data-marks="3">
+<div class="we-q"><p>Express \(\dfrac{3x^2 + 2}{(x - 2)(x^2 + 1)}\) in partial fractions.</p></div>
+<div class="we-t"><p>\(x^2 + 1\) has no real roots, so it takes a numerator \(Bx + C\). Find \(A\) by substituting \(x = 2\), then compare coefficients.</p></div>
+<div class="we-s" data-f="3x^2 + 2 = A(x^2 + 1) + (Bx + C)(x - 2)"><p>\(x = 2\): \(14 = 5A \Rightarrow A = \frac{14}{5}\).</p></div>
+<div class="we-s"><p>\(x^2\): \(3 = A + B \Rightarrow B = \frac15\). Constant: \(2 = A - 2C \Rightarrow C = \frac{2}{5}\).</p></div>
+<div class="we-a"><p>\(\dfrac{14}{5(x - 2)} + \dfrac{x + 2}{5(x^2 + 1)}\).</p></div>
+</div>
+
+<h2>Improper fractions: divide first</h2>
+<div class="we" data-title="Polynomial division then partial fractions" data-marks="3">
+<div class="we-q"><p>Express \(\dfrac{x^3 + 2}{x^2 - 1}\) as a polynomial plus partial fractions.</p></div>
+<div class="we-t"><p>The numerator's degree (3) is at least the denominator's (2), so divide first. The remainder over the denominator is proper and can then be split.</p></div>
+<div class="we-s"><p>\(x^3 + 2 = x(x^2 - 1) + (x + 2)\), so \(\dfrac{x^3 + 2}{x^2 - 1} = x + \dfrac{x + 2}{(x - 1)(x + 1)}\).</p></div>
+<div class="we-s" data-f="x + 2 = A(x + 1) + B(x - 1)"><p>\(x = 1\): \(A = \frac32\). \(x = -1\): \(B = -\frac12\).</p></div>
+<div class="we-a"><p>\(\dfrac{x^3 + 2}{x^2 - 1} = x + \dfrac{3}{2(x - 1)} - \dfrac{1}{2(x + 1)}\). The polynomial part \(y = x\) is the oblique asymptote.</p></div>
+</div>
+<aside class="c-trap"><p>Forgetting to divide an improper fraction gives nonsense constants that won't check. Always compare degrees first. Also factorise the denominator fully: \(x^3 - x = x(x - 1)(x + 1)\) needs three terms.</p></aside>
+<aside class="c-exam"><p>Exam 1 often gives the partial fractions form ("show that … \(= \frac{a}{x - 1} + \dots\)") and then asks you to integrate it, giving logs: \(\int \frac{A}{x - a}dx = A\log_e|x - a| + c\). Exam 2 accepts CAS (expand/partfrac), but show the form you used.</p></aside>
+
+<h2>Practice</h2>
+<div class="mcq" data-ans="B" data-level="core">
+<div class="mcq-q"><p>The correct partial fraction form of \(\dfrac{2x - 1}{x^2(x + 3)}\) is</p></div>
+<ol><li>\(\frac{A}{x^2} + \frac{B}{x + 3}\)</li><li>\(\frac{A}{x} + \frac{B}{x^2} + \frac{C}{x + 3}\)</li><li>\(\frac{Ax + B}{x^2} + \frac{C}{x + 3}\) only if \(A = 0\)</li><li>\(\frac{A}{x} + \frac{B}{x + 3}\)</li></ol>
+<div class="mcq-x"><p>\(x^2\) is a repeated linear factor: it needs \(\frac Ax\) and \(\frac{B}{x^2}\).</p></div>
+</div>
+<div class="mcq" data-ans="D" data-level="core">
+<div class="mcq-q"><p>If \(\dfrac{4}{(x - 1)(x + 1)} = \dfrac{A}{x - 1} + \dfrac{B}{x + 1}\), then</p></div>
+<ol><li>\(A = 4, B = -4\)</li><li>\(A = 1, B = 1\)</li><li>\(A = -2, B = 2\)</li><li>\(A = 2, B = -2\)</li></ol>
+<div class="mcq-x"><p>\(4 = A(x + 1) + B(x - 1)\): \(x = 1\) gives \(A = 2\); \(x = -1\) gives \(B = -2\).</p></div>
+</div>
+<div class="mcq" data-ans="A" data-level="trick">
+<div class="mcq-q"><p>Before finding partial fractions of \(\dfrac{x^2 + 1}{x^2 - 4}\), you must</p></div>
+<ol><li>divide, since the fraction is improper</li><li>complete the square in the numerator</li><li>use \(\frac{Ax + B}{x^2 - 4}\)</li><li>nothing: it's already in partial fractions</li></ol>
+<div class="mcq-x"><p>Equal degrees: \(\frac{x^2 + 1}{x^2 - 4} = 1 + \frac{5}{x^2 - 4}\), then split \(\frac{5}{(x - 2)(x + 2)}\).</p></div>
+</div>
+<div class="mcq" data-ans="C" data-level="hard">
+<div class="mcq-q"><p>In \(\dfrac{x^2 + x + 1}{x(x^2 + 1)} = \dfrac{A}{x} + \dfrac{Bx + C}{x^2 + 1}\), the value of \(C\) is</p></div>
+<ol><li>0</li><li>\(-1\)</li><li>1</li><li>2</li></ol>
+<div class="mcq-x"><p>\(x^2 + x + 1 = A(x^2 + 1) + (Bx + C)x\). \(x = 0\): \(A = 1\). \(x^2\): \(1 = A + B \Rightarrow B = 0\). \(x\): \(1 = C\).</p></div>
+</div>
+<div class="pq" data-level="core" data-marks="2">
+<div class="pq-q"><p>Express \(\dfrac{7 - x}{(x + 1)(x - 3)}\) in partial fractions.</p></div>
+<div class="pq-s"><p>\(7 - x = A(x - 3) + B(x + 1)\). \(x = -1\): \(8 = -4A \Rightarrow A = -2\). \(x = 3\): \(4 = 4B \Rightarrow B = 1\). [1]</p><p>\(-\dfrac{2}{x + 1} + \dfrac{1}{x - 3}\). [1]</p></div>
+</div>
+<div class="pq" data-level="hard" data-marks="3">
+<div class="pq-q"><p>Express \(\dfrac{2x^2 + 3}{x(x - 1)^2}\) in partial fractions.</p></div>
+<div class="pq-s"><p>\(2x^2 + 3 = A(x - 1)^2 + Bx(x - 1) + Cx\). [1]</p><p>\(x = 0\): \(A = 3\). \(x = 1\): \(C = 5\). \(x^2\): \(2 = A + B \Rightarrow B = -1\). [1]</p><p>\(\dfrac{3}{x} - \dfrac{1}{x - 1} + \dfrac{5}{(x - 1)^2}\). [1]</p></div>
+</div>
+<div class="pq" data-level="exam" data-marks="3">
+<div class="pq-q"><p>Express \(\dfrac{2x^3 - x^2 - 2x + 3}{x^2 - x}\) as \(ax + b + \dfrac{c}{x} + \dfrac{d}{x - 1}\).</p></div>
+<div class="pq-s"><p>Divide: \(2x^3 - x^2 - 2x + 3 = (2x + 1)(x^2 - x) + (-x + 3)\). [1]</p><p>\(\dfrac{-x + 3}{x(x - 1)}\): \(-x + 3 = c(x - 1) + dx\); \(x = 0\): \(c = -3\); \(x = 1\): \(d = 2\). [1]</p><p>\(2x + 1 - \dfrac{3}{x} + \dfrac{2}{x - 1}\). [1]</p></div>
+</div>
+<h2>Summary</h2>
+<ul>
+  <li>Improper? Divide first. Then factorise the denominator fully.</li>
+  <li>Linear factor → constant; repeated \((x - a)^2\) → \(\frac{A}{x - a} + \frac{B}{(x - a)^2}\); irreducible quadratic → \(\frac{Bx + C}{x^2 + c}\).</li>
+  <li>Substitute roots, then compare coefficients for the rest; check with an easy \(x\) value.</li>
+</ul>

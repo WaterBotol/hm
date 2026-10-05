@@ -1,0 +1,109 @@
+<!--
+id: induction
+title: Proof by mathematical induction
+short: Mathematical induction
+summary: The structure of a proof by induction and how VCAA marks it, with induction proofs of sums (sigma notation), divisibility, inequalities, recurrence relations and products, plus the common errors that cost marks.
+keywords: induction, mathematical induction, base case, inductive step, inductive hypothesis, assume true for n = k, prove true for n = k + 1, sigma notation, sum, series, partial sum, divisibility, inequality, recurrence, sequence, product notation, factorial
+dotpoints: proof by mathematical induction | proofs involving divisibility, inequalities, sequences and series including partial sums and partial products and related notations
+-->
+<h2>The idea</h2>
+<p>To prove a statement \(P(n)\) for every natural number \(n \ge n_0\), you show it's true at the start and that truth always passes from one value to the next, like dominoes.</p>
+<div class="eq"><div class="eq-label">Structure</div>\[ \begin{aligned} &amp;1.\ \text{Base case: show } P(n_0) \text{ is true.}\\ &amp;2.\ \text{Inductive step: assume } P(k) \text{ is true for some } k \ge n_0, \text{ and prove } P(k + 1).\\ &amp;3.\ \text{Conclusion: by the principle of mathematical induction, } P(n) \text{ is true for all } n \ge n_0. \end{aligned} \]</div>
+<aside class="c-exam"><p>VCAA marks induction strictly. A typical 4-mark question: 1 for the base case, 1 for clearly stating the assumption for \(n = k\), 1 for using it correctly, 1 for reaching \(P(k + 1)\) and concluding. Write "Assume \(P(k)\) is true, i.e. …" and say where you use it.</p></aside>
+
+<h2>Sums</h2>
+<div class="we" data-title="Sum of the first n odd numbers" data-marks="4">
+<div class="we-q"><p>Prove that \(\displaystyle\sum_{r=1}^{n} (2r - 1) = n^2\) for all \(n \in \mathbb{N}\).</p></div>
+<div class="we-t"><p>For a sum, the step is: sum to \(k + 1\) = sum to \(k\) + the \((k + 1)\)th term. Replace the sum to \(k\) using the assumption, then simplify to the right side with \(n = k + 1\).</p></div>
+<div class="we-s"><p><strong>Base case</strong> \(n = 1\): LHS \(= 1\), RHS \(= 1^2 = 1\). True.</p></div>
+<div class="we-s"><p><strong>Assume</strong> true for \(n = k\): \(\sum_{r=1}^{k}(2r - 1) = k^2\).</p></div>
+<div class="we-s" data-f="\sum_{r=1}^{k+1} a_r = \sum_{r=1}^{k} a_r + a_{k+1}"><p><strong>Step</strong> \(n = k + 1\): \(\sum_{r=1}^{k+1}(2r - 1) = k^2 + (2(k + 1) - 1) = k^2 + 2k + 1 = (k + 1)^2\).</p></div>
+<div class="we-a"><p>This is the statement for \(n = k + 1\). True for \(n = 1\), and true for \(k\) implies true for \(k + 1\), so by induction it is true for all \(n \in \mathbb{N}\). \(\blacksquare\)</p></div>
+</div>
+
+<h2>Divisibility</h2>
+<p>Write the assumption as an equation with an integer: "\(6^k - 1 = 5m\)". Then rewrite the \(k + 1\) expression to make that piece appear.</p>
+<div class="we" data-title="Divisibility: 5 divides 6ⁿ − 1" data-marks="4">
+<div class="we-q"><p>Prove that \(6^n - 1\) is divisible by 5 for all \(n \in \mathbb{N}\).</p></div>
+<div class="we-t"><p>From the assumption, \(6^k = 5m + 1\). Write \(6^{k+1} = 6\cdot 6^k\), substitute, and factor out 5.</p></div>
+<div class="we-s"><p>Base \(n = 1\): \(6 - 1 = 5\), divisible by 5.</p></div>
+<div class="we-s"><p>Assume \(6^k - 1 = 5m\) for some \(m \in \mathbb{Z}\), so \(6^k = 5m + 1\).</p></div>
+<div class="we-s"><p>\(6^{k+1} - 1 = 6(5m + 1) - 1 = 30m + 5 = 5(6m + 1)\).</p></div>
+<div class="we-a"><p>\(6m + 1 \in \mathbb{Z}\), so \(6^{k+1} - 1\) is divisible by 5. By induction, true for all \(n \in \mathbb{N}\). \(\blacksquare\)</p></div>
+</div>
+
+<h2>Inequalities</h2>
+<p>Use the assumption, then a second inequality that's easy to justify for \(k \ge n_0\).</p>
+<div class="we" data-title="2ⁿ > n² for n ≥ 5" data-marks="4">
+<div class="we-q"><p>Prove that \(2^n &gt; n^2\) for all integers \(n \ge 5\).</p></div>
+<div class="we-t"><p>From \(2^k &gt; k^2\), doubling gives \(2^{k+1} &gt; 2k^2\). You then need \(2k^2 \ge (k + 1)^2\), which holds once \(k\) is large enough. Check that it holds for \(k \ge 5\).</p></div>
+<div class="we-s"><p>Base \(n = 5\): \(32 &gt; 25\). True.</p></div>
+<div class="we-s"><p>Assume \(2^k &gt; k^2\) for some \(k \ge 5\). Then \(2^{k+1} = 2\cdot 2^k &gt; 2k^2\).</p></div>
+<div class="we-s"><p>\(2k^2 - (k + 1)^2 = k^2 - 2k - 1 = (k - 1)^2 - 2 &gt; 0\) for \(k \ge 5\). So \(2k^2 &gt; (k + 1)^2\).</p></div>
+<div class="we-a"><p>Hence \(2^{k+1} &gt; (k + 1)^2\). By induction, true for all \(n \ge 5\). \(\blacksquare\)</p></div>
+</div>
+
+<h2>Recurrence relations and products</h2>
+<div class="we" data-title="A recurrence relation" data-marks="4">
+<div class="we-q"><p>A sequence has \(u_1 = 3\) and \(u_{n+1} = 2u_n - 1\). Prove that \(u_n = 2^n + 1\).</p></div>
+<div class="we-t"><p>The step uses the recurrence: \(u_{k+1} = 2u_k - 1\), and the assumption replaces \(u_k\).</p></div>
+<div class="we-s"><p>Base: \(u_1 = 2 + 1 = 3\). True.</p></div>
+<div class="we-s"><p>Assume \(u_k = 2^k + 1\).</p></div>
+<div class="we-a"><p>\(u_{k+1} = 2(2^k + 1) - 1 = 2^{k+1} + 1\). True for \(k + 1\), so true for all \(n \in \mathbb{N}\) by induction. \(\blacksquare\)</p></div>
+</div>
+<p>Product notation: \(\displaystyle\prod_{r=1}^{n} a_r = a_1 a_2 \cdots a_n\). The step is \(\prod_{r=1}^{k+1} a_r = \left(\prod_{r=1}^{k} a_r\right) a_{k+1}\). For example, \(\prod_{r=2}^{n}\left(1 - \frac1r\right) = \frac1n\): the step is \(\frac1k\cdot\frac{k}{k + 1} = \frac{1}{k + 1}\).</p>
+<aside class="c-trap"><p>Common errors: (1) assuming what you need to prove ("assume true for all \(n\)"); (2) not using the assumption at all; (3) forgetting the base case, or checking it at the wrong starting value; (4) writing the \(k + 1\) statement as if it were already known; (5) no conclusion sentence.</p></aside>
+<aside class="c-deep"><p>Why it works: if some \(n\) failed, take the smallest failing value. It isn't the base case, so the value before it is true, and the inductive step makes this one true. Contradiction. Induction is really the well-ordering of the natural numbers.</p></aside>
+
+<h2>Practice</h2>
+<div class="mcq" data-ans="C" data-level="core">
+<div class="mcq-q"><p>In the inductive step of a proof of \(\sum_{r=1}^{n} r^2 = \frac{n(n + 1)(2n + 1)}{6}\), the expression for \(\sum_{r=1}^{k+1} r^2\) is</p></div>
+<ol><li>\(\frac{k(k + 1)(2k + 1)}{6} + k^2\)</li><li>\(\frac{(k + 1)(k + 2)(2k + 3)}{6} + (k + 1)^2\)</li><li>\(\frac{k(k + 1)(2k + 1)}{6} + (k + 1)^2\)</li><li>\(\frac{k(k + 1)(2k + 1)}{6}\cdot(k + 1)^2\)</li></ol>
+<div class="mcq-x"><p>Sum to \(k + 1\) = (sum to \(k\), by assumption) + the \((k + 1)\)th term.</p></div>
+</div>
+
+<div class="mcq" data-ans="A" data-level="core">
+<div class="mcq-q"><p>Assuming \(7^k - 1 = 6m\), the expression \(7^{k+1} - 1\) equals</p></div>
+<ol><li>\(6(7m + 1)\)</li><li>\(42m\)</li><li>\(7(6m) - 1\)</li><li>\(6m + 6\)</li></ol>
+<div class="mcq-x"><p>\(7^{k+1} - 1 = 7(6m + 1) - 1 = 42m + 6 = 6(7m + 1)\).</p></div>
+</div>
+
+<div class="mcq" data-ans="D" data-level="trick">
+<div class="mcq-q"><p>A "proof" shows that if \(P(k)\) is true then \(P(k + 1)\) is true, but never checks a base case. Then</p></div>
+<ol><li>\(P(n)\) is true for all \(n\)</li><li>\(P(n)\) is true for all \(n \ge k\)</li><li>\(P(n)\) is false for all \(n\)</li><li>nothing has been proved</li></ol>
+<div class="mcq-x"><p>Without a true starting point the chain never starts. Example: "\(n = n + 1\)" passes the step but is never true.</p></div>
+</div>
+
+<div class="mcq" data-ans="B" data-level="hard">
+<div class="mcq-q"><p>To prove \(n! &gt; 2^n\) by induction, the base case should be</p></div>
+<ol><li>\(n = 1\)</li><li>\(n = 4\)</li><li>\(n = 2\)</li><li>\(n = 3\)</li></ol>
+<div class="mcq-x"><p>\(1! = 1 &lt; 2\), \(2! = 2 &lt; 4\), \(3! = 6 &lt; 8\), \(4! = 24 &gt; 16\). It's true from \(n = 4\).</p></div>
+</div>
+
+<div class="pq" data-level="core" data-marks="4">
+<div class="pq-q"><p>Prove that \(\displaystyle\sum_{r=1}^{n} r = \frac{n(n + 1)}{2}\) for all \(n \in \mathbb{N}\).</p></div>
+<div class="pq-s"><p>Base \(n = 1\): \(1 = \frac{1\cdot 2}{2}\). [1]</p><p>Assume \(\sum_{r=1}^{k} r = \frac{k(k + 1)}{2}\). [1]</p><p>\(\sum_{r=1}^{k+1} r = \frac{k(k + 1)}{2} + (k + 1) = \frac{(k + 1)(k + 2)}{2}\). [1]</p><p>This is the result for \(n = k + 1\), so by induction it holds for all \(n \in \mathbb{N}\). [1]</p></div>
+</div>
+
+<div class="pq" data-level="hard" data-marks="4">
+<div class="pq-q"><p>Prove that \(3^{2n} - 1\) is divisible by 8 for all \(n \in \mathbb{N}\).</p></div>
+<div class="pq-s"><p>Base: \(9 - 1 = 8\). [1]</p><p>Assume \(3^{2k} - 1 = 8m\), so \(3^{2k} = 8m + 1\). [1]</p><p>\(3^{2(k+1)} - 1 = 9\cdot 3^{2k} - 1 = 9(8m + 1) - 1 = 72m + 8 = 8(9m + 1)\). [1]</p><p>Divisible by 8, so true for all \(n\) by induction. [1]</p></div>
+</div>
+
+<div class="pq" data-level="exam" data-marks="4">
+<div class="pq-q"><p>Prove that \(\displaystyle\sum_{r=1}^{n} \frac{1}{r(r + 1)} = \frac{n}{n + 1}\) for all \(n \in \mathbb{N}\).</p></div>
+<div class="pq-s"><p>Base \(n = 1\): \(\frac12 = \frac12\). [1]</p><p>Assume \(\sum_{r=1}^{k}\frac{1}{r(r + 1)} = \frac{k}{k + 1}\). [1]</p><p>\(\frac{k}{k + 1} + \frac{1}{(k + 1)(k + 2)} = \frac{k(k + 2) + 1}{(k + 1)(k + 2)} = \frac{(k + 1)^2}{(k + 1)(k + 2)} = \frac{k + 1}{k + 2}\). [1]</p><p>True for \(k + 1\); by induction true for all \(n\). [1]</p></div>
+</div>
+
+<div class="pq" data-level="exam" data-marks="4">
+<div class="pq-q"><p>Prove that \((1 + x)^n \ge 1 + nx\) for all \(n \in \mathbb{N}\) and all real \(x &gt; -1\) (Bernoulli's inequality).</p></div>
+<div class="pq-s"><p>Base \(n = 1\): \(1 + x \ge 1 + x\). [1]</p><p>Assume \((1 + x)^k \ge 1 + kx\). Since \(1 + x &gt; 0\), multiply: \((1 + x)^{k+1} \ge (1 + kx)(1 + x)\). [1]</p><p>\(= 1 + (k + 1)x + kx^2 \ge 1 + (k + 1)x\), since \(kx^2 \ge 0\). [1]</p><p>So true for \(k + 1\); true for all \(n\) by induction. [1]</p></div>
+</div>
+
+<h2>Summary</h2>
+<ul>
+  <li>Base case, "assume true for \(n = k\)", prove \(n = k + 1\) using it, conclusion sentence.</li>
+  <li>Sums: sum to \(k + 1\) = sum to \(k\) + next term.</li>
+  <li>Divisibility: write the assumption as \(= d\,m\), substitute, factor out \(d\).</li>
+  <li>Inequalities: use the assumption, then justify a second inequality for \(k \ge n_0\).</li>
+</ul>

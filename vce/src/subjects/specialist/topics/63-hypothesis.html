@@ -1,0 +1,73 @@
+<!--
+id: hypothesis
+title: Hypothesis testing for a population mean
+short: Hypothesis tests
+summary: Hypothesis tests for a population mean with known σ: null and alternative hypotheses, one- and two-tailed tests, the test statistic, p-values, significance levels, critical values for x̄, drawing conclusions in context, and type I and type II errors.
+keywords: hypothesis test, null hypothesis, alternative hypothesis, H0, H1, one-tailed, two-tailed, p-value, significance level, 0.05, 0.01, reject, do not reject, test statistic, z-score, critical value, critical region, type I error, type II error, statistical significance, conclusion in context
+dotpoints: null and alternative hypotheses, one- and two-tailed tests | p-values and significance levels | type I and type II errors | drawing conclusions in context
+-->
+<h2>The set-up</h2>
+<aside class="c-def" data-title="Hypotheses"><p>\(H_0: \mu = \mu_0\) (the claim / status quo). \(H_1\): \(\mu &gt; \mu_0\) or \(\mu &lt; \mu_0\) (one-tailed) or \(\mu \ne \mu_0\) (two-tailed). Choose \(H_1\) from the question's wording <em>before</em> looking at the data.</p></aside>
+<div class="eq"><div class="eq-label">Test statistic and p-value</div>\[ z = \frac{\bar x - \mu_0}{\sigma/\sqrt n}, \qquad p = \Pr(\bar X \text{ at least as extreme as } \bar x \mid H_0 \text{ true}) \]<p>Two-tailed: \(p = 2\Pr(Z &gt; |z|)\). If \(p &lt; \alpha\) (usually 0.05), reject \(H_0\) in favour of \(H_1\); otherwise there's insufficient evidence to reject \(H_0\).</p></div>
+<div class="we" data-title="A one-tailed test" data-marks="4">
+<div class="we-q"><p>A factory claims its batteries last 20 h on average (\(\sigma = 3\) h). A consumer group suspects the mean is lower. A sample of 36 has \(\bar x = 19.1\) h. Test at the 5% level.</p></div>
+<div class="we-t"><p>"Lower" → \(H_1: \mu &lt; 20\). Find \(p = \Pr(\bar X \le 19.1)\) assuming \(\mu = 20\).</p></div>
+<div class="we-s"><p>\(H_0: \mu = 20\), \(H_1: \mu &lt; 20\). Under \(H_0\), \(\bar X \sim N\left(20, 0.5^2\right)\).</p></div>
+<div class="we-s"><p>\(z = \frac{19.1 - 20}{0.5} = -1.8\); \(p = \Pr(Z \le -1.8) \approx 0.0359\).</p></div>
+<div class="we-a"><p>\(0.0359 &lt; 0.05\): reject \(H_0\). There is evidence at the 5% level that the mean battery life is less than 20 h.</p></div>
+</div>
+<div class="we" data-title="A two-tailed test" data-marks="4">
+<div class="we-q"><p>A machine fills bags to a mean of 500 g (\(\sigma = 8\)). After servicing, a sample of 25 has mean 503.5 g. Is there evidence at the 5% level the mean has changed?</p></div>
+<div class="we-t"><p>"Changed" → two-tailed. Double the tail probability.</p></div>
+<div class="we-s"><p>\(z = \frac{3.5}{8/5} = 2.1875\); \(\Pr(Z &gt; 2.1875) \approx 0.0144\).</p></div>
+<div class="we-a"><p>\(p \approx 0.0287 &lt; 0.05\): reject \(H_0\); evidence the mean fill has changed (it appears to have increased).</p></div>
+</div>
+
+<h2>Critical values and errors</h2>
+<p>Alternatively, find the critical value of \(\bar x\): for \(H_1: \mu &lt; 20\) above at 5%, reject when \(\bar x &lt; 20 - 1.6449(0.5) = 19.18\).</p>
+<aside class="c-key"><p><strong>Type I error</strong>: rejecting \(H_0\) when it's true. Its probability is \(\alpha\). <strong>Type II error</strong>: not rejecting \(H_0\) when it's false. Its probability depends on the true \(\mu\): \(\Pr(\text{don't reject} \mid \mu = \mu_1)\).</p></aside>
+<div class="we" data-title="Probability of a type II error" data-marks="3">
+<div class="we-q"><p>For the battery test (reject if \(\bar x &lt; 19.18\), \(n = 36\), \(\sigma = 3\)), find the probability of a type II error if the true mean is actually 19 h.</p></div>
+<div class="we-t"><p>Type II = fail to reject = \(\bar x \ge 19.18\), computed with the <em>true</em> mean 19.</p></div>
+<div class="we-s"><p>\(\bar X \sim N(19, 0.5^2)\): \(\Pr(\bar X \ge 19.18) = \Pr(Z \ge 0.36)\).</p></div>
+<div class="we-a"><p>\(\approx 0.36\). (The test often misses a small real difference with this \(n\).)</p></div>
+</div>
+<aside class="c-trap"><p>Never "accept \(H_0\)" or say it's "proven true": say there's insufficient evidence to reject it. And the p-value is <em>not</em> the probability that \(H_0\) is true.</p></aside>
+<aside class="c-exam"><p>Full marks need: both hypotheses with \(\mu\) (not \(\bar x\)), the p-value, comparison with \(\alpha\), and a conclusion in context. VCAA examiners' reports repeatedly flag hypotheses written with \(\bar x\) and missing context.</p></aside>
+
+<h2>Practice</h2>
+<div class="mcq" data-ans="B" data-level="core">
+<div class="mcq-q"><p>A researcher wants to test whether a new diet <em>reduces</em> mean cholesterol below 5.2. The hypotheses are</p></div>
+<ol><li>\(H_0: \bar x = 5.2,\ H_1: \bar x &lt; 5.2\)</li><li>\(H_0: \mu = 5.2,\ H_1: \mu &lt; 5.2\)</li><li>\(H_0: \mu &lt; 5.2,\ H_1: \mu = 5.2\)</li><li>\(H_0: \mu = 5.2,\ H_1: \mu \ne 5.2\)</li></ol>
+<div class="mcq-x"><p>Hypotheses are about \(\mu\); "reduces" is one-tailed.</p></div>
+</div>
+<div class="mcq" data-ans="D" data-level="core">
+<div class="mcq-q"><p>A test gives \(p = 0.03\). Which is correct?</p></div>
+<ol><li>reject \(H_0\) at the 1% level</li><li>\(H_0\) has a 3% chance of being true</li><li>do not reject \(H_0\) at the 5% level</li><li>reject \(H_0\) at the 5% level but not at 1%</li></ol>
+<div class="mcq-x"><p>\(0.01 &lt; 0.03 &lt; 0.05\).</p></div>
+</div>
+<div class="mcq" data-ans="A" data-level="hard">
+<div class="mcq-q"><p>In a two-tailed test, \(z = -1.5\). The p-value is closest to</p></div>
+<ol><li>0.134</li><li>0.067</li><li>0.933</li><li>0.866</li></ol>
+<div class="mcq-x"><p>\(2\Pr(Z &lt; -1.5) = 2(0.0668) = 0.134\).</p></div>
+</div>
+<div class="mcq" data-ans="C" data-level="trick">
+<div class="mcq-q"><p>A type I error occurs when</p></div>
+<ol><li>\(H_0\) is false and is not rejected</li><li>the sample is biased</li><li>\(H_0\) is true but is rejected</li><li>the p-value exceeds \(\alpha\)</li></ol>
+<div class="mcq-x"><p>Type I = false alarm; its probability is the significance level.</p></div>
+</div>
+<div class="pq" data-level="core" data-marks="3">
+<div class="pq-q"><p>\(H_0: \mu = 70\), \(H_1: \mu &gt; 70\), \(\sigma = 10\), \(n = 49\), \(\bar x = 72.5\). Find the p-value and conclude at 5%.</p></div>
+<div class="pq-s"><p>\(\operatorname{sd}(\bar X) = \frac{10}{7}\); \(z = \frac{2.5}{10/7} = 1.75\). [1]</p><p>\(p = \Pr(Z &gt; 1.75) \approx 0.0401\). [1]</p><p>\(p &lt; 0.05\): reject \(H_0\); evidence that \(\mu &gt; 70\). [1]</p></div>
+</div>
+<div class="pq" data-level="exam" data-marks="4">
+<div class="pq-q"><p>For \(H_0: \mu = 100\), \(H_1: \mu &gt; 100\), \(\sigma = 15\), \(n = 25\), at the 5% level: find the critical value of \(\bar x\), and the probability of a type II error if \(\mu = 106\).</p></div>
+<div class="pq-s"><p>\(\operatorname{sd}(\bar X) = 3\). [1]</p><p>Reject if \(\bar x &gt; 100 + 1.6449(3) = 104.93\). [1]</p><p>Type II: \(\Pr(\bar X \le 104.93 \mid \mu = 106) = \Pr(Z \le -0.356)\). [1]</p><p>\(\approx 0.361\). [1]</p></div>
+</div>
+<h2>Summary</h2>
+<ul>
+  <li>\(H_0: \mu = \mu_0\); \(H_1\) one- or two-tailed from the wording, always in terms of \(\mu\).</li>
+  <li>\(z = \frac{\bar x - \mu_0}{\sigma/\sqrt n}\); two-tailed p doubles the tail.</li>
+  <li>\(p &lt; \alpha\) → reject \(H_0\); otherwise insufficient evidence. Conclude in context.</li>
+  <li>Type I: reject a true \(H_0\) (prob \(\alpha\)). Type II: miss a false \(H_0\).</li>
+</ul>

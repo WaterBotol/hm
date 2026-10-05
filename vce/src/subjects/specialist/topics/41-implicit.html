@@ -1,0 +1,97 @@
+<!--
+id: implicit
+title: Implicit differentiation and related rates
+short: Implicit & related rates
+summary: Differentiating relations that aren’t written as y = f(x), finding tangents and stationary points on curves like circles, ellipses and x² + xy + y² = c, second derivatives implicitly, and related rates of change using the chain rule.
+keywords: implicit differentiation, related rates, rates of change, chain rule, dy/dx implicit, circle, ellipse, tangent to a curve, normal, horizontal tangent, vertical tangent, xy product rule, dV/dt, dr/dt, dh/dt, filling a tank, expanding balloon, ladder
+dotpoints: applications of chain rule to related rates of change and implicit differentiation; for example, implicit differentiation of relations such as x² + y² = 9 and 3xy² = x + y
+-->
+<h2>Implicit differentiation</h2>
+<p>When a relation mixes \(x\) and \(y\), differentiate every term with respect to \(x\), treating \(y\) as a function of \(x\). Each \(y\) term picks up a factor \(\frac{dy}{dx}\) from the chain rule.</p>
+<div class="eq"><div class="eq-label">Key rules</div>\[ \frac{d}{dx}\big(y^n\big) = ny^{n-1}\frac{dy}{dx} \qquad \frac{d}{dx}(xy) = y + x\frac{dy}{dx} \qquad \frac{d}{dx}\big(f(y)\big) = f'(y)\frac{dy}{dx} \]</div>
+<div class="we" data-title="Tangent to a circle" data-marks="3">
+<div class="we-q"><p>Find the equation of the tangent to \(x^2 + y^2 = 25\) at \((3, -4)\).</p></div>
+<div class="we-t"><p>Differentiate both sides, solve for \(\frac{dy}{dx}\), substitute the point, then use \(y - y_1 = m(x - x_1)\).</p></div>
+<div class="we-s" data-f="\dfrac{d}{dx}(y^2) = 2y\dfrac{dy}{dx}"><p>\(2x + 2y\frac{dy}{dx} = 0 \Rightarrow \frac{dy}{dx} = -\frac{x}{y}\).</p></div>
+<div class="we-s"><p>At \((3, -4)\): \(m = -\frac{3}{-4} = \frac34\).</p></div>
+<div class="we-a"><p>\(y + 4 = \frac34(x - 3)\), i.e. \(y = \frac34 x - \frac{25}{4}\). (Perpendicular to the radius, gradient \(-\frac43\), as expected.)</p></div>
+</div>
+<div class="we" data-title="A product term" data-marks="3">
+<div class="we-q"><p>Find \(\frac{dy}{dx}\) for \(3xy^2 = x + y\).</p></div>
+<div class="we-t"><p>The left side is a product of \(3x\) and \(y^2\): use the product rule, with the chain rule on \(y^2\). Then collect the \(\frac{dy}{dx}\) terms.</p></div>
+<div class="we-s" data-f="\dfrac{d}{dx}(uv) = u&#x27;v + uv&#x27;"><p>\(3y^2 + 3x\cdot 2y\frac{dy}{dx} = 1 + \frac{dy}{dx}\).</p></div>
+<div class="we-s"><p>\(\frac{dy}{dx}(6xy - 1) = 1 - 3y^2\).</p></div>
+<div class="we-a"><p>\(\dfrac{dy}{dx} = \dfrac{1 - 3y^2}{6xy - 1}\).</p></div>
+</div>
+<div class="we" data-title="Horizontal and vertical tangents" data-marks="4">
+<div class="we-q"><p>Find the points on \(x^2 + xy + y^2 = 3\) where the tangent is horizontal.</p></div>
+<div class="we-t"><p>Horizontal tangent: numerator of \(\frac{dy}{dx}\) is zero (and the denominator isn't). Use that condition together with the original equation.</p></div>
+<div class="we-s"><p>\(2x + y + x\frac{dy}{dx} + 2y\frac{dy}{dx} = 0 \Rightarrow \frac{dy}{dx} = -\dfrac{2x + y}{x + 2y}\).</p></div>
+<div class="we-s"><p>Horizontal: \(y = -2x\). Substitute: \(x^2 - 2x^2 + 4x^2 = 3 \Rightarrow x^2 = 1\).</p></div>
+<div class="we-a"><p>Points \((1, -2)\) and \((-1, 2)\). (Vertical tangents would come from \(x + 2y = 0\): \((2, -1)\) and \((-2, 1)\).)</p></div>
+</div>
+<aside class="c-trap"><p>Differentiate <strong>constants to 0</strong> and don't forget the \(\frac{dy}{dx}\) on every \(y\) term. The most common lost mark: \(\frac{d}{dx}(xy) = x\frac{dy}{dx}\) (missing the \(+y\)).</p></aside>
+<div class="we" data-title="Second derivative implicitly" data-marks="3">
+<div class="we-q"><p>For \(x^2 + y^2 = 25\), express \(\frac{d^2y}{dx^2}\) in terms of \(y\).</p></div>
+<div class="we-t"><p>Differentiate \(\frac{dy}{dx} = -\frac{x}{y}\) with the quotient rule, substitute \(\frac{dy}{dx}\) back in, and simplify using the original equation.</p></div>
+<div class="we-s"><p>\(\frac{d^2y}{dx^2} = -\dfrac{y - x\frac{dy}{dx}}{y^2} = -\dfrac{y + \frac{x^2}{y}}{y^2} = -\dfrac{y^2 + x^2}{y^3}\).</p></div>
+<div class="we-a"><p>\(= -\dfrac{25}{y^3}\): negative on the top half (concave down), positive on the bottom half.</p></div>
+</div>
+
+<h2>Related rates</h2>
+<p>When quantities change with time, link their rates with the chain rule: \(\frac{dV}{dt} = \frac{dV}{dh}\cdot\frac{dh}{dt}\).</p>
+<ol><li>Name the variables and write the given and wanted rates with units.</li><li>Find an equation linking the variables (eliminate extra variables using geometry, like similar triangles).</li><li>Differentiate, substitute the instant's values <strong>after</strong> differentiating.</li></ol>
+<div class="we" data-title="Filling a conical tank" data-marks="4">
+<div class="we-q"><p>Water flows at 2 m³/min into an inverted cone with radius 3 m and height 6 m. How fast is the depth rising when the water is 4 m deep?</p></div>
+<div class="we-t"><p>Similar triangles give \(r = \frac{h}{2}\), so the volume is a function of \(h\) alone. Then \(\frac{dh}{dt} = \frac{dV/dt}{dV/dh}\).</p></div>
+<div class="we-s" data-f="V = \tfrac13\pi r^2 h"><p>\(r = \frac{h}{2}\): \(V = \frac13\pi\frac{h^2}{4}h = \frac{\pi h^3}{12}\).</p></div>
+<div class="we-s"><p>\(\frac{dV}{dh} = \frac{\pi h^2}{4} = 4\pi\) at \(h = 4\).</p></div>
+<div class="we-a"><p>\(\frac{dh}{dt} = \frac{2}{4\pi} = \frac{1}{2\pi} \approx 0.159\) m/min.</p></div>
+</div>
+<div class="we" data-title="Sliding ladder" data-marks="3">
+<div class="we-q"><p>A 5 m ladder slides down a wall. Its foot moves away at 0.3 m/s. How fast is the top falling when the foot is 3 m from the wall?</p></div>
+<div class="we-t"><p>Pythagoras links the foot distance \(x\) and top height \(y\). Differentiate with respect to time.</p></div>
+<div class="we-s"><p>\(x^2 + y^2 = 25 \Rightarrow 2x\frac{dx}{dt} + 2y\frac{dy}{dt} = 0\).</p></div>
+<div class="we-a"><p>At \(x = 3\), \(y = 4\): \(\frac{dy}{dt} = -\frac{3(0.3)}{4} = -0.225\). The top falls at 0.225 m/s.</p></div>
+</div>
+<aside class="c-exam"><p>Give units and a sign interpretation ("decreasing at 0.225 m/s"). Never substitute the instantaneous value (like \(h = 4\)) before differentiating, or the variable becomes a constant.</p></aside>
+
+<h2>Practice</h2>
+<div class="mcq" data-ans="C" data-level="core">
+<div class="mcq-q"><p>If \(x^3 + y^3 = 9\), then \(\frac{dy}{dx}\) is</p></div>
+<ol><li>\(-\frac{y^2}{x^2}\)</li><li>\(\frac{x^2}{y^2}\)</li><li>\(-\frac{x^2}{y^2}\)</li><li>\(-\frac{3x^2}{y^2}\)</li></ol>
+<div class="mcq-x"><p>\(3x^2 + 3y^2y' = 0\).</p></div>
+</div>
+<div class="mcq" data-ans="A" data-level="core">
+<div class="mcq-q"><p>\(\dfrac{d}{dx}\big(x^2y\big)\) is</p></div>
+<ol><li>\(2xy + x^2\frac{dy}{dx}\)</li><li>\(2x\frac{dy}{dx}\)</li><li>\(2xy\)</li><li>\(x^2\frac{dy}{dx}\)</li></ol>
+<div class="mcq-x"><p>Product rule.</p></div>
+</div>
+<div class="mcq" data-ans="D" data-level="hard">
+<div class="mcq-q"><p>The radius of a sphere increases at 0.1 cm/s. When \(r = 10\) cm, its volume increases at</p></div>
+<ol><li>\(4\pi\) cm³/s</li><li>\(400\pi\) cm³/s</li><li>\(\frac{40\pi}{3}\) cm³/s</li><li>\(40\pi\) cm³/s</li></ol>
+<div class="mcq-x"><p>\(\frac{dV}{dt} = 4\pi r^2\frac{dr}{dt} = 4\pi(100)(0.1) = 40\pi\).</p></div>
+</div>
+<div class="mcq" data-ans="B" data-level="exam">
+<div class="mcq-q"><p>The gradient of \(e^y + xy = e\) at the point \((0, 1)\) is</p></div>
+<ol><li>\(-e\)</li><li>\(-\frac1e\)</li><li>\(e\)</li><li>\(0\)</li></ol>
+<div class="mcq-x"><p>\(e^y y' + y + xy' = 0\): at \((0, 1)\), \(ey' + 1 = 0\).</p></div>
+</div>
+<div class="pq" data-level="core" data-marks="2">
+<div class="pq-q"><p>Find the gradient of the ellipse \(\dfrac{x^2}{16} + \dfrac{y^2}{9} = 1\) at \(\left(2, \dfrac{3\sqrt3}{2}\right)\).</p></div>
+<div class="pq-s"><p>\(\frac{x}{8} + \frac{2y}{9}y' = 0 \Rightarrow y' = -\frac{9x}{16y}\). [1]</p><p>\(= -\dfrac{18}{16\cdot\frac{3\sqrt3}{2}} = -\dfrac{18}{24\sqrt3} = -\dfrac{\sqrt3}{4}\). [1]</p></div>
+</div>
+<div class="pq" data-level="hard" data-marks="3">
+<div class="pq-q"><p>Find the equation of the normal to \(y^2 - 2xy + 3x^2 = 6\) at \((1, -1)\).</p></div>
+<div class="pq-s"><p>\(2yy' - 2y - 2xy' + 6x = 0 \Rightarrow y' = \dfrac{2y - 6x}{2y - 2x} = \dfrac{y - 3x}{y - x}\). [1]</p><p>At \((1, -1)\): \(y' = \frac{-4}{-2} = 2\); normal gradient \(-\frac12\). [1]</p><p>\(y + 1 = -\frac12(x - 1)\), i.e. \(y = -\frac12 x - \frac12\). [1]</p></div>
+</div>
+<div class="pq" data-level="exam" data-marks="3">
+<div class="pq-q"><p>A spherical balloon is inflated so its surface area increases at 8 cm²/s. Find the rate of increase of the radius when \(r = 5\) cm.</p></div>
+<div class="pq-s"><p>\(S = 4\pi r^2 \Rightarrow \frac{dS}{dr} = 8\pi r\). [1]</p><p>\(\frac{dr}{dt} = \dfrac{8}{8\pi r}\). [1]</p><p>At \(r = 5\): \(\dfrac{1}{5\pi}\) cm/s \(\approx 0.064\) cm/s. [1]</p></div>
+</div>
+<h2>Summary</h2>
+<ul>
+  <li>Differentiate every term w.r.t. \(x\); each \(y\) term gets \(\frac{dy}{dx}\); products need the product rule.</li>
+  <li>Horizontal tangent: numerator of \(\frac{dy}{dx}\) zero; vertical: denominator zero.</li>
+  <li>Related rates: equation in one variable, differentiate, then substitute values.</li>
+</ul>

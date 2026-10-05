@@ -1,0 +1,95 @@
+<!--
+id: de
+title: Formulating differential equations, slope fields and Euler's method
+short: DEs, slope fields & Euler
+summary: Setting up differential equations from worded situations (growth and decay, Newton's law of cooling, mixing problems, related rates), verifying solutions by substitution, reading and sketching slope fields, and approximating solutions numerically with Euler's method.
+keywords: differential equation, formulate, rate of change, proportional to, verify solution, general solution, particular solution, initial condition, slope field, direction field, Euler's method, step size, numerical approximation, mixing problem, tank, concentration, Newton's law of cooling, related rates
+dotpoints: formulation of differential equations from contexts | verification of solutions | slope fields | Euler's method for first order differential equations
+-->
+<h2>Writing a differential equation from words</h2>
+<p>A differential equation (DE) links an unknown function to its derivatives. "The rate of change of \(Q\)" means \(\frac{dQ}{dt}\); "proportional to" means "equals a constant times".</p>
+<div class="eq"><div class="eq-label">Standard set-ups</div>\[ \frac{dN}{dt} = kN \ \text{(growth/decay)} \qquad \frac{dT}{dt} = -k(T - T_s) \ \text{(Newton's cooling)} \qquad \frac{dQ}{dt} = \text{rate in} - \text{rate out} \ \text{(mixing)} \]</div>
+<div class="we" data-title="A mixing problem" data-marks="3">
+<div class="we-q"><p>A tank holds 100 L of water with 5 kg of salt dissolved. Brine with 0.2 kg/L of salt flows in at 4 L/min and the well-mixed solution flows out at 4 L/min. Write a DE for \(Q\), the kg of salt in the tank after \(t\) minutes.</p></div>
+<div class="we-t"><p>Rate in = (concentration in) × (flow in). Rate out = (current concentration \(\frac{Q}{V}\)) × (flow out). Here the volume stays 100 L since in = out.</p></div>
+<div class="we-s"><p>Rate in \(= 0.2 \times 4 = 0.8\) kg/min. Rate out \(= \frac{Q}{100}\times 4 = \frac{Q}{25}\) kg/min.</p></div>
+<div class="we-a"><p>\(\dfrac{dQ}{dt} = 0.8 - \dfrac{Q}{25}\), with \(Q(0) = 5\).</p></div>
+</div>
+<aside class="c-trap"><p>If the flow rates differ, the volume changes: \(V(t) = V_0 + (\text{in} - \text{out})t\), and the outflow concentration is \(\frac{Q}{V(t)}\), not \(\frac{Q}{V_0}\).</p></aside>
+<div class="we" data-title="Related rates leading to a DE" data-marks="3">
+<div class="we-q"><p>Water leaks from a cylindrical tank of radius 2 m at a rate proportional to the square root of the depth \(h\) m. Write a DE for \(h\) in terms of \(t\).</p></div>
+<div class="we-t"><p>Volume \(V = \pi r^2 h = 4\pi h\). Given \(\frac{dV}{dt} = -k\sqrt h\), use the chain rule \(\frac{dh}{dt} = \frac{dh}{dV}\cdot\frac{dV}{dt}\).</p></div>
+<div class="we-s"><p>\(\frac{dV}{dh} = 4\pi\), so \(\frac{dh}{dV} = \frac{1}{4\pi}\).</p></div>
+<div class="we-a"><p>\(\dfrac{dh}{dt} = -\dfrac{k\sqrt h}{4\pi}\), \(k &gt; 0\).</p></div>
+</div>
+
+<h2>Verifying a solution</h2>
+<p>To show \(y = f(x)\) satisfies a DE, differentiate and substitute into both sides. No solving needed.</p>
+<div class="we" data-title="Verify by substitution" data-marks="2">
+<div class="we-q"><p>Verify that \(y = e^{2x} + 3e^{-x}\) satisfies \(\frac{d^2y}{dx^2} - \frac{dy}{dx} - 2y = 0\).</p></div>
+<div class="we-t"><p>Find \(y'\) and \(y''\), substitute, and show the left side simplifies to zero.</p></div>
+<div class="we-s"><p>\(y' = 2e^{2x} - 3e^{-x}\), \(y'' = 4e^{2x} + 3e^{-x}\).</p></div>
+<div class="we-a"><p>LHS \(= (4e^{2x} + 3e^{-x}) - (2e^{2x} - 3e^{-x}) - 2(e^{2x} + 3e^{-x}) = 0\) = RHS. ✓</p></div>
+</div>
+
+<h2>Slope fields</h2>
+<p>A slope field draws a short segment of gradient \(\frac{dy}{dx}\) at each grid point. Solution curves follow the segments.</p>
+<div class="sim" data-sim="slopeField"></div>
+<aside class="c-key"><p>Reading a slope field: if the segments are the same along each <strong>vertical</strong> line, \(\frac{dy}{dx}\) depends only on \(x\). If they're the same along each <strong>horizontal</strong> line, it depends only on \(y\). Horizontal segments mark where \(\frac{dy}{dx} = 0\) (for \(\frac{dy}{dx} = g(y)\), these are equilibrium solutions).</p></aside>
+<div class="we" data-title="Matching a slope field" data-marks="1">
+<div class="we-q"><p>A slope field has horizontal segments along the lines \(y = 0\) and \(y = 4\), positive slopes between them and negative slopes above \(y = 4\). Which DE could it represent: \(\frac{dy}{dx} = y(4 - y)\), \(\frac{dy}{dx} = x(4 - x)\) or \(\frac{dy}{dx} = y(y - 4)\)?</p></div>
+<div class="we-t"><p>The pattern depends only on \(y\), ruling out the \(x\) option. Test \(y = 2\): \(2(2) = 4 &gt; 0\) for the first, \(2(-2) &lt; 0\) for the third.</p></div>
+<div class="we-a"><p>\(\dfrac{dy}{dx} = y(4 - y)\) (logistic-type).</p></div>
+</div>
+
+<h2>Euler's method</h2>
+<div class="eq"><div class="eq-label">Euler's method</div>\[ x_{n+1} = x_n + h, \qquad y_{n+1} = y_n + h\,f(x_n, y_n) \quad \text{for } \frac{dy}{dx} = f(x, y) \]<p>Step along the tangent line for a distance \(h\) in \(x\). Smaller \(h\) usually gives a better approximation.</p></div>
+<div class="we" data-title="Two steps of Euler" data-marks="3">
+<div class="we-q"><p>Given \(\frac{dy}{dx} = x + y\), \(y(0) = 1\), use Euler's method with \(h = 0.1\) to estimate \(y(0.2)\).</p></div>
+<div class="we-t"><p>Use the gradient at the <em>current</em> point each time. Tabulate to avoid slips.</p></div>
+<div class="we-s" data-f="y_{n+1} = y_n + h f(x_n, y_n)"><p>\(y_1 = 1 + 0.1(0 + 1) = 1.1\) at \(x_1 = 0.1\).</p></div>
+<div class="we-s"><p>\(y_2 = 1.1 + 0.1(0.1 + 1.1) = 1.1 + 0.12 = 1.22\).</p></div>
+<div class="we-a"><p>\(y(0.2) \approx 1.22\). (The exact value is \(2e^{0.2} - 1.2 \approx 1.243\): Euler underestimates since the curve is concave up.)</p></div>
+</div>
+<aside class="c-exam"><p>Euler's method is a VCAA favourite in Exam 1 with friendly numbers, and in Exam 2 MC. If asked whether the estimate is an over- or underestimate, use concavity: concave up → tangent lines sit below → underestimate.</p></aside>
+
+<h2>Practice</h2>
+<div class="mcq" data-ans="B" data-level="core">
+<div class="mcq-q"><p>The rate at which a population \(P\) decreases is proportional to the square of the population. A DE for this is</p></div>
+<ol><li>\(\frac{dP}{dt} = kP\), \(k &gt; 0\)</li><li>\(\frac{dP}{dt} = -kP^2\), \(k &gt; 0\)</li><li>\(\frac{dP}{dt} = kP^2\), \(k &gt; 0\)</li><li>\(\frac{dP}{dt} = -2kP\), \(k &gt; 0\)</li></ol>
+<div class="mcq-x"><p>"Decreases" gives the negative sign; "proportional to the square" gives \(kP^2\).</p></div>
+</div>
+<div class="mcq" data-ans="D" data-level="core">
+<div class="mcq-q"><p>Euler's method with step size 0.5 is applied to \(\frac{dy}{dx} = 2x\), \(y(1) = 3\). The estimate of \(y(1.5)\) is</p></div>
+<ol><li>3.5</li><li>3.25</li><li>5</li><li>4</li></ol>
+<div class="mcq-x"><p>\(3 + 0.5\times 2(1) = 4\).</p></div>
+</div>
+<div class="mcq" data-ans="A" data-level="hard">
+<div class="mcq-q"><p>A slope field shows identical segments along every vertical line, with zero slope on the \(y\)-axis, positive slope for \(x &gt; 0\) and negative for \(x &lt; 0\). The DE could be</p></div>
+<ol><li>\(\frac{dy}{dx} = x^3\)</li><li>\(\frac{dy}{dx} = y\)</li><li>\(\frac{dy}{dx} = x^2\)</li><li>\(\frac{dy}{dx} = xy\)</li></ol>
+<div class="mcq-x"><p>Depends only on \(x\), and changes sign at \(x = 0\): \(x^3\). \(x^2\) is never negative.</p></div>
+</div>
+<div class="mcq" data-ans="C" data-level="trick">
+<div class="mcq-q"><p>A 50 L tank initially holds pure water. Brine of 0.1 kg/L enters at 3 L/min; the mixture leaves at 2 L/min. If \(Q\) kg is the salt after \(t\) min, then \(\frac{dQ}{dt} =\)</p></div>
+<ol><li>\(0.3 - \frac{2Q}{50}\)</li><li>\(0.3 - \frac{3Q}{50 + t}\)</li><li>\(0.3 - \frac{2Q}{50 + t}\)</li><li>\(0.1 - \frac{Q}{50 + t}\)</li></ol>
+<div class="mcq-x"><p>Volume grows by 1 L/min, so \(V = 50 + t\); out \(= \frac{Q}{50 + t}\times 2\).</p></div>
+</div>
+<div class="pq" data-level="core" data-marks="2">
+<div class="pq-q"><p>Verify that \(y = \frac{1}{x + c}\) is a solution of \(\frac{dy}{dx} = -y^2\).</p></div>
+<div class="pq-s"><p>\(\frac{dy}{dx} = -\frac{1}{(x + c)^2}\). [1]</p><p>\(-y^2 = -\frac{1}{(x + c)^2}\), so LHS = RHS. [1]</p></div>
+</div>
+<div class="pq" data-level="exam" data-marks="3">
+<div class="pq-q"><p>Use Euler's method with step size 0.1 to estimate \(y(1.2)\) given \(\frac{dy}{dx} = \frac{y}{x}\), \(y(1) = 2\).</p></div>
+<div class="pq-s"><p>\(y_1 = 2 + 0.1\cdot\frac{2}{1} = 2.2\) at \(x = 1.1\). [1]</p><p>\(y_2 = 2.2 + 0.1\cdot\frac{2.2}{1.1} = 2.2 + 0.2 = 2.4\). [1]</p><p>\(y(1.2) \approx 2.4\) (here exact, since the solution \(y = 2x\) is linear). [1]</p></div>
+</div>
+<div class="pq" data-level="hard" data-marks="3">
+<div class="pq-q"><p>A conical tank (vertex down) has height equal to its top radius. Water flows in at 2 m³/min. Find \(\frac{dh}{dt}\) in terms of the depth \(h\).</p></div>
+<div class="pq-s"><p>\(r = h\), so \(V = \frac13\pi h^3\). [1]</p><p>\(\frac{dV}{dh} = \pi h^2\). [1]</p><p>\(\frac{dh}{dt} = \frac{2}{\pi h^2}\) m/min. [1]</p></div>
+</div>
+<h2>Summary</h2>
+<ul>
+  <li>"Rate" → derivative; "proportional to" → \(k\times\); mixing: rate in − rate out, with concentration \(\frac{Q}{V(t)}\).</li>
+  <li>Verify by differentiating and substituting, not solving.</li>
+  <li>Slope field: same along verticals → \(f(x)\) only; same along horizontals → \(g(y)\) only.</li>
+  <li>Euler: \(y_{n+1} = y_n + h f(x_n, y_n)\); concave up → underestimate.</li>
+</ul>

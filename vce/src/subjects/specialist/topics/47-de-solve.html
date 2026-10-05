@@ -1,0 +1,96 @@
+<!--
+id: de-solve
+title: Solving differential equations
+short: Solving DEs
+summary: Solving first-order DEs of the forms dy/dx = f(x), dy/dx = g(y) and separable dy/dx = f(x)g(y), second-order d²y/dx² = f(x), applying initial conditions, and the classic models: exponential growth, Newton's cooling, mixing problems and the logistic equation.
+keywords: solve differential equation, separation of variables, separable, dy/dx = g(y), dx/dy, general solution, particular solution, initial condition, logistic equation, logistic growth, carrying capacity, Newton's law of cooling, exponential growth, decay, mixing problem solution, second order, limiting value, equilibrium
+dotpoints: solution of dy/dx = f(x), dy/dx = g(y), separable dy/dx = f(x)g(y) and d²y/dx² = f(x) | the logistic differential equation | application to growth, decay, cooling and mixing problems
+-->
+<h2>dy/dx = f(x) and d²y/dx² = f(x)</h2>
+<p>Integrate directly (twice for second order), adding a constant each time. Each constant needs a condition.</p>
+<div class="we" data-title="Second order: integrate twice" data-marks="3">
+<div class="we-q"><p>Solve \(\frac{d^2y}{dx^2} = 6x\) given \(y'(0) = 2\) and \(y(0) = 1\).</p></div>
+<div class="we-t"><p>Integrate once and use the \(y'\) condition, then again and use the \(y\) condition.</p></div>
+<div class="we-s"><p>\(y' = 3x^2 + c_1\); \(y'(0) = 2 \Rightarrow c_1 = 2\).</p></div>
+<div class="we-s"><p>\(y = x^3 + 2x + c_2\); \(y(0) = 1 \Rightarrow c_2 = 1\).</p></div>
+<div class="we-a"><p>\(y = x^3 + 2x + 1\).</p></div>
+</div>
+
+<h2>dy/dx = g(y): flip it</h2>
+<div class="eq"><div class="eq-label">Inverting</div>\[ \frac{dy}{dx} = g(y) \;\Rightarrow\; \frac{dx}{dy} = \frac{1}{g(y)} \;\Rightarrow\; x = \int\frac{1}{g(y)}\,dy \]<p>Then rearrange to make \(y\) the subject. Watch for equilibrium solutions where \(g(y) = 0\).</p></div>
+<div class="we" data-title="Newton's law of cooling" data-marks="4">
+<div class="we-q"><p>A cup of coffee at 90°C cools in a 20°C room according to \(\frac{dT}{dt} = -k(T - 20)\). After 5 minutes it is 60°C. Find \(T\) in terms of \(t\).</p></div>
+<div class="we-t"><p>Flip to \(\frac{dt}{dT}\), integrate to get a log, then exponentiate. Since \(T &gt; 20\) throughout, the modulus can go.</p></div>
+<div class="we-s"><p>\(t = -\frac1k\int\frac{dT}{T - 20} = -\frac1k\log_e(T - 20) + c\), so \(T - 20 = Ae^{-kt}\).</p></div>
+<div class="we-s"><p>\(T(0) = 90 \Rightarrow A = 70\). \(T(5) = 60 \Rightarrow 40 = 70e^{-5k}\), \(k = \frac15\log_e\frac74\).</p></div>
+<div class="we-a"><p>\(T = 20 + 70e^{-kt}\) with \(k = \frac15\log_e\frac74 \approx 0.112\). As \(t \to \infty\), \(T \to 20\).</p></div>
+</div>
+
+<h2>Separation of variables</h2>
+<div class="eq"><div class="eq-label">Separable DEs</div>\[ \frac{dy}{dx} = f(x)\,g(y) \;\Rightarrow\; \int\frac{1}{g(y)}\,dy = \int f(x)\,dx \]<p>Get all the \(y\)'s with \(dy\) and all the \(x\)'s with \(dx\), integrate both sides, and use one constant.</p></div>
+<div class="we" data-title="Separable with a trig factor" data-marks="3">
+<div class="we-q"><p>Solve \(\frac{dy}{dx} = y^2\cos x\) given \(y(0) = \frac12\).</p></div>
+<div class="we-t"><p>Divide by \(y^2\) and integrate: \(\int y^{-2}dy = \int\cos x\,dx\).</p></div>
+<div class="we-s"><p>\(-\frac1y = \sin x + c\); \(y(0) = \frac12 \Rightarrow -2 = c\).</p></div>
+<div class="we-a"><p>\(-\frac1y = \sin x - 2 \Rightarrow y = \dfrac{1}{2 - \sin x}\).</p></div>
+</div>
+<div class="we" data-title="Solving the mixing problem" data-marks="4">
+<div class="we-q"><p>Solve \(\frac{dQ}{dt} = 0.8 - \frac{Q}{25}\), \(Q(0) = 5\) (salt in a 100 L tank). What happens long term?</p></div>
+<div class="we-t"><p>Rewrite as \(\frac{dQ}{dt} = \frac{20 - Q}{25}\), then flip. Since \(Q &lt; 20\) throughout, \(|20 - Q| = 20 - Q\).</p></div>
+<div class="we-s"><p>\(t = \int\frac{25}{20 - Q}\,dQ = -25\log_e(20 - Q) + c\).</p></div>
+<div class="we-s"><p>\(20 - Q = Ae^{-t/25}\); \(Q(0) = 5 \Rightarrow A = 15\).</p></div>
+<div class="we-a"><p>\(Q = 20 - 15e^{-t/25}\). As \(t \to \infty\), \(Q \to 20\) kg, i.e. a concentration of 0.2 kg/L, matching the inflow. ✓</p></div>
+</div>
+
+<h2>The logistic equation</h2>
+<div class="eq"><div class="eq-label">Logistic growth</div>\[ \frac{dP}{dt} = rP\left(1 - \frac{P}{K}\right) \;\Rightarrow\; P(t) = \frac{K}{1 + \left(\frac{K}{P_0} - 1\right)e^{-rt}} \]<p>\(K\) is the carrying capacity (limiting value). Growth is fastest when \(P = \frac{K}{2}\): that's the point of inflection.</p></div>
+<div class="we" data-title="Solving a logistic DE" data-marks="4">
+<div class="we-q"><p>Solve \(\frac{dP}{dt} = \frac{P(1000 - P)}{2000}\), \(P(0) = 100\).</p></div>
+<div class="we-t"><p>Flip and use partial fractions: \(\frac{2000}{P(1000 - P)} = 2\left(\frac{1}{P} + \frac{1}{1000 - P}\right)\).</p></div>
+<div class="we-s" data-f="\frac{1}{P(K - P)} = \frac1K\left(\frac1P + \frac{1}{K - P}\right)"><p>\(t = 2\log_e P - 2\log_e(1000 - P) + c = 2\log_e\frac{P}{1000 - P} + c\).</p></div>
+<div class="we-s"><p>\(\frac{P}{1000 - P} = Ae^{t/2}\); \(P(0) = 100 \Rightarrow A = \frac19\).</p></div>
+<div class="we-a"><p>\(P = \dfrac{1000}{1 + 9e^{-t/2}}\). Limiting population 1000; fastest growth at \(P = 500\).</p></div>
+</div>
+<aside class="c-trap"><p>Logs and moduli: \(\int\frac{1}{20 - Q}dQ = -\log_e|20 - Q|\), with a minus sign from the chain rule. Use the initial condition to decide the sign inside the modulus before dropping it.</p></aside>
+<aside class="c-exam"><p>Exam 2 regularly asks to "show that" a given solution satisfies a DE, then uses CAS (<code>deSolve</code>) for harder ones. Always state the limiting value when asked about long-term behaviour, and give an equilibrium as a constant solution.</p></aside>
+
+<h2>Practice</h2>
+<div class="mcq" data-ans="A" data-level="core">
+<div class="mcq-q"><p>The solution of \(\frac{dy}{dx} = 3y\), \(y(0) = 2\) is</p></div>
+<ol><li>\(y = 2e^{3x}\)</li><li>\(y = 3e^{2x}\)</li><li>\(y = e^{3x} + 1\)</li><li>\(y = 2e^{x/3}\)</li></ol>
+<div class="mcq-x"><p>Exponential growth: \(y = y_0e^{kx}\).</p></div>
+</div>
+<div class="mcq" data-ans="C" data-level="core">
+<div class="mcq-q"><p>Which DE is <em>not</em> separable?</p></div>
+<ol><li>\(\frac{dy}{dx} = xy\)</li><li>\(\frac{dy}{dx} = e^{x + y}\)</li><li>\(\frac{dy}{dx} = x + y\)</li><li>\(\frac{dy}{dx} = \frac{\sin x}{y}\)</li></ol>
+<div class="mcq-x"><p>\(e^{x+y} = e^xe^y\) separates, but \(x + y\) can't be written as \(f(x)g(y)\).</p></div>
+</div>
+<div class="mcq" data-ans="B" data-level="hard">
+<div class="mcq-q"><p>For \(\frac{dP}{dt} = 0.4P\left(1 - \frac{P}{600}\right)\), \(P(0) = 50\), the population is growing fastest when \(P =\)</p></div>
+<ol><li>600</li><li>300</li><li>50</li><li>150</li></ol>
+<div class="mcq-x"><p>Maximum rate at \(P = \frac K2 = 300\).</p></div>
+</div>
+<div class="mcq" data-ans="D" data-level="trick">
+<div class="mcq-q"><p>Given \(\frac{dy}{dx} = \sqrt{y}\), \(y(0) = 0\), which is a valid solution?</p></div>
+<ol><li>only \(y = \frac{x^2}{4}\) for \(x \ge 0\)</li><li>only \(y = 0\)</li><li>\(y = x^2\)</li><li>both \(y = 0\) and \(y = \frac{x^2}{4}\) (\(x \ge 0\))</li></ol>
+<div class="mcq-x"><p>Separating gives \(2\sqrt y = x\), but dividing by \(\sqrt y\) lost the equilibrium \(y = 0\), which also satisfies the DE and condition.</p></div>
+</div>
+<div class="pq" data-level="core" data-marks="3">
+<div class="pq-q"><p>Solve \(\frac{dy}{dx} = \frac{x}{y}\), \(y(0) = 3\), giving \(y\) explicitly.</p></div>
+<div class="pq-s"><p>\(\int y\,dy = \int x\,dx\): \(\frac{y^2}{2} = \frac{x^2}{2} + c\). [1]</p><p>\(y(0) = 3 \Rightarrow y^2 = x^2 + 9\). [1]</p><p>\(y = \sqrt{x^2 + 9}\) (positive root since \(y(0) &gt; 0\)). [1]</p></div>
+</div>
+<div class="pq" data-level="hard" data-marks="4">
+<div class="pq-q"><p>A body at 80°C is placed in a 15°C room and cools according to Newton's law, reaching 50°C after 10 minutes. How long until it reaches 30°C?</p></div>
+<div class="pq-s"><p>\(T = 15 + 65e^{-kt}\). [1]</p><p>\(35 = 65e^{-10k} \Rightarrow k = \frac{1}{10}\log_e\frac{13}{7}\). [1]</p><p>\(15 = 65e^{-kt} \Rightarrow t = \frac1k\log_e\frac{13}{3}\). [1]</p><p>\(t = \frac{10\log_e(13/3)}{\log_e(13/7)} \approx 23.7\) min. [1]</p></div>
+</div>
+<div class="pq" data-level="exam" data-marks="3">
+<div class="pq-q"><p>Solve \(\frac{dy}{dx} = e^{-y}\), \(y(0) = 0\).</p></div>
+<div class="pq-s"><p>\(\frac{dx}{dy} = e^y \Rightarrow x = e^y + c\). [1]</p><p>\(y(0) = 0 \Rightarrow c = -1\). [1]</p><p>\(y = \log_e(x + 1)\), \(x &gt; -1\). [1]</p></div>
+</div>
+<h2>Summary</h2>
+<ul>
+  <li>\(f(x)\): integrate. \(g(y)\): flip to \(\frac{dx}{dy}\). \(f(x)g(y)\): separate.</li>
+  <li>One arbitrary constant per integration; use initial conditions.</li>
+  <li>Logistic: \(P \to K\); fastest growth at \(\frac K2\); partial fractions to solve.</li>
+  <li>Check for lost equilibrium solutions when dividing by \(g(y)\).</li>
+</ul>

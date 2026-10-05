@@ -1,0 +1,74 @@
+<!--
+id: exam-technique
+title: Specialist exam technique
+short: Exam technique
+summary: Command words, writing proofs that earn full marks, exact vs approximate answers, notation (vectors, complex numbers, integrals), CAS habits for Exam 2, multiple-choice strategy and the errors Specialist examiners' reports keep flagging.
+keywords: exam technique, specialist exam, command words, show that, prove, hence, hence or otherwise, exact value, correct to, notation, vector notation, tilde, CAS, bound reference, multiple choice, examiners report, common errors, reading time, proof writing
+special: reference
+-->
+<h2>Command words in Specialist</h2>
+<div class="tbl"><table>
+<thead><tr><th>Phrase</th><th>What it means</th></tr></thead>
+<tbody>
+<tr><td><strong>Find / determine</strong></td><td>Get the answer; show working for anything worth more than 1 mark.</td></tr>
+<tr><td><strong>Show that</strong></td><td>The answer is given, so every step must be visible. Start from the left side (or a known fact), not from the answer.</td></tr>
+<tr><td><strong>Prove</strong></td><td>A complete logical argument: state what you assume, justify each step, and finish with a conclusion (\(\blacksquare\) or "as required").</td></tr>
+<tr><td><strong>Hence</strong></td><td>You must use the previous part.</td></tr>
+<tr><td><strong>Hence, or otherwise</strong></td><td>The previous part is the intended route, but any valid method scores.</td></tr>
+<tr><td><strong>Write down a definite integral</strong></td><td>Terminals, integrand and \(dx\) (or \(dt\)) required. You don't evaluate it unless asked.</td></tr>
+<tr><td><strong>Exact</strong></td><td>Surds, \(\pi\), \(e\), logs, fractions. No decimals.</td></tr>
+<tr><td><strong>Sketch / plot on an Argand diagram</strong></td><td>Label key points, asymptotes, intercepts, and use open/closed circles for boundaries (dashed lines for excluded boundaries of regions).</td></tr>
+</tbody></table></div>
+
+<h2>Writing proofs that score</h2>
+<ul>
+  <li><strong>Induction:</strong> show the base case explicitly, write "assume true for \(n = k\)", show the \(n = k + 1\) case using the assumption (say where you use it), and conclude for all \(n \in \mathbb{N}\).</li>
+  <li><strong>Contradiction:</strong> say "suppose, for contradiction, that...", reach a clear contradiction, then state the result.</li>
+  <li><strong>Counterexample:</strong> one specific example, checked explicitly. "For example \(n = 3\)" plus the calculation.</li>
+  <li><strong>Converse / contrapositive:</strong> write out the statement you are proving before proving it.</li>
+</ul>
+
+<h2>Notation that loses marks</h2>
+<ul>
+  <li>Vectors need a tilde (\(\underset{\sim}{a}\)) or arrow in handwriting. \(\underset{\sim}{a}\cdot\underset{\sim}{b}\) is a scalar; \(\underset{\sim}{a}\times\underset{\sim}{b}\) is a vector.</li>
+  <li>Integrals need \(dx\) and brackets: \(\int_0^1(x^2 + 1)\,dx\).</li>
+  <li>Complex numbers: \(\operatorname{Arg}(z) \in (-\pi, \pi]\); polar form \(r\operatorname{cis}\theta\) with \(r &gt; 0\).</li>
+  <li>Statistics: hypotheses use \(\mu\), not \(\bar x\). Define random variables.</li>
+  <li>Don't round intermediate values. Round the final answer to the requested accuracy.</li>
+</ul>
+
+<h2>Exam 1 (tech-free) habits</h2>
+<ul>
+  <li>Integration techniques must be automatic: substitution, partial fractions, by parts, \(\sin^2\)/\(\cos^2\) identities, inverse-trig forms.</li>
+  <li>De Moivre and roots of complex numbers: draw the roots on an Argand diagram to check spacing \(\frac{2\pi}{n}\).</li>
+  <li>Simplify fully and rationalise only if needed. Check your answer is in the requested form.</li>
+</ul>
+
+<h2>Exam 2 (CAS) habits</h2>
+<ul>
+  <li>Define functions and vectors on CAS. Use <code>deSolve</code>, <code>crossP</code>, <code>dotP</code>, <code>norm</code>, <code>invNorm</code>, <code>normCdf</code>, but always write the set-up in Section B.</li>
+  <li>For "write down a definite integral" parts, copy the integral you typed, in proper notation.</li>
+  <li>MCQ: eliminate options fast. Many are designed around a single common error (wrong sign, \(\sigma\) vs \(\sigma^2\), \(2X\) vs \(X_1 + X_2\)).</li>
+</ul>
+
+<h2>Errors examiners' reports mention every year</h2>
+<aside class="c-trap" data-title="Don't lose these marks">
+<ul>
+  <li>Induction proofs that never use the inductive hypothesis, or skip the conclusion.</li>
+  <li>Missing \(+c\), or using one constant before both sides are integrated in separation of variables.</li>
+  <li>\(\operatorname{Arg}\) outside \((-\pi, \pi]\), or forgetting the conjugate root in real polynomials.</li>
+  <li>Forgetting the modulus in \(\int\frac1x dx = \log_e|x|\), then not resolving its sign with the initial condition.</li>
+  <li>Using constant acceleration formulas when \(a\) varies.</li>
+  <li>Collide (same \(t\)) vs paths cross (different parameters).</li>
+  <li>Confidence intervals interpreted as probabilities about \(\mu\), and conclusions not in context.</li>
+  <li>Volumes with \(\pi\int(R - r)^2\) instead of \(\pi\int(R^2 - r^2)\).</li>
+</ul>
+</aside>
+
+<h2>Reading time plan (15 minutes)</h2>
+<ol>
+  <li>Skim the whole paper and mark each question easy, medium or hard.</li>
+  <li>In Exam 2 Section B, read each stem and note which area it tests (vectors, DEs, complex, stats, calculus).</li>
+  <li>Plan your order, banking easy marks first, but always attempt part (a) of every long question.</li>
+  <li>Mentally solve the first few MCQs so you start fast.</li>
+</ol>

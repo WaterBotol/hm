@@ -1,0 +1,102 @@
+<!--
+id: rational-graphs
+title: Graphs of rational and quotient functions
+short: Rational & quotient graphs
+summary: Sketching rational functions of low degree and simple quotient functions: vertical, horizontal and oblique asymptotes, intercepts, stationary points and points of inflection, behaviour near asymptotes, and graphs of reciprocals and sums of ordinates like y = x + 1/x.
+keywords: rational function graph, asymptote, vertical asymptote, horizontal asymptote, oblique asymptote, slant asymptote, quotient function, reciprocal function, 1/f(x), sum of ordinates, stationary point, point of inflection, concavity, curve sketching, x + 1/x, behaviour near asymptote, intercepts, symmetry
+dotpoints: graphs of rational functions of low degree, their asymptotic behaviour, and the nature and location of stationary points and points of inflection | graphs of simple quotient functions, their asymptotic behaviour, and the nature and location of stationary points and points of inflection
+-->
+<h2>A checklist for sketching</h2>
+<ol>
+  <li><strong>Domain</strong> and <strong>vertical asymptotes</strong>: where the denominator is zero (and the numerator isn't).</li>
+  <li><strong>Intercepts</strong>: \(y\) at \(x = 0\); \(x\) where the numerator is zero.</li>
+  <li><strong>End behaviour</strong>: horizontal or oblique asymptote, from the degrees or from division.</li>
+  <li><strong>Stationary points</strong> (\(f'(x) = 0\)) and their nature; <strong>inflection points</strong> (\(f''\) changes sign).</li>
+  <li>Behaviour <strong>either side</strong> of each vertical asymptote (sign of \(f\) just left and right).</li>
+</ol>
+<div class="eq"><div class="eq-label">End behaviour of \(\frac{P(x)}{Q(x)}\)</div>\[ \deg P &lt; \deg Q:\ y = 0 \qquad \deg P = \deg Q:\ y = \tfrac{\text{leading coeff of } P}{\text{leading coeff of } Q} \qquad \deg P = \deg Q + 1:\ \text{oblique asymptote from division} \]</div>
+
+<h2>Sums of ordinates: \(y = x + \frac{1}{x}\) and friends</h2>
+<div class="we" data-title="Sketch y = x + 4/x" data-marks="4">
+<div class="we-q"><p>Sketch \(y = x + \dfrac{4}{x}\), showing asymptotes and stationary points with their nature.</p></div>
+<div class="we-t"><p>For large \(|x|\) the \(\frac4x\) part vanishes, so the graph approaches the line \(y = x\). Near \(x = 0\) the \(\frac4x\) part dominates. Differentiate for the turning points.</p></div>
+<div class="we-s"><p>Asymptotes: \(x = 0\) (vertical), \(y = x\) (oblique). No intercepts (\(x^2 + 4 = 0\) has no real roots).</p></div>
+<div class="we-s" data-f="\dfrac{dy}{dx} = 1 - \dfrac{4}{x^2}"><p>\(y' = 1 - \frac{4}{x^2} = 0 \Rightarrow x = \pm 2\). Points \((2, 4)\) and \((-2, -4)\).</p></div>
+<div class="we-s" data-f="\dfrac{d^2y}{dx^2} = \dfrac{8}{x^3}"><p>\(y'' = \frac{8}{x^3}\): positive at \(x = 2\) (local minimum), negative at \(x = -2\) (local maximum).</p></div>
+<div class="we-a"><p>Two branches: for \(x &gt; 0\), a U-shape with minimum \((2, 4)\) rising toward \(y = x\) and up the \(y\)-axis; for \(x &lt; 0\), the rotated copy (the function is odd) with maximum \((-2, -4)\). No inflection points.</p></div>
+</div>
+<div class="sim" data-sim="rationalGraph"></div>
+
+<h2>Rational functions with a quadratic denominator</h2>
+<div class="we" data-title="y = 1/(x² − 1)" data-marks="4">
+<div class="we-q"><p>Sketch \(y = \dfrac{1}{x^2 - 1}\).</p></div>
+<div class="we-t"><p>It's the reciprocal of the parabola \(y = x^2 - 1\): where the parabola is zero there are asymptotes; where it has a minimum of \(-1\) the reciprocal has a maximum of \(-1\); as the parabola grows, the reciprocal shrinks to 0.</p></div>
+<div class="we-s"><p>Vertical asymptotes \(x = \pm1\); horizontal asymptote \(y = 0\); \(y\)-intercept \((0, -1)\); even function.</p></div>
+<div class="we-s" data-f="\dfrac{dy}{dx} = \dfrac{-2x}{(x^2 - 1)^2}"><p>\(y' = 0\) only at \(x = 0\): local maximum \((0, -1)\).</p></div>
+<div class="we-a"><p>Between \(-1\) and \(1\): an upside-down U below the axis peaking at \((0, -1)\), dropping to \(-\infty\) at the asymptotes. Outside: positive branches falling from \(+\infty\) toward \(y = 0\).</p></div>
+</div>
+<aside class="c-key"><p>Reciprocal sketching rules for \(y = \frac{1}{f(x)}\): zeros of \(f\) become vertical asymptotes; \(f &gt; 0 \Rightarrow \frac1f &gt; 0\); local max of \(f\) becomes local min of \(\frac1f\) (and vice versa) at the same \(x\); where \(f = \pm1\) the graphs meet; where \(|f| \to \infty\), \(\frac1f \to 0\).</p></aside>
+
+<h2>Oblique asymptotes and inflection points</h2>
+<div class="we" data-title="y = (x² + 3)/(x − 1)" data-marks="5">
+<div class="we-q"><p>For \(f(x) = \dfrac{x^2 + 3}{x - 1}\), find the asymptotes and the stationary points.</p></div>
+<div class="we-t"><p>Divide to reveal the oblique asymptote, which also makes differentiation easier.</p></div>
+<div class="we-s"><p>\(x^2 + 3 = (x + 1)(x - 1) + 4\), so \(f(x) = x + 1 + \dfrac{4}{x - 1}\). Asymptotes \(x = 1\) and \(y = x + 1\).</p></div>
+<div class="we-s" data-f="f&#x27;(x) = 1 - \dfrac{4}{(x - 1)^2}"><p>\(f'(x) = 0 \Rightarrow (x - 1)^2 = 4 \Rightarrow x = 3\) or \(x = -1\).</p></div>
+<div class="we-a"><p>\((3, 6)\) is a local minimum and \((-1, -2)\) a local maximum (since \(f''(x) = \frac{8}{(x - 1)^3}\) is positive at 3, negative at \(-1\)). No \(x\)-intercepts.</p></div>
+</div>
+<div class="we" data-title="A quotient with an inflection point" data-marks="4">
+<div class="we-q"><p>Find the exact coordinates of the points of inflection of \(y = \dfrac{1}{x^2 + 3}\).</p></div>
+<div class="we-t"><p>Inflection points are where the second derivative changes sign. Use the quotient or chain rule twice, then solve \(y'' = 0\) and check the sign change.</p></div>
+<div class="we-s" data-f="\dfrac{d}{dx}(x^2 + 3)^{-1} = -2x(x^2 + 3)^{-2}"><p>\(y' = \dfrac{-2x}{(x^2 + 3)^2}\).</p></div>
+<div class="we-s"><p>\(y'' = \dfrac{-2(x^2 + 3)^2 + 2x\cdot 2(x^2 + 3)\cdot 2x}{(x^2 + 3)^4} = \dfrac{6x^2 - 6}{(x^2 + 3)^3}\).</p></div>
+<div class="we-a"><p>\(y'' = 0\) at \(x = \pm1\), and it changes sign there. Points of inflection \(\left(\pm1, \frac14\right)\).</p></div>
+</div>
+<aside class="c-trap"><p>\(f''(x) = 0\) doesn't guarantee an inflection point: check that \(f''\) <strong>changes sign</strong>. For \(y = x^4\), \(f''(0) = 0\) but it's a minimum. And a function can change concavity across an asymptote without having an inflection point there (the point isn't on the graph).</p></aside>
+<aside class="c-exam"><p>"Sketch" means: correct shape, all asymptotes labelled with equations, intercepts and stationary points labelled with coordinates (exact unless told otherwise), and correct behaviour near the asymptotes. Exam 2 questions often add a parameter, e.g. "for what values of \(k\) does \(y = x + \frac{k}{x}\) have stationary points?" (only \(k &gt; 0\)).</p></aside>
+
+<h2>Practice</h2>
+<div class="mcq" data-ans="C" data-level="core">
+<div class="mcq-q"><p>The asymptotes of \(y = \dfrac{2x + 1}{x - 3}\) are</p></div>
+<ol><li>\(x = 3,\ y = 0\)</li><li>\(x = -\frac12,\ y = 2\)</li><li>\(x = 3,\ y = 2\)</li><li>\(x = 3,\ y = 2x + 1\)</li></ol>
+<div class="mcq-x"><p>Denominator zero at 3; equal degrees give \(y = \frac21\).</p></div>
+</div>
+<div class="mcq" data-ans="A" data-level="core">
+<div class="mcq-q"><p>The oblique asymptote of \(y = \dfrac{x^2 - 2x + 5}{x}\) is</p></div>
+<ol><li>\(y = x - 2\)</li><li>\(y = x\)</li><li>\(y = x + 5\)</li><li>\(y = -2\)</li></ol>
+<div class="mcq-x"><p>\(y = x - 2 + \frac5x\).</p></div>
+</div>
+<div class="mcq" data-ans="D" data-level="trick">
+<div class="mcq-q"><p>How many vertical asymptotes does \(y = \dfrac{x - 2}{x^2 - 4}\) have?</p></div>
+<ol><li>2</li><li>0</li><li>3</li><li>1</li></ol>
+<div class="mcq-x"><p>\(\frac{x - 2}{(x - 2)(x + 2)} = \frac{1}{x + 2}\) for \(x \ne 2\): an asymptote at \(x = -2\) and a hole (point discontinuity) at \(x = 2\).</p></div>
+</div>
+<div class="mcq" data-ans="B" data-level="hard">
+<div class="mcq-q"><p>The graph of \(y = x + \dfrac{k}{x}\), where \(k\) is a real constant, has two stationary points when</p></div>
+<ol><li>\(k &lt; 0\)</li><li>\(k &gt; 0\)</li><li>\(k \ne 0\)</li><li>\(k = 1\) only</li></ol>
+<div class="mcq-x"><p>\(y' = 1 - \frac{k}{x^2} = 0 \Rightarrow x^2 = k\): two solutions only if \(k &gt; 0\).</p></div>
+</div>
+<div class="mcq" data-ans="C" data-level="exam">
+<div class="mcq-q"><p>The graph of \(y = \dfrac{1}{(x - 1)^2 + 4}\) has a local maximum at</p></div>
+<ol><li>\((1, 4)\)</li><li>\((-1, \frac14)\)</li><li>\((1, \frac14)\)</li><li>\((0, \frac15)\)</li></ol>
+<div class="mcq-x"><p>The reciprocal of a parabola with minimum \((1, 4)\) has a maximum \((1, \frac14)\).</p></div>
+</div>
+<div class="pq" data-level="core" data-marks="3" data-f="\dfrac{d}{dx}\left(\dfrac{1}{x}\right) = -\dfrac{1}{x^2}">
+<div class="pq-q"><p>For \(y = 2x + \dfrac{8}{x}\), state the asymptotes and find the stationary points.</p></div>
+<div class="pq-s"><p>Asymptotes \(x = 0\) and \(y = 2x\). [1]</p><p>\(y' = 2 - \frac{8}{x^2} = 0 \Rightarrow x = \pm2\). [1]</p><p>Local min \((2, 8)\), local max \((-2, -8)\). [1]</p></div>
+</div>
+<div class="pq" data-level="hard" data-marks="4">
+<div class="pq-q"><p>Let \(f(x) = \dfrac{x^2}{x^2 - 4}\). Find the asymptotes, intercepts and stationary points, and describe the graph.</p></div>
+<div class="pq-s"><p>\(f(x) = 1 + \frac{4}{x^2 - 4}\): asymptotes \(x = \pm2\), \(y = 1\). [1]</p><p>Only intercept \((0, 0)\). [1]</p><p>\(f'(x) = \frac{-8x}{(x^2 - 4)^2} = 0\) at \(x = 0\); \(f'\) is positive just left of 0 and negative just right, so \((0, 0)\) is a local maximum. [1]</p><p>Even function: a cap below the axis on \((-2, 2)\) peaking at the origin; outside, branches above \(y = 1\) coming down from \(+\infty\). [1]</p></div>
+</div>
+<div class="pq" data-level="exam" data-marks="3">
+<div class="pq-q"><p>Find the values of \(a\) for which \(y = \dfrac{x}{x^2 + a}\) has no vertical asymptotes, and for \(a = 1\) find the stationary points.</p></div>
+<div class="pq-s"><p>No vertical asymptotes when \(x^2 + a = 0\) has no real solutions: \(a &gt; 0\). [1]</p><p>\(a = 1\): \(y' = \frac{(x^2 + 1) - 2x^2}{(x^2 + 1)^2} = \frac{1 - x^2}{(x^2 + 1)^2} = 0 \Rightarrow x = \pm1\). [1]</p><p>Local max \((1, \frac12)\), local min \((-1, -\frac12)\). [1]</p></div>
+</div>
+<h2>Summary</h2>
+<ul>
+  <li>Vertical asymptotes from the denominator; divide to find horizontal or oblique asymptotes.</li>
+  <li>Sums of ordinates like \(x + \frac kx\): oblique asymptote \(y = x\), turning points where \(x^2 = k\).</li>
+  <li>Reciprocal of \(f\): zeros → asymptotes, max ↔ min at the same \(x\), meets \(f\) where \(f = \pm1\).</li>
+  <li>Inflection: \(f'' = 0\) <em>and</em> a sign change, at a point on the graph.</li>
+</ul>

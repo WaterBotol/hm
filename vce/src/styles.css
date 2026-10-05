@@ -764,6 +764,7 @@ dl.gloss dt:last-of-type, dl.gloss dd:last-of-type { border-bottom: 0; }
    ========================================================================== */
 :root {
   --ac-mm: #5856d6; --ac-mm-soft: #eeeefc;
+  --ac-sm: #ff9500; --ac-sm-soft: #fff4e5;
   --ac-ph: #30b0c7; --ac-ph-soft: #e6f6f9;
   --ac-ch: #af52de; --ac-ch-soft: #f7eefc;
   --ac-bi: #34c759; --ac-bi-soft: #eaf9ee;
@@ -773,6 +774,8 @@ dl.gloss dt:last-of-type, dl.gloss dd:last-of-type { border-bottom: 0; }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --ac-mm: #5e5ce6; --ac-mm-soft: #22213f;
+  --ac-sm: #ff9f0a; --ac-sm-soft: #33240a;
+    --ac-sm: #ff9f0a; --ac-sm-soft: #33240a;
     --ac-ph: #40c8e0; --ac-ph-soft: #0e2a30;
     --ac-ch: #bf5af2; --ac-ch-soft: #2b1835;
     --ac-bi: #30d158; --ac-bi-soft: #0f2a17;
@@ -787,6 +790,7 @@ dl.gloss dt:last-of-type, dl.gloss dd:last-of-type { border-bottom: 0; }
   --ac-el: #ff375f; --ac-el-soft: #36121a;
 }
 [data-s="methods"] { --sc: var(--ac-mm); --sc-soft: var(--ac-mm-soft); }
+[data-s="specialist"] { --sc: var(--ac-sm); --sc-soft: var(--ac-sm-soft); }
 [data-s="physics"] { --sc: var(--ac-ph); --sc-soft: var(--ac-ph-soft); }
 [data-s="chemistry"] { --sc: var(--ac-ch); --sc-soft: var(--ac-ch-soft); }
 [data-s="biology"] { --sc: var(--ac-bi); --sc-soft: var(--ac-bi-soft); }
@@ -798,12 +802,12 @@ dl.gloss dt:last-of-type, dl.gloss dd:last-of-type { border-bottom: 0; }
 .s-ic svg { width: 62%; height: 62%; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 
 /* subject switcher (sidebar): a row of app icons, the chosen one ringed */
-.subj-switch { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 2px; margin: 0 0 14px; }
+.subj-switch { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 2px; margin: 0 0 14px; }
 .subj-btn {
   display: grid; justify-items: center; gap: 5px; min-width: 0; padding: 6px 0 4px; border: 0; border-radius: 14px;
   background: none; color: var(--muted); font-size: 11.5px; font-weight: 500; letter-spacing: -0.005em; cursor: pointer; white-space: nowrap;
 }
-.subj-btn .s-ic { --sz: 40px; transition: box-shadow 0.2s, transform 0.2s; }
+.subj-btn .s-ic { --sz: 36px; transition: box-shadow 0.2s, transform 0.2s; }
 .subj-btn > span:last-child { max-width: 100%; overflow: hidden; text-overflow: ellipsis; }
 .subj-btn:hover .s-ic { transform: translateY(-1px); }
 .subj-btn:active .s-ic { transform: scale(0.92); }

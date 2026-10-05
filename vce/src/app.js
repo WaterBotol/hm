@@ -423,6 +423,7 @@
   // subject app icons (white glyph on the subject's colour)
   const SICON = {
     methods: '<path d="M2.5 12c2.4-7 5.4-7 7.8 0s5.4 7 7.8 0c.8-2.3 2-3.7 3.4-4.2"/>',
+    specialist: '<path d="M17.5 5H6.5l6.2 7-6.2 7h11"/>',
     physics: '<ellipse cx="12" cy="12" rx="9.6" ry="3.7"/><ellipse cx="12" cy="12" rx="9.6" ry="3.7" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="9.6" ry="3.7" transform="rotate(120 12 12)"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/>',
     chemistry: '<path d="M9 3h6M10 3v6.4l-5.5 9.3A1.5 1.5 0 0 0 5.8 21h12.4a1.5 1.5 0 0 0 1.3-2.3L14 9.4V3"/><path d="M7.4 15.5h9.2"/>',
     biology: '<path d="M5 19.5C4.6 10 10 4.5 20 4c-.3 10-6 15.6-15 15.5z"/><path d="M5 19.5l8.5-8.5"/>',
@@ -957,7 +958,7 @@
       status: st.marked && st.of ? 'Scored <b>' + st.score + '/' + st.of + '</b> (' + Math.round(100 * st.score / st.of) + '%)' : st.phase && st.phase !== 'idle' ? 'In progress' : 'Not started'
     };
   }
-  const pdfLinks = s => '<p class="ex-pdfs">Editable PDFs' + (s.id === 'methods' ? ' (Exam 1 and Exam 2 in one file)' : '') + ': ' + ['easier', 'medium', 'harder'].map(l => '<a href="pdf/' + s.id + '-' + l + '.pdf" download>' + l + ' paper</a>').join(' · ') + '</p>';
+  const pdfLinks = s => '<p class="ex-pdfs">Editable PDFs' + (s.id === 'methods' || s.id === 'specialist' ? ' (Exam 1 and Exam 2 in one file)' : '') + ': ' + ['easier', 'medium', 'harder'].map(l => '<a href="pdf/' + s.id + '-' + l + '.pdf" download>' + l + ' paper</a>').join(' · ') + '</p>';
   // big practice-exam buttons at the top of each subject's overview page
   function examCtaHTML(s) {
     const ex = s.order.filter(t => t.special === 'exam');

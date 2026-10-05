@@ -1,0 +1,86 @@
+<!--
+id: cross-planes
+title: Cross product, lines and planes
+short: Cross product, lines & planes
+summary: The vector (cross) product and its geometric meaning (normals, areas of parallelograms and triangles), vector, parametric and Cartesian equations of lines and planes in 3D, intersections, angles between lines and planes, and distance from a point to a plane.
+keywords: cross product, vector product, normal vector, area of parallelogram, area of triangle, right-hand rule, line in 3D, vector equation of a line, parametric equations, Cartesian equation of a line, symmetric form, plane, equation of a plane, normal form, ax + by + cz = d, intersection of line and plane, skew lines, angle between planes, distance point to plane
+dotpoints: vector cross product and its geometric interpretation | vector and Cartesian equations of lines and planes | intersections, angles and distances involving lines and planes
+-->
+<h2>The cross product</h2>
+<div class="eq"><div class="eq-label">Vector product</div>\[ \underset{\sim}{a}\times\underset{\sim}{b} = \begin{vmatrix} \underset{\sim}{i} &amp; \underset{\sim}{j} &amp; \underset{\sim}{k} \\ a_1 &amp; a_2 &amp; a_3 \\ b_1 &amp; b_2 &amp; b_3 \end{vmatrix} = (a_2b_3 - a_3b_2)\underset{\sim}{i} - (a_1b_3 - a_3b_1)\underset{\sim}{j} + (a_1b_2 - a_2b_1)\underset{\sim}{k} \]<p>\(\underset{\sim}{a}\times\underset{\sim}{b}\) is perpendicular to both, with magnitude \(|\underset{\sim}{a}||\underset{\sim}{b}|\sin\theta\) = the area of the parallelogram they span. \(\underset{\sim}{b}\times\underset{\sim}{a} = -\underset{\sim}{a}\times\underset{\sim}{b}\).</p></div>
+<div class="we" data-title="Area of a triangle" data-marks="3">
+<div class="we-q"><p>Find the area of the triangle with vertices \(A(1, 0, 0)\), \(B(0, 2, 0)\) and \(C(0, 0, 3)\).</p></div>
+<div class="we-t"><p>Area \(= \frac12|\overrightarrow{AB}\times\overrightarrow{AC}|\).</p></div>
+<div class="we-s"><p>\(\overrightarrow{AB} = -\underset{\sim}{i} + 2\underset{\sim}{j}\), \(\overrightarrow{AC} = -\underset{\sim}{i} + 3\underset{\sim}{k}\).</p></div>
+<div class="we-s"><p>\(\overrightarrow{AB}\times\overrightarrow{AC} = (6 - 0)\underset{\sim}{i} - (-3 - 0)\underset{\sim}{j} + (0 + 2)\underset{\sim}{k} = 6\underset{\sim}{i} + 3\underset{\sim}{j} + 2\underset{\sim}{k}\).</p></div>
+<div class="we-a"><p>\(|\cdot| = \sqrt{36 + 9 + 4} = 7\), so the area is \(\frac72\).</p></div>
+</div>
+
+<h2>Lines in 3D</h2>
+<div class="eq"><div class="eq-label">Line through A with direction d</div>\[ \underset{\sim}{r} = \underset{\sim}{a} + t\underset{\sim}{d} \quad\Leftrightarrow\quad x = a_1 + td_1,\ y = a_2 + td_2,\ z = a_3 + td_3 \quad\Leftrightarrow\quad \frac{x - a_1}{d_1} = \frac{y - a_2}{d_2} = \frac{z - a_3}{d_3} \]</div>
+<div class="we" data-title="Do two lines intersect?" data-marks="4">
+<div class="we-q"><p>Do \(\underset{\sim}{r}_1 = (1, 2, 0) + s(1, -1, 2)\) and \(\underset{\sim}{r}_2 = (2, 0, 1) + t(0, 1, 1)\) intersect?</p></div>
+<div class="we-t"><p>Equate components with different parameters. Solve two equations, test the third. Not parallel and no intersection → skew.</p></div>
+<div class="we-s"><p>\(x\): \(1 + s = 2 \Rightarrow s = 1\). \(y\): \(2 - s = t \Rightarrow t = 1\).</p></div>
+<div class="we-s"><p>\(z\): \(2s = 2\) and \(1 + t = 2\) ✓ consistent.</p></div>
+<div class="we-a"><p>Yes, they meet at \((2, 1, 2)\).</p></div>
+</div>
+
+<h2>Planes</h2>
+<div class="eq"><div class="eq-label">Plane through A with normal n</div>\[ \underset{\sim}{r}\cdot\underset{\sim}{n} = \underset{\sim}{a}\cdot\underset{\sim}{n} \quad\Leftrightarrow\quad n_1x + n_2y + n_3z = d \]<p>Given three points, get two vectors in the plane and take their cross product for \(\underset{\sim}{n}\).</p></div>
+<div class="we" data-title="Plane through three points" data-marks="3">
+<div class="we-q"><p>Find the Cartesian equation of the plane through \(A(1, 0, 0)\), \(B(0, 2, 0)\) and \(C(0, 0, 3)\).</p></div>
+<div class="we-t"><p>Reuse the cross product above: \(\underset{\sim}{n} = 6\underset{\sim}{i} + 3\underset{\sim}{j} + 2\underset{\sim}{k}\). Substitute \(A\) to find \(d\).</p></div>
+<div class="we-s"><p>\(6x + 3y + 2z = d\); at \(A\): \(d = 6\).</p></div>
+<div class="we-a"><p>\(6x + 3y + 2z = 6\) (check \(B\): 6 ✓, \(C\): 6 ✓; equivalently \(x + \frac y2 + \frac z3 = 1\)).</p></div>
+</div>
+<div class="we" data-title="Line meets plane" data-marks="3">
+<div class="we-q"><p>Find where the line \(\underset{\sim}{r} = (1, 1, 1) + t(1, 2, -1)\) meets the plane \(2x - y + 3z = 9\).</p></div>
+<div class="we-t"><p>Substitute the parametric coordinates into the plane equation and solve for \(t\).</p></div>
+<div class="we-s"><p>\(2(1 + t) - (1 + 2t) + 3(1 - t) = 9 \Rightarrow 4 - 3t = 9\), \(t = -\frac53\).</p></div>
+<div class="we-a"><p>\(\left(-\frac23, -\frac73, \frac83\right)\).</p></div>
+</div>
+<div class="eq"><div class="eq-label">Angles and distance</div>\[ \text{between planes: } \cos\theta = \frac{|\underset{\sim}{n}_1\cdot\underset{\sim}{n}_2|}{|\underset{\sim}{n}_1||\underset{\sim}{n}_2|} \qquad \text{line and plane: } \sin\theta = \frac{|\underset{\sim}{d}\cdot\underset{\sim}{n}|}{|\underset{\sim}{d}||\underset{\sim}{n}|} \qquad \text{point to plane: } D = \frac{|n_1x_0 + n_2y_0 + n_3z_0 - d|}{|\underset{\sim}{n}|} \]</div>
+<aside class="c-trap"><p>The angle between a line and a plane uses <strong>sine</strong>, because the dot product gives the angle with the <em>normal</em>, which is the complement. A line is parallel to a plane when \(\underset{\sim}{d}\cdot\underset{\sim}{n} = 0\) (then it lies in it or never meets it).</p></aside>
+<aside class="c-exam"><p>Cross products are fine by hand in Exam 1, so practise the determinant expansion with the minus sign on \(\underset{\sim}{j}\). In Exam 2, use CAS <code>crossP</code> and <code>dotP</code>, but still write the set-up.</p></aside>
+
+<h2>Practice</h2>
+<div class="mcq" data-ans="A" data-level="core">
+<div class="mcq-q"><p>\(\underset{\sim}{i}\times\underset{\sim}{j}\) equals</p></div>
+<ol><li>\(\underset{\sim}{k}\)</li><li>\(-\underset{\sim}{k}\)</li><li>0</li><li>1</li></ol>
+<div class="mcq-x"><p>Right-hand rule: \(\underset{\sim}{i}\times\underset{\sim}{j} = \underset{\sim}{k}\), \(\underset{\sim}{j}\times\underset{\sim}{k} = \underset{\sim}{i}\), \(\underset{\sim}{k}\times\underset{\sim}{i} = \underset{\sim}{j}\).</p></div>
+</div>
+<div class="mcq" data-ans="C" data-level="core">
+<div class="mcq-q"><p>A normal to the plane \(x - 2y + 4z = 7\) is</p></div>
+<ol><li>\(\underset{\sim}{i} + 2\underset{\sim}{j} + 4\underset{\sim}{k}\)</li><li>\(7\underset{\sim}{k}\)</li><li>\(-\underset{\sim}{i} + 2\underset{\sim}{j} - 4\underset{\sim}{k}\)</li><li>\(4\underset{\sim}{i} - 2\underset{\sim}{j} + \underset{\sim}{k}\)</li></ol>
+<div class="mcq-x"><p>The coefficients give \((1, -2, 4)\); any non-zero multiple (including −1) is also normal.</p></div>
+</div>
+<div class="mcq" data-ans="B" data-level="hard">
+<div class="mcq-q"><p>The distance from \((1, 2, 3)\) to the plane \(2x + y - 2z = 4\) is</p></div>
+<ol><li>\(\frac43\)</li><li>2</li><li>\(\frac23\)</li><li>6</li></ol>
+<div class="mcq-x"><p>\(\frac{|2 + 2 - 6 - 4|}{3} = \frac63 = 2\).</p></div>
+</div>
+<div class="mcq" data-ans="D" data-level="trick">
+<div class="mcq-q"><p>The line \(\underset{\sim}{r} = (0, 0, 1) + t(1, 1, 1)\) and plane \(x + y - 2z = 0\)</p></div>
+<ol><li>meet at one point</li><li>are perpendicular</li><li>the line lies in the plane</li><li>are parallel and never meet</li></ol>
+<div class="mcq-x"><p>\(\underset{\sim}{d}\cdot\underset{\sim}{n} = 1 + 1 - 2 = 0\), so parallel. \((0, 0, 1)\) gives \(-2 \ne 0\), so not in the plane.</p></div>
+</div>
+<div class="pq" data-level="core" data-marks="2">
+<div class="pq-q"><p>Find \((2\underset{\sim}{i} + \underset{\sim}{j} - \underset{\sim}{k})\times(\underset{\sim}{i} - \underset{\sim}{j} + 3\underset{\sim}{k})\).</p></div>
+<div class="pq-s"><p>\(\underset{\sim}{i}(3 - 1) - \underset{\sim}{j}(6 + 1) + \underset{\sim}{k}(-2 - 1)\). [1]</p><p>\(= 2\underset{\sim}{i} - 7\underset{\sim}{j} - 3\underset{\sim}{k}\). [1]</p></div>
+</div>
+<div class="pq" data-level="hard" data-marks="3">
+<div class="pq-q"><p>Find the acute angle between the planes \(x + y = 3\) and \(y + z = 1\).</p></div>
+<div class="pq-s"><p>Normals \((1, 1, 0)\), \((0, 1, 1)\). [1]</p><p>\(\cos\theta = \frac{1}{\sqrt2\sqrt2} = \frac12\). [1]</p><p>\(\theta = 60°\). [1]</p></div>
+</div>
+<div class="pq" data-level="exam" data-marks="3">
+<div class="pq-q"><p>Find a vector equation of the line through \((1, -1, 2)\) perpendicular to the plane \(3x - y + z = 5\), and where it meets the plane.</p></div>
+<div class="pq-s"><p>\(\underset{\sim}{r} = (1, -1, 2) + t(3, -1, 1)\). [1]</p><p>\(3(1 + 3t) - (-1 - t) + (2 + t) = 5 \Rightarrow 6 + 11t = 5\), \(t = -\frac1{11}\). [1]</p><p>\(\left(\frac{8}{11}, -\frac{10}{11}, \frac{21}{11}\right)\). [1]</p></div>
+</div>
+<h2>Summary</h2>
+<ul>
+  <li>\(\underset{\sim}{a}\times\underset{\sim}{b}\) ⟂ both; \(|\underset{\sim}{a}\times\underset{\sim}{b}|\) = parallelogram area (half for a triangle).</li>
+  <li>Line: \(\underset{\sim}{r} = \underset{\sim}{a} + t\underset{\sim}{d}\). Plane: \(\underset{\sim}{r}\cdot\underset{\sim}{n} = \underset{\sim}{a}\cdot\underset{\sim}{n}\), i.e. \(n_1x + n_2y + n_3z = d\).</li>
+  <li>Intersections: substitute parametric form. Skew: not parallel and no solution.</li>
+  <li>Line–plane angle uses sine; point–plane distance \(\frac{|n\cdot p - d|}{|n|}\).</li>
+</ul>
