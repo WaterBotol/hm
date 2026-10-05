@@ -114,7 +114,7 @@ const simsJs = readdirSync(src('sims')).filter(f => f.endsWith('.js')).sort().ma
 const safe = s => s.replace(/<\/script/gi, '<\\/script');
 
 const TITLE = 'VCE 3/4 Field Guide';
-const DESC = 'Free interactive study guide for VCE Units 3 & 4 Mathematical Methods, Physics, Chemistry, Biology and English Language: explanations, worked solutions, exam-style questions, simulations and search.';
+const DESC = 'Free interactive study guide for VCE Units 3 & 4 Mathematical Methods, Specialist Mathematics, Physics, Chemistry, Biology and English Language: explanations, worked solutions, exam-style questions, simulations and search.';
 const FONTS = '<link rel="preconnect" href="https://fonts.googleapis.com">\n<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400..800&family=IBM+Plex+Mono:wght@400;500;600&display=swap">';
 
 const full = `<!doctype html>

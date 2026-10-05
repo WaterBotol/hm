@@ -372,7 +372,7 @@
   function renderNav(activeId) {
     const s = SUBJ[S.subject];
     let h = '<div class="subj-switch" role="tablist" aria-label="Subjects">' + G.subjects.map(x =>
-      '<button type="button" role="tab" class="subj-btn" data-s="' + x.id + '" aria-selected="' + (x.id === S.subject) + '" aria-label="' + esc(x.name) + '">' + subjIcon(x.id) + '<span>' + esc(x.short.split(' ')[0]) + '</span></button>').join('') + '</div>';
+      '<button type="button" role="tab" class="subj-btn" data-s="' + x.id + '" aria-selected="' + (x.id === S.subject) + '" aria-label="' + esc(x.name) + '">' + subjIcon(x.id) + '<span>' + esc(({ methods: 'Methods', specialist: 'Spec', physics: 'Physics', chemistry: 'Chem', biology: 'Bio', english: 'English' })[x.id] || x.short.split(' ')[0]) + '</span></button>').join('') + '</div>';
     if (s) {
       const p = progress(s.id);
       h += '<a class="nav-subj-title" href="#' + (s.order[0] ? s.order[0].id : 'home') + '">' + esc(s.name) + '</a>';

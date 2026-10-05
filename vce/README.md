@@ -1,6 +1,6 @@
 # VCE 3/4 Field Guide
 
-An interactive study guide for **VCE Units 3 & 4** in five subjects: **Mathematical Methods, Physics, Chemistry, Biology and English Language**. It has detailed explanations, step-by-step worked solutions, about 1,100 practice questions (basic → exam-level → trick), a cross-subject trick-question quiz, a review list, glossaries, 38 interactive simulations and a search bar across every subject.
+An interactive study guide for **VCE Units 3 & 4** in six subjects: **Mathematical Methods, Specialist Mathematics, Physics, Chemistry, Biology and English Language**. It has detailed explanations, step-by-step worked solutions, about 1,800 practice questions (basic → exam-level → trick), a cross-subject trick-question quiz, a review list, glossaries, 44 interactive simulations and a search bar across every subject.
 
 The whole site is one self-contained file, `index.html`. It needs no server, no login and no build step to use.
 
@@ -17,6 +17,7 @@ The whole site is one self-contained file, `index.html`. It needs no server, no 
 | Subject | Pages | Highlights |
 |---|---|---|
 | Mathematical Methods | 30 | Functions and transformations, calculus, probability and statistics; Exam 1 (tech-free) and Exam 2 (CAS) practice; transformation, tangent, Newton's method, trapezium, binomial, normal and confidence-interval simulations |
+| Specialist Mathematics | 40 | Logic and proof, induction, complex numbers, rational functions, advanced calculus, differential equations, kinematics, vectors, lines and planes, linear combinations and inference; Exam 1 and Exam 2 practice sets plus six real-VCAA-question papers; Argand-diagram, rational-graph, complex-roots, slope-field/Euler and sample-mean simulations |
 | Physics | 38 | Motion (incl. rollercoasters and tension), fields, generation and transmission, light and matter, relativity, practical investigation; 16 simulations |
 | Chemistry | 28 | Fuels, galvanic and electrolytic cells, rates and equilibrium, organic reactions and analysis, food chemistry; galvanic cell, Maxwell–Boltzmann, equilibrium and NMR simulations |
 | Biology | 24 | Nucleic acids and proteins, DNA tools, enzymes, photosynthesis and respiration, immunity, disease, evolution; translation/mutation, gel, enzyme, photosynthesis and genetic drift simulations |
