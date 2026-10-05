@@ -88,6 +88,9 @@
       });
     } catch (e) { console.error(e); }
     requestAnimationFrame(() => fitMath(root));
+    // layout (fonts, formula chips, sims) can still settle after the first frame: check again shortly after
+    setTimeout(() => fitMath(root), 250);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => fitMath(root));
   }
   // KaTeX can't line-break inside one group (a whole \ce equation, a big fraction), so on narrow
   // screens shrink an overflowing formula by up to 22%, and if it still won't fit let it scroll as a block.
@@ -114,6 +117,20 @@
       if (r >= 0.78) k.style.fontSize = (1.08 * r * 0.95).toFixed(3) + 'em';
       else { k.style.fontSize = (1.08 * 0.78).toFixed(3) + 'em'; if (!disp) k.classList.add('k-wide'); }
     });
+    // shrinking can reflow its container (e.g. a step beside its formula chips), so re-measure displayed maths
+    // and tighten the ones that still spill, down to 70%
+    for (let pass = 0; pass < 2; pass++) {
+      let again = false;
+      $$('.katex-display > .katex', root).forEach(k => {
+        if (!k.offsetParent || k.closest('table, .fs-card')) return;
+        const box = k.parentElement, need = box.scrollWidth, have = box.clientWidth;
+        if (have > 0 && need > have + 1) {
+          const cur = parseFloat(k.style.fontSize) || 1.08, next = Math.max(1.08 * 0.7, cur * (have / need) * 0.97);
+          if (next < cur - 0.001) { k.classList.add('k-fit'); k.style.fontSize = next.toFixed(3) + 'em'; again = true; }
+        }
+      });
+      if (!again) break;
+    }
   }
   let fitT;
   window.addEventListener('resize', () => { clearTimeout(fitT); fitT = setTimeout(() => fitMath(main), 150); });

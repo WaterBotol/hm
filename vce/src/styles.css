@@ -635,11 +635,17 @@ svg .t-w { fill: var(--fw); } svg .t-n { fill: var(--fn); } svg .t-t { fill: var
 .we-t { margin: 2px 16px 12px; padding: 11px 15px 13px; background: var(--surface-2); border-radius: 14px; font-size: 15.5px; color: var(--ink-2); }
 .we-t-h { font-family: var(--font-body); font-size: 12.5px; font-weight: 600; letter-spacing: -0.005em; color: var(--accent); margin-bottom: 4px; }
 .we-t p { margin: 0; }
-.we-s.has-sf, .we-a.has-sf { display: flex; gap: 6px 18px; align-items: flex-start; }
-.s-body { flex: 1 1 auto; min-width: 0; }
+.we-s.has-sf, .we-a.has-sf { display: flex; flex-wrap: wrap; gap: 6px 18px; align-items: flex-start; }
+.s-body { flex: 1 1 0; min-width: 0; }
 .s-body > * + * { margin-top: 0.55rem; }
 .s-f { flex: 0 0 auto; width: 30%; min-width: 150px; max-width: 250px; display: grid; gap: 6px; padding: 8px 11px 9px; border-radius: 12px; background: var(--surface-2); font-size: 14px; }
 .has-sf > .s-f { margin-top: 0; }
+/* stack the formula chips under the working whenever the step itself is narrow (sidebar + mid-size screens) */
+.we-s, .we-a { container-type: inline-size; }
+@container (max-width: 620px) {
+  .we-s.has-sf > .s-body, .we-a.has-sf > .s-body { flex-basis: 100%; }
+  .s-f { width: auto; max-width: none; min-width: 0; flex: 1 1 100%; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; }
+}
 .s-f-h { font-family: var(--font-body); font-size: 11.5px; font-weight: 600; letter-spacing: -0.005em; color: var(--muted); }
 .s-f-i { display: block; overflow-x: auto; overflow-y: hidden; padding: 1px 8px 1px 0; margin-right: -8px; line-height: 1.45; }
 .fx-t { color: var(--ink-2); }

@@ -247,7 +247,7 @@
     if (yr[0] < 0 && yr[1] > 0) { ctx.strokeStyle = c.muted; ctx.beginPath(); ctx.moveTo(x, Y(0)); ctx.lineTo(x + w, Y(0)); ctx.stroke(); }
     if (labels) {
       ctx.fillStyle = c.ink2; ctx.font = '12px ' + c.font;
-      if (labels.x) { ctx.textAlign = 'right'; ctx.fillText(labels.x, x + w, y + h + 28); }
+      if (labels.x) { ctx.textAlign = 'right'; ctx.fillText(labels.x, x + w, Math.min(y + h + 28, (ctx.canvas.clientHeight || 1e9) - 4)); }
       if (labels.y) { ctx.textAlign = 'left'; ctx.fillText(labels.y, x + 2, y - 6); }
     }
     ctx.restore();
