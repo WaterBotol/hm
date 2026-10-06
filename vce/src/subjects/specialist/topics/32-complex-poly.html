@@ -1,0 +1,100 @@
+<!--
+id: complex-poly
+title: Polynomials over C: factorising and solving
+short: Polynomials over C
+summary: Factorising polynomials over the complex numbers: completing the square, sums of squares, the factor theorem, the conjugate root theorem for real polynomials, the fundamental theorem of algebra, and solving quadratics with complex coefficients.
+keywords: factorise over C, complex roots, conjugate root theorem, fundamental theorem of algebra, factor theorem, remainder theorem, sum of two squares, completing the square, quadratic formula complex, polynomial equation, cubic, quartic, real coefficients, complex coefficients, z^2 + a^2, linear factors
+dotpoints: factors over C of polynomials, and introduction to the fundamental theorem of algebra, including its application to factorisation of polynomial functions of a single variable over C | solution over C of polynomial equations by completing the square, use of the quadratic factorisation and the conjugate root theorem
+-->
+<h2>Factorising over C</h2>
+<p>Over \(\mathbb{C}\), every quadratic factorises, because sums of squares become differences of squares: \(z^2 + a^2 = z^2 - (ai)^2 = (z - ai)(z + ai)\).</p>
+<div class="we" data-title="Complete the square" data-marks="2">
+<div class="we-q"><p>Factorise \(z^2 - 4z + 13\) over \(\mathbb{C}\).</p></div>
+<div class="we-t"><p>Complete the square to get (something)\(^2\) + (positive number), then write the positive number as \(-(\text{imaginary})^2\) and use the difference of squares.</p></div>
+<div class="we-s"><p>\(z^2 - 4z + 13 = (z - 2)^2 + 9 = (z - 2)^2 - (3i)^2\).</p></div>
+<div class="we-a"><p>\(= (z - 2 - 3i)(z - 2 + 3i)\). Roots \(z = 2 \pm 3i\).</p></div>
+</div>
+
+<h2>The conjugate root theorem</h2>
+<div class="eq"><div class="eq-label">Real coefficients ⇒ conjugate pairs</div>\[ P(z) \text{ has real coefficients and } P(\alpha) = 0 \ \Rightarrow\ P(\bar\alpha) = 0 \]<p>So non-real roots of real polynomials come in conjugate pairs, and each pair gives a <strong>real quadratic factor</strong>: \((z - \alpha)(z - \bar\alpha) = z^2 - 2\operatorname{Re}(\alpha)z + |\alpha|^2\).</p></div>
+<aside class="c-trap"><p>The theorem needs <strong>real coefficients</strong>. For \(z^2 - iz + 2 = 0\) the roots are \(2i\) and \(-i\), not a conjugate pair.</p></aside>
+<div class="we" data-title="Use a given root to factorise a cubic" data-marks="3">
+<div class="we-q"><p>Given that \(1 + 2i\) is a root of \(P(z) = z^3 - 5z^2 + 11z - 15\), find all roots.</p></div>
+<div class="we-t"><p>The coefficients are real, so \(1 - 2i\) is also a root, giving a real quadratic factor. Divide (or compare coefficients) to find the last linear factor.</p></div>
+<div class="we-s" data-f="(z - \alpha)(z - \bar\alpha) = z^2 - 2\operatorname{Re}(\alpha) z + |\alpha|^2"><p>Quadratic factor: \(z^2 - 2z + 5\).</p></div>
+<div class="we-s"><p>\(z^3 - 5z^2 + 11z - 15 = (z^2 - 2z + 5)(z - 3)\). (Check: constant \(5 \times -3 = -15\) ✓, \(z^2\): \(-3 - 2 = -5\) ✓.)</p></div>
+<div class="we-a"><p>Roots: \(z = 1 + 2i,\ 1 - 2i,\ 3\).</p></div>
+</div>
+
+<h2>The fundamental theorem of algebra</h2>
+<div class="eq"><div class="eq-label">FTA</div>\[ \text{A polynomial of degree } n \ge 1 \text{ with complex coefficients has exactly } n \text{ roots in } \mathbb{C} \text{ (counted with multiplicity)} \]<p>So it factorises completely into \(n\) linear factors over \(\mathbb{C}\). A real polynomial of odd degree must have at least one real root.</p></div>
+<div class="we" data-title="A quartic with a factor theorem start" data-marks="3">
+<div class="we-q"><p>Solve \(z^4 + 5z^2 + 4 = 0\) over \(\mathbb{C}\).</p></div>
+<div class="we-t"><p>It's a quadratic in \(z^2\). Factorise, then factorise each sum of squares.</p></div>
+<div class="we-s"><p>\((z^2 + 1)(z^2 + 4) = 0\).</p></div>
+<div class="we-a"><p>\(z = \pm i\) or \(z = \pm 2i\). Factorised: \((z - i)(z + i)(z - 2i)(z + 2i)\).</p></div>
+</div>
+<div class="we" data-title="Factor theorem with a complex root" data-marks="3">
+<div class="we-q"><p>Show that \(z = i\) is a root of \(P(z) = z^3 + (1 - i)z^2 + (1 - i)z - i\) and hence solve \(P(z) = 0\).</p></div>
+<div class="we-t"><p>This polynomial has complex coefficients, so the conjugate root theorem doesn't apply. Substitute to check the root, divide by \(z - i\), then solve the remaining quadratic.</p></div>
+<div class="we-s"><p>\(P(i) = -i + (1 - i)(-1) + (1 - i)i - i = -i - 1 + i + i + 1 - i = 0\) ✓.</p></div>
+<div class="we-s"><p>Divide: \(P(z) = (z - i)(z^2 + z + 1)\). (Expand to check: \(z^3 + z^2 + z - iz^2 - iz - i\) ✓.)</p></div>
+<div class="we-a"><p>\(z^2 + z + 1 = 0 \Rightarrow z = \dfrac{-1 \pm \sqrt3 i}{2}\). Roots: \(i,\ -\frac12 \pm \frac{\sqrt3}{2}i\).</p></div>
+</div>
+
+<h2>Quadratics with complex coefficients</h2>
+<p>The quadratic formula still works; you may need the square root of a complex number (see <a href="#complex">complex numbers</a>, or use polar form).</p>
+<div class="we" data-title="Quadratic formula with a complex discriminant" data-marks="3">
+<div class="we-q"><p>Solve \(z^2 - (3 + i)z + (2 + 2i) = 0\).</p></div>
+<div class="we-t"><p>Find the discriminant, take its square root by solving \((x + yi)^2 = \Delta\), and finish with the formula.</p></div>
+<div class="we-s" data-f="\Delta = b^2 - 4ac"><p>\(\Delta = (3 + i)^2 - 4(2 + 2i) = 8 + 6i - 8 - 8i = -2i\).</p></div>
+<div class="we-s"><p>\(\sqrt{-2i}\): \((x + yi)^2 = -2i \Rightarrow x^2 = y^2,\ 2xy = -2\): \(\pm(1 - i)\).</p></div>
+<div class="we-a"><p>\(z = \dfrac{3 + i \pm (1 - i)}{2}\): \(z = 2\) or \(z = 1 + i\).</p></div>
+</div>
+<aside class="c-exam"><p>Typical marks: 1 for using the conjugate root (stating the coefficients are real), 1 for the quadratic factor, 1 for the remaining factor/roots. "Factorise over C" means linear factors; "factorise over R" means real quadratics may remain.</p></aside>
+
+<h2>Practice</h2>
+<div class="mcq" data-ans="A" data-level="core">
+<div class="mcq-q"><p>Over \(\mathbb{C}\), \(z^2 + 6z + 10\) factorises as</p></div>
+<ol><li>\((z + 3 - i)(z + 3 + i)\)</li><li>\((z - 3 - i)(z - 3 + i)\)</li><li>\((z + 3)^2 + 1\)</li><li>\((z + 1)(z + 10)\)</li></ol>
+<div class="mcq-x"><p>\((z + 3)^2 + 1 = (z + 3)^2 - i^2\). C isn't factorised.</p></div>
+</div>
+<div class="mcq" data-ans="C" data-level="core">
+<div class="mcq-q"><p>A cubic with real coefficients has roots \(2\) and \(3 - i\). Its third root is</p></div>
+<ol><li>\(-2\)</li><li>\(-3 + i\)</li><li>\(3 + i\)</li><li>\(3i\)</li></ol>
+<div class="mcq-x"><p>Conjugate root theorem.</p></div>
+</div>
+<div class="mcq" data-ans="D" data-level="trick">
+<div class="mcq-q"><p>The polynomial \(z^2 - 2iz - 2\) has roots</p></div>
+<ol><li>\(1 + i\) and \(1 - i\)</li><li>\(\pm\sqrt2\)</li><li>\(i \pm 1\) and their conjugates</li><li>\(1 + i\) and \(-1 + i\)</li></ol>
+<div class="mcq-x"><p>\((z - i)^2 - 1 = 0 \Rightarrow z = i \pm 1\). Not a conjugate pair: the coefficients aren't real.</p></div>
+</div>
+<div class="mcq" data-ans="B" data-level="hard">
+<div class="mcq-q"><p>A real polynomial of degree 5 must have</p></div>
+<ol><li>5 real roots</li><li>at least one real root</li><li>exactly one real root</li><li>no real roots</li></ol>
+<div class="mcq-x"><p>Non-real roots pair up, so an odd number of roots must include a real one.</p></div>
+</div>
+<div class="mcq" data-ans="A" data-level="exam">
+<div class="mcq-q"><p>If \(z = 2 - i\) is a root of \(z^2 + bz + c = 0\) with \(b, c \in \mathbb{R}\), then \((b, c)\) is</p></div>
+<ol><li>\((-4, 5)\)</li><li>\((4, 5)\)</li><li>\((-4, 3)\)</li><li>\((-2, 5)\)</li></ol>
+<div class="mcq-x"><p>\(z^2 - 2\operatorname{Re}(z) z + |z|^2 = z^2 - 4z + 5\).</p></div>
+</div>
+<div class="pq" data-level="core" data-marks="2">
+<div class="pq-q"><p>Solve \(z^2 + 2z + 5 = 0\) over \(\mathbb{C}\).</p></div>
+<div class="pq-s"><p>\((z + 1)^2 + 4 = 0 \Rightarrow (z + 1)^2 = -4\). [1]</p><p>\(z = -1 \pm 2i\). [1]</p></div>
+</div>
+<div class="pq" data-level="hard" data-marks="3">
+<div class="pq-q"><p>Given \(z = -1 + i\) is a root of \(z^3 + 3z^2 + 4z + 2 = 0\), find the other roots.</p></div>
+<div class="pq-s"><p>Real coefficients, so \(-1 - i\) is a root: factor \(z^2 + 2z + 2\). [1]</p><p>\(z^3 + 3z^2 + 4z + 2 = (z^2 + 2z + 2)(z + 1)\). [1]</p><p>Roots \(-1 \pm i\) and \(-1\). [1]</p></div>
+</div>
+<div class="pq" data-level="exam" data-marks="4">
+<div class="pq-q"><p>Let \(P(z) = z^4 - 2z^3 + 6z^2 - 2z + 5\). Verify that \(P(i) = 0\), and hence factorise \(P(z)\) over \(\mathbb{C}\).</p></div>
+<div class="pq-s"><p>\(P(i) = 1 + 2i - 6 - 2i + 5 = 0\). [1]</p><p>Real coefficients, so \(-i\) is a root: factor \(z^2 + 1\). [1]</p><p>\(P(z) = (z^2 + 1)(z^2 - 2z + 5)\). [1]</p><p>\(= (z - i)(z + i)(z - 1 - 2i)(z - 1 + 2i)\). [1]</p></div>
+</div>
+<h2>Summary</h2>
+<ul>
+  <li data-q="How do you factorise a sum of two squares over \(\mathbb{C}\), and what technique handles a general quadratic?">Complete the square; \(A^2 + B^2 = (A - Bi)(A + Bi)\).</li>
+  <li data-q="What does the conjugate root theorem say, and what real quadratic factor does a pair \(\alpha, \bar\alpha\) give?">Real coefficients: roots in conjugate pairs; pair → \(z^2 - 2\operatorname{Re}(\alpha)z + |\alpha|^2\).</li>
+  <li data-q="How many roots does a degree-\(n\) polynomial have over \(\mathbb{C}\)? What must every odd-degree real polynomial have?">Degree \(n\) ⇒ exactly \(n\) roots over \(\mathbb{C}\); odd-degree real polynomials have a real root.</li>
+  <li data-q="What changes when a polynomial has complex (non-real) coefficients?">Complex coefficients: use the factor theorem and the quadratic formula; no conjugate shortcut.</li>
+</ul>

@@ -1,0 +1,95 @@
+<!--
+id: vectors
+title: Vectors in two and three dimensions
+short: Vectors & dot product
+summary: Vector notation and operations in 2D and 3D, magnitude and unit vectors, linear dependence and independence, the scalar (dot) product, angles between vectors, perpendicularity, and scalar and vector resolutes (projections).
+keywords: vector, i j k, component, magnitude, unit vector, vector hat, position vector, parallel vectors, collinear, linear dependence, linear independence, linear combination, scalar product, dot product, angle between vectors, perpendicular, orthogonal, scalar resolute, vector resolute, projection, direction cosines
+dotpoints: vectors in two and three dimensions, magnitude and unit vectors | linear dependence and independence | scalar product, angle between vectors, orthogonality | scalar and vector resolutes
+-->
+<h2>Vector basics</h2>
+<p>A vector \(\underset{\sim}{a} = a_1\underset{\sim}{i} + a_2\underset{\sim}{j} + a_3\underset{\sim}{k}\) has magnitude and direction. \(\overrightarrow{AB} = \underset{\sim}{b} - \underset{\sim}{a}\) (end minus start).</p>
+<div class="eq"><div class="eq-label">Magnitude and unit vector</div>\[ |\underset{\sim}{a}| = \sqrt{a_1^2 + a_2^2 + a_3^2}, \qquad \hat{\underset{\sim}{a}} = \frac{1}{|\underset{\sim}{a}|}\,\underset{\sim}{a} \]</div>
+<aside class="c-key"><p>Two vectors are <strong>parallel</strong> iff one is a scalar multiple of the other: \(\underset{\sim}{a} = m\underset{\sim}{b}\). Points \(A, B, C\) are <strong>collinear</strong> iff \(\overrightarrow{AB} = m\overrightarrow{AC}\).</p></aside>
+<div class="we" data-title="Unit vector and parallel vectors" data-marks="2">
+<div class="we-q"><p>Find a vector of magnitude 6 in the direction of \(\underset{\sim}{a} = 2\underset{\sim}{i} - \underset{\sim}{j} + 2\underset{\sim}{k}\).</p></div>
+<div class="we-t"><p>Find the unit vector, then multiply by 6.</p></div>
+<div class="we-s"><p>\(|\underset{\sim}{a}| = \sqrt{4 + 1 + 4} = 3\), so \(\hat{\underset{\sim}{a}} = \frac13(2\underset{\sim}{i} - \underset{\sim}{j} + 2\underset{\sim}{k})\).</p></div>
+<div class="we-a"><p>\(4\underset{\sim}{i} - 2\underset{\sim}{j} + 4\underset{\sim}{k}\).</p></div>
+</div>
+
+<h2>Linear dependence</h2>
+<aside class="c-def" data-title="Linear dependence"><p>Vectors \(\underset{\sim}{a}, \underset{\sim}{b}, \underset{\sim}{c}\) are <strong>linearly dependent</strong> if one is a linear combination of the others, i.e. \(\underset{\sim}{c} = m\underset{\sim}{a} + n\underset{\sim}{b}\) has a solution (equivalently, they're coplanar). Otherwise they're linearly independent.</p></aside>
+<div class="we" data-title="Testing three vectors" data-marks="3">
+<div class="we-q"><p>Show that \(\underset{\sim}{a} = \underset{\sim}{i} + 2\underset{\sim}{j} - \underset{\sim}{k}\), \(\underset{\sim}{b} = 2\underset{\sim}{i} - \underset{\sim}{j} + \underset{\sim}{k}\) and \(\underset{\sim}{c} = 4\underset{\sim}{i} + 3\underset{\sim}{j} - \underset{\sim}{k}\) are linearly dependent.</p></div>
+<div class="we-t"><p>Try \(\underset{\sim}{c} = m\underset{\sim}{a} + n\underset{\sim}{b}\). Solve two component equations, then check the third.</p></div>
+<div class="we-s"><p>\(i\): \(m + 2n = 4\); \(j\): \(2m - n = 3\). So \(m = 2\), \(n = 1\).</p></div>
+<div class="we-a"><p>\(k\): \(-m + n = -2 + 1 = -1\) ✓. So \(\underset{\sim}{c} = 2\underset{\sim}{a} + \underset{\sim}{b}\): linearly dependent.</p></div>
+</div>
+
+<h2>The scalar (dot) product</h2>
+<div class="eq"><div class="eq-label">Dot product</div>\[ \underset{\sim}{a}\cdot\underset{\sim}{b} = a_1b_1 + a_2b_2 + a_3b_3 = |\underset{\sim}{a}||\underset{\sim}{b}|\cos\theta, \qquad \underset{\sim}{a}\cdot\underset{\sim}{a} = |\underset{\sim}{a}|^2 \]<p>Non-zero vectors are perpendicular iff \(\underset{\sim}{a}\cdot\underset{\sim}{b} = 0\). The dot product is distributive and commutative.</p></div>
+<div class="we" data-title="Angle between two vectors" data-marks="3">
+<div class="we-q"><p>Find the angle between \(\underset{\sim}{a} = \underset{\sim}{i} + \underset{\sim}{j}\) and \(\underset{\sim}{b} = \underset{\sim}{j} + \underset{\sim}{k}\).</p></div>
+<div class="we-t"><p>\(\cos\theta = \frac{\underset{\sim}{a}\cdot\underset{\sim}{b}}{|\underset{\sim}{a}||\underset{\sim}{b}|}\).</p></div>
+<div class="we-s" data-f="\cos\theta = \dfrac{a \cdot b}{|a||b|}"><p>\(\underset{\sim}{a}\cdot\underset{\sim}{b} = 0 + 1 + 0 = 1\); \(|\underset{\sim}{a}| = |\underset{\sim}{b}| = \sqrt2\).</p></div>
+<div class="we-a"><p>\(\cos\theta = \frac12\), so \(\theta = \frac\pi3\) (60°).</p></div>
+</div>
+<div class="we" data-title="Finding an unknown for perpendicularity" data-marks="2">
+<div class="we-q"><p>Find \(m\) so that \(m\underset{\sim}{i} + 2\underset{\sim}{j} - \underset{\sim}{k}\) is perpendicular to \(3\underset{\sim}{i} - \underset{\sim}{j} + 4\underset{\sim}{k}\).</p></div>
+<div class="we-t"><p>Set the dot product to zero.</p></div>
+<div class="we-s"><p>\(3m - 2 - 4 = 0\).</p></div>
+<div class="we-a"><p>\(m = 2\).</p></div>
+</div>
+
+<h2>Resolutes (projections)</h2>
+<div class="eq"><div class="eq-label">Resolving a in the direction of b</div>\[ \text{scalar resolute} = \underset{\sim}{a}\cdot\hat{\underset{\sim}{b}}, \qquad \text{vector resolute (parallel)} = (\underset{\sim}{a}\cdot\hat{\underset{\sim}{b}})\,\hat{\underset{\sim}{b}}, \qquad \text{perpendicular part} = \underset{\sim}{a} - (\underset{\sim}{a}\cdot\hat{\underset{\sim}{b}})\,\hat{\underset{\sim}{b}} \]</div>
+<div class="we" data-title="Resolving a vector" data-marks="3">
+<div class="we-q"><p>Let \(\underset{\sim}{a} = 3\underset{\sim}{i} + \underset{\sim}{j} - 2\underset{\sim}{k}\) and \(\underset{\sim}{b} = \underset{\sim}{i} + 2\underset{\sim}{j} + 2\underset{\sim}{k}\). Resolve \(\underset{\sim}{a}\) into parts parallel and perpendicular to \(\underset{\sim}{b}\).</p></div>
+<div class="we-t"><p>\(|\underset{\sim}{b}| = 3\) so \(\hat{\underset{\sim}{b}} = \frac13\underset{\sim}{b}\). Scalar resolute first, then the vector resolute, then subtract.</p></div>
+<div class="we-s"><p>\(\underset{\sim}{a}\cdot\hat{\underset{\sim}{b}} = \frac13(3 + 2 - 4) = \frac13\).</p></div>
+<div class="we-s"><p>Parallel: \(\frac13\cdot\frac13\underset{\sim}{b} = \frac19(\underset{\sim}{i} + 2\underset{\sim}{j} + 2\underset{\sim}{k})\).</p></div>
+<div class="we-a"><p>Perpendicular: \(\underset{\sim}{a} - \frac19\underset{\sim}{b} = \frac19(26\underset{\sim}{i} + 7\underset{\sim}{j} - 20\underset{\sim}{k})\). Check: dot with \(\underset{\sim}{b}\) is \(\frac19(26 + 14 - 40) = 0\) ✓.</p></div>
+</div>
+<aside class="c-trap"><p>The scalar resolute uses the <em>unit</em> vector \(\hat{\underset{\sim}{b}}\), not \(\underset{\sim}{b}\). Forgetting to divide by \(|\underset{\sim}{b}|\) (or dividing only once in the vector resolute, which needs \(|\underset{\sim}{b}|^2\)) is the classic error.</p></aside>
+<aside class="c-exam"><p>Exam 1 loves "find the vector resolute of \(\underset{\sim}{a}\) perpendicular to \(\underset{\sim}{b}\)" and "find \(m\) such that... are linearly dependent". Always show the check of the third component.</p></aside>
+
+<h2>Practice</h2>
+<div class="mcq" data-ans="B" data-level="core">
+<div class="mcq-q"><p>The magnitude of \(2\underset{\sim}{i} - 3\underset{\sim}{j} + 6\underset{\sim}{k}\) is</p></div>
+<ol><li>5</li><li>7</li><li>49</li><li>\(\sqrt{11}\)</li></ol>
+<div class="mcq-x"><p>\(\sqrt{4 + 9 + 36} = 7\).</p></div>
+</div>
+<div class="mcq" data-ans="D" data-level="core">
+<div class="mcq-q"><p>If \(\underset{\sim}{a} = \underset{\sim}{i} - 2\underset{\sim}{j} + 3\underset{\sim}{k}\) and \(\underset{\sim}{b} = 4\underset{\sim}{i} + \underset{\sim}{j} - \underset{\sim}{k}\), then \(\underset{\sim}{a}\cdot\underset{\sim}{b}\) is</p></div>
+<ol><li>5</li><li>\(4\underset{\sim}{i} - 2\underset{\sim}{j} - 3\underset{\sim}{k}\)</li><li>9</li><li>\(-1\)</li></ol>
+<div class="mcq-x"><p>\(4 - 2 - 3 = -1\). The dot product is a scalar.</p></div>
+</div>
+<div class="mcq" data-ans="A" data-level="hard">
+<div class="mcq-q"><p>The scalar resolute of \(\underset{\sim}{a} = 2\underset{\sim}{i} + \underset{\sim}{j}\) in the direction of \(\underset{\sim}{b} = 3\underset{\sim}{i} + 4\underset{\sim}{j}\) is</p></div>
+<ol><li>2</li><li>10</li><li>\(\frac{2}{\sqrt5}\)</li><li>\(\frac25\)</li></ol>
+<div class="mcq-x"><p>\(\frac{6 + 4}{5} = 2\).</p></div>
+</div>
+<div class="mcq" data-ans="C" data-level="trick">
+<div class="mcq-q"><p>Which set of vectors is linearly independent?</p></div>
+<ol><li>\(\underset{\sim}{i},\ \underset{\sim}{j},\ \underset{\sim}{i} + \underset{\sim}{j}\)</li><li>\(\underset{\sim}{i} + \underset{\sim}{k},\ 2\underset{\sim}{i} + 2\underset{\sim}{k},\ \underset{\sim}{j}\)</li><li>\(\underset{\sim}{i} + \underset{\sim}{j},\ \underset{\sim}{j} + \underset{\sim}{k},\ \underset{\sim}{i} + \underset{\sim}{k}\)</li><li>\(\underset{\sim}{i} - \underset{\sim}{j},\ \underset{\sim}{j} - \underset{\sim}{k},\ \underset{\sim}{k} - \underset{\sim}{i}\)</li></ol>
+<div class="mcq-x"><p>D sums to zero; A and B have obvious combinations. For C, \(m(\underset{\sim}{i} + \underset{\sim}{j}) + n(\underset{\sim}{j} + \underset{\sim}{k}) = \underset{\sim}{i} + \underset{\sim}{k}\) needs \(m = 1\), \(n = 1\) and \(m + n = 0\): impossible.</p></div>
+</div>
+<div class="pq" data-level="core" data-marks="2">
+<div class="pq-q"><p>Find the unit vector in the direction of \(\overrightarrow{AB}\), where \(A(1, 2, 3)\) and \(B(3, 1, 5)\).</p></div>
+<div class="pq-s"><p>\(\overrightarrow{AB} = 2\underset{\sim}{i} - \underset{\sim}{j} + 2\underset{\sim}{k}\), magnitude 3. [1]</p><p>\(\frac13(2\underset{\sim}{i} - \underset{\sim}{j} + 2\underset{\sim}{k})\). [1]</p></div>
+</div>
+<div class="pq" data-level="hard" data-marks="3">
+<div class="pq-q"><p>Find \(p\) such that \(\underset{\sim}{i} + p\underset{\sim}{j} + \underset{\sim}{k}\), \(2\underset{\sim}{i} + \underset{\sim}{j} - \underset{\sim}{k}\) and \(\underset{\sim}{i} + 3\underset{\sim}{j} - 2\underset{\sim}{k}\) are linearly dependent.</p></div>
+<div class="pq-s"><p>Set \(\underset{\sim}{i} + 3\underset{\sim}{j} - 2\underset{\sim}{k} = m(\underset{\sim}{i} + p\underset{\sim}{j} + \underset{\sim}{k}) + n(2\underset{\sim}{i} + \underset{\sim}{j} - \underset{\sim}{k})\). [1]</p><p>\(i\): \(m + 2n = 1\); \(k\): \(m - n = -2\) ⇒ \(n = 1\), \(m = -1\). [1]</p><p>\(j\): \(-p + 1 = 3 \Rightarrow p = -2\). [1]</p></div>
+</div>
+<div class="pq" data-level="exam" data-marks="3">
+<div class="pq-q"><p>Find the vector resolute of \(\underset{\sim}{a} = 4\underset{\sim}{i} - \underset{\sim}{j} + \underset{\sim}{k}\) perpendicular to \(\underset{\sim}{b} = \underset{\sim}{i} + \underset{\sim}{j}\).</p></div>
+<div class="pq-s"><p>\(\underset{\sim}{a}\cdot\underset{\sim}{b} = 3\), \(|\underset{\sim}{b}|^2 = 2\). [1]</p><p>Parallel part \(= \frac32(\underset{\sim}{i} + \underset{\sim}{j})\). [1]</p><p>Perpendicular \(= \frac52\underset{\sim}{i} - \frac52\underset{\sim}{j} + \underset{\sim}{k}\). [1]</p></div>
+</div>
+<h2>Summary</h2>
+<ul>
+  <li data-q="How do you find the magnitude, the unit vector and \(\overrightarrow{AB}\)?">\(|\underset{\sim}{a}| = \sqrt{a_1^2 + a_2^2 + a_3^2}\); \(\hat{\underset{\sim}{a}} = \underset{\sim}{a}/|\underset{\sim}{a}|\); \(\overrightarrow{AB} = \underset{\sim}{b} - \underset{\sim}{a}\).</li>
+  <li data-q="How do you show two vectors are parallel, and that three vectors are linearly dependent?">Parallel: scalar multiple. Dependent: one is a combination of the others (check all components).</li>
+  <li data-q="Write the two forms of the dot product, and what a zero dot product means.">\(\underset{\sim}{a}\cdot\underset{\sim}{b} = |\underset{\sim}{a}||\underset{\sim}{b}|\cos\theta\); zero means perpendicular.</li>
+  <li data-q="Write the vector resolute of \(\underset{\sim}{a}\) in the direction of \(\underset{\sim}{b}\), and the perpendicular part.">Vector resolute \(= \frac{\underset{\sim}{a}\cdot\underset{\sim}{b}}{|\underset{\sim}{b}|^2}\underset{\sim}{b}\); perpendicular part \(= \underset{\sim}{a} -\) that.</li>
+</ul>

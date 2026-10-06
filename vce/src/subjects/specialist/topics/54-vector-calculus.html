@@ -1,0 +1,85 @@
+<!--
+id: vector-calculus
+title: Vector calculus: motion along a curve
+short: Vector calculus
+summary: Differentiating and integrating vector functions to get velocity, acceleration and position, speed as the magnitude of velocity, distance along a path, the direction of motion, and the classic question types: particles that collide versus paths that cross, minimum distance, and projectile motion.
+keywords: vector calculus, velocity vector, acceleration vector, speed, magnitude of velocity, r'(t), r''(t), integrate vector, initial position, collide, collision, paths cross, intersect, minimum distance, closest approach, projectile, perpendicular velocity and acceleration, circular motion, distance travelled along curve
+dotpoints: differentiation and anti-differentiation of vector functions | velocity, acceleration and speed in two and three dimensions | collisions and path intersections | projectile and circular motion
+-->
+<h2>Differentiating and integrating vectors</h2>
+<div class="eq"><div class="eq-label">Componentwise</div>\[ \underset{\sim}{v}(t) = \dot{\underset{\sim}{r}}(t), \qquad \underset{\sim}{a}(t) = \ddot{\underset{\sim}{r}}(t), \qquad \text{speed} = |\underset{\sim}{v}(t)|, \qquad \text{distance} = \int_{t_1}^{t_2} |\underset{\sim}{v}(t)|\,dt \]<p>Differentiate or integrate each component. Integrating gives a constant <em>vector</em>.</p></div>
+<div class="we" data-title="Velocity, speed, acceleration" data-marks="3">
+<div class="we-q"><p>A particle has \(\underset{\sim}{r}(t) = t^2\underset{\sim}{i} + (4t - t^3)\underset{\sim}{j}\). Find its speed at \(t = 1\) and when its velocity is parallel to \(\underset{\sim}{i}\).</p></div>
+<div class="we-t"><p>\(\underset{\sim}{v} = 2t\underset{\sim}{i} + (4 - 3t^2)\underset{\sim}{j}\). Parallel to \(\underset{\sim}{i}\) means the \(\underset{\sim}{j}\) component is zero (and \(\underset{\sim}{i}\) component isn't).</p></div>
+<div class="we-s"><p>\(\underset{\sim}{v}(1) = 2\underset{\sim}{i} + \underset{\sim}{j}\), speed \(= \sqrt5\).</p></div>
+<div class="we-a"><p>\(4 - 3t^2 = 0 \Rightarrow t = \frac{2}{\sqrt3}\) (for \(t \ge 0\)).</p></div>
+</div>
+<div class="we" data-title="Integrating acceleration (a projectile)" data-marks="4">
+<div class="we-q"><p>A ball is hit from the origin with velocity \(20\underset{\sim}{i} + 15\underset{\sim}{j}\) m/s and acceleration \(-10\underset{\sim}{j}\) m/s². Find \(\underset{\sim}{r}(t)\), the time of flight and the range.</p></div>
+<div class="we-t"><p>Integrate twice, using \(\underset{\sim}{v}(0)\) and \(\underset{\sim}{r}(0)\). It lands when the \(\underset{\sim}{j}\) component returns to 0.</p></div>
+<div class="we-s"><p>\(\underset{\sim}{v} = 20\underset{\sim}{i} + (15 - 10t)\underset{\sim}{j}\); \(\underset{\sim}{r} = 20t\underset{\sim}{i} + (15t - 5t^2)\underset{\sim}{j}\).</p></div>
+<div class="we-s"><p>\(15t - 5t^2 = 0 \Rightarrow t = 3\) s.</p></div>
+<div class="we-a"><p>Range \(= 20(3) = 60\) m. (Max height at \(t = 1.5\): 11.25 m.)</p></div>
+</div>
+
+<h2>Collisions vs crossing paths</h2>
+<aside class="c-key"><p><strong>Collide</strong>: same place at the <em>same time</em>: solve \(\underset{\sim}{r}_A(t) = \underset{\sim}{r}_B(t)\) with one \(t\). <strong>Paths cross</strong>: same place at possibly <em>different times</em>: solve \(\underset{\sim}{r}_A(s) = \underset{\sim}{r}_B(t)\) with two parameters.</p></aside>
+<div class="we" data-title="Do they collide?" data-marks="4">
+<div class="we-q"><p>\(\underset{\sim}{r}_A(t) = (t + 1)\underset{\sim}{i} + t^2\underset{\sim}{j}\) and \(\underset{\sim}{r}_B(t) = 2t\underset{\sim}{i} + (3t - 2)\underset{\sim}{j}\), \(t \ge 0\). Do they collide? Do their paths cross?</p></div>
+<div class="we-t"><p>Collision: equate both components at the same \(t\). Crossing: use \(s\) for A, \(t\) for B.</p></div>
+<div class="we-s"><p>Same \(t\): \(t + 1 = 2t \Rightarrow t = 1\); then \(j\): \(1\) vs \(1\) ✓. They collide at \((2, 1)\) when \(t = 1\).</p></div>
+<div class="we-s"><p>Crossing: \(s + 1 = 2t\) and \(s^2 = 3t - 2\). Substituting \(t = \frac{s + 1}{2}\): \(2s^2 - 3s + 1 = 0\), so \(s = 1\) or \(s = \frac12\).</p></div>
+<div class="we-a"><p>Collide at \((2, 1)\); the paths also cross at \(\left(\frac32, \frac14\right)\) (A at \(s = \frac12\), B at \(t = \frac34\)), but they're there at different times.</p></div>
+</div>
+
+<h2>Minimum distance and circular motion</h2>
+<p>Distance between particles: \(D(t) = |\underset{\sim}{r}_A(t) - \underset{\sim}{r}_B(t)|\). Minimise \(D^2\) (easier, same minimiser) with calculus or CAS.</p>
+<div class="we" data-title="Circular motion" data-marks="3">
+<div class="we-q"><p>Show that \(\underset{\sim}{r}(t) = 3\cos(2t)\underset{\sim}{i} + 3\sin(2t)\underset{\sim}{j}\) has constant speed, and that its acceleration points to the centre.</p></div>
+<div class="we-t"><p>Differentiate twice; compare \(\underset{\sim}{a}\) with \(\underset{\sim}{r}\).</p></div>
+<div class="we-s"><p>\(\underset{\sim}{v} = -6\sin(2t)\underset{\sim}{i} + 6\cos(2t)\underset{\sim}{j}\), so \(|\underset{\sim}{v}| = 6\).</p></div>
+<div class="we-a"><p>\(\underset{\sim}{a} = -12\cos(2t)\underset{\sim}{i} - 12\sin(2t)\underset{\sim}{j} = -4\underset{\sim}{r}\): opposite to \(\underset{\sim}{r}\), so towards the origin. (Also \(\underset{\sim}{r}\cdot\underset{\sim}{v} = 0\).)</p></div>
+</div>
+<aside class="c-trap"><p>Speed is a scalar \(|\underset{\sim}{v}|\); velocity is a vector. "Distance travelled" along a curve is \(\int|\underset{\sim}{v}|\,dt\) (arc length), not \(|\underset{\sim}{r}(t_2) - \underset{\sim}{r}(t_1)|\).</p></aside>
+<aside class="c-exam"><p>Exam 2's extended vector-calculus questions nearly always include a collide-vs-cross trap and a "write a definite integral for the distance travelled" part. Define your direction conventions in projectile questions.</p></aside>
+
+<h2>Practice</h2>
+<div class="mcq" data-ans="C" data-level="core">
+<div class="mcq-q"><p>If \(\underset{\sim}{r}(t) = \sin t\,\underset{\sim}{i} + e^{2t}\underset{\sim}{j}\), then \(\underset{\sim}{a}(0) =\)</p></div>
+<ol><li>\(\underset{\sim}{i} + 2\underset{\sim}{j}\)</li><li>\(-\underset{\sim}{i} + 4\underset{\sim}{j}\)</li><li>\(4\underset{\sim}{j}\)</li><li>\(\underset{\sim}{j}\)</li></ol>
+<div class="mcq-x"><p>\(\ddot{\underset{\sim}{r}} = -\sin t\,\underset{\sim}{i} + 4e^{2t}\underset{\sim}{j}\); at 0: \(4\underset{\sim}{j}\).</p></div>
+</div>
+<div class="mcq" data-ans="A" data-level="core">
+<div class="mcq-q"><p>The speed of a particle with \(\underset{\sim}{v} = 3\underset{\sim}{i} - 4\underset{\sim}{j} + 12\underset{\sim}{k}\) is</p></div>
+<ol><li>13</li><li>11</li><li>169</li><li>\(\sqrt{11}\)</li></ol>
+<div class="mcq-x"><p>\(\sqrt{9 + 16 + 144} = 13\).</p></div>
+</div>
+<div class="mcq" data-ans="D" data-level="hard">
+<div class="mcq-q"><p>The distance travelled by \(\underset{\sim}{r}(t) = t^2\underset{\sim}{i} + t^3\underset{\sim}{j}\) for \(0 \le t \le 1\) is given by</p></div>
+<ol><li>\(\sqrt2\)</li><li>\(\int_0^1 (2t + 3t^2)\,dt\)</li><li>\(\int_0^1\sqrt{t^4 + t^6}\,dt\)</li><li>\(\int_0^1 t\sqrt{4 + 9t^2}\,dt\)</li></ol>
+<div class="mcq-x"><p>\(|\underset{\sim}{v}| = \sqrt{4t^2 + 9t^4} = t\sqrt{4 + 9t^2}\) for \(t \ge 0\). A is the displacement magnitude.</p></div>
+</div>
+<div class="mcq" data-ans="B" data-level="trick">
+<div class="mcq-q"><p>\(\underset{\sim}{r}_A = t\underset{\sim}{i} + t\underset{\sim}{j}\) and \(\underset{\sim}{r}_B = (2 - t)\underset{\sim}{i} + t^2\underset{\sim}{j}\), \(t \ge 0\). Which is true?</p></div>
+<ol><li>they collide at \(t = 1\) and \(t = 2\)</li><li>they collide at \((1, 1)\)</li><li>their paths never cross</li><li>they collide at the origin</li></ol>
+<div class="mcq-x"><p>\(t = 2 - t \Rightarrow t = 1\); \(j\): \(1 = 1\) ✓. At \(t = 2\), A is at \((2, 2)\) but B is at \((0, 4)\). At \(t = 0\) A is at the origin but B is at \((2, 0)\).</p></div>
+</div>
+<div class="pq" data-level="core" data-marks="3">
+<div class="pq-q"><p>Given \(\underset{\sim}{a}(t) = 6t\underset{\sim}{i} - 2\underset{\sim}{j}\), \(\underset{\sim}{v}(0) = \underset{\sim}{j}\), \(\underset{\sim}{r}(0) = 2\underset{\sim}{i}\), find \(\underset{\sim}{r}(t)\).</p></div>
+<div class="pq-s"><p>\(\underset{\sim}{v} = 3t^2\underset{\sim}{i} + (1 - 2t)\underset{\sim}{j}\). [1]</p><p>\(\underset{\sim}{r} = (t^3 + 2)\underset{\sim}{i} + (t - t^2)\underset{\sim}{j}\). [2]</p></div>
+</div>
+<div class="pq" data-level="hard" data-marks="4">
+<div class="pq-q"><p>\(\underset{\sim}{r}_A(t) = t\underset{\sim}{i} + (4 - t)\underset{\sim}{j}\) and \(\underset{\sim}{r}_B(t) = 2t\underset{\sim}{i} + 2\underset{\sim}{j}\). Find the minimum distance between them.</p></div>
+<div class="pq-s"><p>\(\underset{\sim}{r}_A - \underset{\sim}{r}_B = -t\underset{\sim}{i} + (2 - t)\underset{\sim}{j}\). [1]</p><p>\(D^2 = t^2 + (2 - t)^2 = 2t^2 - 4t + 4\). [1]</p><p>Minimum at \(t = 1\): \(D^2 = 2\). [1]</p><p>\(D_{\min} = \sqrt2\). [1]</p></div>
+</div>
+<div class="pq" data-level="exam" data-marks="3">
+<div class="pq-q"><p>Show that for \(\underset{\sim}{r}(t) = e^t\cos t\,\underset{\sim}{i} + e^t\sin t\,\underset{\sim}{j}\), the speed is \(\sqrt2 e^t\).</p></div>
+<div class="pq-s"><p>\(\underset{\sim}{v} = e^t(\cos t - \sin t)\underset{\sim}{i} + e^t(\sin t + \cos t)\underset{\sim}{j}\). [1]</p><p>\(|\underset{\sim}{v}|^2 = e^{2t}\big((\cos t - \sin t)^2 + (\sin t + \cos t)^2\big) = 2e^{2t}\). [1]</p><p>Speed \(= \sqrt2 e^t\). [1]</p></div>
+</div>
+<h2>Summary</h2>
+<ul>
+  <li data-q="How do you get velocity and acceleration from \(\underset{\sim}{r}(t)\), and what do you add when integrating back?">Componentwise calculus: \(\underset{\sim}{v} = \dot{\underset{\sim}{r}}\), \(\underset{\sim}{a} = \ddot{\underset{\sim}{r}}\); integrate with a constant vector.</li>
+  <li data-q="How do you find the speed, and the distance travelled along a path?">Speed \(|\underset{\sim}{v}|\); distance \(\int|\underset{\sim}{v}|\,dt\).</li>
+  <li data-q="What’s the difference between two particles colliding and their paths crossing, and how do you test each?">Collide: same \(t\). Paths cross: different parameters.</li>
+  <li data-q="How do you find the minimum distance between two moving particles?">Minimum distance: minimise \(|\underset{\sim}{r}_A - \underset{\sim}{r}_B|^2\).</li>
+</ul>

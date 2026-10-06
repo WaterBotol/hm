@@ -1,0 +1,68 @@
+<!--
+id: ci-mean
+title: Confidence intervals for a population mean
+short: Confidence intervals
+summary: Approximate confidence intervals for a population mean using x̄ ± z·σ/√n, critical values for 90%, 95% and 99%, interpreting intervals correctly, margin of error, choosing the sample size, and how the width changes with confidence level and n.
+keywords: confidence interval, population mean, sample mean, x bar plus or minus, z value, 1.96, 95% confidence interval, 99% confidence interval, 90%, margin of error, width of interval, interpretation, sample size required, known sigma, sample standard deviation, simulated intervals, contains the true mean
+dotpoints: approximate confidence intervals for the population mean using the sample mean | interpretation of confidence intervals | margin of error and the effect of sample size and confidence level
+-->
+<h2>Building the interval</h2>
+<div class="eq"><div class="eq-label">Approximate C% confidence interval for μ</div>\[ \left(\bar x - z\frac{\sigma}{\sqrt n},\ \bar x + z\frac{\sigma}{\sqrt n}\right), \qquad z = 1.6449\ (90\%),\ 1.96\ (95\%),\ 2.5758\ (99\%) \]<p>If \(\sigma\) is unknown and \(n\) is large, use the sample sd \(s\) in its place. The margin of error is \(E = z\frac{\sigma}{\sqrt n}\) (half the width).</p></div>
+<div class="we" data-title="A 95% confidence interval" data-marks="3">
+<div class="we-q"><p>A random sample of 50 lightbulbs has mean lifetime 1210 h. The population sd is 80 h. Find an approximate 95% confidence interval for the mean lifetime.</p></div>
+<div class="we-t"><p>\(\bar x \pm 1.96\frac{\sigma}{\sqrt n}\).</p></div>
+<div class="we-s"><p>\(1.96\times\frac{80}{\sqrt{50}} = 1.96\times11.314 \approx 22.17\).</p></div>
+<div class="we-a"><p>\((1187.8,\ 1232.2)\) hours, to 1 d.p.</p></div>
+</div>
+<div class="we" data-title="Recovering x̄ and the margin from an interval" data-marks="2">
+<div class="we-q"><p>A 95% CI for \(\mu\) is \((24.1, 27.9)\). Find \(\bar x\) and the margin of error.</p></div>
+<div class="we-t"><p>The interval is symmetric about \(\bar x\).</p></div>
+<div class="we-a"><p>\(\bar x = 26.0\); \(E = 1.9\).</p></div>
+</div>
+<div class="we" data-title="Choosing n for a given margin" data-marks="3">
+<div class="we-q"><p>With \(\sigma = 12\), how large a sample is needed for a 99% CI with margin of error at most 2?</p></div>
+<div class="we-t"><p>Solve \(2.5758\frac{12}{\sqrt n} \le 2\) and round up.</p></div>
+<div class="we-s"><p>\(\sqrt n \ge \frac{2.5758\times12}{2} = 15.455\), \(n \ge 238.9\).</p></div>
+<div class="we-a"><p>\(n = 239\).</p></div>
+</div>
+
+<h2>Interpreting correctly</h2>
+<aside class="c-key"><p>"95% confidence" describes the <strong>method</strong>: if we took many samples and built an interval from each, about 95% of the intervals would contain \(\mu\). For one computed interval, \(\mu\) is fixed: it's either in it or not.</p></aside>
+<aside class="c-trap"><p>Wrong: "there's a 95% chance \(\mu\) is in \((1187.8, 1232.2)\)". Also wrong: "95% of bulbs last between 1187.8 and 1232.2 h": the interval is about the <em>mean</em>, not individual values.</p></aside>
+<aside class="c-exam"><p>Common Exam 2 parts: find a CI, decide whether a claimed value is "plausible" (inside the interval), and "of 20 such intervals, how many expected to contain \(\mu\)?" (binomial: \(20\times0.95 = 19\)). Higher confidence → wider; larger \(n\) → narrower.</p></aside>
+
+<h2>Practice</h2>
+<div class="mcq" data-ans="C" data-level="core">
+<div class="mcq-q"><p>Increasing the confidence level from 95% to 99% (same data) makes the interval</p></div>
+<ol><li>narrower</li><li>unchanged</li><li>wider</li><li>shift right</li></ol>
+<div class="mcq-x"><p>\(z\) grows from 1.96 to 2.58.</p></div>
+</div>
+<div class="mcq" data-ans="A" data-level="core">
+<div class="mcq-q"><p>\(\bar x = 30\), \(\sigma = 10\), \(n = 25\). An approximate 95% CI is closest to</p></div>
+<ol><li>(26.08, 33.92)</li><li>(28.04, 31.96)</li><li>(10.4, 49.6)</li><li>(26.71, 33.29)</li></ol>
+<div class="mcq-x"><p>\(30 \pm 1.96\times2\). D uses the 90% value.</p></div>
+</div>
+<div class="mcq" data-ans="B" data-level="trick">
+<div class="mcq-q"><p>A 95% CI for mean height is (168.2, 173.4) cm. Which is a correct statement?</p></div>
+<ol><li>95% of people are between 168.2 and 173.4 cm</li><li>the procedure captures \(\mu\) in about 95% of samples</li><li>\(\Pr(168.2 &lt; \mu &lt; 173.4) = 0.95\)</li><li>\(\bar x\) has a 95% chance of being in the interval</li></ol>
+<div class="mcq-x"><p>Confidence is a long-run property of the method. \(\bar x\) is at the centre with certainty.</p></div>
+</div>
+<div class="mcq" data-ans="D" data-level="hard">
+<div class="mcq-q"><p>To halve the width of a confidence interval (same confidence), the sample size must be multiplied by</p></div>
+<ol><li>2</li><li>\(\sqrt2\)</li><li>0.5</li><li>4</li></ol>
+<div class="mcq-x"><p>Width \(\propto \frac{1}{\sqrt n}\).</p></div>
+</div>
+<div class="pq" data-level="core" data-marks="2">
+<div class="pq-q"><p>A sample of 100 has \(\bar x = 52.3\), and \(\sigma = 7\). Find an approximate 90% CI for \(\mu\).</p></div>
+<div class="pq-s"><p>\(E = 1.6449\times0.7 = 1.151\). [1]</p><p>\((51.15, 53.45)\). [1]</p></div>
+</div>
+<div class="pq" data-level="exam" data-marks="3">
+<div class="pq-q"><p>A manufacturer claims a mean of 500 mL per bottle. A sample of 40 bottles gives \(\bar x = 497.2\) mL; \(\sigma = 6\) mL. Find a 95% CI and comment on the claim.</p></div>
+<div class="pq-s"><p>\(E = 1.96\times\frac{6}{\sqrt{40}} = 1.859\). [1]</p><p>CI \(\approx (495.3, 499.1)\). [1]</p><p>500 is outside the interval, so the claim is not supported at this level; the mean appears lower. [1]</p></div>
+</div>
+<h2>Summary</h2>
+<ul>
+  <li data-q="Write the confidence interval for \(\mu\), with the \(z\) values for 90%, 95% and 99%.">CI: \(\bar x \pm z\frac{\sigma}{\sqrt n}\), with \(z = 1.6449, 1.96, 2.5758\) for 90, 95, 99%.</li>
+  <li data-q="How should a confidence interval for \(\mu\) be interpreted? Name two common wrong interpretations.">Interpret as a long-run capture rate of the method, about \(\mu\) (not individual values).</li>
+  <li data-q="How does the width change with the confidence level and with \(n\)? How do you find a required sample size?">Width ↑ with confidence, ↓ with \(\sqrt n\). Sample size: solve and round up.</li>
+</ul>

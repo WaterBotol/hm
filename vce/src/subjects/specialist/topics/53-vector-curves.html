@@ -1,0 +1,79 @@
+<!--
+id: vector-curves
+title: Vector functions and curves in the plane and space
+short: Vector & parametric curves
+summary: Position vectors as functions of time, converting between vector/parametric and Cartesian forms, domain and range restrictions, circles, ellipses and hyperbolas from trig and other parametrisations, direction of motion, and simple curves in three dimensions such as helices.
+keywords: vector function, vector equation of a curve, parametric equations, Cartesian equation, eliminate the parameter, circle, ellipse, hyperbola, sin^2 + cos^2, sec^2 - tan^2, domain restriction, direction of motion, path, helix, curve in 3D, position vector r(t)
+dotpoints: vector equations of curves in two and three dimensions | converting between vector, parametric and Cartesian forms | circles, ellipses and hyperbolas
+-->
+<h2>From vector form to Cartesian</h2>
+<p>\(\underset{\sim}{r}(t) = x(t)\underset{\sim}{i} + y(t)\underset{\sim}{j}\) traces a path as \(t\) varies. To get the Cartesian equation, <strong>eliminate \(t\)</strong>, then use the domain of \(t\) to restrict \(x\) and \(y\).</p>
+<div class="eq"><div class="eq-label">Trig eliminations</div>\[ \cos^2 t + \sin^2 t = 1 \qquad \sec^2 t - \tan^2 t = 1 \]</div>
+<div class="we" data-title="An ellipse" data-marks="3">
+<div class="we-q"><p>Find the Cartesian equation of \(\underset{\sim}{r}(t) = (2 + 3\cos t)\underset{\sim}{i} + (2\sin t - 1)\underset{\sim}{j}\), \(t \in [0, 2\pi]\), and describe the path.</p></div>
+<div class="we-t"><p>Isolate \(\cos t\) and \(\sin t\), then square and add.</p></div>
+<div class="we-s"><p>\(\cos t = \frac{x - 2}{3}\), \(\sin t = \frac{y + 1}{2}\).</p></div>
+<div class="we-a"><p>\(\dfrac{(x - 2)^2}{9} + \dfrac{(y + 1)^2}{4} = 1\): an ellipse centred at \((2, -1)\), traced once anticlockwise starting from \((5, -1)\).</p></div>
+</div>
+<div class="we" data-title="A hyperbola branch" data-marks="3">
+<div class="we-q"><p>Find the Cartesian equation of \(x = 2\sec t\), \(y = 3\tan t\), \(t \in \left(-\frac\pi2, \frac\pi2\right)\).</p></div>
+<div class="we-t"><p>Use \(\sec^2 t - \tan^2 t = 1\). On this domain \(\sec t \ge 1\), which selects one branch.</p></div>
+<div class="we-s"><p>\(\frac{x^2}{4} - \frac{y^2}{9} = \sec^2 t - \tan^2 t = 1\).</p></div>
+<div class="we-a"><p>\(\dfrac{x^2}{4} - \dfrac{y^2}{9} = 1\), \(x \ge 2\) (the right branch only).</p></div>
+</div>
+<div class="we" data-title="Domain restrictions matter" data-marks="2">
+<div class="we-q"><p>Find the Cartesian equation of \(\underset{\sim}{r}(t) = t^2\underset{\sim}{i} + 2t^2\underset{\sim}{j}\), \(t \in \mathbb{R}\).</p></div>
+<div class="we-t"><p>\(y = 2x\), but \(x = t^2 \ge 0\).</p></div>
+<div class="we-a"><p>\(y = 2x\), \(x \ge 0\): a ray, not a whole line.</p></div>
+</div>
+<div class="eq"><div class="eq-label">Conics</div>\[ \frac{(x - h)^2}{a^2} + \frac{(y - k)^2}{b^2} = 1 \ \text{(ellipse)} \qquad \frac{(x - h)^2}{a^2} - \frac{(y - k)^2}{b^2} = 1 \ \text{(hyperbola, asymptotes } y - k = \pm\tfrac ba(x - h)) \]</div>
+
+<h2>Curves in 3D</h2>
+<p>\(\underset{\sim}{r}(t) = x(t)\underset{\sim}{i} + y(t)\underset{\sim}{j} + z(t)\underset{\sim}{k}\). Example: \(\underset{\sim}{r}(t) = \cos t\,\underset{\sim}{i} + \sin t\,\underset{\sim}{j} + t\,\underset{\sim}{k}\) is a <strong>helix</strong>: a circle in \(x\)–\(y\) while rising steadily in \(z\).</p>
+<div class="we" data-title="Where a curve meets a plane" data-marks="2">
+<div class="we-q"><p>Where does the helix \(\underset{\sim}{r}(t) = \cos t\,\underset{\sim}{i} + \sin t\,\underset{\sim}{j} + t\,\underset{\sim}{k}\), \(t \ge 0\), first meet the plane \(z = \pi\)?</p></div>
+<div class="we-t"><p>Set \(z = t = \pi\).</p></div>
+<div class="we-a"><p>\(\underset{\sim}{r}(\pi) = -\underset{\sim}{i} + \pi\underset{\sim}{k}\), the point \((-1, 0, \pi)\).</p></div>
+</div>
+<aside class="c-trap"><p>Squaring to eliminate the parameter can add points that are never reached. Always state the restricted domain/range from the parameter's domain. Also, \(\cos t\) and \(\sin t\) with coefficient \(\omega t\) still give the same circle, just traced faster.</p></aside>
+<aside class="c-exam"><p>Exam 2 typically pairs this with vector calculus: "find the Cartesian equation of the path, and state its domain", then velocity and speed. Sketches need the starting point and direction of motion shown with an arrow.</p></aside>
+
+<h2>Practice</h2>
+<div class="mcq" data-ans="D" data-level="core">
+<div class="mcq-q"><p>The path of \(\underset{\sim}{r}(t) = 4\cos t\,\underset{\sim}{i} + 4\sin t\,\underset{\sim}{j}\) is a circle of radius</p></div>
+<ol><li>16</li><li>2</li><li>8</li><li>4</li></ol>
+<div class="mcq-x"><p>\(x^2 + y^2 = 16\).</p></div>
+</div>
+<div class="mcq" data-ans="A" data-level="core">
+<div class="mcq-q"><p>The Cartesian equation of \(x = t + 1\), \(y = t^2\) is</p></div>
+<ol><li>\(y = (x - 1)^2\)</li><li>\(y = x^2 + 1\)</li><li>\(y = (x + 1)^2\)</li><li>\(x = y^2 + 1\)</li></ol>
+<div class="mcq-x"><p>\(t = x - 1\).</p></div>
+</div>
+<div class="mcq" data-ans="C" data-level="hard">
+<div class="mcq-q"><p>The curve \(x = \cos(2t)\), \(y = \cos t\), \(t \in \mathbb{R}\), has Cartesian equation</p></div>
+<ol><li>\(x = y^2\)</li><li>\(x^2 + y^2 = 1\)</li><li>\(x = 2y^2 - 1\), \(-1 \le y \le 1\)</li><li>\(x = 1 - 2y^2\)</li></ol>
+<div class="mcq-x"><p>\(\cos 2t = 2\cos^2 t - 1\); \(y = \cos t\) restricts \(y\) to \([-1, 1]\).</p></div>
+</div>
+<div class="mcq" data-ans="B" data-level="trick">
+<div class="mcq-q"><p>\(\underset{\sim}{r}(t) = \sin t\,\underset{\sim}{i} + \sin^2 t\,\underset{\sim}{j}\) traces</p></div>
+<ol><li>the whole parabola \(y = x^2\)</li><li>the part of \(y = x^2\) with \(-1 \le x \le 1\), back and forth</li><li>a circle</li><li>the line \(y = x\)</li></ol>
+<div class="mcq-x"><p>\(x = \sin t \in [-1, 1]\), oscillating.</p></div>
+</div>
+<div class="pq" data-level="core" data-marks="2">
+<div class="pq-q"><p>Find the Cartesian equation of \(\underset{\sim}{r}(t) = 3\cos t\,\underset{\sim}{i} + 5\sin t\,\underset{\sim}{j}\).</p></div>
+<div class="pq-s"><p>\(\cos t = \frac x3\), \(\sin t = \frac y5\). [1]</p><p>\(\frac{x^2}{9} + \frac{y^2}{25} = 1\). [1]</p></div>
+</div>
+<div class="pq" data-level="hard" data-marks="3">
+<div class="pq-q"><p>Find the Cartesian equation and asymptotes of \(x = 1 + \tan t\), \(y = 2\sec t\), \(t \in \left(-\frac\pi2, \frac\pi2\right)\).</p></div>
+<div class="pq-s"><p>\(\frac{y^2}{4} - (x - 1)^2 = \sec^2 t - \tan^2 t = 1\). [1]</p><p>\(\sec t \ge 1\) gives \(y \ge 2\): the upper branch. [1]</p><p>Asymptotes \(y = \pm2(x - 1)\). [1]</p></div>
+</div>
+<div class="pq" data-level="exam" data-marks="2">
+<div class="pq-q"><p>Find the Cartesian equation of \(\underset{\sim}{r}(t) = e^t\underset{\sim}{i} + e^{-2t}\underset{\sim}{j}\), \(t \in \mathbb{R}\), with its domain.</p></div>
+<div class="pq-s"><p>\(y = (e^t)^{-2} = \frac{1}{x^2}\). [1]</p><p>\(x = e^t &gt; 0\), so \(y = \frac{1}{x^2}\), \(x &gt; 0\). [1]</p></div>
+</div>
+<h2>Summary</h2>
+<ul>
+  <li data-q="How do you convert a vector or parametric curve to Cartesian form, and what must you add at the end?">Eliminate \(t\); restrict \(x\), \(y\) from the parameter's domain.</li>
+  <li data-q="Which identity gives circles and ellipses, and which gives hyperbolas?">\(\cos^2 + \sin^2 = 1\) → circles/ellipses; \(\sec^2 - \tan^2 = 1\) → hyperbolas.</li>
+  <li data-q="What must a sketch of a parametric path show? How do you describe a helix?">Show start point and direction on sketches; 3D curves like helices combine a circle with linear motion.</li>
+</ul>

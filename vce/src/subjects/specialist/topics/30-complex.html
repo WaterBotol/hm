@@ -1,0 +1,86 @@
+<!--
+id: complex
+title: Complex numbers: Cartesian and polar form
+short: Complex numbers basics
+summary: Arithmetic with complex numbers in Cartesian form, the conjugate, modulus and argument, the Argand diagram, converting to and from polar form r cis θ, and multiplying and dividing in polar form, with the principal argument conventions VCAA uses.
+keywords: complex number, imaginary, i, i squared, Cartesian form, a + bi, real part, imaginary part, Re, Im, conjugate, modulus, argument, principal argument, Arg, polar form, cis, r cis theta, Argand diagram, complex plane, multiply complex numbers, divide complex numbers, realise the denominator
+dotpoints: assumed: arithmetic of complex numbers in Cartesian and polar form, conjugate, modulus and argument (the basis for De Moivre’s theorem and factorisation over C)
+-->
+<h2>Cartesian form</h2>
+<p>A complex number is \(z = a + bi\) where \(a, b \in \mathbb{R}\) and \(i^2 = -1\). \(\operatorname{Re}(z) = a\) and \(\operatorname{Im}(z) = b\) (the imaginary part is the real number \(b\), not \(bi\)).</p>
+<div class="eq"><div class="eq-label">Arithmetic</div>\[ (a + bi)(c + di) = (ac - bd) + (ad + bc)i \qquad \bar z = a - bi \qquad z\bar z = a^2 + b^2 = |z|^2 \]
+\[ \frac{a + bi}{c + di} = \frac{(a + bi)(c - di)}{c^2 + d^2} \]<p>Divide by multiplying top and bottom by the conjugate of the denominator.</p></div>
+<div class="we" data-title="Divide in Cartesian form" data-marks="2">
+<div class="we-q"><p>Express \(\dfrac{3 + 4i}{1 - 2i}\) in the form \(a + bi\).</p></div>
+<div class="we-t"><p>Multiply numerator and denominator by \(1 + 2i\), the conjugate of the denominator, so the denominator becomes the real number \(1^2 + 2^2\).</p></div>
+<div class="we-s" data-f="z\bar z = a^2 + b^2"><p>\(\dfrac{(3 + 4i)(1 + 2i)}{(1 - 2i)(1 + 2i)} = \dfrac{3 + 6i + 4i + 8i^2}{5} = \dfrac{-5 + 10i}{5}\).</p></div>
+<div class="we-a"><p>\(= -1 + 2i\).</p></div>
+</div>
+<div class="eq"><div class="eq-label">Conjugate properties</div>\[ \overline{z + w} = \bar z + \bar w \qquad \overline{zw} = \bar z\,\bar w \qquad z + \bar z = 2\operatorname{Re}(z) \qquad z - \bar z = 2i\operatorname{Im}(z) \]</div>
+
+<h2>Modulus, argument and polar form</h2>
+<p>On the Argand diagram, \(z = a + bi\) is the point \((a, b)\). Its distance from the origin is the <strong>modulus</strong> \(|z| = r = \sqrt{a^2 + b^2}\), and the angle from the positive real axis is the <strong>argument</strong>. The <strong>principal argument</strong> \(\operatorname{Arg}(z) \in (-\pi, \pi]\).</p>
+<div class="eq"><div class="eq-label">Polar form</div>\[ z = r(\cos\theta + i\sin\theta) = r\operatorname{cis}\theta \qquad a = r\cos\theta,\ b = r\sin\theta \]</div>
+<div class="we" data-title="Convert to polar form" data-marks="2">
+<div class="we-q"><p>Write \(z = -\sqrt3 + i\) in polar form using the principal argument.</p></div>
+<div class="we-t"><p>Find \(r\), then the reference angle from \(\tan^{-1}\left|\frac ba\right|\), then place it in the right quadrant from the signs of \(a\) and \(b\). Here \(a &lt; 0\), \(b &gt; 0\): quadrant 2.</p></div>
+<div class="we-s" data-f="r = \sqrt{a^2 + b^2}"><p>\(r = \sqrt{3 + 1} = 2\). Reference angle \(\tan^{-1}\frac{1}{\sqrt3} = \frac\pi6\).</p></div>
+<div class="we-a"><p>Quadrant 2: \(\theta = \pi - \frac\pi6 = \frac{5\pi}{6}\). So \(z = 2\operatorname{cis}\frac{5\pi}{6}\).</p></div>
+</div>
+<aside class="c-trap"><p>\(\tan^{-1}\frac{b}{a}\) only gives the right argument in quadrants 1 and 4. For \(z = -1 - i\), \(\tan^{-1}\frac{-1}{-1} = \frac\pi4\) is wrong; the principal argument is \(-\frac{3\pi}{4}\). Always sketch the point.</p></aside>
+
+<h2>Multiplying and dividing in polar form</h2>
+<div class="eq"><div class="eq-label">Moduli multiply, arguments add</div>\[ r_1\operatorname{cis}\theta_1 \times r_2\operatorname{cis}\theta_2 = r_1r_2\operatorname{cis}(\theta_1 + \theta_2) \qquad \frac{r_1\operatorname{cis}\theta_1}{r_2\operatorname{cis}\theta_2} = \frac{r_1}{r_2}\operatorname{cis}(\theta_1 - \theta_2) \]<p>Geometrically, multiplying by \(r\operatorname{cis}\theta\) dilates by factor \(r\) and rotates anticlockwise by \(\theta\). Multiplying by \(i = \operatorname{cis}\frac\pi2\) rotates by \(90°\).</p></div>
+<div class="we" data-title="Divide in polar form" data-marks="2">
+<div class="we-q"><p>Given \(u = 4\operatorname{cis}\frac{5\pi}{6}\) and \(v = 2\operatorname{cis}\left(-\frac{\pi}{3}\right)\), find \(\dfrac{u}{v}\) in polar form with the principal argument.</p></div>
+<div class="we-t"><p>Divide the moduli and subtract the arguments, then adjust by \(2\pi\) if the result is outside \((-\pi, \pi]\).</p></div>
+<div class="we-s"><p>\(\frac{u}{v} = 2\operatorname{cis}\left(\frac{5\pi}{6} + \frac\pi3\right) = 2\operatorname{cis}\frac{7\pi}{6}\).</p></div>
+<div class="we-a"><p>\(\frac{7\pi}{6} - 2\pi = -\frac{5\pi}{6}\), so \(\dfrac{u}{v} = 2\operatorname{cis}\left(-\frac{5\pi}{6}\right)\).</p></div>
+</div>
+<div class="eq"><div class="eq-label">Useful facts</div>\[ |zw| = |z||w| \qquad \left|\frac zw\right| = \frac{|z|}{|w|} \qquad \bar z = r\operatorname{cis}(-\theta) \qquad \frac1z = \frac1r\operatorname{cis}(-\theta) \]</div>
+<aside class="c-exam"><p>Exam 1: give exact moduli and principal arguments. "Express in polar form" means \(r\operatorname{cis}\theta\) with \(\theta \in (-\pi, \pi]\). Powers of \(i\) cycle every 4: \(i^{4k + m} = i^m\).</p></aside>
+
+<h2>Practice</h2>
+<div class="mcq" data-ans="B" data-level="core">
+<div class="mcq-q"><p>\(\operatorname{Im}\big((2 - 3i)^2\big)\) is</p></div>
+<ol><li>\(-12i\)</li><li>\(-12\)</li><li>\(-5\)</li><li>\(13\)</li></ol>
+<div class="mcq-x"><p>\((2 - 3i)^2 = 4 - 12i + 9i^2 = -5 - 12i\). The imaginary part is the real number \(-12\).</p></div>
+</div>
+<div class="mcq" data-ans="D" data-level="trick">
+<div class="mcq-q"><p>The principal argument of \(-2 - 2i\) is</p></div>
+<ol><li>\(\frac{\pi}{4}\)</li><li>\(\frac{5\pi}{4}\)</li><li>\(-\frac{\pi}{4}\)</li><li>\(-\frac{3\pi}{4}\)</li></ol>
+<div class="mcq-x"><p>Quadrant 3; \(\frac{5\pi}{4}\) is outside \((-\pi, \pi]\), so subtract \(2\pi\).</p></div>
+</div>
+<div class="mcq" data-ans="A" data-level="core">
+<div class="mcq-q"><p>\(i^{2027}\) equals</p></div>
+<ol><li>\(-i\)</li><li>\(i\)</li><li>\(-1\)</li><li>\(1\)</li></ol>
+<div class="mcq-x"><p>\(2027 = 4\times 506 + 3\), so \(i^{2027} = i^3 = -i\).</p></div>
+</div>
+<div class="mcq" data-ans="C" data-level="hard">
+<div class="mcq-q"><p>If \(z = 3\operatorname{cis}\frac{\pi}{5}\), then \(\dfrac{1}{\bar z}\) is</p></div>
+<ol><li>\(3\operatorname{cis}\frac{\pi}{5}\)</li><li>\(\frac13\operatorname{cis}\left(-\frac{\pi}{5}\right)\)</li><li>\(\frac13\operatorname{cis}\frac{\pi}{5}\)</li><li>\(-\frac13\operatorname{cis}\frac{\pi}{5}\)</li></ol>
+<div class="mcq-x"><p>\(\bar z = 3\operatorname{cis}(-\frac\pi5)\); reciprocal: \(\frac13\operatorname{cis}\frac\pi5\).</p></div>
+</div>
+<div class="mcq" data-ans="B" data-level="exam">
+<div class="mcq-q"><p>Multiplying a complex number \(z\) by \(-i\) corresponds to</p></div>
+<ol><li>a rotation of \(\frac\pi2\) anticlockwise</li><li>a rotation of \(\frac\pi2\) clockwise</li><li>a reflection in the real axis</li><li>a rotation of \(\pi\)</li></ol>
+<div class="mcq-x"><p>\(-i = \operatorname{cis}(-\frac\pi2)\): modulus 1, argument \(-\frac\pi2\).</p></div>
+</div>
+<div class="pq" data-level="core" data-marks="2" data-f="z\bar z = a^2 + b^2">
+<div class="pq-q"><p>Find real \(a, b\) such that \(\dfrac{5}{2 + i} = a + bi\).</p></div>
+<div class="pq-s"><p>\(\dfrac{5(2 - i)}{(2 + i)(2 - i)} = \dfrac{5(2 - i)}{5}\). [1]</p><p>\(= 2 - i\), so \(a = 2,\ b = -1\). [1]</p></div>
+</div>
+<div class="pq" data-level="hard" data-marks="3">
+<div class="pq-q"><p>Let \(u = 1 + \sqrt3 i\) and \(v = 1 - i\). Find \(uv\) in polar form, and hence find the exact value of \(\cos\frac{\pi}{12}\).</p></div>
+<div class="pq-s"><p>\(u = 2\operatorname{cis}\frac\pi3\), \(v = \sqrt2\operatorname{cis}(-\frac\pi4)\), so \(uv = 2\sqrt2\operatorname{cis}\frac{\pi}{12}\). [1]</p><p>Cartesian: \(uv = (1 + \sqrt3 i)(1 - i) = (1 + \sqrt3) + (\sqrt3 - 1)i\). [1]</p><p>Real parts: \(2\sqrt2\cos\frac\pi{12} = 1 + \sqrt3 \Rightarrow \cos\frac\pi{12} = \frac{1 + \sqrt3}{2\sqrt2} = \frac{\sqrt2 + \sqrt6}{4}\). [1]</p></div>
+</div>
+<div class="pq" data-level="exam" data-marks="3">
+<div class="pq-q"><p>Solve \(z^2 = 3 - 4i\) for \(z \in \mathbb{C}\) in Cartesian form.</p></div>
+<div class="pq-s"><p>Let \(z = x + yi\): \(x^2 - y^2 = 3\) and \(2xy = -4\). [1]</p><p>Also \(|z|^2 = |3 - 4i| = 5\), so \(x^2 + y^2 = 5\). Adding: \(x^2 = 4\), \(y^2 = 1\). [1]</p><p>\(xy = -2\) &lt; 0, so \(z = 2 - i\) or \(z = -2 + i\). [1]</p></div>
+</div>
+<h2>Summary</h2>
+<ul>
+  <li data-q="How do you divide two complex numbers, and what is \(z\bar z\)?">Divide by multiplying by the conjugate; \(z\bar z = |z|^2\).</li>
+  <li data-q="How do you find the modulus and the argument of \(a + bi\), and what interval is the principal argument in?">\(r = \sqrt{a^2 + b^2}\); find the argument from a sketch; principal argument in \((-\pi, \pi]\).</li>
+  <li data-q="What happens to the moduli and arguments when you multiply and divide in polar form?">Polar: multiply moduli and add arguments; divide moduli and subtract arguments.</li>
+</ul>
