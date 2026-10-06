@@ -101,7 +101,7 @@
     const boxOf = k => { let p = k.parentElement; while (p && getComputedStyle(p).display.startsWith('inline')) p = p.parentElement; return p; };
     const todo = [];
     $$('.katex', root).forEach(k => {
-      if (!k.offsetParent || k.closest('table, .fs-card')) return;
+      if (!k.offsetParent || k.closest('table, .fs-card, .sh-paper')) return;
       const disp = k.parentElement.classList.contains('katex-display');
       let need, have;
       if (disp) { need = k.parentElement.scrollWidth; have = k.parentElement.clientWidth; }
@@ -122,7 +122,7 @@
     for (let pass = 0; pass < 2; pass++) {
       let again = false;
       $$('.katex-display > .katex', root).forEach(k => {
-        if (!k.offsetParent || k.closest('table, .fs-card')) return;
+        if (!k.offsetParent || k.closest('table, .fs-card, .sh-paper')) return;
         const box = k.parentElement, need = box.scrollWidth, have = box.clientWidth;
         if (have > 0 && need > have + 1) {
           const cur = parseFloat(k.style.fontSize) || 1.08, next = Math.max(1.08 * 0.7, cur * (have / need) * 0.97);
@@ -1514,7 +1514,7 @@
   window.addEventListener('hashchange', route);
   window.GUIDE_APP = {
     go, renderMath, toast, isDark, store, esc, copyText, noteParts, question, htmlText, subjIcon, AI_SPARK,
-    topic: id => byId[id], current: () => byId[currentId],
+    topic: id => byId[id], subject: id => SUBJ[id], current: () => byId[currentId],
     enhance: root => { enhanceCallouts(root); enhanceWorked(root); renderMath(root); }
   };
   updateReviewCount();

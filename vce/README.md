@@ -32,6 +32,16 @@ Progress (completed topics, self-marks, quiz answers, the review queue) is store
 - **Practice-exam mistakes.** Wrong multiple-choice answers join the queue when you finish a paper. After marking, written parts you answered but scored under half on can be sent with one button.
 - **Blurt.** On any topic or quick-notes card, with the page hidden: answer one specific recall question per key point ("Write \(E(aX + b)\) and \(\operatorname{Var}(aX + b)\)", "Which way does friction act above the design speed?"). Feeling that you know a topic isn't the same as being able to write it, so the questions ask for the actual formula, condition or reason without giving it away. Each topic's questions live on its summary points as `data-q` (the build warns if one is missing). Prefer a blank page? **Blank-page blurt instead** switches to the old "write everything" mode, and the choice is remembered. With Claude, each answer is checked against its key point as got / partly / missed (a "got" has to quote your words), plus anything you got wrong. Without Claude, you see each key point under your answer and tick the ones you nailed (blank answers can't be ticked). Gaps can be saved to My notes. Every attempt is kept (your text and each point's result). **Blurt history**, on the quick-notes bar and the review page, lists them by day, so you can open an old attempt or redo a whole day's topics in a row (or just the ones under 80%) and see how you've moved since last time.
 
+## Summary sheet designer (Physics)
+
+The Physics exam allows pre-written notes (one folded A3 sheet or two A4 sheets bound together by tape) alongside the VCAA formula sheet. **Physics → Sheet designer** (`src/sheet.js`) builds that sheet:
+
+- **Add blocks from the site:** key points, formula boxes, key ideas, trick alerts, exam tips, worked examples, diagrams, tables, glossary definitions, constants, "going deeper" notes and your saved My notes, plus your own headings, text, formulas, bullet lists and column/page breaks. Pick by topic, search everything, or use **quick packs** per area of study (topic packs, key points, all formulas, formulas *not* on the VCAA sheet, all traps, all key ideas).
+- **Formula-sheet aware:** formula blocks already on the 2025 VCAA formula sheet are tagged (fully or partly), and can be hidden from the picker, so the space goes on what you actually have to remember.
+- **Real paper, auto-packed:** exam presets (2 × A4 both sides, 1 × A3 both sides), A4/A3 one or two sides, portrait or landscape, 1–6 columns, text size and margins. Blocks fill each column top to bottom in order. Headings never get stranded at the bottom of a column, wide formulas shrink to fit, and a meter shows how full each side is and warns when it overflows.
+- **Edit anything:** tap a block to rewrite its title and text (light markdown plus LaTeX), resize diagrams, change text size, reorder (drag or arrows), duplicate or reset to the original. Undo, several named sheets, all saved in the browser.
+- **Print:** prints only the sheet at exact paper size, or downloads a self-contained print-ready HTML file (the reliable route inside a claude.ai Artifact). Black-and-white mode for mono printers.
+
 ## Claude in the guide
 
 When the guide is opened as an Artifact on claude.ai, it can call Claude through the Artifact `sample` capability:
@@ -49,9 +59,9 @@ Each call uses the viewer's own Claude usage, and the first one asks their permi
 
 - `src/subjects.json`: subject order.
 - `src/subjects/<subject>/subject.json`: id, topic-id prefix, name, study design and course-map groups.
-- `src/subjects/<subject>/topics/*.html`: one file per page, with a metadata comment at the top (`id`, `title`, `short`, `summary`, `keywords`, `dotpoints`, optional `special: overview|reference`). Links like `href="#id"` are prefixed with the subject automatically. Maths uses `\( … \)` and `\[ … \]` (KaTeX, with mhchem `\ce{}`).
+- `src/subjects/<subject>/topics/*.html`: one file per page, with a metadata comment at the top (`id`, `title`, `short`, `summary`, `keywords`, `dotpoints`, optional `special: overview|reference|tool`). Links like `href="#id"` are prefixed with the subject automatically. Maths uses `\( … \)` and `\[ … \]` (KaTeX, with mhchem `\ce{}`).
 - `src/app.js`, `src/styles.css`, `src/body.html`, `src/hub/`: the app shell (hub, router, search, quiz, review, theme).
-- `src/motion.js`: spring animations and gestures. `src/ai.js`: the Claude features (chat sheet, notes pop-out, exam marking).
+- `src/motion.js`: spring animations and gestures. `src/ai.js`: the Claude features (chat sheet, notes pop-out, exam marking). `src/sheet.js`: the summary sheet designer.
 - `src/sims/*.js`: the simulations (shared toolkit in `00-kit.js`).
 
 Component markup (worked examples, practice questions, MCQs, callouts, sims) is the same as in `../physics/README.md`.

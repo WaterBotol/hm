@@ -113,6 +113,7 @@ const appJs = readFileSync(src('app.js'), 'utf8');
 const motionJs = readFileSync(src('motion.js'), 'utf8');
 const aiJs = readFileSync(src('ai.js'), 'utf8');
 const papersJs = readFileSync(src('papers.js'), 'utf8');
+const sheetJs = readFileSync(src('sheet.js'), 'utf8');
 const simsJs = readdirSync(src('sims')).filter(f => f.endsWith('.js')).sort().map(f => `/* ---- ${f} ---- */\n` + readFileSync(src('sims', f), 'utf8')).join('\n');
 const safe = s => s.replace(/<\/script/gi, '<\\/script');
 
@@ -148,6 +149,7 @@ ${bodyHtml}
 <script>${safe(papersJs)}</script>
 <script>${safe(motionJs)}</script>
 <script>${safe(aiJs)}</script>
+<script>${safe(sheetJs)}</script>
 </body>
 </html>
 `;
@@ -177,6 +179,7 @@ ${papersOk ? '<script>window.VCAA_PAPERS = ' + safe(papersMap.trim()) + ';</scri
 <script>${safe(papersJs)}</script>
 <script>${safe(motionJs)}</script>
 <script>${safe(aiJs)}</script>
+<script>${safe(sheetJs)}</script>
 `;
   writeFileSync(out, frag);
   console.log(`✓ artifact fragment ${(frag.length / 1024).toFixed(0)} KB -> ${out}`);
