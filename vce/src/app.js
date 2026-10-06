@@ -621,6 +621,8 @@
     if (!prose || !meta) return;
     const KEY = 'ex:' + t.id, P = t.subj ? t.subj.prefix + '-' : '';
     const st = Object.assign({ phase: 'idle', t0: 0, timed: true, mcq: {}, resp: {}, ticks: {}, marked: false }, store.get(KEY, {}));
+    st.chk = Object.assign({ m: [], w: [] }, st.chk || {});   // questions marked one at a time, before finishing the paper
+    const chkM = n => st.chk.m.includes(n), chkW = n => st.chk.w.includes(n);
     const persist = () => store.set(KEY, st);
     const reading = +(meta.dataset.reading || 15), writing = +(meta.dataset.writing || 150);
     const LV = { easy: 'Easier', medium: 'Medium', hard: 'Harder' }, level = meta.dataset.level || 'medium', real = !!meta.dataset.real;
@@ -629,7 +631,8 @@
     const mcqs = $$('.mcq', prose).map((m, i) => {
       const n = i + 1, ans = (m.dataset.ans || 'A').toUpperCase(), ol = $(':scope > ol', m), x = $('.mcq-x', m), rep = $(':scope > .ex-rep', m);
       m.classList.add('ex-mcq'); m.id = 'a-mcq' + n;
-      m.prepend(el('div', 'pq-h', '<span class="pq-tag">Question ' + n + '</span><span class="marks">1 mark</span>'));
+      const hd = el('div', 'pq-h', '<span class="pq-tag">Question ' + n + '</span><span class="marks">1 mark</span>'); m.prepend(hd);
+      const chkB = el('button', 'btn ex-chk', 'Mark'); chkB.type = 'button'; chkB.title = 'Mark just this question'; hd.appendChild(chkB);
       const opts = el('div', 'mcq-opts');
       const btns = (ol ? $$(':scope > li', ol) : []).map((li, j) => {
         const L = String.fromCharCode(65 + j), b = el('button', 'opt', '<span class="L">' + L + '</span><span>' + li.innerHTML + '</span>');
@@ -642,18 +645,23 @@
       const verdict = el('div', 'mcq-verdict'); if (x) x.prepend(verdict);
       const paint = () => btns.forEach(b => b.classList.toggle('sel', st.mcq[n] === b.dataset.l));
       btns.forEach(b => b.addEventListener('click', () => {
-        if (st.marked || !canWrite()) { if (!st.marked) toast(st.phase === 'reading' ? 'Reading time: you can read but not answer yet' : 'Press Start to begin'); return; }
+        if (st.marked || chkM(n) || !canWrite()) { if (!st.marked && !chkM(n)) toast(st.phase === 'reading' ? 'Reading time: you can read but not answer yet' : 'Press Start to begin'); return; }
         st.mcq[n] = st.mcq[n] === b.dataset.l ? undefined : b.dataset.l; persist(); paint(); bar();
       }));
       paint();
-      return { n, ans, btns, x, rep, verdict, fac, t: m.dataset.t || '' };
+      const mo = { n, el: m, hd, chkB, ans, btns, x, rep, verdict, fac, t: m.dataset.t || '' };
+      chkB.addEventListener('click', () => arm(chkB, st.mcq[n] ? 'This locks your answer and shows whether it’s right' : 'You haven’t answered: this shows the answer and scores it 0', () => checkMcq(mo)));
+      return mo;
     });
     // ---- written questions
-    let qn = 0; const parts = [];
+    let qn = 0; const parts = [], wqs = [];
     $$('.exq', prose).forEach(q => {
       qn++; q.id = 'a-exq' + qn;
       const ps = $$(':scope > .exp', q), total = ps.reduce((a, p) => a + (+p.dataset.marks || 0), 0);
-      q.prepend(el('div', 'exq-h', '<span class="pq-tag">Question ' + qn + '</span><span class="marks">' + total + ' mark' + (total === 1 ? '' : 's') + '</span>'));
+      const qh = el('div', 'exq-h', '<span class="pq-tag">Question ' + qn + '</span><span class="marks">' + total + ' mark' + (total === 1 ? '' : 's') + '</span>'); q.prepend(qh);
+      const qChk = el('button', 'btn ex-chk', 'Mark this question'); qChk.type = 'button'; qh.appendChild(qChk);
+      const wq = { qn, el: q, hd: qh, chkB: qChk, total, parts: [] }; wqs.push(wq);
+      qChk.addEventListener('click', () => arm(qChk, wq.parts.some(p => (st.resp[p.id] || p.ta.value).trim()) ? 'This locks your answers to this question and shows the marking guide' : 'Nothing written yet: this shows the marking guide and locks the question', () => checkW(wq)));
       ps.forEach((p, j) => {
         const lab = ps.length > 1 ? (p.dataset.part || String.fromCharCode(97 + j)) : '';
         const id = qn + lab, marks = +p.dataset.marks || 0;
@@ -680,7 +688,8 @@
         if (ans) { ans.classList.add('ex-ans'); ans.prepend(el('div', 'ex-lbl', real ? 'Answer' : 'Sample answer')); box.appendChild(ans); }
         if (rep) { rep.prepend(el('div', 'ex-lbl', real ? 'How Victoria went' : 'Assessor’s comment')); box.appendChild(rep); }
         p.appendChild(box); p.dataset.pid = id;
-        parts.push({ id, marks, items, box, ta, avg: p.dataset.avg !== undefined ? +p.dataset.avg : null, t: p.dataset.t || q.dataset.t || '' });
+        const po = { id, qn, marks, items, box, ta, avg: p.dataset.avg !== undefined ? +p.dataset.avg : null, t: p.dataset.t || q.dataset.t || '' };
+        parts.push(po); wq.parts.push(po);
       });
     });
     const report = $('.ex-report', prose), repH = report && report.previousElementSibling && report.previousElementSibling.tagName === 'H2' ? report.previousElementSibling : null;
@@ -706,7 +715,7 @@
       return { phase: 'over', s: 0 };
     };
     const mmss = s => { s = Math.max(0, Math.round(s)); const h = Math.floor(s / 3600), m = Math.floor(s % 3600 / 60), x = s % 60; return (h ? h + ':' + String(m).padStart(2, '0') : m) + ':' + String(x).padStart(2, '0'); };
-    const lockInputs = () => parts.forEach(p => { p.ta.readOnly = st.marked || !canWrite(); });
+    const lockInputs = () => parts.forEach(p => { p.ta.readOnly = st.marked || chkW(p.qn) || !canWrite(); });
     barEl.innerHTML = '<div class="ex-clock"></div><div class="ex-prog"></div><button class="btn" type="button" data-act=""></button>';
     const bClock = $('.ex-clock', barEl), bProg = $('.ex-prog', barEl), bBtn = $('button', barEl);
     // two-step confirm (modal dialogs can be blocked inside embedded frames)
@@ -716,6 +725,7 @@
       btn._t = setTimeout(() => { delete btn.dataset.armed; btn.innerHTML = btn._lbl; btn.classList.remove('armed'); }, 4000);
     };
     function bar() {
+      prose.classList.toggle('ex-live', canWrite() && !st.marked);
       if (st.phase === 'idle') { barEl.hidden = true; return; }
       barEl.hidden = false;
       const answered = mcqs.filter(m => st.mcq[m.n]).length, written = parts.filter(p => (st.resp[p.id] || '').trim()).length;
@@ -724,7 +734,9 @@
       else if (st.timed) { const l = left(); clock = l.phase === 'reading' ? '<span class="ex-ph read">Reading time</span><b>' + mmss(l.s) + '</b>' : l.phase === 'writing' ? '<span class="ex-ph">Writing time</span><b>' + mmss(l.s) + '</b>' : '<span class="ex-ph over">Time’s up</span>'; }
       else clock = '<span class="ex-ph">Untimed</span>';
       bClock.innerHTML = clock;
-      bProg.innerHTML = (mcqTotal ? 'MC <b>' + answered + '/' + mcqTotal + '</b>' : '') + (parts.length ? (mcqTotal ? ' · ' : '') + 'Written <b>' + written + '/' + parts.length + '</b>' : '');
+      const cs = chkScore();
+      bProg.innerHTML = (mcqTotal ? 'MC <b>' + answered + '/' + mcqTotal + '</b>' : '') + (parts.length ? (mcqTotal ? ' · ' : '') + 'Written <b>' + written + '/' + parts.length + '</b>' : '') +
+        (cs.of && !st.marked ? ' · Marked so far <b>' + cs.got + '/' + cs.of + '</b>' : '');
       const act = st.marked ? 'reset' : 'finish';
       if (bBtn.dataset.act !== act && !bBtn.dataset.armed) { bBtn.dataset.act = act; bBtn.className = 'btn ' + (act === 'finish' ? 'primary' : 'ghost'); bBtn.innerHTML = act === 'finish' ? 'Finish &amp; mark' : 'Reset exam'; }
     }
@@ -744,7 +756,7 @@
     function queueMcq() {
       if (st.peek) return;
       const wrong = mcqs.filter(m => st.mcq[m.n] && st.mcq[m.n] !== m.ans);
-      wrong.forEach(m => srsAdd(t.id + ':m' + m.n, 'exam'));
+      wrong.filter(m => !chkM(m.n)).forEach(m => srsAdd(t.id + ':m' + m.n, 'exam'));
       st.queuedM = wrong.length; persist(); tally();
       if (wrong.length) toast(wrong.length + ' multiple-choice mistake' + (wrong.length === 1 ? '' : 's') + ' added to your review queue');
     }
@@ -765,6 +777,42 @@
       st.queuedW = [...new Set((st.queuedW || []).concat(weak.map(p => p.id)))]; persist(); tally();
       toast(weak.length + ' written part' + (weak.length === 1 ? '' : 's') + ' added to your review queue');
     });
+    // ---- mark one question at a time
+    function revealMcq(m) {
+      const c = st.mcq[m.n];
+      m.btns.forEach(b => { b.disabled = true; b.classList.remove('sel'); if (b.dataset.l === m.ans) b.classList.add('correct'); else if (b.dataset.l === c) b.classList.add('wrong'); });
+      m.verdict.className = 'mcq-verdict ' + (c === m.ans ? 'ok' : 'no');
+      m.verdict.textContent = !c ? 'Not answered. The answer is ' + m.ans + '.' : c === m.ans ? 'Correct: ' + m.ans + '.' : 'You chose ' + c + '; the answer is ' + m.ans + '.';
+      if (m.x) m.x.hidden = false; if (m.rep) { m.rep.hidden = false; if (!$('.ex-lbl', m.rep)) m.rep.prepend(el('div', 'ex-lbl', real ? 'How Victoria went' : 'Assessor’s comment')); }
+      m.chkB.remove();
+    }
+    function chipFor(hd) { let c = $('.ex-chk-r', hd); if (!c) { c = el('span', 'ex-chk-r'); hd.appendChild(c); } return c; }
+    function checkMcq(m, quiet) {
+      if (!quiet) { if (!chkM(m.n)) st.chk.m.push(m.n); persist(); }
+      revealMcq(m);
+      const ok = st.mcq[m.n] === m.ans, c = chipFor(m.hd);
+      c.className = 'ex-chk-r ' + (ok ? 'ok' : 'no'); c.textContent = ok ? '✓ 1/1' : '✗ 0/1';
+      if (!quiet) {
+        if (!ok && st.mcq[m.n] && !st.peek) { srsAdd(t.id + ':m' + m.n, 'exam'); toast('Wrong: added to your review queue'); }
+        renderMath(m.el); bar();
+      }
+    }
+    function checkW(w, quiet) {
+      if (!quiet) { if (!chkW(w.qn)) st.chk.w.push(w.qn); persist(); }
+      w.parts.forEach(p => { st.resp[p.id] = p.ta.value; p.box.hidden = false; p.ta.readOnly = true; if (!p.ta.value.trim()) p.ta.classList.add('empty'); });
+      w.chkB.remove(); chipFor(w.hd).className = 'ex-chk-r';
+      tally();
+      if (quiet) return;
+      persist(); renderMath(w.el); bar();
+      const ai = window.GUIDE_AI;
+      if (!(ai && ai.markQuestion && ai.markQuestion(w.el))) toast(w.parts.some(p => p.ta.value.trim()) ? 'Tick the marking points you earned' : 'Here’s the marking guide for this one');
+    }
+    function chkScore() {
+      let got = 0, of = 0;
+      mcqs.forEach(m => { if (chkM(m.n)) { of++; if (st.mcq[m.n] === m.ans) got++; } });
+      wqs.forEach(w => { if (chkW(w.qn)) { of += w.total; got += w.parts.reduce((a, p) => a + partGot(p), 0); } });
+      return { got, of };
+    }
     function tally() {
       let got = 0; const per = {};
       const add = (tp, g, of) => { if (!tp) return; tp.split(/\s+/).forEach(x => { per[x] = per[x] || [0, 0]; per[x][0] += g; per[x][1] += of; }); };
@@ -775,6 +823,8 @@
         got += g; add(p.t, g, p.marks);
         const s = $('.ex-mark-s', p.box); if (s) s.textContent = g + ' / ' + p.marks;
       });
+      wqs.forEach(w => { const c = $('.ex-chk-r', w.hd); if (c) c.textContent = w.parts.reduce((a, p) => a + partGot(p), 0) + '/' + w.total; });
+      if (!st.marked) bar();
       const tot = mcGot + got, pct = grand ? Math.round(100 * tot / grand) : 0;
       if (st.marked) { st.score = tot; st.of = grand; persist(); }
       const weak = Object.entries(per).filter(([, v]) => v[1] >= 2).map(([k, v]) => [k, v, v[0] / v[1]]).sort((a, b) => a[2] - b[2]);
@@ -787,13 +837,8 @@
     }
     function mark() {
       st.marked = true; st.phase = 'marked'; persist();
-      mcqs.forEach(m => {
-        const c = st.mcq[m.n];
-        m.btns.forEach(b => { b.disabled = true; b.classList.remove('sel'); if (b.dataset.l === m.ans) b.classList.add('correct'); else if (b.dataset.l === c) b.classList.add('wrong'); });
-        m.verdict.className = 'mcq-verdict ' + (c === m.ans ? 'ok' : 'no');
-        m.verdict.textContent = !c ? 'Not answered. The answer is ' + m.ans + '.' : c === m.ans ? 'Correct: ' + m.ans + '.' : 'You chose ' + c + '; the answer is ' + m.ans + '.';
-        if (m.x) m.x.hidden = false; if (m.rep) { m.rep.hidden = false; if (!$('.ex-lbl', m.rep)) m.rep.prepend(el('div', 'ex-lbl', real ? 'How Victoria went' : 'Assessor’s comment')); }
-      });
+      mcqs.forEach(revealMcq);
+      wqs.forEach(w => w.chkB.remove());
       parts.forEach(p => { p.box.hidden = false; p.ta.readOnly = true; if (!p.ta.value.trim()) p.ta.classList.add('empty'); });
       if (report) { report.hidden = false; if (repH) repH.hidden = false; }
       setBody(true); res.hidden = false; tally(); bar(); buildToc(); renderMath(prose);
@@ -816,6 +861,7 @@
     if (st.marked) { cover.hidden = true; mark(); }
     else if (st.phase === 'idle') setBody(false);
     else { cover.hidden = true; setBody(true); lockInputs(); bar(); startClock(); }
+    if (!st.marked) { mcqs.forEach(m => { if (chkM(m.n)) checkMcq(m, true); }); wqs.forEach(w => { if (chkW(w.qn)) checkW(w, true); }); bar(); }
   }
 
   let cleanups = [];

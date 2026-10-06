@@ -577,6 +577,16 @@
     if (done) A.toast('Claude marked ' + done + ' part' + (done === 1 ? '' : 's'));
   }
 
+  // one written question marked on its own (the exam's "Mark this question"): Claude marks its answered parts
+  function markQuestion(q) {
+    if (!sample || !q) return false;
+    const exps = $$('.exp[data-pid]', q).filter(e => (($('.ex-ta', e) || {}).value || '').trim());
+    if (!exps.length) return false;
+    let st = $('.ex-chk-s', q);
+    if (!st) { st = doc.createElement('p'); st.className = 'ex-chk-s'; st.setAttribute('aria-live', 'polite'); const h = $('.exq-h', q); if (h) h.after(st); else q.prepend(st); }
+    markParts(exps, st, null);
+    return true;
+  }
 
   /* ---------------------------------------------------------------- blurt (free recall) */
   // notes hidden, write everything you remember, then see exactly which key points you missed.
@@ -586,7 +596,7 @@
     const box = doc.createElement('div'); box.innerHTML = A.noteParts(t).summary || '';
     let items = $$('li', box).filter(li => !li.parentElement.closest('li'));
     if (!items.length) items = $$('p', box);
-    return items.map(li => ({ html: li.innerHTML, text: A.htmlText(li).replace(/^- /, '').replace(/\s+/g, ' ').trim() })).filter(x => x.text);
+    return items.map(li => ({ html: li.innerHTML, text: A.htmlText(li).replace(/^- /, '').replace(/\s+/g, ' ').trim(), q: (li.getAttribute('data-q') || '').trim() })).filter(x => x.text);
   }
   const dayKey = t => { const d = new Date(t); d.setHours(0, 0, 0, 0); return d.getTime(); };
   const dayLabel = k => { const diff = Math.round((dayKey(Date.now()) - k) / 864e5); return diff === 0 ? 'Today' : diff === 1 ? 'Yesterday' : new Date(k).toLocaleDateString('en-AU', { weekday: 'short', day: 'numeric', month: 'short' }); };
@@ -622,12 +632,32 @@
       'KEY POINTS\n' + pts.map((p, i) => (i + 1) + '. ' + p.text).join('\n') + '\n\nTHE STUDENT’S BLURT\n"""\n' + clip(text, 12000) + '\n"""';
   }
 
+  function recallPrompt(t, pts, ans) {
+    return 'A Year 12 student studying VCE ' + (t.subj ? t.subj.name : '') + ' Units 3 & 4 is doing recall practice on “' + tTitle(t) + '”. With their notes closed they answered specific questions, each testing one key point. Mark each answer strictly against its key point.\n\n' +
+      'For each item decide:\n- "got": the answer states the key point’s idea correctly and specifically (different wording is fine)\n- "partial": some of it is right, but it is vague, incomplete or missing an important detail (for example a formula without its condition, or a rule without its reason)\n- "missed": wrong, irrelevant or blank\n' +
+      'Be strict. Naming a term without the idea behind it, or a vague gist, is "partial" at best. Never give credit for what the student probably knows: only for what they wrote. For "got" and "partial", quote the exact words from that answer that show it, copied character for character (2 to 20 words).\n' +
+      'Then list anything in the answers that is wrong: misconceptions, wrong formulas, wrong units or definitions. Ignore spelling and style.\n\n' +
+      'Reply with JSON only:\n{"points":[{"status":"got","quote":"<exact words from that answer>","note":"<under 15 words: what was missing or wrong, or what was right>"}],"wrong":[{"claim":"<their words>","fix":"<one sentence, LaTeX between \\( and \\) for maths>"}],"tip":"<one sentence: what to focus on next>"}\n' +
+      '"points" has exactly one entry per item, in the order given.\n\nITEMS\n' +
+      pts.map((p, i) => (i + 1) + '. Question: ' + (p.q || 'Explain this key idea.') + '\n   Key point (what a full answer contains): ' + p.text + '\n   Student’s answer: ' + ((ans[i] || '').trim() ? '"""' + clip(ans[i].trim(), 2500) + '"""' : '(no answer)')).join('\n');
+  }
+  // questions asked in recall mode: the authored data-q, or a fallback that doesn't give the point away
+  const askFor = p => p.q || 'Explain this key idea from the topic (it starts “' + p.text.split(' ').slice(0, 3).join(' ') + '…”).';
+
   // the result view, shared by a fresh check and a look back at an old attempt
-  function resultShell(s, pts, text) {
+  function resultShell(s, pts, text, qa, qs) {
+    const rec = Array.isArray(qa);
     s.body.innerHTML = '<div class="bl-score"><div class="bl-ring"><b>–</b><span>recalled</span></div><div class="bl-score-t"><b class="bl-head"></b><p class="bl-sub"></p><p class="bl-delta" hidden></p></div></div>' +
-      '<ol class="bl-pts">' + pts.map((p, i) => '<li class="bl-pt" data-i="' + i + '"><span class="bl-ic" aria-hidden="true"></span><div class="bl-pt-b"><div class="bl-pt-t">' + p.html + '</div><div class="bl-note"></div></div></li>').join('') + '</ol>' +
-      '<div class="bl-wrong" hidden></div><p class="bl-tip" hidden></p>' + (text ? '<details class="bl-mine"><summary>Your blurt</summary><div class="bl-text"></div></details>' : '');
-    if (text) $('.bl-text', s.body).textContent = text;
+      '<ol class="bl-pts' + (rec ? ' rec' : '') + '">' + pts.map((p, i) => '<li class="bl-pt" data-i="' + i + '"><span class="bl-ic" aria-hidden="true"></span><div class="bl-pt-b">' +
+        (rec ? '<div class="bl-pt-q"></div><div class="bl-pt-a"><span class="bl-lbl">You wrote</span><span class="bl-a"></span></div><div class="bl-pt-t"><span class="bl-lbl">Key point</span>' + p.html + '</div>' : '<div class="bl-pt-t">' + p.html + '</div>') +
+        '<div class="bl-note"></div></div></li>').join('') + '</ol>' +
+      '<div class="bl-wrong" hidden></div><p class="bl-tip" hidden></p>' + (text && !rec ? '<details class="bl-mine"><summary>Your blurt</summary><div class="bl-text"></div></details>' : '');
+    if (rec) $$('.bl-pt', s.body).forEach((li, i) => {
+      $('.bl-pt-q', li).textContent = (qs && qs[i]) || askFor(pts[i]);
+      const a = (qa[i] || '').trim(), el = $('.bl-a', li);
+      if (a) el.textContent = a; else { el.textContent = 'No answer'; el.classList.add('none'); }
+    });
+    else if (text) $('.bl-text', s.body).textContent = text;
     A.renderMath(s.body);
   }
   function ringOn(s, cov, label) {
@@ -646,7 +676,8 @@
       $('.bl-note', li).innerHTML = (x.q ? '<q>' + esc(x.q) + '</q>' + (x.n ? ' · ' : '') : '') + esc(x.n || '');
     });
     ringOn(s, e.cov, verdictFor(e.cov));
-    $('.bl-sub', s.body).textContent = e.by === 'self' ? n('got') + ' of ' + pts.length + ' key points ticked (you checked this one yourself).' : n('got') + ' got · ' + n('partial') + ' partly · ' + n('missed') + ' missed, out of ' + pts.length + ' key points.';
+    const unit = e.qa ? 'questions' : 'key points';
+    $('.bl-sub', s.body).textContent = e.by === 'self' ? n('got') + ' of ' + pts.length + ' ' + unit + ' ticked (you checked this one yourself).' : n('got') + ' got · ' + n('partial') + ' partly · ' + n('missed') + ' missed, out of ' + pts.length + ' ' + unit + '.';
     if (prev) {
       const d = e.cov - prev.cov, el = $('.bl-delta', s.body);
       el.hidden = false; el.className = 'bl-delta ' + (d > 0 ? 'up' : d < 0 ? 'down' : '');
@@ -663,42 +694,72 @@
   }
   function gapsText(pts, e) {
     const st = e.st || [];
-    const g = st.map((x, i) => (x.s === 'got' || !pts[i]) ? '' : '- ' + (x.s === 'partial' ? '(partly) ' : '') + pts[i].text).filter(Boolean)
+    const g = st.map((x, i) => (x.s === 'got' || !pts[i]) ? '' : '- ' + (x.s === 'partial' ? '(partly) ' : '') + (e.qa ? '**' + ((e.qs && e.qs[i]) || askFor(pts[i])) + '** ' : '') + pts[i].text).filter(Boolean)
       .concat((e.wrong || []).map(x => '- Wrong: “' + (x.claim || '') + '” → ' + (x.fix || '')));
     return g.length ? '**Gaps from my blurt (' + e.cov + '%)**\n' + g.join('\n') : '';
   }
 
   // seq: redoing a set of topics from one day, one after another ({ list, i, label })
-  function openBlurt(tid, seq) {
+  // mode: 'q' = one specific recall question per key point (default); 'free' = blank-page blurt
+  function openBlurt(tid, seq, mode) {
     const t = A.topic(tid); if (!t) return;
     const pts = keyPoints(t);
     if (!pts.length) { A.toast('This page has no summary to check a blurt against'); return; }
-    const sub = seq ? 'Redo · ' + seq.label + ' · ' + (seq.i + 1) + ' of ' + seq.list.length : (t.subj ? t.subj.name + ' · ' : '') + 'write it all from memory';
+    mode = mode || store.get('blurtMode', 'q');
+    const rec = mode !== 'free';
+    const sub = seq ? 'Redo · ' + seq.label + ' · ' + (seq.i + 1) + ' of ' + seq.list.length : (t.subj ? t.subj.name + ' · ' : '') + (rec ? pts.length + ' recall questions' : 'write it all from memory');
     const s = openSheet({ title: 'Blurt: ' + esc(tTitle(t)), sub: esc(sub), icon: t.subj ? A.subjIcon(t.subj.id) : '', cls: 'ai-blurt', modal: true });   // the page is blurred out: no peeking
     const draftKey = 'blurtDraft:' + tid, prev = attempts(tid)[0] || null, hasHist = allAttempts().length > 0;
     let ctl = null, iv = 0, entry = null;
     s.onClose = () => { clearInterval(iv); if (ctl) ctl.abort(); };
-    s.body.innerHTML = '<div class="bl-intro"><p>Write down <b>everything</b> you remember about <b>' + esc(tTitle(t)) + '</b>: the key ideas, formulas, definitions, how they connect, and the traps. Bullet points are fine. No peeking at the notes.</p>' +
-      (prev || hasHist ? '<p class="bl-last">' + (prev ? esc(lastBlurt(tid)) + (hasHist ? ' · ' : '') : '') + (hasHist ? '<button class="bl-link" type="button" data-bh-open>Blurt history</button>' : '') + '</p>' : '') + '</div>' +
-      '<textarea class="bl-ta" placeholder="Start typing everything you know…" aria-label="Your blurt"></textarea>' +
-      '<div class="bl-meta"><span class="bl-wc">0 words</span><span class="bl-time">0:00</span></div>';
+    const lastLine = prev || hasHist ? '<p class="bl-last">' + (prev ? esc(lastBlurt(tid)) + (hasHist ? ' · ' : '') : '') + (hasHist ? '<button class="bl-link" type="button" data-bh-open>Blurt history</button>' : '') + '</p>' : '';
+    const swap = '<button class="bl-link bl-swap" type="button" data-bl-mode="' + (rec ? 'free' : 'q') + '">' + (rec ? 'Blank-page blurt instead' : 'Answer specific questions instead') + '</button>';
+    if (rec) {
+      s.body.innerHTML = '<div class="bl-intro"><p>Answer each question from memory. Be specific: write the actual formula, rule, condition, reason or example, not just the topic word. Feeling like you know it isn’t the same as being able to write it.</p>' + lastLine + '</div>' +
+        '<ol class="bl-qs">' + pts.map((p, i) => '<li class="bl-q"><div class="bl-q-t"><span></span></div><textarea class="bl-qa" rows="2" data-i="' + i + '" aria-label="Answer ' + (i + 1) + '" placeholder="Your answer"></textarea></li>').join('') + '</ol>' +
+        '<div class="bl-meta"><span class="bl-wc"></span><span class="bl-time">0:00</span></div><p class="bl-alt">' + swap + '</p>';
+      $$('.bl-q-t > span', s.body).forEach((el, i) => { el.textContent = askFor(pts[i]); });
+      A.renderMath($('.bl-qs', s.body));
+    } else {
+      s.body.innerHTML = '<div class="bl-intro"><p>Write down <b>everything</b> you remember about <b>' + esc(tTitle(t)) + '</b>: the key ideas, formulas, definitions, how they connect, and the traps. Bullet points are fine. No peeking at the notes.</p>' + lastLine + '</div>' +
+        '<textarea class="bl-ta" placeholder="Start typing everything you know…" aria-label="Your blurt"></textarea>' +
+        '<div class="bl-meta"><span class="bl-wc">0 words</span><span class="bl-time">0:00</span></div><p class="bl-alt">' + swap + '</p>';
+    }
     s.foot.innerHTML = '<div class="np-acts">' + (seq && seq.i + 1 < seq.list.length ? '<button class="btn" type="button" data-bl-skip>Skip</button>' : '') + '<button class="btn primary" type="button" data-bl-check>Done, check it</button></div>';
-    const ta = $('.bl-ta', s.body), wc = $('.bl-wc', s.body), tm = $('.bl-time', s.body), t0 = Date.now();
-    ta.value = store.get(draftKey, '') || '';
+    $('[data-bl-mode]', s.body).addEventListener('click', ev => { const m = ev.currentTarget.dataset.blMode; store.set('blurtMode', m); openBlurt(tid, seq, m); });
+    const wc = $('.bl-wc', s.body), tm = $('.bl-time', s.body), t0 = Date.now();
     iv = setInterval(() => { const sec = Math.floor((Date.now() - t0) / 1000); tm.textContent = Math.floor(sec / 60) + ':' + String(sec % 60).padStart(2, '0'); }, 1000);
-    const count = () => { const n = (ta.value.match(/\S+/g) || []).length; wc.textContent = n + ' word' + (n === 1 ? '' : 's'); return n; };
-    let dt; ta.addEventListener('input', () => { count(); clearTimeout(dt); dt = setTimeout(() => store.set(draftKey, ta.value), 400); });
+    // drafts: recall answers are kept as a list, a blank-page blurt as text
+    const draft = store.get(draftKey, '') || '';
+    const tas = rec ? $$('.bl-qa', s.body) : [$('.bl-ta', s.body)];
+    if (rec) { const d = draft && typeof draft === 'object' && Array.isArray(draft.a) ? draft.a : []; tas.forEach((x, i) => { x.value = d[i] || ''; }); }
+    else tas[0].value = typeof draft === 'string' ? draft : '';
+    const answers = () => tas.map(x => x.value);
+    const words = v => (v.match(/\S+/g) || []).length;
+    const count = () => {
+      if (rec) { const n = tas.filter(x => words(x.value) >= 1).length; wc.textContent = n + ' of ' + tas.length + ' answered'; return n; }
+      const n = words(tas[0].value); wc.textContent = n + ' word' + (n === 1 ? '' : 's'); return n;
+    };
+    const grow = x => { x.style.height = 'auto'; x.style.height = Math.min(220, x.scrollHeight + 2) + 'px'; };
+    let dt;
+    tas.forEach(x => x.addEventListener('input', () => {
+      count(); if (rec) grow(x);
+      clearTimeout(dt); dt = setTimeout(() => store.set(draftKey, rec ? { a: answers() } : tas[0].value), 400);
+    }));
+    if (rec) tas.forEach(grow);
     count();
-    if (!phone()) setTimeout(() => ta.focus({ preventScroll: true }), 120);
+    if (!phone()) setTimeout(() => (tas.find(x => !x.value.trim()) || tas[0]).focus({ preventScroll: true }), 120);
     const skip = $('[data-bl-skip]', s.foot);
-    if (skip) skip.addEventListener('click', () => openBlurt(seq.list[seq.i + 1], Object.assign({}, seq, { i: seq.i + 1 })));
+    if (skip) skip.addEventListener('click', () => openBlurt(seq.list[seq.i + 1], Object.assign({}, seq, { i: seq.i + 1 }), mode));
     $('[data-bl-check]', s.foot).addEventListener('click', () => {
-      if (count() < 5) { A.toast('Write a bit more first'); ta.focus(); return; }
-      clearInterval(iv); clearTimeout(dt); store.set(draftKey, ta.value);
-      const text = ta.value, secs = Math.round((Date.now() - t0) / 1000);
-      resultShell(s, pts, text);
+      if (rec ? count() < 1 : count() < 5) { A.toast(rec ? 'Answer at least one question first' : 'Write a bit more first'); (tas.find(x => !x.value.trim()) || tas[0]).focus(); return; }
+      clearInterval(iv); clearTimeout(dt); store.set(draftKey, rec ? { a: answers() } : tas[0].value);
+      const qa = rec ? answers() : null, qs = rec ? pts.map(askFor) : null;
+      const text = rec ? qs.map((q, i) => 'Q' + (i + 1) + '. ' + q + '\n' + ((qa[i] || '').trim() || '(no answer)')).join('\n\n') : tas[0].value;
+      const secs = Math.round((Date.now() - t0) / 1000);
+      resultShell(s, pts, text, qa, qs);
       s.foot.innerHTML = '';
-      if (sample) withClaude(text, secs); else selfCheck(text, secs, false);
+      if (sample) withClaude(text, secs, qa, qs); else selfCheck(text, secs, false, qa, qs);
     });
 
     const keep = e => { entry = e; saveAttempt(tid, e); store.set(draftKey, ''); };
@@ -706,9 +767,9 @@
       const nextBtn = seq ? (seq.i + 1 < seq.list.length ? '<button class="btn primary" type="button" data-bl-next>Next topic →</button>' : '<button class="btn primary" type="button" data-bh-open>Back to history</button>') : '';
       s.foot.innerHTML = '<div class="np-acts"><button class="btn" type="button" data-bl-notes>Open the notes</button><button class="btn" type="button" data-bl-again>Blurt again</button>' + (extra || '') + nextBtn + '</div>';
       $('[data-bl-notes]', s.foot).addEventListener('click', () => openNotes(tid));
-      $('[data-bl-again]', s.foot).addEventListener('click', () => openBlurt(tid, seq));
+      $('[data-bl-again]', s.foot).addEventListener('click', () => openBlurt(tid, seq, mode));
       const nx = $('[data-bl-next]', s.foot);
-      if (nx) nx.addEventListener('click', () => openBlurt(seq.list[seq.i + 1], Object.assign({}, seq, { i: seq.i + 1 })));
+      if (nx) nx.addEventListener('click', () => openBlurt(seq.list[seq.i + 1], Object.assign({}, seq, { i: seq.i + 1 }), mode));
     }
     function gapsButton() {
       const txt = entry && gapsText(pts, entry);
@@ -718,44 +779,50 @@
       const acts = $('.np-acts', s.foot), nx = $('[data-bl-next], .np-acts > [data-bh-open]', s.foot);
       if (nx) acts.insertBefore(b, nx); else acts.appendChild(b);
     }
-    function selfCheck(text, secs, failed) {
-      $('.bl-head', s.body).textContent = 'Tick the points you had';
-      $('.bl-sub', s.body).textContent = (failed ? 'Claude couldn’t check it, so check it yourself. ' : '') + 'Compare your blurt (at the bottom) with each key point, and only tick it if you actually wrote the idea.';
-      $$('.bl-pt', s.body).forEach(li => { li.classList.add('self'); const cb = doc.createElement('input'); cb.type = 'checkbox'; cb.className = 'bl-cb'; cb.setAttribute('aria-label', 'I had this'); $('.bl-ic', li).replaceWith(cb); });
-      $('.bl-mine', s.body).open = true;
+    const base = (secs, text, qa, qs) => Object.assign({ t: Date.now(), text, secs }, qa ? { mode: 'q', qa, qs } : {});
+    function selfCheck(text, secs, failed, qa, qs) {
+      $('.bl-head', s.body).textContent = qa ? 'Tick the questions you nailed' : 'Tick the points you had';
+      $('.bl-sub', s.body).textContent = (failed ? 'Claude couldn’t check it, so check it yourself. ' : '') + (qa ? 'Compare each answer with its key point. Only tick it if your answer actually says it, specifically.' : 'Compare your blurt (at the bottom) with each key point, and only tick it if you actually wrote the idea.');
+      $$('.bl-pt', s.body).forEach((li, i) => {
+        li.classList.add('self'); const cb = doc.createElement('input'); cb.type = 'checkbox'; cb.className = 'bl-cb'; cb.setAttribute('aria-label', 'I had this');
+        if (qa && !(qa[i] || '').trim()) { cb.disabled = true; li.classList.add('missed'); }
+        $('.bl-ic', li).replaceWith(cb);
+      });
+      if ($('.bl-mine', s.body)) $('.bl-mine', s.body).open = true;
       const upd = () => ringOn(s, Math.round(100 * $$('.bl-cb:checked', s.body).length / pts.length));
       s.body.addEventListener('change', upd); upd();
       footer('<button class="btn primary" type="button" data-bl-save>Save result</button>');
       $('[data-bl-save]', s.foot).addEventListener('click', ev => {
         const st = $$('.bl-pt', s.body).map(li => ({ s: $('.bl-cb', li).checked ? 'got' : 'missed' }));
         const cov = Math.round(100 * st.filter(x => x.s === 'got').length / pts.length);
-        keep({ t: Date.now(), cov, by: 'self', text, secs, st });
+        keep(Object.assign(base(secs, text, qa, qs), { cov, by: 'self', st }));
         ev.target.textContent = 'Saved ✓'; ev.target.disabled = true; ev.target.classList.remove('primary');
         if (prev) { const d = cov - prev.cov, el = $('.bl-delta', s.body); el.hidden = false; el.className = 'bl-delta ' + (d > 0 ? 'up' : d < 0 ? 'down' : ''); el.textContent = 'Last time ' + prev.cov + '% · ' + (d > 0 ? '+' + d + ' points' : d < 0 ? d + ' points' : 'no change'); }
         gapsButton();
       });
     }
-    async function withClaude(text, secs) {
-      $('.bl-head', s.body).innerHTML = '<span class="ai-think">Claude is checking your blurt…</span>';
+    async function withClaude(text, secs, qa, qs) {
+      $('.bl-head', s.body).innerHTML = '<span class="ai-think">Claude is checking ' + (qa ? 'your answers' : 'your blurt') + '…</span>';
       $('.bl-sub', s.body).textContent = 'Every point it says you got has to be quoted from what you wrote.';
       ctl = new AbortController();
       let res;
-      try { res = await sample.json(blurtPrompt(t, pts, text), { signal: ctl.signal, cache: false }); }
+      try { res = await sample.json(qa ? recallPrompt(t, pts, qa) : blurtPrompt(t, pts, text), { signal: ctl.signal, cache: false }); }
       catch (e) {
         if (e && e.code === 'cancelled') return;
         const f = failCopy(e); if (f.msg) A.toast(f.msg);
-        selfCheck(text, secs, true); return;
+        selfCheck(text, secs, true, qa, qs); return;
       } finally { ctl = null; }
       const got = res && Array.isArray(res.points) ? res.points : [];
       const st = pts.map((p, i) => {
-        const r = got[i] || {};
+        const r = got[i] || {}, src = qa ? (qa[i] || '') : text;
+        if (qa && !src.trim()) return { s: 'missed', q: '', n: 'No answer.' };
         let status = ['got', 'partial', 'missed'].includes(r.status) ? r.status : 'missed', note = String(r.note || ''), quote = String(r.quote || '');
-        if (status !== 'missed' && !quoted(quote, text)) { status = 'missed'; note = 'Claude couldn’t find this in what you wrote.'; quote = ''; }
+        if (status !== 'missed' && !quoted(quote, src)) { status = 'missed'; note = 'Claude couldn’t find this in what you wrote.'; quote = ''; }
         return { s: status, q: status === 'missed' ? '' : quote, n: note };
       });
       const cov = Math.round(100 * st.reduce((a, x) => a + (x.s === 'got' ? 1 : x.s === 'partial' ? 0.5 : 0), 0) / pts.length);
       const wrong = (res && Array.isArray(res.wrong) ? res.wrong : []).filter(w => w && (w.claim || w.fix)).map(w => ({ claim: String(w.claim || ''), fix: String(w.fix || '') }));
-      const e = { t: Date.now(), cov, by: 'claude', text, secs, st, wrong, tip: res && res.tip ? String(res.tip) : '' };
+      const e = Object.assign(base(secs, text, qa, qs), { cov, by: 'claude', st, wrong, tip: res && res.tip ? String(res.tip) : '' });
       paintResult(s, pts, e, prev);
       keep(e);
       footer(); gapsButton();
@@ -767,7 +834,7 @@
     const t = A.topic(e.tid); if (!t) return;
     const pts = keyPoints(t);
     const s = openSheet({ title: esc(tTitle(t)), sub: esc('Blurt · ' + dayLabel(dayKey(e.t)) + ', ' + clock(e.t) + (e.by === 'self' ? ' · self-checked' : '')), icon: t.subj ? A.subjIcon(t.subj.id) : '', cls: 'ai-blurt' });
-    resultShell(s, pts, e.text || '');
+    resultShell(s, pts, e.text || '', Array.isArray(e.qa) ? e.qa : null, e.qs);
     if (e.st) {
       const older = attempts(e.tid).filter(x => x.t < e.t)[0];
       paintResult(s, pts, e, older);
@@ -895,7 +962,7 @@
     else { b.dataset.armed = '1'; b.textContent = 'Tap again to delete'; setTimeout(() => { if (doc.contains(b)) { delete b.dataset.armed; b.textContent = 'Delete'; } }, 3000); }
   });
 
-  window.GUIDE_AI = { decorate, openNotes, openBlurt, openBlurtHistory, askQuestion, askTopic, md };
+  window.GUIDE_AI = { decorate, openNotes, openBlurt, openBlurtHistory, askQuestion, askTopic, md, markQuestion };
   window.addEventListener('guide:render', () => decorate());
   decorate();
 })();
