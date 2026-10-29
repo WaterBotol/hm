@@ -1,0 +1,89 @@
+<!--
+id: rf-loans
+title: Reducing balance loans
+short: Reducing balance loans
+summary: Modelling a loan with uₙ₊₁ = Ruₙ − d; amortisation tables (payment, interest, principal reduction, balance); using Finance Solver for mortgages and personal loans; the effect of changing the interest rate or making extra repayments; and interest-only loans.
+keywords: reducing balance loan, loan, mortgage, personal loan, repayment, amortisation, amortization table, interest, principal reduction, balance, recurrence relation, R u n minus d, change in interest rate, interest rate rise, extra repayments, pay off sooner, interest only loan, total interest, total cost of the loan, graph of loan balance, final payment
+dotpoints: use of a first-order linear recurrence relation to model and analyse (numerically and graphically) the amortisation of a reducing balance loan, including the use of a recurrence relation to determine the value of the loan after n payments for an initial sequence from first principles | use of a table to investigate and analyse the amortisation of a reducing balance loan on a step-by-step basis, the payment made, the amount of interest paid, the reduction in the principal and the balance of the loan | use of technology with financial modelling functionality to solve problems involving reducing balance loans, such as repaying a personal loan or a mortgage, including the impact of a change in interest rate on repayment amount, time to repay the loan, total interest paid and the total cost of the loan
+-->
+<h2>The recurrence relation for a loan</h2>
+<p>Each period, interest is added to the balance and then a payment is subtracted. The balance falls, but only by the part of the payment left over after interest.</p>
+<div class="eq"><div class="eq-label">Reducing balance loan</div>\[ V_0 = \text{amount borrowed}, \qquad V_{n+1} = R\,V_n - d, \qquad R = 1 + \frac{r}{100k} \]<p>\(d\) is the regular payment and \(k\) the number of payments (and compounding periods) per year.</p></div>
+<div class="we" data-title="Balance after a few payments, from first principles" data-marks="2">
+<div class="we-q"><p>Lee borrows \$20 000 at 6% per annum compounding monthly and repays \$400 per month. Write a recurrence relation and find the balance after 3 payments.</p></div>
+<div class="we-t"><p>Monthly rate \(\frac{6}{12} = 0.5\%\), so \(R = 1.005\). Apply the rule three times.</p></div>
+<div class="we-s" data-f="V_{n+1} = R\,V_n - d"><p>\(V_0 = 20\,000\), \(V_{n+1} = 1.005V_n - 400\). \(V_1 = 19\,700\), \(V_2 = 19\,398.50\).</p></div>
+<div class="we-s" data-f="V_{n+1} = R\,V_n - d"><p>\(V_3 = 1.005 \times 19\,398.50 - 400 = 19\,095.49\).</p></div>
+<div class="we-a"><p><strong>\$19 095.49</strong>.</p></div>
+</div>
+
+<h2>Amortisation tables</h2>
+<p>An <strong>amortisation table</strong> shows each payment split into interest and principal.</p>
+<div class="tbl"><table>
+<thead><tr><th>Payment no.</th><th>Payment</th><th>Interest</th><th>Principal reduction</th><th>Balance</th></tr></thead>
+<tbody>
+<tr><td>0</td><td>0</td><td>0</td><td>0</td><td>20 000.00</td></tr>
+<tr><td>1</td><td>400</td><td>100.00</td><td>300.00</td><td>19 700.00</td></tr>
+<tr><td>2</td><td>400</td><td>98.50</td><td>301.50</td><td>19 398.50</td></tr>
+<tr><td>3</td><td>400</td><td>96.99</td><td>303.01</td><td>19 095.49</td></tr>
+</tbody></table></div>
+<div class="eq"><div class="eq-label">How each row is calculated</div>\[ \text{interest} = \frac{r}{100k} \times \text{previous balance} \qquad \text{principal reduction} = \text{payment} - \text{interest} \]\[ \text{new balance} = \text{previous balance} - \text{principal reduction} \]</div>
+<aside class="c-key" data-title="Key idea: early payments are mostly interest"><p>Early in a loan the balance is large, so most of each payment is interest. As the balance falls, the interest part shrinks and the principal part grows. So the balance falls slowly at first and faster near the end: the graph of balance against time curves downward.</p></aside>
+<div class="sim" data-sim="gmLoan"></div>
+
+<h2>Changing the interest rate</h2>
+<div class="we" data-title="An interest rate rise" data-marks="3">
+<div class="we-q"><p>A \$300 000 mortgage at 6% per annum compounding monthly is to be repaid over 25 years with monthly payments of \$1932.90. After 3 years the rate rises to 7%. (a) Find the balance after 3 years. (b) Find the new payment that keeps the loan on track to finish in 25 years in total.</p></div>
+<div class="we-t"><p>Use Finance Solver twice: first for the balance at the change, then a new loan for the remaining time with the new rate.</p></div>
+<div class="we-s"><p>(a) N = 36, I% = 6, PV = 300 000, Pmt = −1932.90, PpY = CpY = 12: FV = −282 971.40.</p></div>
+<div class="we-s"><p>(b) N = 300 − 36 = 264, I% = 7, PV = 282 971.40, FV = 0: Pmt = −2103.68.</p></div>
+<div class="we-a"><p>(a) <strong>\$282 971.40</strong>. (b) <strong>\$2103.68</strong> per month (about \$171 more). If the payment stayed at \$1932.90, the remaining 264 months would stretch to about 331 months.</p></div>
+</div>
+
+<h2>Extra repayments and interest-only loans</h2>
+<div class="we" data-title="Paying more each month" data-marks="3">
+<div class="we-q"><p>Instead of \$1932.90, the borrower pays \$2100 per month from the start (6% p.a., \$300 000). How many payments are needed and how much interest is saved? (On the original plan, total interest is \$279 870.)</p></div>
+<div class="we-t"><p>Solve for N, then work out the final payment and total paid.</p></div>
+<div class="we-s"><p>N = 251.2: 251 payments of \$2100 then a final payment of \$375.52 (from the balance after 251 payments).</p></div>
+<div class="we-s"><p>Total paid: \(251 \times 2100 + 375.52 = 527\,475.52\); interest \(= 227\,475.52\).</p></div>
+<div class="we-a"><p><strong>252 payments</strong> (about 4 years sooner) and <strong>\$52 394.48</strong> less interest.</p></div>
+</div>
+<aside class="c-def" data-title="Interest-only loan"><p>The payment equals the interest each period, so the balance never falls: \(V_{n+1} = R\,V_n - d\) with \(d = \frac{r}{100k}V_0\). For \$400 000 at 6.6% per annum, monthly payments are \(\frac{0.066}{12} \times 400\,000 = \$2200\), and the full \$400 000 is still owed at the end.</p></aside>
+<aside class="c-exam" data-title="Exam tip: read the question's numbers"><p>Questions often say “the final repayment is slightly different from the others”. Solve for N, use the whole number of full payments to find the remaining balance, and calculate the last payment. Don't assume every payment is equal.</p></aside>
+
+<h2>Practice</h2>
+<div class="mcq" data-ans="C" data-level="core">
+<div class="mcq-q"><p>A loan of \$15 000 at 8.4% per annum compounding monthly is repaid at \$350 per month. The recurrence relation is</p></div>
+<ol><li>\(V_{n+1} = 1.084V_n - 350\)</li><li>\(V_{n+1} = 1.007V_n + 350\)</li><li>\(V_{n+1} = 1.007V_n - 350\)</li><li>\(V_{n+1} = 0.993V_n - 350\)</li></ol>
+<div class="mcq-x"><p>\(\frac{8.4}{12} = 0.7\%\) per month: \(R = 1.007\); payments are subtracted.</p></div>
+</div>
+<div class="mcq" data-ans="A" data-level="core">
+<div class="mcq-q"><p>The interest in the first month of that loan is</p></div>
+<ol><li>\$105</li><li>\$1260</li><li>\$350</li><li>\$245</li></ol>
+<div class="mcq-x"><p>\(0.007 \times 15\,000 = 105\).</p></div>
+</div>
+<div class="mcq" data-ans="D" data-level="trick">
+<div class="mcq-q"><p>In an amortisation table for a reducing balance loan, as time goes on</p></div>
+<ol><li>the interest part of each payment increases</li><li>the payment increases</li><li>the principal part of each payment decreases</li><li>the principal part of each payment increases</li></ol>
+<div class="mcq-x"><p>The balance falls, so interest falls and more of each (fixed) payment reduces the principal.</p></div>
+</div>
+<div class="mcq" data-ans="B" data-level="hard">
+<div class="mcq-q"><p>A loan is modelled by \(V_0 = 80\,000\), \(V_{n+1} = 1.005V_n - 400\). This is</p></div>
+<ol><li>a reducing balance loan that is paid off in about 20 years</li><li>an interest-only loan</li><li>an annuity investment</li><li>a loan whose balance grows</li></ol>
+<div class="mcq-x"><p>Interest each month is \(0.005 \times 80\,000 = 400\), exactly the payment, so the balance stays at \$80 000.</p></div>
+</div>
+<div class="pq" data-level="core" data-marks="3">
+<div class="pq-q"><p>Complete the next row of the amortisation table for Lee's loan (balance \$19 095.49, 0.5% per month, \$400 payment): interest, principal reduction and new balance.</p></div>
+<div class="pq-s"><p>Interest: \(0.005 \times 19\,095.49 = \$95.48\). [1]</p><p>Principal reduction: \(400 - 95.48 = \$304.52\). [1]</p><p>Balance: \(19\,095.49 - 304.52 = \$18\,790.97\). [1]</p></div>
+</div>
+<div class="pq" data-level="exam" data-marks="2">
+<div class="pq-q"><p>How many monthly payments of \$400 are needed to repay Lee's \$20 000 loan at 6% per annum compounding monthly?</p></div>
+<div class="pq-s"><p>N = ?, I% = 6, PV = 20 000, Pmt = −400, FV = 0, PpY = CpY = 12: N = 57.7. [1]</p><p>58 payments (the last one smaller). [1]</p></div>
+</div>
+<h2>Summary</h2>
+<ul>
+  <li data-q="Write the recurrence relation for a reducing balance loan.">\(V_0 = \) amount borrowed, \(V_{n+1} = RV_n - d\), with \(R = 1 + \frac{r}{100k}\).</li>
+  <li data-q="How is each row of an amortisation table calculated?">Interest = periodic rate × previous balance; principal reduction = payment − interest; new balance = previous balance − principal reduction.</li>
+  <li data-q="How do you handle an interest rate change part-way through a loan?">Find the balance at the change (solve FV), then treat it as a new loan with the new rate and remaining time.</li>
+  <li data-q="What is an interest-only loan? What effect do extra repayments have?">Payments equal the interest, so the balance stays the same. Extra repayments shorten the loan and reduce total interest.</li>
+</ul>

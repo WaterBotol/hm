@@ -1,0 +1,107 @@
+<!--
+id: da-summary
+title: Summary statistics and boxplots
+short: Summary stats & boxplots
+summary: Median, quartiles, IQR and range; the five-number summary and boxplots with fences (Q1 − 1.5 × IQR, Q3 + 1.5 × IQR) to show outliers; the mean and standard deviation; choosing the right measures; and comparing distributions.
+keywords: median, quartile, Q1, Q3, interquartile range, IQR, range, five number summary, boxplot, box plot, box and whisker, whisker, fence, lower fence, upper fence, outlier, possible outlier, mean, standard deviation, sd, resistant, robust, skewed, percentage of values, comparing distributions
+dotpoints: summary of the distributions of numerical variables; the five-number summary and boxplots (including the use of the lower fence (Q1 − 1.5 × IQR) and upper fence (Q3 + 1.5 × IQR) to identify and display possible outliers) | the sample mean and standard deviation and their use in comparing data distributions in terms of centre and spread
+-->
+<h2>Median and quartiles</h2>
+<p>Put the data in order. The <strong>median</strong> splits it in half: it is the \(\frac{n + 1}{2}\)th value. The <strong>quartiles</strong> split each half again.</p>
+<ul>
+  <li><strong>Q1</strong> (lower quartile): the median of the lower half.</li>
+  <li><strong>Q3</strong> (upper quartile): the median of the upper half.</li>
+  <li>If \(n\) is odd, leave the median itself out of both halves. This is the method VCAA and your CAS use.</li>
+</ul>
+<div class="eq"><div class="eq-label">Spread</div>\[ \text{IQR} = Q_3 - Q_1 \qquad \text{range} = \text{max} - \text{min} \]<p>The IQR is the spread of the middle 50% of the data.</p></div>
+<p>The <strong>five-number summary</strong> is min, Q1, median, Q3, max.</p>
+
+<h2>Boxplots and outliers</h2>
+<p>A boxplot draws the five-number summary: the box runs from Q1 to Q3 with a line at the median, and whiskers run out to the smallest and largest values that are <em>not</em> outliers. Possible outliers are plotted as separate points.</p>
+<div class="eq"><div class="eq-label">Fences (on the formula sheet)</div>\[ \text{lower fence} = Q_1 - 1.5 \times \text{IQR} \qquad \text{upper fence} = Q_3 + 1.5 \times \text{IQR} \]<p>A value below the lower fence or above the upper fence is a possible outlier. A value exactly on a fence is <strong>not</strong> an outlier.</p></div>
+<figure class="fig">
+<svg viewBox="0 0 440 120" width="440" role="img" aria-label="Boxplot on a scale from 0 to 35: whisker from 3 to 6, box from 6 to 15 with median at 11, whisker from 15 to 18, and an outlier point at 32. The upper fence at 28.5 is marked with a dashed line.">
+  <line x1="30" y1="95" x2="415" y2="95" class="s-ink"/>
+  <g class="s-ink"><line x1="30" y1="95" x2="30" y2="100"/><line x1="85" y1="95" x2="85" y2="100"/><line x1="140" y1="95" x2="140" y2="100"/><line x1="195" y1="95" x2="195" y2="100"/><line x1="250" y1="95" x2="250" y2="100"/><line x1="305" y1="95" x2="305" y2="100"/><line x1="360" y1="95" x2="360" y2="100"/><line x1="415" y1="95" x2="415" y2="100"/></g>
+  <g class="t-sm t-mut" text-anchor="middle"><text x="30" y="112">0</text><text x="85" y="112">5</text><text x="140" y="112">10</text><text x="195" y="112">15</text><text x="250" y="112">20</text><text x="305" y="112">25</text><text x="360" y="112">30</text><text x="415" y="112">35</text></g>
+  <line x1="63" y1="50" x2="96" y2="50" class="s-ink"/><line x1="63" y1="40" x2="63" y2="60" class="s-ink"/>
+  <rect x="96" y="32" width="99" height="36" class="f-accsoft" style="stroke:var(--accent);stroke-width:2"/>
+  <line x1="151" y1="32" x2="151" y2="68" class="s-acc" style="stroke-width:3"/>
+  <line x1="195" y1="50" x2="228" y2="50" class="s-ink"/><line x1="228" y1="40" x2="228" y2="60" class="s-ink"/>
+  <circle cx="382" cy="50" r="4.5" class="f-ink"/>
+  <line x1="343.5" y1="20" x2="343.5" y2="80" class="s-dash"/>
+  <g class="t-sm"><text x="63" y="28" text-anchor="middle">min 3</text><text x="96" y="22" text-anchor="middle">Q1 6</text><text x="151" y="22" text-anchor="middle">med 11</text><text x="195" y="22" text-anchor="middle">Q3 15</text><text x="228" y="28" text-anchor="middle">18</text><text x="382" y="36" text-anchor="middle">32</text></g>
+  <text x="340" y="15" class="t-sm t-mut" text-anchor="end">upper fence 28.5</text>
+</svg>
+<figcaption>Data: 3, 5, 6, 8, 9, 11, 12, 14, 15, 18, 32. The upper whisker stops at 18, the largest value that is not an outlier.</figcaption>
+</figure>
+<div class="sim" data-sim="gmBoxplot"></div>
+<aside class="c-key" data-title="Key idea: quarters of the data"><p>Each of the four sections of a boxplot (lower whisker, lower box, upper box, upper whisker) holds about <strong>25%</strong> of the data. So about 50% of values are above the median, 75% are above Q1, and 25% are above Q3. A <em>longer</em> section means the same 25% is more spread out, not that it holds more values.</p></aside>
+<aside class="c-trap" data-title="Trick alert: the whisker is not the max"><p>When there is an outlier, the whisker ends at the largest non-outlier value, so the maximum is the outlier point. Read the max from the dot, not the whisker.</p></aside>
+
+<div class="we" data-title="Five-number summary and outliers" data-marks="3">
+<div class="we-q"><p>For the data 3, 5, 6, 8, 9, 11, 12, 14, 15, 18, 32, find the five-number summary and show that 32 is an outlier.</p></div>
+<div class="we-t"><p>With 11 values the median is the 6th value; leave it out of both halves to find the quartiles. Then compare the extreme values with the fences.</p></div>
+<div class="we-s" data-f="\text{median position} = \dfrac{n + 1}{2}"><p>Median = 6th value = 11. Lower half 3, 5, 6, 8, 9 gives Q1 = 6; upper half 12, 14, 15, 18, 32 gives Q3 = 15.</p></div>
+<div class="we-s" data-f="\text{IQR} = Q_3 - Q_1 ;; \text{upper fence} = Q_3 + 1.5 \times \text{IQR}"><p>IQR = 15 − 6 = 9. Upper fence = 15 + 1.5 × 9 = 28.5; lower fence = 6 − 13.5 = −7.5.</p></div>
+<div class="we-a"><p>Five-number summary: <strong>3, 6, 11, 15, 32</strong>. Since 32 &gt; 28.5, <strong>32 is a possible outlier</strong>; no value is below −7.5.</p></div>
+</div>
+
+<h2>Mean and standard deviation</h2>
+<p>The <strong>mean</strong> \(\bar x\) is the sum divided by the number of values. The <strong>standard deviation</strong> \(s\) measures the typical distance of values from the mean. Find both with your CAS (one-variable statistics); you don't calculate \(s\) by hand in the exam.</p>
+<div class="eq"><div class="eq-label">Mean and standard deviation</div>\[ \bar x = \frac{\sum x}{n} \qquad s = \sqrt{\frac{\sum (x - \bar x)^2}{n - 1}} \]</div>
+<div class="tbl"><table>
+<thead><tr><th>Shape of the data</th><th>Centre</th><th>Spread</th><th>Why</th></tr></thead>
+<tbody>
+<tr><td>Symmetric, no outliers</td><td>mean (or median)</td><td>standard deviation (or IQR)</td><td>All give similar values</td></tr>
+<tr><td>Skewed, or has outliers</td><td><strong>median</strong></td><td><strong>IQR</strong></td><td>The median and IQR are <em>resistant</em>: extreme values barely move them</td></tr>
+</tbody></table></div>
+<aside class="c-key" data-title="Key idea: outliers drag the mean"><p>For the data above, the mean is 12.1 and \(s \approx 8.0\). Remove the outlier 32 and the mean drops to 10.1 and \(s\) to 4.8, but the median only moves from 11 to 10. The mean is pulled towards the tail, so in a positively skewed distribution the mean is greater than the median.</p></aside>
+
+<h2>Comparing distributions</h2>
+<p>To compare two or more groups, compare <strong>centre</strong> and <strong>spread</strong> with numbers, in context.</p>
+<aside class="c-exam" data-title="Exam tip: a full comparison"><p>“The median travel time for bus users (35 min) is higher than for car users (22 min). Bus times are also more variable: the IQR is 18 min compared with 9 min.” Quote the actual values: “higher” on its own usually gets no marks.</p></aside>
+
+<div class="we" data-title="Percentages from a boxplot" data-marks="2">
+<div class="we-q"><p>A boxplot of the ages of 200 club members has Q1 = 24, median = 31, Q3 = 42 and max = 70. About how many members are aged over 24, and what percentage are aged between 31 and 42?</p></div>
+<div class="we-t"><p>Each section of a boxplot holds about 25% of the data.</p></div>
+<div class="we-s"><p>Over Q1: about 75% of 200 = 150 members.</p></div>
+<div class="we-a"><p>About <strong>150 members</strong> are over 24, and about <strong>25%</strong> are aged between the median (31) and Q3 (42).</p></div>
+</div>
+
+<h2>Practice</h2>
+<div class="mcq" data-ans="B" data-level="core">
+<div class="mcq-q"><p>A data set has Q1 = 18 and Q3 = 30. The upper fence is</p></div>
+<ol><li>36</li><li>48</li><li>45</li><li>12</li></ol>
+<div class="mcq-x"><p>IQR = 12, upper fence = 30 + 1.5 × 12 = 48.</p></div>
+</div>
+<div class="mcq" data-ans="D" data-level="core">
+<div class="mcq-q"><p>Which pair of statistics should be used to summarise a strongly skewed distribution?</p></div>
+<ol><li>mean and standard deviation</li><li>mean and IQR</li><li>median and range</li><li>median and IQR</li></ol>
+<div class="mcq-x"><p>The median and IQR are not affected by the long tail or outliers.</p></div>
+</div>
+<div class="mcq" data-ans="A" data-level="trick">
+<div class="mcq-q"><p>On a boxplot the upper whisker is twice as long as the lower whisker. This means</p></div>
+<ol><li>the top 25% of values are more spread out than the bottom 25%</li><li>twice as many values lie in the upper whisker</li><li>the mean is above Q3</li><li>there must be an outlier</li></ol>
+<div class="mcq-x"><p>Each whisker holds about 25% of the values; a longer one means those values are more spread out.</p></div>
+</div>
+<div class="mcq" data-ans="C" data-level="hard">
+<div class="mcq-q"><p>The five-number summary of a data set is 4, 10, 13, 16, 26. The number of possible outliers is</p></div>
+<ol><li>0, because 26 is the maximum</li><li>1, the value 4</li><li>1, the value 26</li><li>2</li></ol>
+<div class="mcq-x"><p>IQR = 6. Fences: 10 − 9 = 1 and 16 + 9 = 25. Since 26 &gt; 25 it is an outlier; 4 &gt; 1 is not.</p></div>
+</div>
+<div class="pq" data-level="core" data-marks="3">
+<div class="pq-q"><p>The numbers of goals scored in 12 games were: 0, 1, 1, 2, 2, 2, 3, 3, 4, 5, 6, 11. Find the five-number summary and determine whether 11 is an outlier.</p></div>
+<div class="pq-s"><p>Median = average of the 6th and 7th values = \(\frac{2 + 3}{2} = 2.5\). [1]</p><p>Lower half 0, 1, 1, 2, 2, 2: Q1 = 1.5; upper half 3, 3, 4, 5, 6, 11: Q3 = 4.5. Summary: 0, 1.5, 2.5, 4.5, 11. [1]</p><p>IQR = 3, upper fence = 4.5 + 4.5 = 9. Since 11 &gt; 9, it is a possible outlier. [1]</p></div>
+</div>
+<div class="pq" data-level="exam" data-marks="2">
+<div class="pq-q"><p>Two classes sat the same test. Class A: median 68, IQR 10. Class B: median 61, IQR 22. Compare the distributions.</p></div>
+<div class="pq-s"><p>Centre: Class A's median (68) is higher than Class B's (61), so Class A typically scored higher. [1]</p><p>Spread: Class B's scores are more variable (IQR 22 compared with 10). [1]</p></div>
+</div>
+<h2>Summary</h2>
+<ul>
+  <li data-q="How do you find Q1 and Q3 when the number of values is odd? What does the IQR measure?">Q1 and Q3 are the medians of the lower and upper halves, leaving out the median when \(n\) is odd. IQR = Q3 − Q1, the spread of the middle 50%.</li>
+  <li data-q="Write the fence rule for outliers. Is a value exactly on a fence an outlier? Where does a whisker end?">Outliers are below \(Q_1 - 1.5 \times \text{IQR}\) or above \(Q_3 + 1.5 \times \text{IQR}\) (on a fence is not an outlier). Whiskers end at the most extreme non-outliers.</li>
+  <li data-q="What percentage of values lies in each section of a boxplot?">About 25% in each of the four sections.</li>
+  <li data-q="When should you use median and IQR instead of mean and standard deviation?">For skewed data or data with outliers: the median and IQR are resistant; the mean is dragged towards the tail.</li>
+</ul>

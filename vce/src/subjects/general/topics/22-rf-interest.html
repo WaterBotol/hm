@@ -1,0 +1,93 @@
+<!--
+id: rf-interest
+title: Simple and compound interest, nominal and effective rates
+short: Interest & effective rates
+summary: Simple interest as linear growth and compound interest as geometric growth; recurrence relations and rules for compound interest investments and loans with different compounding periods; the difference between nominal and effective interest rates, and using effective rates to compare investments and loans.
+keywords: simple interest, compound interest, principal, interest rate, per annum, p.a., compounding period, compounded monthly, compounded quarterly, compounded daily, recurrence relation, R = 1 + r/100, future value, nominal interest rate, effective interest rate, effective annual rate, compare loans, compare investments, doubling time, interest earned
+dotpoints: the concepts of simple and compound interest | use of a recurrence relation to model and analyse (numerically and graphically) a compound interest investment or loan, including the use of a recurrence relation to determine the value of the compound interest loan or investment after n compounding periods for an initial sequence from first principles | the difference between nominal and effective interest rates and the use of effective interest rates to compare investment returns and the cost of loans when interest is paid or charged, for example, daily, monthly, quarterly | the future value of a compound interest investment or loan after n compounding periods and its use to solve practical problems
+-->
+<h2>Simple interest: linear growth</h2>
+<p>With <strong>simple interest</strong>, interest is calculated on the original principal only, so the same amount is added every period. It is linear growth.</p>
+<div class="eq"><div class="eq-label">Simple interest as a recurrence relation</div>\[ V_0 = P, \qquad V_{n+1} = V_n + d, \qquad d = \frac{r}{100} \times P \qquad\Rightarrow\qquad V_n = P + nd \]</div>
+<div class="we" data-title="Simple interest" data-marks="2">
+<div class="we-q"><p>\$8000 is invested at 3.5% per annum simple interest. Write a recurrence relation and find the value after 5 years.</p></div>
+<div class="we-t"><p>The yearly interest is always 3.5% of the original \$8000.</p></div>
+<div class="we-s"><p>\(d = 0.035 \times 8000 = 280\): \(V_0 = 8000\), \(V_{n+1} = V_n + 280\).</p></div>
+<div class="we-s" data-f="V_n = V_0 + nd"><p>\(V_5 = 8000 + 5 \times 280 = 9400\).</p></div>
+<div class="we-a"><p><strong>\$9400</strong>.</p></div>
+</div>
+
+<h2>Compound interest: geometric growth</h2>
+<p>With <strong>compound interest</strong>, interest is added to the balance each compounding period, and the next period's interest is calculated on the new, larger balance. An annual (nominal) rate of \(r\%\) compounded \(k\) times a year means \(\frac{r}{k}\%\) per period.</p>
+<div class="eq"><div class="eq-label">Compound interest</div>\[ V_0 = P, \qquad V_{n+1} = R\,V_n, \qquad R = 1 + \frac{r}{100k} \qquad\Rightarrow\qquad V_n = R^n V_0 \]<p>\(r\) = annual rate, \(k\) = compounding periods per year (12 monthly, 4 quarterly, 365 daily, 26 fortnightly), \(n\) = number of compounding periods.</p></div>
+<div class="we" data-title="Compound interest, compounding monthly" data-marks="2">
+<div class="we-q"><p>\$5000 is invested at 4.8% per annum, compounding monthly. Find the value after 3 years and the interest earned.</p></div>
+<div class="we-t"><p>Convert to a monthly rate and count months, not years.</p></div>
+<div class="we-s" data-f="R = 1 + \dfrac{r}{100k}"><p>\(R = 1 + \frac{4.8}{1200} = 1.004\); \(n = 3 \times 12 = 36\).</p></div>
+<div class="we-s" data-f="V_n = R^n V_0"><p>\(V_{36} = 1.004^{36} \times 5000 = 5772.76\).</p></div>
+<div class="we-a"><p>Value <strong>\$5772.76</strong>; interest \(5772.76 - 5000 =\) <strong>\$772.76</strong>.</p></div>
+</div>
+<aside class="c-trap" data-title="Trick alert: periods, not years"><p>“4.8% per annum compounding monthly” means 0.4% per month, and 3 years is 36 compounding periods. Using \(1.048^3\) gives the wrong answer unless interest compounds annually.</p></aside>
+<div class="we" data-title="How long to double" data-marks="2">
+<div class="we-q"><p>How many months does it take an investment at 4.8% per annum compounding monthly to double?</p></div>
+<div class="we-t"><p>Generate terms on CAS, or solve \(1.004^n \times P = 2P\).</p></div>
+<div class="we-s"><p>\(1.004^n = 2\) gives \(n = 173.6\). The balance only changes when interest is added, so round up.</p></div>
+<div class="we-a"><p><strong>174 months</strong> (14.5 years).</p></div>
+</div>
+<p>A loan with no repayments grows the same way: the debt is \(R^n\) times the amount borrowed.</p>
+
+<h2>Nominal and effective interest rates</h2>
+<p>The quoted annual rate is the <strong>nominal</strong> rate. Because interest compounds during the year, the actual percentage growth over a year is a little higher: the <strong>effective interest rate</strong>. Use it to compare loans or investments with different compounding periods.</p>
+<div class="eq"><div class="eq-label">Effective rate of interest (on the formula sheet)</div>\[ r_{\text{effective}} = \left[\left(1 + \frac{r}{100n}\right)^{n} - 1\right] \times 100\% \]<p>Here \(n\) is the number of compounding periods per year.</p></div>
+<div class="tbl"><table>
+<thead><tr><th>6% per annum compounding…</th><th>Effective rate</th></tr></thead>
+<tbody>
+<tr><td>annually</td><td>6.000%</td></tr>
+<tr><td>quarterly</td><td>6.136%</td></tr>
+<tr><td>monthly</td><td>6.168%</td></tr>
+<tr><td>daily</td><td>6.183%</td></tr>
+</tbody></table></div>
+<aside class="c-key" data-title="Key idea: which is better?"><p>For an <strong>investment</strong>, choose the <em>highest</em> effective rate. For a <strong>loan</strong>, choose the <em>lowest</em> effective rate. More frequent compounding raises the effective rate.</p></aside>
+<div class="we" data-title="Comparing with effective rates" data-marks="2">
+<div class="we-q"><p>Bank A offers 4.8% per annum compounding monthly. Bank B offers 4.85% per annum compounding quarterly. Which is the better investment?</p></div>
+<div class="we-t"><p>Convert both to effective rates.</p></div>
+<div class="we-s" data-f="r_{\text{effective}} = \left[\left(1 + \dfrac{r}{100n}\right)^{n} - 1\right] \times 100\%"><p>A: \(\left(1 + \frac{4.8}{1200}\right)^{12} - 1 = 4.907\%\). B: \(\left(1 + \frac{4.85}{400}\right)^{4} - 1 = 4.939\%\).</p></div>
+<div class="we-a"><p><strong>Bank B</strong> (effective 4.939% vs 4.907%).</p></div>
+</div>
+
+<h2>Practice</h2>
+<div class="mcq" data-ans="C" data-level="core">
+<div class="mcq-q"><p>\$12 000 is invested at 3.5% per annum compounding quarterly. A recurrence relation for the value after \(n\) quarters is</p></div>
+<ol><li>\(V_{n+1} = 1.035V_n\)</li><li>\(V_{n+1} = V_n + 105\)</li><li>\(V_{n+1} = 1.00875V_n\)</li><li>\(V_{n+1} = 0.875V_n\)</li></ol>
+<div class="mcq-x"><p>\(\frac{3.5}{4} = 0.875\%\) per quarter, so \(R = 1.00875\).</p></div>
+</div>
+<div class="mcq" data-ans="A" data-level="core">
+<div class="mcq-q"><p>The value of that investment after 5 years is closest to</p></div>
+<ol><li>\$14 284</li><li>\$14 100</li><li>\$14 252</li><li>\$13 650</li></ol>
+<div class="mcq-x"><p>\(1.00875^{20} \times 12\,000 \approx 14\,284.08\).</p></div>
+</div>
+<div class="mcq" data-ans="D" data-level="trick">
+<div class="mcq-q"><p>A loan charges 7.2% per annum compounding monthly. The effective annual rate is closest to</p></div>
+<ol><li>7.20%</li><li>0.60%</li><li>86.4%</li><li>7.44%</li></ol>
+<div class="mcq-x"><p>\(\left(1.006^{12} - 1\right) \times 100\% \approx 7.44\%\).</p></div>
+</div>
+<div class="mcq" data-ans="B" data-level="hard">
+<div class="mcq-q"><p>The recurrence relation \(V_0 = 2000\), \(V_{n+1} = 1.02V_n\) models an investment with interest compounding quarterly. The annual interest rate and the value after 9 months are</p></div>
+<ol><li>2% per annum; \$2040</li><li>8% per annum; \$2122.42</li><li>8% per annum; \$2160</li><li>2% per annum; \$2122.42</li></ol>
+<div class="mcq-x"><p>2% per quarter = 8% per annum. Nine months = 3 quarters: \(1.02^3 \times 2000 = 2122.42\).</p></div>
+</div>
+<div class="pq" data-level="core" data-marks="2">
+<div class="pq-q"><p>Find the effective annual rate for 5.2% per annum compounding fortnightly (26 times a year), correct to two decimal places.</p></div>
+<div class="pq-s"><p>\(\left(1 + \frac{5.2}{2600}\right)^{26} - 1 = 1.002^{26} - 1\). [1]</p><p>\(\approx 5.33\%\). [1]</p></div>
+</div>
+<div class="pq" data-level="exam" data-marks="3">
+<div class="pq-q"><p>Sam borrows \$3000 at 9% per annum compounding monthly and makes no repayments. (a) Write a recurrence relation for the amount owed after \(n\) months. (b) Find the amount owed after 18 months. (c) How much of this is interest?</p></div>
+<div class="pq-s"><p>(a) \(A_0 = 3000\), \(A_{n+1} = 1.0075A_n\). [1]</p><p>(b) \(1.0075^{18} \times 3000 \approx \$3431.88\). [1]</p><p>(c) \(3431.88 - 3000 = \$431.88\). [1]</p></div>
+</div>
+<h2>Summary</h2>
+<ul>
+  <li data-q="How does simple interest differ from compound interest? Write the recurrence relation for each.">Simple: interest on the principal only, \(V_{n+1} = V_n + d\) (linear). Compound: interest on the current balance, \(V_{n+1} = RV_n\) (geometric).</li>
+  <li data-q="How do you find R for r% per annum compounding k times a year, and how many periods are in n years?">\(R = 1 + \frac{r}{100k}\); \(n\) years = \(nk\) periods.</li>
+  <li data-q="Write the effective interest rate formula. What is it used for?">\(r_{\text{eff}} = \left[\left(1 + \frac{r}{100n}\right)^n - 1\right] \times 100\%\): to compare rates with different compounding periods.</li>
+  <li data-q="When comparing with effective rates, which should you choose for an investment and which for a loan?">Investment: highest effective rate. Loan: lowest effective rate.</li>
+</ul>

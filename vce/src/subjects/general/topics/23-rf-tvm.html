@@ -1,0 +1,101 @@
+<!--
+id: rf-tvm
+title: Using Finance Solver (time value of money)
+short: Finance Solver (TVM)
+summary: The CAS Finance Solver: what N, I(%), PV, Pmt, FV, PpY and CpY mean; the sign convention (money you receive is positive, money you pay is negative); setting up loans, investments, annuities and perpetuities; solving for any unknown; final payments, balances part-way through, and total interest.
+keywords: finance solver, TVM, time value of money, TVM solver, N, I%, interest rate, PV, present value, Pmt, payment, FV, future value, PpY, CpY, payments per year, compounding periods per year, sign convention, positive negative, balance after, total interest, final payment, number of payments, CAS finance, Nspire finance solver, ClassPad financial
+dotpoints: use of technology with financial modelling functionality to solve problems involving reducing balance loans, annuities and annuity investments
+-->
+<h2>The seven boxes</h2>
+<p>Every loan, annuity and investment question in General Maths can be solved with your CAS's financial solver (Finance Solver on TI-Nspire, Financial on ClassPad). Fill in six of the boxes and solve for the seventh.</p>
+<div class="tbl"><table>
+<thead><tr><th>Box</th><th>Meaning</th><th>Example</th></tr></thead>
+<tbody>
+<tr><td><strong>N</strong></td><td>total number of payments (or compounding periods if there are no payments)</td><td>5 years of monthly payments: 60</td></tr>
+<tr><td><strong>I(%)</strong></td><td>the <em>annual</em> interest rate</td><td>7.2</td></tr>
+<tr><td><strong>PV</strong></td><td>present value: the amount at the start</td><td>amount borrowed or invested</td></tr>
+<tr><td><strong>Pmt</strong></td><td>the regular payment</td><td>monthly repayment</td></tr>
+<tr><td><strong>FV</strong></td><td>future value: the amount at the end</td><td>0 when a loan is fully repaid</td></tr>
+<tr><td><strong>PpY</strong></td><td>payments per year</td><td>12 for monthly</td></tr>
+<tr><td><strong>CpY</strong></td><td>compounding periods per year</td><td>usually the same as PpY</td></tr>
+</tbody></table></div>
+
+<h2>The sign convention</h2>
+<p>Think from <strong>your</strong> point of view (the borrower or investor): money that comes <strong>to</strong> you is <strong>positive</strong>; money that leaves you is <strong>negative</strong>.</p>
+<div class="tbl"><table>
+<thead><tr><th>Situation</th><th>PV</th><th>Pmt</th><th>FV</th></tr></thead>
+<tbody>
+<tr><td>Reducing balance loan</td><td>+ (bank gives you money)</td><td>− (you repay)</td><td>0 (paid off) or − (still owe)</td></tr>
+<tr><td>Annuity investment (saving)</td><td>− (you deposit)</td><td>− (you keep depositing)</td><td>+ (you get it back)</td></tr>
+<tr><td>Annuity (drawing an income)</td><td>− (you invest a lump sum)</td><td>+ (you receive income)</td><td>0 (runs out) or + (money left)</td></tr>
+<tr><td>Perpetuity</td><td>− (you invest)</td><td>+ (you receive interest)</td><td>+ (equal in size to PV: never runs down)</td></tr>
+<tr><td>Compound interest, no payments</td><td>− (you invest)</td><td>0</td><td>+</td></tr>
+</tbody></table></div>
+<aside class="c-trap" data-title="Trick alert: the most common mistake"><p>If PV and FV have the same sign for a loan, or Pmt has the wrong sign, the solver gives nonsense (or an error). Before solving, check: does money go one way at the start and the other way during the loan? For a loan, PV is positive and Pmt negative.</p></aside>
+
+<h2>Solving for each unknown</h2>
+<div class="we" data-title="Finding the repayment" data-marks="2">
+<div class="we-q"><p>Jo borrows \$25 000 at 7.2% per annum compounding monthly, to be repaid with equal monthly payments over 5 years. Find the monthly payment and the total interest paid.</p></div>
+<div class="we-t"><p>A loan paid off completely: FV = 0. PV is positive (Jo receives the money).</p></div>
+<div class="we-s"><p>N = 60, I(%) = 7.2, PV = 25 000, FV = 0, PpY = CpY = 12. Solve for Pmt: −497.39.</p></div>
+<div class="we-s"><p>Total paid: \(60 \times 497.39 = 29\,843.40\); interest \(= 29\,843.40 - 25\,000\).</p></div>
+<div class="we-a"><p>Payment <strong>\$497.39</strong> per month; total interest <strong>\$4843.40</strong>.</p></div>
+</div>
+<div class="we" data-title="Finding the balance part-way through" data-marks="2">
+<div class="we-q"><p>How much does Jo still owe after 2 years?</p></div>
+<div class="we-t"><p>Use N = 24 and the actual (rounded) payment, then solve for FV.</p></div>
+<div class="we-s"><p>N = 24, I(%) = 7.2, PV = 25 000, Pmt = −497.39, PpY = CpY = 12. Solve for FV: −16 061.23 (negative: still owed).</p></div>
+<div class="we-a"><p><strong>\$16 061.23</strong>.</p></div>
+</div>
+<div class="we" data-title="Finding the number of payments and the final payment" data-marks="3">
+<div class="we-q"><p>A \$300 000 mortgage at 6% per annum compounding monthly is repaid at \$2500 per month. How many payments are needed, and what is the final (smaller) payment?</p></div>
+<div class="we-t"><p>Solve for N. A non-whole N means the last payment is smaller: find the balance just before it.</p></div>
+<div class="we-s"><p>I(%) = 6, PV = 300 000, Pmt = −2500, FV = 0, PpY = CpY = 12: N = 183.7, so 184 payments.</p></div>
+<div class="we-s"><p>After 183 payments (N = 183, solve FV): −1782.13. One more month of interest: \(1782.13 \times 1.005 = 1791.04\).</p></div>
+<div class="we-a"><p><strong>184 payments</strong>: 183 of \$2500 and a final payment of <strong>\$1791.04</strong>.</p></div>
+</div>
+<div class="we" data-title="Finding the interest rate" data-marks="1">
+<div class="we-q"><p>\$10 000 invested with interest compounding monthly grows to \$15 000 in 8 years with no extra deposits. Find the annual interest rate.</p></div>
+<div class="we-t"><p>An investment with no payments: PV negative, FV positive, Pmt = 0.</p></div>
+<div class="we-s"><p>N = 96, PV = −10 000, Pmt = 0, FV = 15 000, PpY = CpY = 12. Solve for I(%).</p></div>
+<div class="we-a"><p>About <strong>5.08% per annum</strong>.</p></div>
+</div>
+<aside class="c-exam" data-title="Exam tip: write the solver inputs"><p>For method marks, write down what you entered: “N = 60, I% = 7.2, PV = 25 000, Pmt = ?, FV = 0, PpY = CpY = 12, Pmt = −497.39”. Give money to the nearest cent, and only round when the question tells you to.</p></aside>
+<aside class="c-key" data-title="Key idea: total interest"><p>For a loan: total interest = total of all payments − amount borrowed (− any remaining balance paid off at the end). For an investment: total interest = final value − total deposits (including the initial amount).</p></aside>
+
+<h2>Practice</h2>
+<div class="mcq" data-ans="B" data-level="core">
+<div class="mcq-q"><p>For a reducing balance loan, which signs should PV and Pmt have in Finance Solver?</p></div>
+<ol><li>PV negative, Pmt positive</li><li>PV positive, Pmt negative</li><li>both positive</li><li>both negative</li></ol>
+<div class="mcq-x"><p>The borrower receives the loan (+) and pays it back (−).</p></div>
+</div>
+<div class="mcq" data-ans="D" data-level="core">
+<div class="mcq-q"><p>A loan is repaid quarterly over 10 years with interest compounding quarterly. The values of N, PpY and CpY are</p></div>
+<ol><li>10, 4, 4</li><li>40, 12, 12</li><li>120, 4, 4</li><li>40, 4, 4</li></ol>
+<div class="mcq-x"><p>\(10 \times 4 = 40\) payments, 4 per year, compounding 4 times a year.</p></div>
+</div>
+<div class="mcq" data-ans="A" data-level="trick">
+<div class="mcq-q"><p>A \$50 000 loan at 6.4% per annum compounding quarterly is repaid with quarterly payments over 10 years. The quarterly payment is closest to</p></div>
+<ol><li>\$1702.02</li><li>\$567.34</li><li>\$5000.00</li><li>\$1250.00</li></ol>
+<div class="mcq-x"><p>N = 40, I% = 6.4, PV = 50 000, FV = 0, PpY = CpY = 4: Pmt = −1702.02.</p></div>
+</div>
+<div class="mcq" data-ans="C" data-level="hard">
+<div class="mcq-q"><p>After some payments on a loan, Finance Solver gives FV = −8200. This means</p></div>
+<ol><li>the borrower has overpaid by \$8200</li><li>the bank owes the borrower \$8200</li><li>the borrower still owes \$8200</li><li>\$8200 of interest has been paid</li></ol>
+<div class="mcq-x"><p>From the borrower's view, a negative FV is money still to be paid.</p></div>
+</div>
+<div class="pq" data-level="core" data-marks="2">
+<div class="pq-q"><p>\$5000 is invested at 4.8% per annum compounding monthly, with an extra \$200 deposited at the end of every month. Find the value after 10 years.</p></div>
+<div class="pq-s"><p>N = 120, I% = 4.8, PV = −5000, Pmt = −200, PpY = CpY = 12. [1]</p><p>FV = \$38 799.03. [1]</p></div>
+</div>
+<div class="pq" data-level="exam" data-marks="3">
+<div class="pq-q"><p>For Jo's loan (\$25 000, 7.2% p.a. monthly, \$497.39 per month): (a) how much interest is paid in the first 2 years? (b) How much of the principal has been repaid after 2 years?</p></div>
+<div class="pq-s"><p>Balance after 24 payments: \$16 061.23. Principal repaid: \(25\,000 - 16\,061.23 = \$8938.77\). [1]</p><p>Payments made: \(24 \times 497.39 = \$11\,937.36\). [1]</p><p>Interest in 2 years: \(11\,937.36 - 8938.77 = \$2998.59\). [1]</p></div>
+</div>
+<h2>Summary</h2>
+<ul>
+  <li data-q="What do N, I(%), PV, Pmt, FV, PpY and CpY stand for?">Number of payments, annual rate, present value, payment, future value, payments per year, compounding periods per year.</li>
+  <li data-q="State the sign convention, and give the signs of PV, Pmt and FV for a loan and for a saving investment.">Money to you is +, money from you is −. Loan: PV +, Pmt −, FV 0 or −. Saving: PV −, Pmt −, FV +.</li>
+  <li data-q="How do you find the balance part-way through a loan and the final payment when N is not a whole number?">Balance: solve FV with N = payments made. Final payment: balance after the last full payment × (1 + periodic rate).</li>
+  <li data-q="How do you calculate the total interest on a loan?">Total of payments − amount borrowed (accounting for any balance still owed).</li>
+</ul>

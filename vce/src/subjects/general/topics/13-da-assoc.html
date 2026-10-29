@@ -1,0 +1,116 @@
+<!--
+id: da-assoc
+title: Associations with categorical variables
+short: Two-way tables & groups
+summary: Explanatory and response variables; two-way (contingency) frequency tables, column percentages and percentage segmented bar charts for two categorical variables; and parallel boxplots, back-to-back stem plots and parallel dot plots for a numerical variable across groups.
+keywords: association, explanatory variable, response variable, independent, dependent, two way table, contingency table, two-way frequency table, column percentage, row percentage, percentage segmented bar chart, segmented bar chart, parallel boxplots, back to back stem plot, parallel dot plot, comparing groups, categorical and numerical, statistical question
+dotpoints: response and explanatory variables and their role in investigating associations between variables | contingency (two-way) frequency tables, their associated bar charts (including percentage segmented bar charts) and their use in identifying and describing associations between two categorical variables | back-to-back stem plots, parallel dot plots and boxplots and their use in identifying and describing associations between a numerical variable and a categorical variable | answering statistical questions that require a knowledge of the associations between pairs of variables
+-->
+<h2>Explanatory and response variables</h2>
+<p>Two variables are <strong>associated</strong> if knowing the value of one helps you predict the other. In an association, the <strong>explanatory variable</strong> (EV) is the one that might explain or predict changes in the <strong>response variable</strong> (RV).</p>
+<div class="tbl"><table>
+<thead><tr><th>Question</th><th>Explanatory</th><th>Response</th></tr></thead>
+<tbody>
+<tr><td>Does the time spent studying affect test scores?</td><td>study time</td><td>test score</td></tr>
+<tr><td>Is preferred sport related to age group?</td><td>age group</td><td>preferred sport</td></tr>
+<tr><td>Do house prices depend on the suburb?</td><td>suburb</td><td>price</td></tr>
+</tbody></table></div>
+<aside class="c-exam" data-title="Exam tip: the wording gives it away"><p>“Does <em>A</em> depend on <em>B</em>?”, “<em>B</em> is used to predict <em>A</em>”, “the effect of <em>B</em> on <em>A</em>”: in each case <em>B</em> is explanatory and <em>A</em> is the response. Put the EV on the horizontal axis of scatterplots and as the columns of two-way tables.</p></aside>
+
+<h2>Two categorical variables: two-way tables</h2>
+<p>A <strong>two-way (contingency) frequency table</strong> cross-tabulates two categorical variables. To look for an association, convert counts to <strong>percentages within each category of the explanatory variable</strong>. With the EV in the columns, that means <strong>column percentages</strong> (each column adds to 100%).</p>
+<div class="tbl"><table>
+<thead><tr><th rowspan="2">Exercises weekly?</th><th colspan="3">Age group (explanatory)</th></tr>
+<tr><th>Under 30</th><th>30 to 50</th><th>Over 50</th></tr></thead>
+<tbody>
+<tr><td>Yes</td><td>45 (75.0%)</td><td>40 (50.0%)</td><td>20 (33.3%)</td></tr>
+<tr><td>No</td><td>15 (25.0%)</td><td>40 (50.0%)</td><td>40 (66.7%)</td></tr>
+<tr><td><strong>Total</strong></td><td>60 (100%)</td><td>80 (100%)</td><td>60 (100%)</td></tr>
+</tbody></table></div>
+<figure class="fig">
+<svg viewBox="0 0 440 190" width="440" role="img" aria-label="Percentage segmented bar chart with one bar per age group: Under 30 is 75% yes, 30 to 50 is 50% yes, Over 50 is 33.3% yes">
+  <line x1="50" y1="160" x2="330" y2="160" class="s-ink"/><line x1="50" y1="20" x2="50" y2="160" class="s-ink"/>
+  <g class="t-sm t-mut" text-anchor="end"><text x="44" y="164">0%</text><text x="44" y="94">50%</text><text x="44" y="24">100%</text></g>
+  <rect x="75" y="20" width="50" height="35" class="f-surf3" style="stroke:var(--line-2)"/><rect x="75" y="55" width="50" height="105" class="f-acc"/>
+  <rect x="165" y="20" width="50" height="70" class="f-surf3" style="stroke:var(--line-2)"/><rect x="165" y="90" width="50" height="70" class="f-acc"/>
+  <rect x="255" y="20" width="50" height="93.3" class="f-surf3" style="stroke:var(--line-2)"/><rect x="255" y="113.3" width="50" height="46.7" class="f-acc"/>
+  <g class="t-sm" text-anchor="middle"><text x="100" y="176">Under 30</text><text x="190" y="176">30 to 50</text><text x="280" y="176">Over 50</text></g>
+  <g class="t-sm t-b" text-anchor="middle"><text x="100" y="112" style="fill:#fff">75%</text><text x="190" y="130" style="fill:#fff">50%</text><text x="280" y="142" style="fill:#fff">33%</text></g>
+  <rect x="350" y="60" width="14" height="14" class="f-acc"/><text x="370" y="72" class="t-sm">Yes</text>
+  <rect x="350" y="84" width="14" height="14" class="f-surf3" style="stroke:var(--line-2)"/><text x="370" y="96" class="t-sm">No</text>
+</svg>
+<figcaption>One bar per category of the explanatory variable. Segments that change in size across the bars show an association.</figcaption>
+</figure>
+<aside class="c-key" data-title="Key idea: how to see an association"><p>If the percentages are about the <strong>same</strong> in every column, there is no association. If they <strong>change</strong> from column to column, there is an association. Here the percentage who exercise falls from 75% to 50% to 33.3% as age increases, so exercise is associated with age group.</p></aside>
+<aside class="c-trap" data-title="Trick alert: compare percentages, not counts"><p>40 people aged 30 to 50 exercise and only 45 under 30, which looks similar. But the groups are different sizes (80 vs 60). Only percentages within each group can be compared fairly.</p></aside>
+
+<div class="we" data-title="Describing an association from a two-way table" data-marks="2">
+<div class="we-q"><p>Use the table above to write a response that answers: “Is weekly exercise associated with age group?” Quote appropriate percentages.</p></div>
+<div class="we-t"><p>Calculate the percentage within each age group and show how it changes across the groups.</p></div>
+<div class="we-s" data-f="\text{column \%} = \dfrac{\text{cell}}{\text{column total}} \times 100\%"><p>Yes: \(\frac{45}{60} = 75.0\%\), \(\frac{40}{80} = 50.0\%\), \(\frac{20}{60} = 33.3\%\).</p></div>
+<div class="we-a"><p><strong>Yes.</strong> The percentage of people who exercise weekly decreases with age group, from 75.0% of those under 30 to 50.0% of those aged 30 to 50 and 33.3% of those over 50.</p></div>
+</div>
+
+<h2>A numerical and a categorical variable</h2>
+<p>When the response variable is numerical and the explanatory variable is categorical, display the numerical variable once for each category on the same scale:</p>
+<ul>
+  <li><strong>Parallel boxplots</strong> (any number of groups),</li>
+  <li><strong>Back-to-back stem plots</strong> (exactly two groups, sharing one stem),</li>
+  <li><strong>Parallel dot plots</strong> (small data sets).</li>
+</ul>
+<figure class="fig">
+<svg viewBox="0 0 440 150" width="440" role="img" aria-label="Parallel boxplots of reaction time for three age groups: medians increase from the youngest to the oldest group">
+  <line x1="110" y1="125" x2="420" y2="125" class="s-ink"/>
+  <g class="t-sm t-mut" text-anchor="middle"><text x="110" y="141">200</text><text x="187.5" y="141">250</text><text x="265" y="141">300</text><text x="342.5" y="141">350</text><text x="420" y="141">400</text></g>
+  <text x="265" y="15" class="t-sm t-mut" text-anchor="middle">reaction time (ms)</text>
+  <g class="t-sm" text-anchor="end"><text x="100" y="39">18–30</text><text x="100" y="74">31–50</text><text x="100" y="109">51+</text></g>
+  <line x1="125.5" y1="35" x2="156" y2="35" class="s-ink"/><rect x="156" y="25" width="62" height="20" class="f-accsoft" style="stroke:var(--accent)"/><line x1="187.5" y1="25" x2="187.5" y2="45" class="s-acc" style="stroke-width:2.5"/><line x1="218" y1="35" x2="249" y2="35" class="s-ink"/>
+  <line x1="156" y1="70" x2="203" y2="70" class="s-ink"/><rect x="203" y="60" width="77.5" height="20" class="f-accsoft" style="stroke:var(--accent)"/><line x1="234" y1="60" x2="234" y2="80" class="s-acc" style="stroke-width:2.5"/><line x1="280.5" y1="70" x2="327" y2="70" class="s-ink"/>
+  <line x1="187.5" y1="105" x2="249" y2="105" class="s-ink"/><rect x="249" y="95" width="93.5" height="20" class="f-accsoft" style="stroke:var(--accent)"/><line x1="296" y1="95" x2="296" y2="115" class="s-acc" style="stroke-width:2.5"/><line x1="342.5" y1="105" x2="389" y2="105" class="s-ink"/>
+</svg>
+<figcaption>Medians of 250, 280 and 310 ms, and the IQR widens with age: reaction time is associated with age group.</figcaption>
+</figure>
+<aside class="c-exam" data-title="Exam tip: the association sentence"><p>“There is an association between reaction time and age group: the median reaction time increases from 250 ms for 18–30-year-olds to 280 ms for 31–50-year-olds and 310 ms for those over 50.” Name both variables, describe the direction of change, and quote the medians. If spread also changes, mention it as a second point.</p></aside>
+<div class="we" data-title="Reading a back-to-back stem plot" data-marks="2">
+<div class="we-q"><p>A back-to-back stem plot shows the numbers of push-ups done by 11 boys (left) and 11 girls (right). The boys' median is 27 and the girls' median is 19. The boys' IQR is 12 and the girls' is 11. Does the number of push-ups appear to be associated with gender?</p></div>
+<div class="we-t"><p>An association between a numerical and a categorical variable shows up as a difference in centre (and possibly spread) between the groups.</p></div>
+<div class="we-s"><p>The medians differ by 8 push-ups, while the spreads are similar (IQRs of 12 and 11).</p></div>
+<div class="we-a"><p><strong>Yes.</strong> The median number of push-ups is higher for boys (27) than for girls (19), so the number of push-ups is associated with gender. The spreads are similar.</p></div>
+</div>
+
+<h2>Practice</h2>
+<div class="mcq" data-ans="A" data-level="core">
+<div class="mcq-q"><p>A study investigates whether the number of hours of sleep affects reaction time. The explanatory variable is</p></div>
+<ol><li>hours of sleep</li><li>reaction time</li><li>both, because they are associated</li><li>neither, because both are numerical</li></ol>
+<div class="mcq-x"><p>Sleep is the variable thought to explain or predict reaction time.</p></div>
+</div>
+<div class="mcq" data-ans="C" data-level="core">
+<div class="mcq-q"><p>A two-way table has the explanatory variable in its columns. To look for an association you should use</p></div>
+<ol><li>row percentages</li><li>the raw counts</li><li>column percentages</li><li>percentages of the grand total</li></ol>
+<div class="mcq-x"><p>Percentages within each category of the explanatory variable: the columns.</p></div>
+</div>
+<div class="mcq" data-ans="D" data-level="trick">
+<div class="mcq-q"><p>In a survey, 30% of city residents and 31% of country residents prefer football. This suggests</p></div>
+<ol><li>a strong association between location and preference</li><li>more country residents than city residents prefer football</li><li>location causes football preference</li><li>no association between location and football preference</li></ol>
+<div class="mcq-x"><p>The percentages are almost the same in both groups, so knowing location doesn't help predict preference.</p></div>
+</div>
+<div class="mcq" data-ans="B" data-level="hard">
+<div class="mcq-q"><p>Which display can show the association between salary (in dollars) and job type for four job types?</p></div>
+<ol><li>a back-to-back stem plot</li><li>parallel boxplots</li><li>a scatterplot</li><li>a percentage segmented bar chart of salary</li></ol>
+<div class="mcq-x"><p>A back-to-back stem plot handles only two groups. Parallel boxplots handle any number of groups.</p></div>
+</div>
+<div class="pq" data-level="core" data-marks="3">
+<div class="pq-q"><p>A school asked 120 Year 7 and 80 Year 12 students whether they walk to school. 48 Year 7 and 20 Year 12 students said yes. (a) Find the percentage of each year level that walks. (b) Is walking to school associated with year level? Justify.</p></div>
+<div class="pq-s"><p>(a) Year 7: \(\frac{48}{120} = 40\%\). [1] Year 12: \(\frac{20}{80} = 25\%\). [1]</p><p>(b) Yes: a higher percentage of Year 7 students walk (40%) than Year 12 students (25%). [1]</p></div>
+</div>
+<div class="pq" data-level="exam" data-marks="2">
+<div class="pq-q"><p>Parallel boxplots of daily rainfall show medians of 2.1 mm in summer, 4.5 mm in autumn, 6.8 mm in winter and 4.0 mm in spring. Write a sentence describing the association between rainfall and season.</p></div>
+<div class="pq-s"><p>Rainfall is associated with season: the median daily rainfall is highest in winter (6.8 mm) and lowest in summer (2.1 mm), [1] with autumn (4.5 mm) and spring (4.0 mm) in between. [1]</p></div>
+</div>
+<h2>Summary</h2>
+<ul>
+  <li data-q="What is the difference between an explanatory and a response variable? Which axis or part of a table does each go on?">The EV may explain or predict changes in the RV. EV goes on the horizontal axis and in the columns of a two-way table.</li>
+  <li data-q="How do you use a two-way table to decide whether two categorical variables are associated?">Find percentages within each category of the EV (column percentages). Changing percentages mean an association; similar percentages mean none.</li>
+  <li data-q="Which displays show the association between a numerical variable and a categorical variable?">Parallel boxplots, back-to-back stem plots (two groups only), parallel dot plots.</li>
+  <li data-q="What should a written description of an association include?">Both variables, the direction of the change, and supporting statistics (percentages or medians), in context.</li>
+</ul>

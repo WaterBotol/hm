@@ -1,0 +1,96 @@
+<!--
+id: da-residuals
+title: Residual analysis
+short: Residuals
+summary: Residual = actual − predicted; what positive and negative residuals mean; residual plots and how a random scatter supports a linear model while a clear pattern (such as a curve) suggests the association is non-linear.
+keywords: residual, residuals, residual value, actual value, predicted value, actual minus predicted, residual plot, random scatter, pattern, curved residual plot, quality of fit, linear model appropriate, check linearity, sum of residuals, above the line, below the line, overestimate, underestimate
+dotpoints: use of residual analysis to check quality of fit
+-->
+<h2>Residuals</h2>
+<p>A <strong>residual</strong> is the vertical distance from a data point to the least squares line: how far the actual value is from the value the line predicts.</p>
+<div class="eq"><div class="eq-label">Residual value (on the formula sheet)</div>\[ \text{residual value} = \text{actual value} - \text{predicted value} \]</div>
+<div class="tbl"><table>
+<thead><tr><th>Residual</th><th>Point is</th><th>The line</th></tr></thead>
+<tbody>
+<tr><td>positive</td><td>above the line</td><td>underestimates the actual value</td></tr>
+<tr><td>negative</td><td>below the line</td><td>overestimates the actual value</td></tr>
+<tr><td>zero</td><td>on the line</td><td>predicts it exactly</td></tr>
+</tbody></table></div>
+<aside class="c-key" data-title="Key idea: residuals add to zero"><p>For the least squares line, the residuals always add to zero: the points above the line balance the points below it.</p></aside>
+<div class="we" data-title="Calculating a residual" data-marks="2">
+<div class="we-q"><p>The least squares line \(\text{score} = 45.0 + 3.64 \times \text{hours}\) is fitted to data on study time. A student who studied 8 hours scored 78. Find the residual and interpret it.</p></div>
+<div class="we-t"><p>Predict first, then subtract the prediction from the actual value.</p></div>
+<div class="we-s" data-f="y = a + bx"><p>Predicted: \(45.0 + 3.64 \times 8 = 74.12\).</p></div>
+<div class="we-s" data-f="\text{residual} = \text{actual} - \text{predicted}"><p>Residual = \(78 - 74.12 = 3.88\).</p></div>
+<div class="we-a"><p><strong>3.88</strong>: the student scored 3.88 marks <em>more</em> than the line predicts (the point is above the line).</p></div>
+</div>
+<aside class="c-trap" data-title="Trick alert: the order of subtraction"><p>Residual = actual − predicted, never the other way round. A common exam question gives the residual and asks for the actual value: actual = predicted + residual.</p></aside>
+
+<h2>Residual plots</h2>
+<p>A <strong>residual plot</strong> graphs each residual against its explanatory value, with a horizontal line at zero. It magnifies any departure from a straight line that is hard to see on the scatterplot.</p>
+<figure class="fig">
+<svg viewBox="0 0 440 160" width="440" role="img" aria-label="Two residual plots. Left: residuals scattered randomly above and below zero, labelled linear model appropriate. Right: residuals forming a U-shaped curve, labelled linear model not appropriate.">
+  <line x1="20" y1="70" x2="200" y2="70" class="s-dash"/><line x1="20" y1="15" x2="20" y2="125" class="s-ink"/>
+  <g class="f-acc"><circle cx="35" cy="58" r="3.5"/><circle cx="50" cy="84" r="3.5"/><circle cx="64" cy="66" r="3.5"/><circle cx="78" cy="48" r="3.5"/><circle cx="92" cy="90" r="3.5"/><circle cx="106" cy="62" r="3.5"/><circle cx="120" cy="79" r="3.5"/><circle cx="134" cy="52" r="3.5"/><circle cx="148" cy="88" r="3.5"/><circle cx="162" cy="71" r="3.5"/><circle cx="176" cy="55" r="3.5"/><circle cx="190" cy="82" r="3.5"/></g>
+  <text x="110" y="145" class="t-sm" text-anchor="middle">random scatter: linear model OK</text>
+  <line x1="240" y1="70" x2="420" y2="70" class="s-dash"/><line x1="240" y1="15" x2="240" y2="125" class="s-ink"/>
+  <g class="f-v"><circle cx="255" cy="30" r="3.5"/><circle cx="270" cy="47" r="3.5"/><circle cx="284" cy="62" r="3.5"/><circle cx="298" cy="76" r="3.5"/><circle cx="312" cy="85" r="3.5"/><circle cx="326" cy="91" r="3.5"/><circle cx="340" cy="92" r="3.5"/><circle cx="354" cy="87" r="3.5"/><circle cx="368" cy="78" r="3.5"/><circle cx="382" cy="64" r="3.5"/><circle cx="396" cy="46" r="3.5"/><circle cx="410" cy="26" r="3.5"/></g>
+  <text x="330" y="145" class="t-sm" text-anchor="middle">clear curve: association is non-linear</text>
+  <g class="t-sm t-mut"><text x="14" y="74" text-anchor="end">0</text><text x="234" y="74" text-anchor="end">0</text></g>
+</svg>
+<figcaption>A pattern in the residuals means the straight line is systematically wrong in some places, so a linear model is not appropriate.</figcaption>
+</figure>
+<div class="tbl"><table>
+<thead><tr><th>Residual plot shows</th><th>Conclusion</th></tr></thead>
+<tbody>
+<tr><td>Random scatter around zero, no pattern</td><td>A linear model is appropriate (supports linearity)</td></tr>
+<tr><td>A clear curve (U-shape or arch)</td><td>The association is non-linear; try a <a href="#da-transform">data transformation</a></td></tr>
+<tr><td>A fan shape (spread grows across the plot)</td><td>Predictions are less reliable for larger x-values</td></tr>
+</tbody></table></div>
+<div class="sim" data-sim="gmRegression" data-mode="residuals"></div>
+<aside class="c-exam" data-title="Exam tip: what to write"><p>“The residual plot shows a random scatter of points around zero, which supports the assumption that the association is linear.” Or: “The residual plot shows a clear curved pattern, which suggests the association is non-linear, so a linear model is not appropriate.” A high \(r^2\) on its own does <em>not</em> show the association is linear.</p></aside>
+
+<div class="we" data-title="Using a residual to find the actual value" data-marks="2">
+<div class="we-q"><p>A line predicting house price (\$000) from floor area (m²) is \(\text{price} = 120 + 2.4 \times \text{area}\). A house of 180 m² has a residual of −38. What was its actual price?</p></div>
+<div class="we-t"><p>Rearrange: actual = predicted + residual.</p></div>
+<div class="we-s" data-f="y = a + bx"><p>Predicted: \(120 + 2.4 \times 180 = 552\) (\$000).</p></div>
+<div class="we-s" data-f="\text{actual} = \text{predicted} + \text{residual}"><p>Actual: \(552 + (-38) = 514\).</p></div>
+<div class="we-a"><p><strong>\$514 000</strong>. The line overestimated this house's price by \$38 000.</p></div>
+</div>
+
+<h2>Practice</h2>
+<div class="mcq" data-ans="B" data-level="core">
+<div class="mcq-q"><p>The predicted value of a data point is 64 and its actual value is 59. Its residual is</p></div>
+<ol><li>5</li><li>−5</li><li>123</li><li>0.92</li></ol>
+<div class="mcq-x"><p>\(59 - 64 = -5\).</p></div>
+</div>
+<div class="mcq" data-ans="C" data-level="core">
+<div class="mcq-q"><p>A residual plot shows a clear arch shape. This indicates that</p></div>
+<ol><li>the association is strong and linear</li><li>r is close to 0</li><li>a linear model is not appropriate</li><li>there are outliers</li></ol>
+<div class="mcq-x"><p>A pattern in the residuals means the association is non-linear.</p></div>
+</div>
+<div class="mcq" data-ans="A" data-level="trick">
+<div class="mcq-q"><p>A least squares line has \(r^2 = 0.94\), but the residual plot is clearly U-shaped. The best conclusion is</p></div>
+<ol><li>the association is non-linear, despite the high r²</li><li>the linear model is excellent because r² is high</li><li>the residuals were calculated incorrectly</li><li>94% of the points lie on the line</li></ol>
+<div class="mcq-x"><p>The residual plot is the check for linearity. A high r² can occur with curved data.</p></div>
+</div>
+<div class="mcq" data-ans="D" data-level="hard">
+<div class="mcq-q"><p>The residuals of four of the five points in a least squares fit are 2.1, −0.8, −3.0 and 0.6. The fifth residual is</p></div>
+<ol><li>0</li><li>−1.1</li><li>2.3</li><li>1.1</li></ol>
+<div class="mcq-x"><p>The residuals add to zero: \(2.1 - 0.8 - 3.0 + 0.6 = -1.1\), so the fifth is 1.1.</p></div>
+</div>
+<div class="pq" data-level="core" data-marks="2">
+<div class="pq-q"><p>The line \(\text{time} = 4.2 + 1.8 \times \text{distance}\) predicts delivery time (min) from distance (km). A 10 km delivery took 25 minutes. Find the residual.</p></div>
+<div class="pq-s"><p>Predicted: \(4.2 + 1.8 \times 10 = 22.2\) min. [1]</p><p>Residual: \(25 - 22.2 = 2.8\) min. [1]</p></div>
+</div>
+<div class="pq" data-level="exam" data-marks="1">
+<div class="pq-q"><p>The residual plot for a linear model shows points randomly scattered above and below zero with no pattern. What does this suggest?</p></div>
+<div class="pq-s"><p>It supports the assumption that the association is linear, so the linear model is appropriate. [1]</p></div>
+</div>
+<h2>Summary</h2>
+<ul>
+  <li data-q="Write the residual formula. What do positive and negative residuals tell you?">Residual = actual − predicted. Positive: point above the line (underestimate); negative: below the line (overestimate).</li>
+  <li data-q="What do the residuals of a least squares line always add up to?">Zero.</li>
+  <li data-q="What does a residual plot with random scatter tell you, and what does a curved pattern tell you?">Random scatter supports a linear model; a clear curve means the association is non-linear (try a transformation).</li>
+  <li data-q="How do you find an actual value from a prediction and a residual?">Actual = predicted + residual.</li>
+</ul>

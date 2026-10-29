@@ -1,0 +1,96 @@
+<!--
+id: mx-basics
+title: Matrix arithmetic
+short: Matrix arithmetic
+summary: The order of a matrix and its elements aᵢⱼ; types of matrices (row, column, square, diagonal, symmetric, triangular, zero, binary, identity); the transpose; adding, subtracting and scalar multiples; matrix products and when they are defined; powers; building a matrix from a rule; and using matrices for tabular information.
+keywords: matrix, matrices, order, dimensions, element, a i j, row matrix, column matrix, square matrix, diagonal matrix, symmetric matrix, triangular matrix, upper triangular, lower triangular, zero matrix, binary matrix, identity matrix, transpose, addition, subtraction, scalar multiplication, matrix multiplication, product, defined, conformable, power of a matrix, rule for a i j, tabular information, cost matrix, sales matrix
+dotpoints: matrix arithmetic: the order of a matrix, types of matrices (row, column, square, diagonal, symmetric, triangular, zero, binary and identity), the transpose of a matrix, and elementary matrix operations (sum, difference, multiplication of a scalar, product and power) | use of matrices to represent numerical information presented in tabular form, and the use of a rule for the aᵢⱼth element of a matrix to construct the matrix
+-->
+<h2>Order and elements</h2>
+<p>A <strong>matrix</strong> is a rectangular array of numbers. A matrix with \(m\) rows and \(n\) columns has <strong>order</strong> \(m \times n\) (rows first). The element in row \(i\), column \(j\) is \(a_{ij}\).</p>
+<div class="eq"><div class="eq-label">A 2 × 3 matrix</div>\[ A = \begin{bmatrix} 5 &amp; -1 &amp; 0 \\ 2 &amp; 7 &amp; 4 \end{bmatrix}, \qquad a_{12} = -1, \quad a_{23} = 4 \]</div>
+<aside class="c-trap" data-title="Trick alert: rows before columns"><p>Order is rows × columns, and \(a_{ij}\) is row \(i\), column \(j\). A matrix with 3 rows and 2 columns is 3 × 2, not 2 × 3. Remember “RC”: rows, then columns.</p></aside>
+
+<h2>Types of matrices</h2>
+<div class="tbl"><table>
+<thead><tr><th>Type</th><th>Description</th><th>Example</th></tr></thead>
+<tbody>
+<tr><td>Row</td><td>one row</td><td>\(\begin{bmatrix} 3 &amp; 1 &amp; 4 \end{bmatrix}\)</td></tr>
+<tr><td>Column</td><td>one column</td><td>\(\begin{bmatrix} 2 \\ 5 \end{bmatrix}\)</td></tr>
+<tr><td>Square</td><td>same number of rows and columns</td><td>\(\begin{bmatrix} 1 &amp; 2 \\ 3 &amp; 4 \end{bmatrix}\)</td></tr>
+<tr><td>Diagonal</td><td>square; every element off the leading diagonal is 0</td><td>\(\begin{bmatrix} 3 &amp; 0 \\ 0 &amp; -2 \end{bmatrix}\)</td></tr>
+<tr><td>Identity, \(I\)</td><td>diagonal with 1s on the leading diagonal</td><td>\(\begin{bmatrix} 1 &amp; 0 \\ 0 &amp; 1 \end{bmatrix}\)</td></tr>
+<tr><td>Symmetric</td><td>square; equal to its transpose (\(a_{ij} = a_{ji}\))</td><td>\(\begin{bmatrix} 1 &amp; 7 \\ 7 &amp; 4 \end{bmatrix}\)</td></tr>
+<tr><td>Triangular</td><td>square; all zeros below (upper triangular) or above (lower) the leading diagonal</td><td>\(\begin{bmatrix} 2 &amp; 5 \\ 0 &amp; 1 \end{bmatrix}\)</td></tr>
+<tr><td>Zero, \(O\)</td><td>every element is 0</td><td>\(\begin{bmatrix} 0 &amp; 0 \\ 0 &amp; 0 \end{bmatrix}\)</td></tr>
+<tr><td>Binary</td><td>every element is 0 or 1</td><td>\(\begin{bmatrix} 0 &amp; 1 \\ 1 &amp; 1 \end{bmatrix}\)</td></tr>
+</tbody></table></div>
+<p>The <strong>transpose</strong> \(A^T\) swaps rows and columns: row 1 becomes column 1, and so on. A 2 × 3 matrix has a 3 × 2 transpose.</p>
+
+<h2>Adding, subtracting and scalar multiples</h2>
+<p>Add or subtract matrices of the <strong>same order</strong> element by element. To multiply by a scalar \(k\), multiply every element by \(k\).</p>
+<div class="eq">\[ \begin{bmatrix} 1 &amp; 4 \\ 2 &amp; 0 \end{bmatrix} + \begin{bmatrix} 3 &amp; -1 \\ 5 &amp; 2 \end{bmatrix} = \begin{bmatrix} 4 &amp; 3 \\ 7 &amp; 2 \end{bmatrix} \qquad 3\begin{bmatrix} 1 &amp; 4 \\ 2 &amp; 0 \end{bmatrix} = \begin{bmatrix} 3 &amp; 12 \\ 6 &amp; 0 \end{bmatrix} \]</div>
+
+<h2>Multiplying matrices</h2>
+<p>The product \(AB\) is defined only when the number of <strong>columns of A</strong> equals the number of <strong>rows of B</strong>. The result has the rows of \(A\) and the columns of \(B\).</p>
+<div class="eq"><div class="eq-label">When a product is defined</div>\[ \underset{m \times \color{#007aff}{n}}{A} \;\; \underset{\color{#007aff}{n} \times p}{B} = \underset{m \times p}{AB} \]<p>Each element of \(AB\) is a row of \(A\) times a column of \(B\): multiply matching entries and add.</p></div>
+<div class="we" data-title="A matrix product" data-marks="2">
+<div class="we-q"><p>Find \(AB\) for \(A = \begin{bmatrix} 1 &amp; 2 &amp; 0 \\ 3 &amp; -1 &amp; 4 \end{bmatrix}\) and \(B = \begin{bmatrix} 2 &amp; 1 \\ 0 &amp; 5 \\ 1 &amp; -2 \end{bmatrix}\).</p></div>
+<div class="we-t"><p>\(A\) is 2 × 3 and \(B\) is 3 × 2: the inner numbers match, so \(AB\) is 2 × 2. Element (row \(i\), column \(j\)) = row \(i\) of \(A\) · column \(j\) of \(B\).</p></div>
+<div class="we-s"><p>Row 1: \(1(2) + 2(0) + 0(1) = 2\) and \(1(1) + 2(5) + 0(-2) = 11\).</p></div>
+<div class="we-s"><p>Row 2: \(3(2) - 1(0) + 4(1) = 10\) and \(3(1) - 1(5) + 4(-2) = -10\).</p></div>
+<div class="we-a"><p>\(AB = \begin{bmatrix} 2 &amp; 11 \\ 10 &amp; -10 \end{bmatrix}\).</p></div>
+</div>
+<aside class="c-trap" data-title="Trick alert: order matters"><p>In general \(AB \ne BA\), and one of them may not even be defined. Check the orders every time. Powers like \(A^2 = AA\) only exist for square matrices. For any matrix, \(AI = IA = A\).</p></aside>
+
+<h2>Matrices from rules and tables</h2>
+<div class="we" data-title="Constructing a matrix from a rule" data-marks="1">
+<div class="we-q"><p>Write the 2 × 3 matrix \(M\) with \(m_{ij} = 2i - j\).</p></div>
+<div class="we-t"><p>Substitute each row number \(i\) and column number \(j\).</p></div>
+<div class="we-s"><p>Row 1: \(2 - 1, 2 - 2, 2 - 3 = 1, 0, -1\). Row 2: \(4 - 1, 4 - 2, 4 - 3 = 3, 2, 1\).</p></div>
+<div class="we-a"><p>\(M = \begin{bmatrix} 1 &amp; 0 &amp; -1 \\ 3 &amp; 2 &amp; 1 \end{bmatrix}\).</p></div>
+</div>
+<div class="we" data-title="Using matrices with tables" data-marks="2">
+<div class="we-q"><p>Two stores sold pies, rolls and drinks. Store 1 sold 12, 8 and 5; store 2 sold 6, 10 and 9. Prices are \$3, \$4.50 and \$6. Use matrix multiplication to find each store's revenue.</p></div>
+<div class="we-t"><p>A 2 × 3 sales matrix times a 3 × 1 price matrix gives a 2 × 1 revenue matrix.</p></div>
+<div class="we-s"><p>\(\begin{bmatrix} 12 &amp; 8 &amp; 5 \\ 6 &amp; 10 &amp; 9 \end{bmatrix}\begin{bmatrix} 3 \\ 4.5 \\ 6 \end{bmatrix} = \begin{bmatrix} 36 + 36 + 30 \\ 18 + 45 + 54 \end{bmatrix}\)</p></div>
+<div class="we-a"><p>Store 1: <strong>\$102</strong>; store 2: <strong>\$117</strong>.</p></div>
+</div>
+<aside class="c-exam" data-title="Exam tip: use your CAS"><p>Enter matrices with the matrix template and multiply, add or raise them to powers directly. In the exam, write the matrix expression you calculated (e.g. \(SP\)) and its order, then the answer.</p></aside>
+
+<h2>Practice</h2>
+<div class="mcq" data-ans="C" data-level="core">
+<div class="mcq-q"><p>Matrix \(A\) is 3 × 2 and \(B\) is 2 × 4. The order of \(AB\) is</p></div>
+<ol><li>2 × 2</li><li>4 × 3</li><li>3 × 4</li><li>not defined</li></ol>
+<div class="mcq-x"><p>Inner numbers (2 and 2) match; the outer numbers give 3 × 4.</p></div>
+</div>
+<div class="mcq" data-ans="B" data-level="core">
+<div class="mcq-q"><p>For \(P = \begin{bmatrix} 4 &amp; 9 &amp; 1 \\ 0 &amp; 6 &amp; 3 \end{bmatrix}\), the element \(p_{21}\) is</p></div>
+<ol><li>9</li><li>0</li><li>6</li><li>1</li></ol>
+<div class="mcq-x"><p>Row 2, column 1: 0.</p></div>
+</div>
+<div class="mcq" data-ans="D" data-level="trick">
+<div class="mcq-q"><p>\(A\) is 2 × 3 and \(B\) is 2 × 3. Which of these is defined?</p></div>
+<ol><li>\(AB\)</li><li>\(A^2\)</li><li>\(BA\)</li><li>\(A^TB\)</li></ol>
+<div class="mcq-x"><p>\(A^T\) is 3 × 2 and \(B\) is 2 × 3: inner numbers match, giving 3 × 3. The others don't match.</p></div>
+</div>
+<div class="mcq" data-ans="A" data-level="hard">
+<div class="mcq-q"><p>Which matrix is both symmetric and diagonal?</p></div>
+<ol><li>\(\begin{bmatrix} 5 &amp; 0 \\ 0 &amp; 2 \end{bmatrix}\)</li><li>\(\begin{bmatrix} 5 &amp; 1 \\ 1 &amp; 2 \end{bmatrix}\)</li><li>\(\begin{bmatrix} 5 &amp; 1 \\ 0 &amp; 2 \end{bmatrix}\)</li><li>\(\begin{bmatrix} 0 &amp; 5 \\ 5 &amp; 0 \end{bmatrix}\)</li></ol>
+<div class="mcq-x"><p>Every diagonal matrix is symmetric; B and D are symmetric but not diagonal.</p></div>
+</div>
+<div class="pq" data-level="core" data-marks="2">
+<div class="pq-q"><p>For \(A = \begin{bmatrix} 2 &amp; 1 \\ 0 &amp; 3 \end{bmatrix}\), find \(A^2\) and \(A^T\).</p></div>
+<div class="pq-s"><p>\(A^2 = \begin{bmatrix} 4 &amp; 5 \\ 0 &amp; 9 \end{bmatrix}\). [1]</p><p>\(A^T = \begin{bmatrix} 2 &amp; 0 \\ 1 &amp; 3 \end{bmatrix}\). [1]</p></div>
+</div>
+<div class="pq" data-level="exam" data-marks="2">
+<div class="pq-q"><p>Construct the 3 × 3 matrix \(B\) with \(b_{ij} = 1\) if \(i &lt; j\) and \(b_{ij} = 0\) otherwise, and name two types of matrix it is.</p></div>
+<div class="pq-s"><p>\(B = \begin{bmatrix} 0 &amp; 1 &amp; 1 \\ 0 &amp; 0 &amp; 1 \\ 0 &amp; 0 &amp; 0 \end{bmatrix}\). [1]</p><p>It is binary, and upper triangular (and square). [1]</p></div>
+</div>
+<h2>Summary</h2>
+<ul>
+  <li data-q="How is the order of a matrix written, and what does aᵢⱼ mean?">Rows × columns; \(a_{ij}\) is the element in row \(i\), column \(j\).</li>
+  <li data-q="Describe a symmetric, a diagonal, a triangular, a binary and an identity matrix.">Symmetric: equals its transpose. Diagonal: zeros off the leading diagonal. Triangular: zeros below (or above) the diagonal. Binary: only 0s and 1s. Identity: 1s on the diagonal, 0 elsewhere.</li>
+  <li data-q="When is the product AB defined, and what is its order?">When columns of A = rows of B; AB has the rows of A and the columns of B.</li>
+  <li data-q="Is AB always equal to BA? Which matrices can be squared?">No, order matters. Only square matrices have powers.</li>
+</ul>

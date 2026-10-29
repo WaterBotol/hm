@@ -1,0 +1,82 @@
+<!--
+id: rf-investments
+title: Investments with regular additions (annuity investments)
+short: Annuity investments
+summary: Compound interest investments with equal regular deposits, modelled by uₙ₊₁ = Ruₙ + d; step-by-step tables of interest earned and balance; using Finance Solver to find the future value, the time to reach a target, or the deposit or interest rate needed; and total interest earned.
+keywords: annuity investment, savings plan, regular deposits, regular additions, periodic payments, superannuation contributions, recurrence relation, R u n plus d, future value, how long to reach, target amount, deposit needed, payment needed, interest rate needed, total interest earned, total deposits, finance solver, growth of investment, table
+dotpoints: use of a first-order linear recurrence relation to model and analyse (numerically and graphically) annuity investment, including the use of a recurrence relation to determine the value of the investment after n payments have been made for an initial sequence from first principles | use of a table to investigate and analyse the growth of an annuity investment on a step-by-step basis after each payment is made, the payment made, the interest earned and the balance of the investment | use of technology with financial modelling functionality to solve problems involving annuity investments, including determining the future value of an investment after a number of compounding periods, the number of compounding periods for the investment to exceed a given value and the interest rate or payment amount needed for an investment to exceed a given value in a given time
+-->
+<h2>The recurrence relation</h2>
+<p>An <strong>annuity investment</strong> grows two ways: interest on the balance, and a regular deposit added every period. Both push the balance up.</p>
+<div class="eq"><div class="eq-label">Annuity investment</div>\[ V_0 = \text{initial deposit}, \qquad V_{n+1} = R\,V_n + d \]<p>\(d\) is the regular deposit. In Finance Solver: PV negative (you deposit it), Pmt negative (you keep depositing), FV positive (it's yours at the end).</p></div>
+<div class="tbl"><table>
+<thead><tr><th>Month</th><th>Deposit</th><th>Interest earned</th><th>Balance</th></tr></thead>
+<tbody>
+<tr><td>0</td><td>5000 (initial)</td><td>0</td><td>5000.00</td></tr>
+<tr><td>1</td><td>200</td><td>20.00</td><td>5220.00</td></tr>
+<tr><td>2</td><td>200</td><td>20.88</td><td>5440.88</td></tr>
+</tbody></table></div>
+<p>The table is for \$5000 at 4.8% per annum compounding monthly (\(R = 1.004\)) with \$200 added at the end of each month: \(V_{n+1} = 1.004V_n + 200\). Each new balance = previous balance + interest + deposit.</p>
+<aside class="c-trap" data-title="Trick alert: + d, not − d"><p>Deposits are <strong>added</strong> (\(+d\)); loan repayments and annuity withdrawals are <strong>subtracted</strong> (\(-d\)). Read whether money is going into or coming out of the account.</p></aside>
+
+<h2>Using Finance Solver</h2>
+<div class="we" data-title="Future value and total interest" data-marks="3">
+<div class="we-q"><p>Kim invests \$5000 at 4.8% per annum compounding monthly and adds \$200 at the end of every month. Find (a) the value after 10 years and (b) the total interest earned.</p></div>
+<div class="we-t"><p>Solve for FV; total interest = final value − everything deposited.</p></div>
+<div class="we-s"><p>(a) N = 120, I% = 4.8, PV = −5000, Pmt = −200, PpY = CpY = 12: FV = 38 799.03.</p></div>
+<div class="we-s"><p>(b) Deposits: \(5000 + 120 \times 200 = 29\,000\). Interest: \(38\,799.03 - 29\,000\).</p></div>
+<div class="we-a"><p>(a) <strong>\$38 799.03</strong>. (b) <strong>\$9799.03</strong>.</p></div>
+</div>
+<div class="we" data-title="Time to reach a target" data-marks="2">
+<div class="we-q"><p>How many months will it take Kim's investment to first exceed \$50 000?</p></div>
+<div class="we-t"><p>Solve for N with FV = 50 000, then round up (the balance only grows at the end of each month).</p></div>
+<div class="we-s"><p>I% = 4.8, PV = −5000, Pmt = −200, FV = 50 000: N = 149.8.</p></div>
+<div class="we-a"><p><strong>150 months</strong> (12.5 years).</p></div>
+</div>
+<div class="we" data-title="Deposit needed and rate needed" data-marks="3">
+<div class="we-q"><p>(a) Starting from \$0, what monthly deposit at 4.8% per annum compounding monthly reaches \$100 000 in 15 years? (b) What annual interest rate would grow \$10 000 plus \$300 per month to \$60 000 in 10 years (monthly compounding)?</p></div>
+<div class="we-t"><p>Solve for Pmt in (a) and for I(%) in (b).</p></div>
+<div class="we-s"><p>(a) N = 180, I% = 4.8, PV = 0, FV = 100 000: Pmt = −380.41.</p></div>
+<div class="we-s"><p>(b) N = 120, PV = −10 000, Pmt = −300, FV = 60 000: I% = 4.24.</p></div>
+<div class="we-a"><p>(a) <strong>\$380.41</strong> per month. (b) About <strong>4.24% per annum</strong>.</p></div>
+</div>
+<div class="sim" data-sim="gmLoan" data-mode="invest"></div>
+<aside class="c-key" data-title="Key idea: the four money models"><p>All four use \(V_{n+1} = R\,V_n + d\): <strong>compound interest</strong> (\(d = 0\)); <strong>reducing balance loan</strong> and <strong>annuity</strong> (\(d &lt; 0\), payments out); <strong>annuity investment</strong> (\(d &gt; 0\), deposits in). Depreciation uses \(R &lt; 1\) (reducing balance) or \(R = 1\) (flat rate, unit cost).</p></aside>
+<aside class="c-exam" data-title="Exam tip: describe a recurrence relation in words"><p>“\(V_0 = 2000\), \(V_{n+1} = 1.015V_n + 500\), where \(n\) is the number of quarters” describes an investment of \$2000 earning 6% per annum compounding quarterly (1.5% per quarter), with \$500 deposited at the end of each quarter.</p></aside>
+
+<h2>Practice</h2>
+<div class="mcq" data-ans="A" data-level="core">
+<div class="mcq-q"><p>\$2000 is invested at 6% per annum compounding quarterly, with \$500 added each quarter. The recurrence relation is</p></div>
+<ol><li>\(V_{n+1} = 1.015V_n + 500\)</li><li>\(V_{n+1} = 1.06V_n + 500\)</li><li>\(V_{n+1} = 1.015V_n - 500\)</li><li>\(V_{n+1} = 1.5V_n + 500\)</li></ol>
+<div class="mcq-x"><p>\(\frac{6}{4} = 1.5\%\) per quarter; deposits are added.</p></div>
+</div>
+<div class="mcq" data-ans="C" data-level="core">
+<div class="mcq-q"><p>The value of that investment after 5 years is closest to</p></div>
+<ol><li>\$12 500</li><li>\$12 000</li><li>\$14 256</li><li>\$16 932</li></ol>
+<div class="mcq-x"><p>N = 20, I% = 6, PV = −2000, Pmt = −500, PpY = CpY = 4: FV ≈ 14 255.54.</p></div>
+</div>
+<div class="mcq" data-ans="B" data-level="trick">
+<div class="mcq-q"><p>For a savings plan, the Finance Solver signs should be</p></div>
+<ol><li>PV +, Pmt +, FV −</li><li>PV −, Pmt −, FV +</li><li>PV −, Pmt +, FV +</li><li>PV +, Pmt −, FV 0</li></ol>
+<div class="mcq-x"><p>You pay in at the start and each period (−), and get the money back at the end (+).</p></div>
+</div>
+<div class="mcq" data-ans="D" data-level="hard">
+<div class="mcq-q"><p>Ava deposits \$300 at the end of each month (no initial deposit) at 5.4% per annum compounding monthly. After 12 years her balance is closest to</p></div>
+<ol><li>\$43 200</li><li>\$51 840</li><li>\$56 100</li><li>\$60 596</li></ol>
+<div class="mcq-x"><p>N = 144, I% = 5.4, PV = 0, Pmt = −300: FV ≈ 60 595.78.</p></div>
+</div>
+<div class="pq" data-level="core" data-marks="2">
+<div class="pq-q"><p>Complete the month 3 row of Kim's table (previous balance \$5440.88, \(R = 1.004\), \$200 deposit).</p></div>
+<div class="pq-s"><p>Interest: \(0.004 \times 5440.88 = \$21.76\). [1]</p><p>Balance: \(5440.88 + 21.76 + 200 = \$5662.64\). [1]</p></div>
+</div>
+<div class="pq" data-level="exam" data-marks="3">
+<div class="pq-q"><p>Ava's 12-year balance (\$60 595.78) is then left to grow with no more deposits at 5.4% per annum compounding monthly. (a) Write a recurrence relation for the balance \(n\) months after deposits stop. (b) Find the balance 3 years later. (c) How much interest was earned over all 15 years?</p></div>
+<div class="pq-s"><p>(a) \(V_0 = 60\,595.78\), \(V_{n+1} = 1.0045V_n\). [1]</p><p>(b) \(1.0045^{36} \times 60\,595.78 \approx \$71\,226.28\). [1]</p><p>(c) Deposits: \(144 \times 300 = 43\,200\); interest \(= 71\,226.28 - 43\,200 = \$28\,026.28\). [1]</p></div>
+</div>
+<h2>Summary</h2>
+<ul>
+  <li data-q="Write the recurrence relation for an annuity investment and give the Finance Solver signs.">\(V_{n+1} = RV_n + d\). PV −, Pmt −, FV +.</li>
+  <li data-q="How is each row of an annuity investment table calculated?">Interest = periodic rate × previous balance; new balance = previous balance + interest + deposit.</li>
+  <li data-q="How do you find the time for an investment to exceed a target? How do you find total interest earned?">Solve for N and round up. Total interest = final value − all deposits (including the initial one).</li>
+  <li data-q="What sign does d take in each of the four money models?">Compound interest: \(d = 0\); loan and annuity: \(d &lt; 0\); annuity investment: \(d &gt; 0\).</li>
+</ul>
