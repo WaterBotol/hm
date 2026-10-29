@@ -25,13 +25,18 @@
 
   /* ------------------------------------------------------------ paper + look */
   const PAPER = {
-    'x-a4': { w: 210, h: 297, pages: 4, label: 'Exam: 2 × A4, both sides', names: ['Sheet 1 · front', 'Sheet 1 · back', 'Sheet 2 · front', 'Sheet 2 · back'] },
-    'x-a3': { w: 297, h: 420, pages: 2, label: 'Exam: 1 × A3, both sides', names: ['Front', 'Back'] },
+    'x-a4': { w: 210, h: 297, pages: 4, subj: 'physics', label: 'Exam: 2 × A4, both sides', names: ['Sheet 1 · front', 'Sheet 1 · back', 'Sheet 2 · front', 'Sheet 2 · back'] },
+    'x-a3': { w: 297, h: 420, pages: 2, subj: 'physics', label: 'Exam: 1 × A3, both sides', names: ['Front', 'Back'] },
+    // a bound reference has no page limit: 'open' presets never overflow
+    'bk-a4': { w: 210, h: 297, pages: 2, open: true, subj: 'general', label: 'Bound reference: A4 pages', names: [] },
+    'bk-a5': { w: 148, h: 210, pages: 2, open: true, subj: 'general', label: 'Bound reference: A5 pages', names: [] },
     'a4-2': { w: 210, h: 297, pages: 2, label: 'A4, both sides', names: ['Front', 'Back'] },
     'a4-1': { w: 210, h: 297, pages: 1, label: 'A4, one side', names: ['Page'] },
     'a3-1': { w: 297, h: 420, pages: 1, label: 'A3, one side', names: ['Page'] }
   };
   const DEF_SET = { paper: 'x-a4', orient: 'p', cols: 3, font: 7, margin: 6, theme: 'aos', titles: 'off', auto: true };
+  const papersFor = sid => Object.keys(PAPER).filter(k => !PAPER[k].subj || PAPER[k].subj === sid);
+  const defPaper = sid => papersFor(sid).find(k => PAPER[k].subj === sid) || 'a4-2';
   const THEMES = [['aos', 'Area of study'], ['kind', 'Block type'], ['mono', 'Black & white']];
   const TITLES = [['off', 'Hidden'], ['run', 'Run-in'], ['line', 'Own line']];
   // one Apple system colour per area of study (0 = reference pages and anything outside an area of study)
@@ -39,11 +44,13 @@
   // short banner names; anything else falls back to the group's own label
   const AOS_NAMES = {
     'physics:u3a1': 'Motion', 'physics:u3a2': 'Fields', 'physics:u3a3': 'Electricity generation',
-    'physics:u4a1': 'Light, matter & relativity', 'physics:u4a2': 'Scientific investigation'
+    'physics:u4a1': 'Light, matter & relativity', 'physics:u4a2': 'Scientific investigation',
+    'general:da': 'Data analysis', 'general:rf': 'Recursion & finance', 'general:mx': 'Matrices', 'general:nw': 'Networks & decision maths'
   };
   const settings = sh => {   // fill in settings added since a sheet was saved
     const s = Object.assign({}, DEF_SET, sh.set || {});
     if (sh.set && sh.set.mono && !sh.set.theme) s.theme = 'mono';
+    if (!sh.set || !sh.set.paper || !papersFor(sh.sid).includes(s.paper)) s.paper = defPaper(sh.sid);
     return s;
   };
 
@@ -64,6 +71,16 @@
           'magnetic flux', "faraday's law", 'ideal transformer', 'transmission lines', 'waves', 'interference', 'photons', 'special relativity', 'mass energy'],
         part: ['uniform circular motion', 'momentum and impulse', 'work and energy', 'uniform electric field', 'ac values', 'power and resistance',
           'photoelectric effect', 'de broglie wavelength', 'atomic transitions']
+      }
+    },
+    // General: checked against the 2024 VCAA General Mathematics formula sheet
+    general: {
+      yes: ['standardised score', 'fences', 'least squares line', 'residual value', 'first-order linear recurrence relation', 'effective rate of interest',
+        'determinant of a 2 × 2 matrix', 'inverse of a 2 × 2 matrix', 'transition matrix recurrence relation', 'with culling and restocking', "euler's formula"],
+      part: ['seasonal index', 'leslie matrix for three age groups'],
+      cards: {
+        yes: ['standardised scores', 'boxplot fences', 'least squares line', 'residuals', 'recurrence relations', 'effective interest rate', 'determinant and inverse', "euler's formula"],
+        part: ['seasonal indices', 'transition, leslie and culling']
       }
     }
   };
@@ -223,7 +240,7 @@
   /* ------------------------------------------------------------ state */
   const KEY = 'sheets';
   let ST = store.get(KEY, null);
-  function blankSheet(sid, name) { return { id: uid(), sid, name: name || 'My ' + (A.subject(sid) ? A.subject(sid).short : '') + ' sheet', set: Object.assign({}, DEF_SET), blocks: [], upd: Date.now() }; }
+  function blankSheet(sid, name) { return { id: uid(), sid, name: name || 'My ' + (A.subject(sid) ? A.subject(sid).short : '') + ' sheet', set: Object.assign({}, DEF_SET, { paper: defPaper(sid) }), blocks: [], upd: Date.now() }; }
   function sheetsFor(sid) {
     if (!ST || !Array.isArray(ST.list)) ST = { list: [], cur: {} };
     ST.cur = ST.cur || {};
@@ -357,7 +374,7 @@
     const pct = (s.font - 5) / 6 * 100;
     $('.sh-set', V.slot).innerHTML =
       '<div class="sh-set-g"><span class="sh-set-h">Paper</span>' +
-        '<label class="sh-set-r"><span>Size</span><select data-set="paper">' + Object.keys(PAPER).map(k => opt(k, PAPER[k].label, s.paper)).join('') + '</select></label>' +
+        '<label class="sh-set-r"><span>Size</span><select data-set="paper">' + papersFor(V.sid).map(k => opt(k, PAPER[k].label, s.paper)).join('') + '</select></label>' +
         '<div class="sh-set-r"><span>Orientation</span>' + seg('orient', [['p', 'Portrait'], ['l', 'Landscape']], s.orient) + '</div>' +
         '<div class="sh-set-r"><span>Margins</span>' + seg('margin', [[4, 'Tiny'], [6, 'Narrow'], [10, 'Normal'], [15, 'Wide']], s.margin) + '</div></div>' +
       '<div class="sh-set-g"><span class="sh-set-h">Layout</span>' +
@@ -414,7 +431,7 @@
         ['points', 'Key points', 'One block of key points per topic.', count('points')],
         ['formula', 'All formulas', 'Every formula box from these topics.', count('formula')]
       ];
-      if (GIVEN[V.sid]) packs.push(['notgiven', 'Formulas NOT on the VCAA sheet', 'The derived results you have to remember yourself (banked tracks, loops, orbits…).', count('notgiven')]);
+      if (GIVEN[V.sid]) packs.push(['notgiven', 'Formulas NOT on the VCAA sheet', 'The results you have to remember yourself' + ({ physics: ' (banked tracks, loops, orbits…).', general: ' (depreciation, perpetuities, Finance Solver signs…).' }[V.sid] || '.'), count('notgiven')]);
       packs.push(['trap', 'All trick alerts', 'The mistakes examiners see every year.', count('trap')],
         ['key', 'All key ideas', 'The big ideas boxed on each topic page.', count('key')]);
       h = '<p class="sh-hint sh-aos-hint ac' + groupNo(g.key) + '"><i></i><b>' + esc(g.eyebrow) + '</b>: ' + esc(g.title) + ' (' + ts.length + ' topics). Packs skip anything already on your sheet.</p><div class="sh-packs">' +
@@ -765,7 +782,7 @@
     const P = PAPER[set.paper] || PAPER['x-a4'];
     const [pw, ph] = set.orient === 'l' ? [P.h, P.w] : [P.w, P.h];
     const m = +set.margin, W = pw - 2 * m, H = ph - 2 * m, cols = +set.cols;
-    return { P, pw, ph, m, W, H, cols, cw: (W - (cols - 1) * GAP) / cols, allowed: P.pages };
+    return { P, pw, ph, m, W, H, cols, cw: (W - (cols - 1) * GAP) / cols, min: P.pages, allowed: P.open ? Infinity : P.pages };
   }
   function fit(node, colPx) {
     // KaTeX can't wrap inside a formula: shrink anything wider than the column (down to 50%)
@@ -838,7 +855,7 @@
     });
     V.loc = loc; V.cs = cs;
     // keep at least the allowed number of pages visible, so you can see the space you have
-    while (pages.length < G.allowed) newPage();
+    while (pages.length < G.min) newPage();
     const box = $('.sh-pages', V.slot);
     box.innerHTML = '';
     const names = G.P.names, fills = [];
@@ -880,6 +897,7 @@
     let msg;
     if (over.length) msg = '<span class="sh-warn">Doesn\'t fit: ' + over.length + ' extra page' + (over.length > 1 ? 's' : '') + ' beyond ' + esc(G.P.label.replace(/^Exam: /, '')) + '. Cut words, hide parts, drop blocks, shrink the text, or add a column.</span>';
     else if (!n) msg = '<span class="sh-hint">' + esc(G.P.label) + ' · ' + G.cols + ' columns · ' + cur().set.font + ' pt</span>';
+    else if (G.P.open) msg = '<span class="sh-ok">' + V.pagesN + ' page' + (V.pagesN > 1 ? 's' : '') + '</span><span class="sh-hint">' + n + ' block' + (n > 1 ? 's' : '') + ' · no page limit for a bound reference</span>';
     else msg = '<span class="sh-ok">Fits</span><span class="sh-hint">' + n + ' block' + (n > 1 ? 's' : '') + ' on ' + esc(G.P.label.replace(/^Exam: /, '')) + '</span>';
     if (tall) msg += '<span class="sh-warn">' + tall + ' block' + (tall > 1 ? 's are' : ' is') + ' taller than a column and get cut off (outlined in red).</span>';
     m.innerHTML = '<div class="sh-fills">' + fills.map(f => '<div class="sh-fill' + (f.over ? ' over' : '') + '" title="' + esc(f.name) + ': ' + f.pct + '% full"><span>' + esc(f.name) + '</span><i style="width:' + Math.min(100, f.pct) + '%"></i><b>' + f.pct + '%</b></div>').join('') + '</div><div class="sh-msg">' + msg + '</div>';

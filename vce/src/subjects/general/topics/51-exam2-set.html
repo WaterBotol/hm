@@ -1,0 +1,92 @@
+<!--
+id: exam2-set
+title: Exam 2 practice set (extended response)
+short: Exam 2 practice set
+summary: Mixed extended-response questions in the style of VCAA General Mathematics Exam 2 across all four areas, with marking-scheme solutions and the interpretation sentences examiners want.
+keywords: exam 2, extended response, written response, practice exam, mixed questions, past exam style, general maths, regression question, loan question, transition matrix question, critical path question, marking scheme
+dotpoints: mixed extended-response practice across all areas of study
+-->
+<aside class="c-exam" data-title="How to use this set"><p>Exam 2 is 60 marks in 1 hour 30 minutes, with CAS and your bound reference: about 1.5 minutes per mark. This set is 30 marks (half an exam) in the exam's proportions. Write your Finance Solver inputs and matrix set-ups as working, round only where told, and mark yourself strictly against the scheme.</p></aside>
+
+<h2>Question 1: data analysis (12 marks)</h2>
+<div class="tbl"><table>
+<thead><tr><th>Hours studied, x</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th></tr></thead>
+<tbody><tr><td>Test score, y</td><td>52</td><td>58</td><td>61</td><td>67</td><td>70</td><td>76</td><td>79</td><td>85</td></tr></tbody></table></div>
+<div class="pq" data-level="core" data-marks="2">
+<div class="pq-q"><p><strong>Q1a.</strong> Find the equation of the least squares line for test score against hours studied. Round the coefficients to four significant figures.</p></div>
+<div class="pq-s"><p>CAS linear regression (a + bx) with hours as x. [1]</p><p>test score \(= 43.36 + 4.571 \times\) hours studied. [1]</p></div>
+</div>
+<div class="pq" data-level="core" data-marks="1">
+<div class="pq-q"><p><strong>Q1b.</strong> Interpret the slope of the line in context.</p></div>
+<div class="pq-s"><p>On average, the test score increases by 4.571 marks for each extra hour studied. [1]</p></div>
+</div>
+<div class="pq" data-level="core" data-marks="2">
+<div class="pq-q"><p><strong>Q1c.</strong> Find the coefficient of determination as a percentage, correct to one decimal place, and interpret it.</p></div>
+<div class="pq-s"><p>\(r = 0.9976\), so \(r^2 = 0.9951\): 99.5%. [1]</p><p>99.5% of the variation in test score can be explained by the variation in hours studied. [1]</p></div>
+</div>
+<div class="pq" data-level="exam" data-marks="2">
+<div class="pq-q"><p><strong>Q1d.</strong> Use the equation to predict the score of a student who studies for 5.5 hours, and explain why this prediction is reliable.</p></div>
+<div class="pq-s"><p>\(43.357\ldots + 4.5714\ldots \times 5.5 = 68.5\). [1]</p><p>5.5 hours is inside the data range (2 to 9 hours), so it's interpolation (and the association is very strong). [1]</p></div>
+</div>
+<div class="pq" data-level="exam" data-marks="2">
+<div class="pq-q"><p><strong>Q1e.</strong> Find the residual for the student who studied for 6 hours, correct to two decimal places, and say what it tells you.</p></div>
+<div class="pq-s"><p>Predicted \(= 43.357\ldots + 4.5714\ldots \times 6 = 70.786\ldots\); residual \(= 70 - 70.786 = -0.79\). [1]</p><p>The student scored 0.79 marks lower than the line predicts. [1]</p></div>
+</div>
+<div class="pq" data-level="hard" data-marks="3">
+<div class="pq-q"><p><strong>Q1f.</strong> A teacher uses the line to predict that a student who studies for 12 hours will score 98.2. Give two reasons why this prediction should be treated with caution.</p></div>
+<div class="pq-s"><p>12 hours is outside the data range: extrapolation. [1]</p><p>The linear pattern may not continue, for example scores are capped at 100 and gains may level off. [1]</p><p>Correlation doesn't show that studying more causes higher scores in general, and the sample is small (8 students). [1]</p></div>
+</div>
+
+<h2>Question 2: recursion and financial modelling (6 marks)</h2>
+<div class="pq" data-level="core" data-marks="1">
+<div class="pq-q"><p><strong>Q2a.</strong> Mia borrows $18 000 for a car at 7.2% per annum compounding monthly and repays $400 per month. Write a recurrence relation for the balance \(V_n\) after \(n\) payments.</p></div>
+<div class="pq-s"><p>\(V_0 = 18\,000\), \(V_{n+1} = 1.006V_n - 400\). [1]</p></div>
+</div>
+<div class="pq" data-level="core" data-marks="1">
+<div class="pq-q"><p><strong>Q2b.</strong> Show recursive calculations to find the balance after two payments.</p></div>
+<div class="pq-s"><p>\(V_1 = 1.006 \times 18\,000 - 400 = 17\,708\); \(V_2 = 1.006 \times 17\,708 - 400 = \$17\,414.25\). [1]</p></div>
+</div>
+<div class="pq" data-level="exam" data-marks="2">
+<div class="pq-q"><p><strong>Q2c.</strong> The final payment is slightly smaller than $400. How many payments are needed, and what is the final payment, to the nearest cent?</p></div>
+<div class="pq-s"><p>N = ?, I% = 7.2, PV = 18 000, Pmt = −400, FV = 0, PpY = CpY = 12: N = 52.6, so 53 payments. [1]</p><p>After 52 payments, FV = −242.43; final payment \(= 242.43 \times 1.006 = \$243.88\). [1]</p></div>
+</div>
+<div class="pq" data-level="exam" data-marks="2">
+<div class="pq-q"><p><strong>Q2d.</strong> Find the total interest Mia pays, to the nearest cent.</p></div>
+<div class="pq-s"><p>Total paid \(= 52 \times 400 + 243.88 = 21\,043.88\). [1]</p><p>Interest \(= 21\,043.88 - 18\,000 = \$3043.88\). [1]</p></div>
+</div>
+
+<h2>Question 3: matrices (6 marks)</h2>
+<div class="pq" data-level="core" data-marks="3">
+<div class="pq-q"><p><strong>Q3a.</strong> Kangaroos move between two reserves, P and Q. Each month 15% of P's kangaroos move to Q and 10% of Q's move to P. After the move, 20 are removed from P and 30 are released into Q. There are 600 in P and 400 in Q at the start. Write \(T\) and \(B\) for \(S_{n+1} = TS_n + B\), and find \(S_2\).</p></div>
+<div class="pq-s"><p>\(T = \begin{bmatrix} 0.85 &amp; 0.1 \\ 0.15 &amp; 0.9 \end{bmatrix}\), \(B = \begin{bmatrix} -20 \\ 30 \end{bmatrix}\). [1]</p><p>\(S_1 = \begin{bmatrix} 510 + 40 - 20 \\ 90 + 360 + 30 \end{bmatrix} = \begin{bmatrix} 530 \\ 480 \end{bmatrix}\). [1]</p><p>\(S_2 = \begin{bmatrix} 478.5 \\ 541.5 \end{bmatrix}\). [1]</p></div>
+</div>
+<div class="pq" data-level="exam" data-marks="3">
+<div class="pq-q"><p><strong>Q3b.</strong> A different population has Leslie matrix \(L = \begin{bmatrix} 0 &amp; 1.5 &amp; 0.8 \\ 0.6 &amp; 0 &amp; 0 \\ 0 &amp; 0.7 &amp; 0 \end{bmatrix}\) and initial state 200, 150 and 100 females in three age groups. (i) Find the state after one period. (ii) Find the total number of females after two periods. (iii) What does the element 0.7 represent?</p></div>
+<div class="pq-s"><p>(i) \(\begin{bmatrix} 1.5(150) + 0.8(100) \\ 0.6(200) \\ 0.7(150) \end{bmatrix} = \begin{bmatrix} 305 \\ 120 \\ 105 \end{bmatrix}\). [1]</p><p>(ii) \(S_2 = \begin{bmatrix} 264 \\ 183 \\ 84 \end{bmatrix}\), total 531. [1]</p><p>(iii) 70% of the females in age group 2 survive into age group 3. [1]</p></div>
+</div>
+
+<h2>Question 4: networks and decision mathematics (6 marks)</h2>
+<div class="tbl"><table>
+<thead><tr><th>Activity</th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th><th>G</th></tr></thead>
+<tbody>
+<tr><td>Duration (days)</td><td>3</td><td>5</td><td>2</td><td>4</td><td>6</td><td>3</td><td>2</td></tr>
+<tr><td>Immediate predecessors</td><td>–</td><td>–</td><td>A</td><td>A</td><td>B, C</td><td>D</td><td>E, F</td></tr>
+</tbody></table></div>
+<div class="pq" data-level="core" data-marks="2">
+<div class="pq-q"><p><strong>Q4a.</strong> Find the earliest starting time of E and the minimum completion time of the project.</p></div>
+<div class="pq-s"><p>EST of E \(= \max(0 + 5, 3 + 2) = 5\) days. [1]</p><p>G starts at \(\max(5 + 6, 7 + 3) = 11\); completion \(= 11 + 2 = 13\) days. [1]</p></div>
+</div>
+<div class="pq" data-level="exam" data-marks="2">
+<div class="pq-q"><p><strong>Q4b.</strong> This project has two critical paths. Write them down, and find the float of activity F.</p></div>
+<div class="pq-s"><p>A–C–E–G and B–E–G (both 13 days). [1]</p><p>LST of F \(= 11 - 3 = 8\), EST \(= 7\): float = 1 day. [1]</p></div>
+</div>
+<div class="pq" data-level="hard" data-marks="2">
+<div class="pq-q"><p><strong>Q4c.</strong> Activity E is reduced from 6 days to 4 days. Find the new minimum completion time and explain why it falls by less than 2 days.</p></div>
+<div class="pq-s"><p>Paths: A–C–E–G = 11, B–E–G = 11, A–D–F–G = \(3 + 4 + 3 + 2 = 12\). New time: 12 days. [1]</p><p>A–D–F–G (12 days) doesn't use E, so it becomes the critical path and limits the saving to 1 day. [1]</p></div>
+</div>
+<h2>Summary</h2>
+<ul>
+  <li data-q="What should every Finance Solver answer in Exam 2 show as working?">The values entered (N, I%, PV, Pmt, FV, PpY, CpY), with signs, and the unknown found.</li>
+  <li data-q="What makes a regression prediction reliable or unreliable?">Interpolation with a strong linear association is reliable; extrapolation isn't.</li>
+  <li data-q="When can shortening a critical activity save less than you shortened it?">When another path, not using that activity, becomes critical.</li>
+</ul>

@@ -45,6 +45,9 @@ function parseTopic(path, label) {
     if (lis < 2) throw new Error(`${label}: MCQ has ${lis} options`);
     if (ans.charCodeAt(0) - 65 >= lis) throw new Error(`${label}: MCQ answer ${ans} out of range (${lis} options)`);
   }
+  // only \( \) and \[ \] are maths delimiters, so a \$ outside maths renders as a literal backslash
+  const textOnly = html.replace(/\\\([\s\S]*?\\\)|\\\[[\s\S]*?\\\]/g, '');
+  if (/\\\$/.test(textOnly)) throw new Error(`${label}: "\\$" outside maths shows a backslash; write a plain $`);
   // every summary point needs a specific blurt (recall) question in data-q
   const sumUl = html.match(/<h2>Summary<\/h2>\s*<ul>([\s\S]*?)<\/ul>/);
   if (sumUl) { const bare = (sumUl[1].match(/<li>/g) || []).length; if (bare) console.warn(`⚠ ${label}: ${bare} summary point(s) have no blurt question (data-q)`); }
