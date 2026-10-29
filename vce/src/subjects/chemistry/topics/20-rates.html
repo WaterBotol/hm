@@ -2,9 +2,9 @@
 id: rates
 title: Rates of reaction & collision theory
 short: Rates & collision theory
-summary: Collision theory, activation energy, the Maxwell–Boltzmann distribution, how temperature, concentration, pressure, surface area and catalysts change the rate, and interpreting rate graphs from experiments.
+summary: Collision theory, activation energy and orientation, how temperature, concentration, pressure, surface area and catalysts change the rate, energy profile diagrams for catalysed reactions, and interpreting rate graphs from experiments.
 keywords: rate of reaction, reaction rate, collision theory, activation energy, successful collision, orientation, Maxwell-Boltzmann distribution, kinetic energy distribution, temperature, concentration, pressure, surface area, particle size, catalyst, alternative pathway, rate graph, gas volume, mass loss, initial rate, gradient
-dotpoints: collision theory, including activation energy and the Maxwell–Boltzmann distribution | factors affecting reaction rate: temperature, concentration, pressure, surface area and catalysts | the measurement and interpretation of reaction rates
+dotpoints: factors affecting the frequency and success of reactant particle collisions and the rate of a chemical reaction in open and closed systems, including temperature, surface area, concentration, gas pressures, presence of a catalyst, activation energy and orientation | the role of catalysts in increasing the rate of specific reactions, with reference to alternative reaction pathways of lower activation energies and represented using energy profile diagrams | the measurement and interpretation of reaction rates
 -->
 <h2>Collision theory</h2>
 <p>For particles to react, they must:</p>
@@ -15,10 +15,7 @@ dotpoints: collision theory, including activation energy and the Maxwell–Boltz
 </ol>
 <p>The rate depends on the <strong>frequency of successful collisions</strong>. Anything that increases the collision frequency, or the <em>fraction</em> of collisions with enough energy, increases the rate.</p>
 
-<h2>The Maxwell–Boltzmann distribution</h2>
-<p>In a sample of gas (or solution), particles have a range of kinetic energies. The area under the curve represents the total number of particles, and the area to the right of \(E_a\) is the number with enough energy to react.</p>
-<div class="sim" data-sim="maxwell"></div>
-<aside class="c-key" data-title="Temperature: two effects, one dominant"><p>Raising the temperature makes particles move faster (more frequent collisions) <strong>and</strong> shifts the distribution to higher energies, so a much larger fraction exceeds \(E_a\). The second effect is far bigger. A 10 °C rise often roughly doubles the rate, but increases the collision frequency by only a few per cent.</p></aside>
+<aside class="c-key" data-title="Temperature: two effects, one dominant"><p>Raising the temperature makes particles move faster (more frequent collisions) <strong>and</strong> gives them more kinetic energy on average, so a much larger fraction of collisions have at least \(E_a\). The second effect is far bigger. A 10 °C rise often roughly doubles the rate, but increases the collision frequency by only a few per cent.</p></aside>
 
 <h2>The factors</h2>
 <div class="tbl"><table>
@@ -35,6 +32,12 @@ dotpoints: collision theory, including activation energy and the Maxwell–Boltz
 <figcaption>A catalyst provides an alternative reaction pathway (dashed) with a lower activation energy. The reactant and product energies, and therefore ΔH, are unchanged.</figcaption>
 </figure>
 
+<aside class="c-deep" data-title="Going deeper: the Maxwell–Boltzmann distribution (not in the 2024–2027 study design)">
+<p>In a sample of gas (or solution), particles have a range of kinetic energies. The area under the curve represents the total number of particles, and the area to the right of \(E_a\) is the number with enough energy to react.</p>
+<div class="sim" data-sim="maxwell"></div>
+<p>Heating a gas makes the curve lower and broader, with its peak at a higher energy; the area stays the same because the number of particles doesn't change. A catalyst leaves the curve alone and moves the \(E_a\) line to the left. Older exams and textbooks use these graphs a lot, but the current study design explains rates with collision theory and energy profile diagrams only.</p>
+</aside>
+
 <h2>Measuring rates</h2>
 <p>Rate = change in amount (or concentration) ÷ time. Common methods: volume of gas collected over time, mass loss as gas escapes, colour change measured with a colorimeter, or a precipitate hiding a mark. On a graph of product vs time, the rate is the <strong>gradient</strong>: steepest at the start, falling to zero when a reactant runs out.</p>
 <div class="we" data-title="Interpreting a gas-volume graph" data-marks="4">
@@ -48,9 +51,7 @@ dotpoints: collision theory, including activation energy and the Maxwell–Boltz
 
 <aside class="c-trap" data-title="Trick alert: rate traps">
 <ul>
-  <li><strong>A catalyst doesn't change the MB curve.</strong> It moves the \(E_a\) line to the left.</li>
-  <li><strong>Higher temperature doesn't lower \(E_a\).</strong> It changes the particles, not the barrier.</li>
-  <li><strong>Area under the MB curve stays the same</strong> when temperature changes (same number of particles): the peak moves right and gets lower.</li>
+    <li><strong>Higher temperature doesn't lower \(E_a\).</strong> It changes the particles, not the barrier.</li>
   <li><strong>Rate vs yield:</strong> changing the rate doesn't change how much product you finally get (unless it's an equilibrium, where temperature changes \(K\)).</li>
   <li><strong>“More collisions” isn't enough</strong>: say “more frequent <em>successful</em> collisions” (per unit time).</li>
 </ul>
@@ -61,12 +62,6 @@ dotpoints: collision theory, including activation energy and the Maxwell–Boltz
 <div class="mcq-q"><p>A catalyst increases the rate of a reaction by</p></div>
 <ol><li>increasing the kinetic energy of the particles</li><li>increasing the collision frequency</li><li>providing a pathway with a lower activation energy</li><li>making ΔH more negative</li></ol>
 <div class="mcq-x"><p>A greater fraction of collisions then has at least the (lower) activation energy.</p></div>
-</div>
-
-<div class="mcq" data-ans="B" data-level="trick">
-<div class="mcq-q"><p>When the temperature of a gas increases, the Maxwell–Boltzmann curve</p></div>
-<ol><li>becomes taller and moves left</li><li>becomes lower and broader, with its peak moving to higher energy; the area stays the same</li><li>keeps the same shape but the area increases</li><li>shifts the activation energy to the left</li></ol>
-<div class="mcq-x"><p>Same number of particles means same area; energies spread out and increase. \(E_a\) is unaffected by temperature.</p></div>
 </div>
 
 <div class="mcq" data-ans="A" data-level="core">
@@ -99,8 +94,8 @@ dotpoints: collision theory, including activation energy and the Maxwell–Boltz
 </div>
 
 <div class="pq" data-level="hard" data-marks="3">
-<div class="pq-q"><p>Sketch the Maxwell–Boltzmann distribution for a gas and use it to explain how a catalyst increases the rate. Label the axes.</p></div>
-<div class="pq-s"><p>Axes: number (or fraction) of particles vs kinetic energy; skewed curve starting at the origin with a long tail at high energy. [1]</p><p>Mark \(E_a\) (uncatalysed) and a lower \(E_a\) (catalysed) to the left. [1]</p><p>The area to the right of the catalysed \(E_a\) is larger, so a greater proportion of collisions are successful, and the rate increases. The curve itself doesn't change. [1]</p></div>
+<div class="pq-q"><p>Sketch an energy profile diagram for an exothermic reaction, with and without a catalyst. Label \(E_a\) for each pathway and \(\Delta H\), and use the diagram to explain how the catalyst increases the rate.</p></div>
+<div class="pq-s"><p>Axes: energy vs reaction progress; products below reactants; two humps from the same reactant level to the same product level, the catalysed one lower. [1]</p><p>\(E_a\) arrows from the reactants up to each peak; one \(\Delta H\) arrow from reactants down to products, the same for both pathways. [1]</p><p>The catalysed pathway has a lower \(E_a\), so a larger fraction of collisions have at least that energy: more frequent successful collisions, so a faster rate. [1]</p></div>
 </div>
 
 <div class="pq" data-level="exam" data-marks="4" data-f="n = cV ;; V = nV_m">
@@ -110,7 +105,7 @@ dotpoints: collision theory, including activation energy and the Maxwell–Boltz
 
 <div class="pq" data-level="trick" data-marks="2">
 <div class="pq-q"><p>A student says: “Raising the temperature increases the rate mainly because particles collide more often.” Evaluate this statement.</p></div>
-<div class="pq-s"><p>Partly true but incomplete: collisions do become more frequent, but the main reason is that a much larger fraction of collisions now have energy ≥ \(E_a\) (the MB distribution shifts to higher energies). The collision frequency only rises by a few per cent for a 10 °C increase, while the rate often doubles.</p></div>
+<div class="pq-s"><p>Partly true but incomplete: collisions do become more frequent, but the main reason is that a much larger fraction of collisions now have energy ≥ \(E_a\) (the particles have more kinetic energy on average). The collision frequency only rises by a few per cent for a 10 °C increase, while the rate often doubles.</p></div>
 </div>
 
 <h2>Summary</h2>

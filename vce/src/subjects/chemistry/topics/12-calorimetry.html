@@ -2,9 +2,9 @@
 id: calorimetry
 title: Calorimetry
 short: Calorimetry
-summary: Measuring energy changes with q = mcΔT, electrical calibration and calibration factors, solution and bomb calorimetry, heats of combustion from experiments, heat loss, efficiency and sources of error.
-keywords: calorimetry, calorimeter, q = mcΔT, specific heat capacity, calibration factor, electrical calibration, E = VIt, solution calorimetry, bomb calorimeter, heat of combustion, spirit burner, heat loss, efficiency, temperature change, neutralisation, enthalpy of solution, errors
-dotpoints: the use of specific heat capacity of water to determine the approximate amount of heat energy released in the combustion of a fuel | the use of solution and bomb calorimetry, including calibration, to determine enthalpy changes | sources of error and limitations in calorimetry
+summary: Measuring energy changes with q = mcΔT, electrical calibration and calibration factors, solution calorimetry and temperature–time graphs, heats of combustion from experiments, heat loss, efficiency and sources of error.
+keywords: calorimetry, calorimeter, q = mcΔT, specific heat capacity, calibration factor, electrical calibration, E = VIt, solution calorimetry, temperature–time graph, extrapolation, heat of combustion, spirit burner, heat loss, efficiency, temperature change, neutralisation, enthalpy of solution, errors
+dotpoints: the use of specific heat capacity of water to approximate the quantity of heat energy released during the combustion of a known mass of fuel and food | the principles of solution calorimetry, including determination of calibration factor and consideration of the effects of heat loss; analysis of temperature-time graphs obtained from solution calorimetry | sources of error and limitations in calorimetry
 -->
 <h2>Two ways to measure energy</h2>
 <div class="grid2">
@@ -22,13 +22,13 @@ dotpoints: the use of specific heat capacity of water to determine the approxima
 <div class="we-a"><p><strong>20.9 kJ; 17.4 kJ g⁻¹; about 59%.</strong> The rest heats the air, the can and the clamp, or goes into incomplete combustion (soot on the can).</p></div>
 </div>
 
-<div class="we" data-title="Calibration then combustion (bomb calorimeter)" data-marks="4">
-<div class="we-q"><p>A bomb calorimeter is calibrated by passing a current of 2.50 A at 5.00 V for 120 s; the temperature rises by 0.60 °C. Then 0.500 g of ethanol (\(M = 46.0\)) is burnt in it, raising the temperature by 5.20 °C. Calculate the molar heat of combustion of ethanol.</p></div>
-<div class="we-t"><p>A calorimeter is calibrated with a known amount of electrical energy to find how many joules raise its temperature by 1 °C (the calibration factor). That factor then converts the temperature rise from the reaction into energy.</p></div>
-<div class="we-s" data-f="E = VIt,\ \text{CF} = \dfrac{E}{\Delta T}"><p>\(E = VIt = 5.00 \times 2.50 \times 120 = 1500\text{ J}\); \(\text{CF} = \frac{1500}{0.60} = 2500\text{ J °C}^{-1}\).</p></div>
-<div class="we-s" data-f="q = \text{CF} \times \Delta T"><p>\(q = 2500 \times 5.20 = 13\,000\text{ J} = 13.0\text{ kJ}\).</p></div>
-<div class="we-s" data-f="n = \dfrac mM,\ \dfrac qn"><p>\(n = \frac{0.500}{46.0} = 0.01087\text{ mol}\), so \(\frac{13.0}{0.01087} = 1196\text{ kJ mol}^{-1}\).</p></div>
-<div class="we-a" data-f="\Delta H = -\dfrac qn \text{ (exothermic)}"><p><strong>\(\Delta H_c = -1.20 \times 10^3\ \text{kJ mol}^{-1}\)</strong> (negative: exothermic). It's lower in magnitude than the data-book value (1360), suggesting heat loss or incomplete combustion.</p></div>
+<div class="we" data-title="Calibration, then a reaction with a temperature–time graph" data-marks="4">
+<div class="we-q"><p>A solution calorimeter holding 100 mL of 1.0 M HCl is calibrated by passing 2.50 A at 5.00 V for 180 s; the temperature rises by 4.30 °C. The same calorimeter is refilled with fresh acid at the starting temperature, and 0.243 g of magnesium ribbon (\(M = 24.3\)) is added; the acid is in excess. Temperatures are recorded every 30 s. The highest reading is 8.1 °C above the start, but extrapolating the cooling part of the temperature–time graph back to the moment the magnesium went in gives a rise of 8.60 °C. Calculate \(\Delta H\) for \(\ce{Mg(s) + 2HCl(aq) -> MgCl2(aq) + H2(g)}\).</p></div>
+<div class="we-t"><p>Calibration with a known amount of electrical energy finds how many joules raise the whole calorimeter (solution, cup, stirrer, thermometer) by 1 °C. Use the extrapolated \(\Delta T\), not the highest reading: the solution is already losing heat before the reaction finishes, so the peak is too low.</p></div>
+<div class="we-s" data-f="E = VIt,\ \text{CF} = \dfrac{E}{\Delta T}"><p>\(E = VIt = 5.00 \times 2.50 \times 180 = 2250\text{ J}\); \(\text{CF} = \frac{2250}{4.30} = 523\text{ J °C}^{-1}\).</p></div>
+<div class="we-s" data-f="q = \text{CF} \times \Delta T"><p>\(q = 523 \times 8.60 = 4500\text{ J} = 4.50\text{ kJ}\).</p></div>
+<div class="we-s" data-f="n = \dfrac mM,\ \dfrac qn"><p>\(n(\ce{Mg}) = \frac{0.243}{24.3} = 0.0100\text{ mol}\), so \(\frac{4.50}{0.0100} = 450\text{ kJ mol}^{-1}\).</p></div>
+<div class="we-a" data-f="\Delta H = -\dfrac qn \text{ (exothermic)}"><p><strong>\(\Delta H = -450\ \text{kJ mol}^{-1}\)</strong> (negative: the temperature rose). Using the peak reading (8.1 °C) would give −424 kJ mol⁻¹, too small because of the heat lost while the reaction was still going. Sanity check: the CF (523) is above \(100 \times 4.18 = 418\ \text{J °C}^{-1}\) for the water alone, as it must be.</p></div>
 </div>
 
 <div class="we" data-title="Solution calorimetry: an endothermic dissolution" data-marks="3">
@@ -52,7 +52,7 @@ dotpoints: the use of specific heat capacity of water to determine the approxima
 <thead><tr><th>Source of error</th><th>Effect on measured |ΔH|</th><th>Improvement</th></tr></thead>
 <tbody>
 <tr><td>Heat lost to surroundings</td><td>Too small (systematic)</td><td>Insulate; lid; calibrate electrically; draught shield</td></tr>
-<tr><td>Incomplete combustion (soot)</td><td>Too small</td><td>Better air supply; bomb calorimeter with excess O₂</td></tr>
+<tr><td>Incomplete combustion (soot)</td><td>Too small</td><td>Better air supply: no draughts, trimmed wick, can not too close to the flame</td></tr>
 <tr><td>Fuel evaporating from the burner wick</td><td>Too small (mass loss counted as burnt)</td><td>Cap the burner when weighing; weigh immediately</td></tr>
 <tr><td>Heat absorbed by the container is ignored (using \(mc\Delta T\))</td><td>Too small</td><td>Use a calibration factor</td></tr>
 <tr><td>Thermometer resolution / reading</td><td>Random</td><td>Digital probe; repeat trials; extrapolate a temperature–time graph</td></tr>
