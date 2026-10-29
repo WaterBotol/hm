@@ -52,7 +52,7 @@
     try {
       const d = c.getContext('2d').getImageData(0, 0, c.width, c.height).data, W = c.width;
       let last = c.height - 1;
-      for (; last > 0; last--) { let ink = false; for (let x = 0; x < W; x += 2) { const i = (last * W + x) * 4; if (d[i] < 200 || d[i + 1] < 200 || d[i + 2] < 200) { ink = true; break; } } if (ink) break; }
+      for (; last > 0; last--) { let ink = false; for (let x = 0; x < W; x += 2) { const i = (last * W + x) * 4; if (d[i] < 225 || d[i + 1] < 225 || d[i + 2] < 225) { ink = true; break; } } if (ink) break; }
       const h = Math.min(c.height, last + Math.round(c.width * 0.025));
       if (h >= c.height - 4 || h < 20) return c;
       const t = doc.createElement('canvas'); t.width = c.width; t.height = h; t.getContext('2d').drawImage(c, 0, 0); return t;
@@ -87,7 +87,8 @@
       const canvases = [];
       for (const seg of MAP.crops[key]) canvases.push(await drawSeg(url, seg, w, dpr));
       img.innerHTML = '';
-      canvases.forEach((c, i) => { if (i) img.appendChild(Object.assign(doc.createElement('div'), { className: 'vq-break', textContent: 'continued on the next page' })); img.appendChild(c); });
+      const segs = MAP.crops[key];
+      canvases.forEach((c, i) => { if (i) img.appendChild(Object.assign(doc.createElement('div'), { className: 'vq-break', textContent: segs[i][0] === segs[i - 1][0] ? 'continued further down the page' : 'continued on the next page' })); img.appendChild(c); });
     } catch (e) {
       delete box.dataset.w;
       img.innerHTML = '<div class="vq-load">Couldn’t load the official paper here. Use the link above to open it on the VCAA site.</div>';
