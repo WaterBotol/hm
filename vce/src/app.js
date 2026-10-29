@@ -1022,13 +1022,16 @@
       status: st.marked && st.of ? 'Scored <b>' + st.score + '/' + st.of + '</b> (' + Math.round(100 * st.score / st.of) + '%)' : st.phase && st.phase !== 'idle' ? 'In progress' : 'Not started'
     };
   }
-  const pdfLinks = s => '<p class="ex-pdfs">Editable PDFs' + (s.id === 'methods' || s.id === 'specialist' || s.id === 'general' ? ' (Exam 1 and Exam 2 in one file)' : '') + ': ' + ['easier', 'medium', 'harder'].map(l => '<a href="pdf/' + s.id + '-' + l + '.pdf" download>' + l + ' paper</a>').join(' · ') + '</p>';
+  const pdfSet = (s, f) => ['easier', 'medium', 'harder'].map(l => '<a href="pdf/' + s.id + f + '-' + l + '.pdf" download>' + l + ' paper</a>').join(' · ');
+  const pdfLinks = s => '<p class="ex-pdfs">Editable PDFs' + (s.id === 'methods' || s.id === 'specialist' || s.id === 'general' ? ' (Exam 1 and Exam 2 in one file)' : '') + ': ' + pdfSet(s, '') +
+    (s.id === 'general' ? '<br>Further Maths 2020–22 set: ' + pdfSet(s, '-f') : '') + '</p>';
   // big practice-exam buttons at the top of each subject's overview page
   function examCtaHTML(s) {
     const ex = s.order.filter(t => t.special === 'exam');
     if (!ex.length) return '';
     const rows = [];
-    ex.forEach(t => { const k = ((t.short || '').match(/^Exam \d/) || [''])[0]; let r = rows.find(x => x.k === k); if (!r) rows.push(r = { k, ts: [] }); r.ts.push(t); });
+    // one row per exam, and a separate row for papers drawn from an older subject's exams ("Exam 1 · easier · 2020–22")
+    ex.forEach(t => { const m = (t.short || '').match(/^(Exam \d)(?:.* · (\d{4}–\d\d))?/), k = m ? m[1] + (m[2] ? ' · Further Maths ' + m[2] + ' questions' : '') : ''; let r = rows.find(x => x.k === k); if (!r) rows.push(r = { k, ts: [] }); r.ts.push(t); });
     return '<section class="ex-cta" aria-label="Practice exams"><div class="ex-cta-head"><div><h2 class="ex-cta-t">Practice exams</h2><p>Real VCAA questions, sorted by how the state actually went. Timed, with marking guides.</p></div><a class="btn" href="#exams">All exams</a></div>' +
       rows.map(r => (r.k ? '<div class="ex-cta-row">' + esc(r.k) + '</div>' : '') + '<div class="ex-cta-grid">' + r.ts.map(t => {
         const i = examInfo(t);

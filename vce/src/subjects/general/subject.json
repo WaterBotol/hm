@@ -13,6 +13,7 @@
     { "id": "nw", "eyebrow": "Unit 4 · Networks & decision mathematics", "title": "Graphs, travelling, connecting, flow, shortest paths, matching and scheduling", "quiz": true, "topics": ["nw-graphs", "nw-travel", "nw-trees", "nw-flow", "nw-shortest", "nw-matching", "nw-cpa"] },
     { "id": "exam", "eyebrow": "Exam practice", "title": "Mixed exam-style questions", "quiz": true, "topics": ["exam1-set", "exam2-set"] },
     { "id": "exams", "eyebrow": "Exam practice", "title": "Full practice exams: easier → medium → harder", "map": false, "topics": ["exam1-easy", "exam2-easy", "exam1-medium", "exam2-medium", "exam1-hard", "exam2-hard"] },
+    { "id": "exams2", "eyebrow": "Exam practice", "title": "More full exams from Further Maths 2020–2022 questions", "map": false, "topics": ["fexam1-easy", "fexam2-easy", "fexam1-medium", "fexam2-medium", "fexam1-hard", "fexam2-hard"] },
     { "id": "ref", "eyebrow": "Reference", "title": "", "map": false, "topics": ["glossary"] }
   ]
 }
