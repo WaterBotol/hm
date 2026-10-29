@@ -1,0 +1,88 @@
+<!--
+id: nw-shortest
+title: Shortest paths and Dijkstra's algorithm
+short: Shortest paths (Dijkstra)
+summary: Finding the shortest path between two vertices by inspection; Dijkstra's algorithm for the shortest path from one vertex to every other vertex in a weighted graph or digraph, set out as a table; and recovering the route by backtracking.
+keywords: shortest path, shortest route, shortest distance, least time, cheapest route, Dijkstra, Dijkstra's algorithm, temporary label, permanent label, visited, unvisited, backtrack, weighted graph, network, digraph, one-way, by inspection, table of labels
+dotpoints: determination of the shortest path between two specified vertices in a graph, digraph or network by inspection | Dijkstra's algorithm and its use to determine the shortest path between a given vertex and each of the other vertices in a weighted graph or network
+-->
+<h2>Shortest paths by inspection</h2>
+<p>For a small network, you can often see the shortest path. Check every reasonable route, and watch for routes with more edges that are still shorter.</p>
+<figure class="fig"><svg viewBox="0 0 400 210" role="img" aria-label="Network: SA 4, SB 2, AB 1, AC 5, BC 8, BD 10, CD 2, CT 6, DT 2">
+<path d="M52 102 L137 49 M52 118 L137 171 M150 54 L150 164 M164 40 L254 40 M159 169 L260 52 M164 180 L254 180 M270 54 L270 164 M281 48 L357 101 M281 172 L357 119" class="s-ink" stroke-width="1.6" fill="none"/>
+<path d="M52 118 L137 171 M150 164 L150 54 M164 40 L254 40 M270 54 L270 164 M281 172 L357 119" class="s-acc" stroke-width="3.4" fill="none"/>
+<text x="90" y="71" text-anchor="middle" class="t-sm t-acc">4</text>
+<text x="90" y="157" text-anchor="middle" class="t-sm t-acc">2</text>
+<text x="140" y="114" text-anchor="middle" class="t-sm t-acc">1</text>
+<text x="210" y="32" text-anchor="middle" class="t-sm t-acc">5</text>
+<text x="202" y="107" text-anchor="middle" class="t-sm t-acc">8</text>
+<text x="210" y="196" text-anchor="middle" class="t-sm t-acc">10</text>
+<text x="260" y="114" text-anchor="middle" class="t-sm t-acc">2</text>
+<text x="326" y="71" text-anchor="middle" class="t-sm t-acc">6</text>
+<text x="326" y="157" text-anchor="middle" class="t-sm t-acc">2</text>
+<circle cx="40" cy="110" r="14" class="f-accsoft s-acc"/><text x="40" y="115" text-anchor="middle" class="t-b">S</text>
+<circle cx="150" cy="40" r="14" class="f-accsoft s-acc"/><text x="150" y="45" text-anchor="middle" class="t-b">A</text>
+<circle cx="150" cy="180" r="14" class="f-accsoft s-acc"/><text x="150" y="185" text-anchor="middle" class="t-b">B</text>
+<circle cx="270" cy="40" r="14" class="f-accsoft s-acc"/><text x="270" y="45" text-anchor="middle" class="t-b">C</text>
+<circle cx="270" cy="180" r="14" class="f-accsoft s-acc"/><text x="270" y="185" text-anchor="middle" class="t-b">D</text>
+<circle cx="370" cy="110" r="14" class="f-accsoft s-acc"/><text x="370" y="115" text-anchor="middle" class="t-b">T</text>
+</svg><figcaption>Travel times in minutes. The shortest path from S to T (12 minutes) is highlighted.</figcaption></figure>
+
+<h2>Dijkstra's algorithm</h2>
+<div class="eq"><div class="eq-label">Dijkstra's algorithm</div><ol><li>Give the start vertex the label 0. Every other vertex is unlabelled (∞).</li><li>Make the smallest temporary label <strong>permanent</strong> (that vertex is done).</li><li>From that vertex, update each neighbour: if (permanent label + edge weight) is smaller than its current label, replace it.</li><li>Repeat steps 2 and 3 until the destination (or every vertex) is permanent.</li></ol></div>
+<div class="we" data-title="Dijkstra's algorithm as a table" data-marks="3">
+<div class="we-q"><p>Use Dijkstra's algorithm to find the shortest time from S to every vertex, and the shortest route from S to T.</p></div>
+<div class="we-t"><p>Each row makes one vertex permanent (in bold) and updates its neighbours. Write which vertex each label came from so you can backtrack.</p></div>
+<div class="we-s"><div class="tbl"><table>
+<thead><tr><th>Made permanent</th><th>S</th><th>A</th><th>B</th><th>C</th><th>D</th><th>T</th></tr></thead>
+<tbody>
+<tr><td>S (0)</td><td><strong>0</strong></td><td>4 (S)</td><td>2 (S)</td><td>∞</td><td>∞</td><td>∞</td></tr>
+<tr><td>B (2)</td><td></td><td>3 (B)</td><td><strong>2</strong></td><td>10 (B)</td><td>12 (B)</td><td>∞</td></tr>
+<tr><td>A (3)</td><td></td><td><strong>3</strong></td><td></td><td>8 (A)</td><td>12 (B)</td><td>∞</td></tr>
+<tr><td>C (8)</td><td></td><td></td><td></td><td><strong>8</strong></td><td>10 (C)</td><td>14 (C)</td></tr>
+<tr><td>D (10)</td><td></td><td></td><td></td><td></td><td><strong>10</strong></td><td>12 (D)</td></tr>
+<tr><td>T (12)</td><td></td><td></td><td></td><td></td><td></td><td><strong>12</strong></td></tr>
+</tbody></table></div></div>
+<div class="we-s"><p>Backtrack from T: T came from D, D from C, C from A, A from B, B from S.</p></div>
+<div class="we-a"><p>Shortest times: A 3, B 2, C 8, D 10, T 12. Route to T: <strong>S–B–A–C–D–T, 12 minutes</strong>.</p></div>
+</div>
+<div class="sim" data-sim="gmNetwork" data-mode="dijkstra"></div>
+<aside class="c-trap" data-title="Trick alert: don't trust the first step"><p>The direct-looking edge isn't always best: S to A directly is 4, but S–B–A is 3. A label can drop several times before it becomes permanent, so never lock a vertex in until it's the smallest temporary label.</p></aside>
+<aside class="c-exam" data-title="Exam tip: digraphs and one-way roads"><p>Dijkstra's algorithm works on digraphs too: only update along arrows leaving the permanent vertex. In multiple choice, inspection is usually faster; save the full table for written questions that ask for it.</p></aside>
+
+<h2>Practice</h2>
+<div class="mcq" data-ans="B" data-level="core">
+<div class="mcq-q"><p>In the network above, the shortest time from S to C is</p></div>
+<ol><li>5 minutes</li><li>8 minutes</li><li>9 minutes</li><li>10 minutes</li></ol>
+<div class="mcq-x"><p>S–B–A–C \(= 2 + 1 + 5 = 8\). S–A–C is 9 and S–B–C is 10.</p></div>
+</div>
+<div class="mcq" data-ans="D" data-level="core">
+<div class="mcq-q"><p>After S and B are made permanent, the next vertex made permanent is</p></div>
+<ol><li>C</li><li>D</li><li>T</li><li>A</li></ol>
+<div class="mcq-x"><p>Temporary labels are then A 3, C 10, D 12. The smallest is A.</p></div>
+</div>
+<div class="mcq" data-ans="A" data-level="trick">
+<div class="mcq-q"><p>The road from A to C is resurfaced and now takes 9 minutes. The shortest time from S to C becomes</p></div>
+<ol><li>10 minutes</li><li>12 minutes</li><li>8 minutes</li><li>13 minutes</li></ol>
+<div class="mcq-x"><p>S–B–A–C is now \(2 + 1 + 9 = 12\), but S–B–C is \(2 + 8 = 10\).</p></div>
+</div>
+<div class="mcq" data-ans="C" data-level="hard">
+<div class="mcq-q"><p>Dijkstra's algorithm is run from T instead of S. The shortest time from T to B is</p></div>
+<ol><li>12 minutes</li><li>8 minutes</li><li>10 minutes</li><li>14 minutes</li></ol>
+<div class="mcq-x"><p>T–D–C–A–B \(= 2 + 2 + 5 + 1 = 10\). (T–D–B is 12.)</p></div>
+</div>
+<div class="pq" data-level="core" data-marks="2">
+<div class="pq-q"><p>How much longer than the shortest route is the route S–A–C–T?</p></div>
+<div class="pq-s"><p>S–A–C–T \(= 4 + 5 + 6 = 15\) minutes. [1]</p><p>\(15 - 12 = 3\) minutes longer. [1]</p></div>
+</div>
+<div class="pq" data-level="exam" data-marks="2">
+<div class="pq-q"><p>Road CD is closed. Find the new shortest time from S to T and every route that achieves it.</p></div>
+<div class="pq-s"><p>Labels: B 2, A 3, C 8 (via A), D 12 (via B), T \(\min(8 + 6, 12 + 2) = 14\). [1]</p><p>14 minutes, by two routes: S–B–A–C–T and S–B–D–T. [1]</p></div>
+</div>
+<h2>Summary</h2>
+<ul>
+  <li data-q="Describe Dijkstra's algorithm.">Label the start 0; repeatedly make the smallest temporary label permanent and update its neighbours with (label + edge) if smaller; stop when the destination is permanent.</li>
+  <li data-q="How do you find the actual route after Dijkstra's algorithm?">Backtrack from the destination using the vertex each final label came from.</li>
+  <li data-q="What does Dijkstra's algorithm give you besides the path to one destination?">The shortest distance from the start to every other vertex.</li>
+  <li data-q="How is Dijkstra's algorithm used on a digraph?">Only update along arrows leaving the vertex just made permanent.</li>
+</ul>

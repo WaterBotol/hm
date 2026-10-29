@@ -1,0 +1,106 @@
+<!--
+id: nw-cpa
+title: Scheduling and critical path analysis
+short: Critical path analysis
+summary: Building an activity network from a precedence table, including dummy activities; forward scanning for earliest starting times (EST) and backward scanning for latest starting times (LST); the critical path, minimum completion time and float; and reducing (crashing) activity times to shorten a project at least cost.
+keywords: scheduling, project, activity, precedence table, immediate predecessor, activity network, dummy activity, dummy, forward scan, backward scan, earliest starting time, EST, latest starting time, LST, earliest finishing time, critical path, critical activities, minimum completion time, float, slack, non-critical, crashing, reduce activity time, cost of reduction, budget, new critical path
+dotpoints: construction of an activity network from a precedence table (or equivalent) including the use of dummy activities where necessary | use of forward and backward scanning to determine the earliest starting times (EST) and latest starting times (LST) for each activity | use of earliest starting times and latest starting times to identify the critical path in the network and determine the float times for non-critical activities
+-->
+<h2>Precedence tables and activity networks</h2>
+<p>A project is broken into <strong>activities</strong>. A <strong>precedence table</strong> lists each activity's duration and its <strong>immediate predecessors</strong> (activities that must finish before it can start). In an <strong>activity network</strong>, each activity is an edge (arrow); vertices are the moments when activities finish and others start.</p>
+<div class="tbl"><table>
+<thead><tr><th>Activity</th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th><th>G</th><th>H</th></tr></thead>
+<tbody>
+<tr><td>Duration (days)</td><td>4</td><td>3</td><td>3</td><td>7</td><td>6</td><td>2</td><td>3</td><td>4</td></tr>
+<tr><td>Immediate predecessors</td><td>–</td><td>–</td><td>A</td><td>A</td><td>B, C</td><td>C</td><td>D, F</td><td>E</td></tr>
+</tbody></table></div>
+<figure class="fig"><svg viewBox="0 0 420 210" role="img" aria-label="Activity network with a dummy activity from the end of C to the start of E; critical path A, C, dummy, E, H highlighted">
+<defs><marker id="gmcpa-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="f-acc"/></marker><marker id="gmcpa-i" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="f-ink"/></marker></defs>
+<path d="M37 105 L121 46" class="s-acc" stroke-width="3" marker-end="url(#gmcpa-a)"/>
+<path d="M37 115 L121 174" class="s-ink" stroke-width="1.6" marker-end="url(#gmcpa-i)"/>
+<path d="M137 46 L202 103" class="s-acc" stroke-width="3" marker-end="url(#gmcpa-a)"/>
+<path d="M139 40 L279 40" class="s-ink" stroke-width="1.6" marker-end="url(#gmcpa-i)"/>
+<path d="M217 104 L282 47" class="s-ink" stroke-width="1.6" marker-end="url(#gmcpa-i)"/>
+<path d="M139 180 L279 180" class="s-acc" stroke-width="3" marker-end="url(#gmcpa-a)"/>
+<path d="M297 45 L381 104" class="s-ink" stroke-width="1.6" marker-end="url(#gmcpa-i)"/>
+<path d="M297 175 L381 116" class="s-acc" stroke-width="3" marker-end="url(#gmcpa-a)"/>
+<path d="M203 116 L138 173" class="s-acc" stroke-width="3" stroke-dasharray="5 4" marker-end="url(#gmcpa-a)"/>
+<text x="73" y="69" text-anchor="middle" class="t-sm t-b">A, 4</text>
+<text x="73" y="159" text-anchor="middle" class="t-sm">B, 3</text>
+<text x="162" y="88" text-anchor="middle" class="t-sm t-b">C, 3</text>
+<text x="210" y="32" text-anchor="middle" class="t-sm">D, 7</text>
+<text x="258" y="88" text-anchor="middle" class="t-sm">F, 2</text>
+<text x="210" y="198" text-anchor="middle" class="t-sm t-b">E, 6</text>
+<text x="347" y="69" text-anchor="middle" class="t-sm">G, 3</text>
+<text x="347" y="159" text-anchor="middle" class="t-sm t-b">H, 4</text>
+<text x="190" y="156" class="t-sm t-mut">dummy</text>
+<g class="f-surf3 s-ink"><circle cx="30" cy="110" r="8"/><circle cx="130" cy="40" r="8"/><circle cx="290" cy="40" r="8"/><circle cx="390" cy="110" r="8"/><circle cx="130" cy="180" r="8"/><circle cx="290" cy="180" r="8"/><circle cx="210" cy="110" r="8"/></g>
+</svg><figcaption>The dashed arrow is a dummy activity (duration 0). The critical path is in bold.</figcaption></figure>
+<aside class="c-def" data-title="Why a dummy?"><p>E needs B <em>and</em> C, but F needs only C. If B and C both ended at the vertex where E and F start, F would wrongly have to wait for B too. So C ends at its own vertex (where F starts), and a <strong>dummy</strong> (dashed, duration 0) carries C's completion across to E's start. A dummy only shows a dependency; it isn't real work.</p></aside>
+
+<h2>Forward and backward scanning</h2>
+<div class="eq"><div class="eq-label">The two scans</div><p><strong>Forward scan (EST)</strong>: start activities have EST 0. For every other activity, \(\text{EST} = \) the <strong>largest</strong> (EST + duration) of its immediate predecessors. The minimum completion time is the largest finishing time.</p><p><strong>Backward scan (LST)</strong>: for an activity that finishes the project, \(\text{LST} = \) completion time − duration. For every other activity, \(\text{LST} = \) the <strong>smallest</strong> LST of the activities that follow it − its own duration.</p>\[ \text{float} = \text{LST} - \text{EST} \]</div>
+<div class="we" data-title="ESTs, LSTs, critical path and float" data-marks="4">
+<div class="we-q"><p>For the project above, find each activity's EST and LST, the minimum completion time, the critical path and the floats.</p></div>
+<div class="we-t"><p>Forward scan takes the maximum at merges; backward scan takes the minimum at branches. Critical activities have zero float.</p></div>
+<div class="we-s"><p>Forward: A 0, B 0, C 4, D 4, E \(\max(0 + 3, 4 + 3) = 7\), F 7, G \(\max(4 + 7, 7 + 2) = 11\), H \(7 + 6 = 13\). Finish \(= \max(11 + 3, 13 + 4) = 17\).</p></div>
+<div class="we-s"><p>Backward: H \(17 - 4 = 13\), G \(17 - 3 = 14\), E \(13 - 6 = 7\), F \(14 - 2 = 12\), D \(14 - 7 = 7\), C \(\min(7, 12) - 3 = 4\), B \(7 - 3 = 4\), A \(\min(4, 7) - 4 = 0\).</p></div>
+<div class="we-s"><div class="tbl"><table>
+<thead><tr><th>Activity</th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th><th>G</th><th>H</th></tr></thead>
+<tbody>
+<tr><td>EST</td><td>0</td><td>0</td><td>4</td><td>4</td><td>7</td><td>7</td><td>11</td><td>13</td></tr>
+<tr><td>LST</td><td>0</td><td>4</td><td>4</td><td>7</td><td>7</td><td>12</td><td>14</td><td>13</td></tr>
+<tr><td>Float</td><td>0</td><td>4</td><td>0</td><td>3</td><td>0</td><td>5</td><td>3</td><td>0</td></tr>
+</tbody></table></div></div>
+<div class="we-a"><p>Minimum completion time <strong>17 days</strong>. Critical path <strong>A–C–E–H</strong> (through the dummy). Floats: B 4, D 3, F 5, G 3 days.</p></div>
+</div>
+<div class="sim" data-sim="gmCPA"></div>
+<aside class="c-key" data-title="Key idea: the critical path is the longest path"><p>The critical path is the longest path through the network. Any delay to a critical activity delays the whole project. A non-critical activity can be delayed by up to its float without changing the finish time.</p></aside>
+
+<h2>Crashing: reducing activity times</h2>
+<p>Spending money (more workers, overtime) can shorten some activities. Only shortening <strong>critical</strong> activities can shorten the project, and as you shorten it another path may become critical.</p>
+<div class="we" data-title="Shortening the project at least cost" data-marks="3">
+<div class="we-q"><p>E can be reduced by up to 2 days at $500 per day, and H by up to 2 days at $300 per day. Find the minimum completion time and the minimum cost to achieve it.</p></div>
+<div class="we-t"><p>Shorten the cheapest critical activity first, and recheck the other paths after each day. Paths: A–C–E–H 17, A–D–G 14, A–C–F–G 12, B–E–H 13.</p></div>
+<div class="we-s"><p>H by 2 days ($600): A–C–E–H = 15. Then E by 1 day ($500): A–C–E–H = 14, which ties with A–D–G = 14.</p></div>
+<div class="we-s"><p>Cutting E by a second day leaves A–D–G at 14, so it saves nothing.</p></div>
+<div class="we-a"><p>Minimum completion time <strong>14 days</strong>, for <strong>$1100</strong>. A–C–E–H and A–D–G are now both critical.</p></div>
+</div>
+<aside class="c-exam" data-title="Exam tip: show the scans"><p>Write EST/LST on the network or in a table. For “latest start time” questions, don't confuse LST with the latest <em>finish</em> time (LST + duration). If a question changes a duration, redo the forward scan from that activity onwards.</p></aside>
+
+<h2>Practice</h2>
+<div class="mcq" data-ans="B" data-level="core">
+<div class="mcq-q"><p>An activity has immediate predecessors P (EST 5, duration 4) and Q (EST 3, duration 7). Its EST is</p></div>
+<ol><li>9</li><li>10</li><li>12</li><li>19</li></ol>
+<div class="mcq-x"><p>It can't start until both finish: \(\max(5 + 4, 3 + 7) = 10\).</p></div>
+</div>
+<div class="mcq" data-ans="C" data-level="core">
+<div class="mcq-q"><p>In the project above, if activity D is delayed by 2 days, the project completion time is</p></div>
+<ol><li>19 days</li><li>15 days</li><li>17 days</li><li>18 days</li></ol>
+<div class="mcq-x"><p>D has 3 days of float, so a 2-day delay doesn't change the 17 days.</p></div>
+</div>
+<div class="mcq" data-ans="A" data-level="trick">
+<div class="mcq-q"><p>A dummy activity in an activity network</p></div>
+<ol><li>has zero duration and only shows a dependency</li><li>is always on the critical path</li><li>has a duration equal to the float</li><li>can be removed without changing the precedences</li></ol>
+<div class="mcq-x"><p>It takes no time and exists only so the network shows the correct predecessors. Removing it would change who waits for whom.</p></div>
+</div>
+<div class="mcq" data-ans="D" data-level="hard">
+<div class="mcq-q"><p>In the project above, activity B takes 9 days instead of 3. The minimum completion time becomes</p></div>
+<ol><li>17 days</li><li>23 days</li><li>18 days</li><li>19 days</li></ol>
+<div class="mcq-x"><p>E's EST becomes \(\max(9, 7) = 9\), so H's EST is 15 and the finish is 19. B's 4 days of float absorb 4 of the 6 extra days.</p></div>
+</div>
+<div class="pq" data-level="core" data-marks="2">
+<div class="pq-q"><p>What is the latest time activity G can finish without delaying the project, and the earliest time it can finish?</p></div>
+<div class="pq-s"><p>Latest finish \(= \text{LST} + \text{duration} = 14 + 3 = 17\). [1]</p><p>Earliest finish \(= 11 + 3 = 14\). [1]</p></div>
+</div>
+<div class="pq" data-level="exam" data-marks="3">
+<div class="pq-q"><p>A new activity J (duration 5) is added. J needs F to be finished, and H can't start until J is finished. (a) Find J's EST. (b) Find the new minimum completion time. (c) Is J critical?</p></div>
+<div class="pq-s"><p>(a) J's EST \(= 7 + 2 = 9\). [1]</p><p>(b) H's EST \(= \max(7 + 6, 9 + 5) = 14\), finish \(= 14 + 4 = 18\) days (A–D–G is 14). [1]</p><p>(c) Yes: the new critical path is A–C–F–J–H (\(4 + 3 + 2 + 5 + 4 = 18\)), so J has zero float. [1]</p></div>
+</div>
+<h2>Summary</h2>
+<ul>
+  <li data-q="Why is a dummy activity used in an activity network?">When two activities share some but not all predecessors; the dummy (duration 0) shows the dependency without adding time.</li>
+  <li data-q="How do you calculate EST in a forward scan and LST in a backward scan?">EST: largest (EST + duration) of the predecessors. LST: smallest LST of the followers − own duration (the last activities use completion time − duration).</li>
+  <li data-q="What is the critical path, and what is float?">The longest path; its activities have zero float. Float = LST − EST, how long a non-critical activity can be delayed.</li>
+  <li data-q="What should you check when reducing (crashing) activity times?">Only critical activities shorten the project; reduce the cheapest first and recheck paths, as another path may become critical.</li>
+</ul>

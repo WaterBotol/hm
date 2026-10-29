@@ -1,0 +1,76 @@
+<!--
+id: nw-matching
+title: Matching problems and the Hungarian algorithm
+short: Matching (Hungarian)
+summary: Bipartite graphs and their tables for matching and allocation problems; finding an allocation by inspection; and the Hungarian algorithm (row and column reduction, covering zeros with the fewest lines, adjusting, then allocating) to minimise total cost or time, including maximisation problems.
+keywords: matching, allocation, assignment, bipartite graph, two groups, workers, tasks, jobs, machines, cost matrix, by inspection, Hungarian algorithm, row reduction, column reduction, subtract smallest, cover zeros, minimum number of lines, adjust, uncovered elements, add to intersections, optimal allocation, minimum cost, minimum time, maximise profit, maximum, more than one allocation
+dotpoints: use of a bipartite graph and its tabular or matrix form to represent a matching problem | determination of the optimum assignment(s) of people or machines to tasks by inspection or by use of the Hungarian algorithm for larger scale problems
+-->
+<h2>Bipartite graphs</h2>
+<p>A <strong>bipartite graph</strong> has two groups of vertices (say people and jobs) with edges only between the groups. Matching problems ask you to pair each person with one job.</p>
+<figure class="fig"><svg viewBox="0 0 300 170" role="img" aria-label="Bipartite graph: Ann to Art and Band, Ben to Art, Cat to Band and Choir">
+<path d="M88 35 L212 35 M88 35 L212 85 M88 85 L212 35 M88 135 L212 85 M88 135 L212 135" class="s-ink" stroke-width="1.6" fill="none"/>
+<g class="f-ink"><circle cx="80" cy="35" r="6"/><circle cx="80" cy="85" r="6"/><circle cx="80" cy="135" r="6"/><circle cx="220" cy="35" r="6"/><circle cx="220" cy="85" r="6"/><circle cx="220" cy="135" r="6"/></g>
+<text x="66" y="40" text-anchor="end" class="t-b">Ann</text><text x="66" y="90" text-anchor="end" class="t-b">Ben</text><text x="66" y="140" text-anchor="end" class="t-b">Cat</text>
+<text x="234" y="40" class="t-b">Art</text><text x="234" y="90" class="t-b">Band</text><text x="234" y="140" class="t-b">Choir</text>
+</svg><figcaption>Who can run which school club.</figcaption></figure>
+<div class="we" data-title="Allocation by inspection" data-marks="1">
+<div class="we-q"><p>Each student must run exactly one club. Allocate them.</p></div>
+<div class="we-t"><p>Start with any vertex that has only one edge: its choice is forced.</p></div>
+<div class="we-s"><p>Ben can only do Art. Then Ann must do Band, leaving Choir for Cat.</p></div>
+<div class="we-a"><p><strong>Ben–Art, Ann–Band, Cat–Choir</strong>.</p></div>
+</div>
+
+<h2>The Hungarian algorithm</h2>
+<p>When each pairing has a cost (or time), the <strong>Hungarian algorithm</strong> finds the allocation with the <strong>minimum total</strong>. Work on the cost matrix: rows are people, columns are tasks.</p>
+<div class="eq"><div class="eq-label">Hungarian algorithm</div><ol><li><strong>Row reduce</strong>: subtract the smallest element of each row from that row.</li><li><strong>Column reduce</strong>: subtract the smallest element of each column from that column.</li><li><strong>Cover</strong> all the zeros with the fewest possible horizontal and vertical lines. If the number of lines equals the number of rows, go to step 5.</li><li><strong>Adjust</strong>: find the smallest uncovered element. Subtract it from every uncovered element and add it to every element covered twice (where lines cross). Go back to step 3.</li><li><strong>Allocate</strong> using the zeros (one per row and column), then add up the <strong>original</strong> costs.</li></ol></div>
+<div class="we" data-title="A 4 × 4 allocation" data-marks="4">
+<div class="we-q"><p>Four tradespeople can each do one job. Times (hours):</p><div class="tbl"><table>
+<thead><tr><th></th><th>Paint</th><th>Tile</th><th>Wire</th><th>Plumb</th></tr></thead>
+<tbody><tr><td>Ari</td><td>12</td><td>7</td><td>14</td><td>20</td></tr><tr><td>Bo</td><td>15</td><td>19</td><td>14</td><td>7</td></tr><tr><td>Cy</td><td>8</td><td>18</td><td>10</td><td>15</td></tr><tr><td>Di</td><td>9</td><td>20</td><td>18</td><td>6</td></tr></tbody></table></div><p>Find the allocation with the minimum total time.</p></div>
+<div class="we-t"><p>Reduce rows, then columns, then cover and adjust until 4 lines are needed.</p></div>
+<div class="we-s"><p>Row minimums 7, 7, 8, 6, then column minimums 0, 0, 2, 0: \(\begin{bmatrix} 12 &amp; 7 &amp; 14 &amp; 20 \\ 15 &amp; 19 &amp; 14 &amp; 7 \\ 8 &amp; 18 &amp; 10 &amp; 15 \\ 9 &amp; 20 &amp; 18 &amp; 6 \end{bmatrix} \to \begin{bmatrix} 5 &amp; 0 &amp; 7 &amp; 13 \\ 8 &amp; 12 &amp; 7 &amp; 0 \\ 0 &amp; 10 &amp; 2 &amp; 7 \\ 3 &amp; 14 &amp; 12 &amp; 0 \end{bmatrix} \to \begin{bmatrix} 5 &amp; 0 &amp; 5 &amp; 13 \\ 8 &amp; 12 &amp; 5 &amp; 0 \\ 0 &amp; 10 &amp; 0 &amp; 7 \\ 3 &amp; 14 &amp; 10 &amp; 0 \end{bmatrix}\)</p></div>
+<div class="we-s"><p>The zeros are covered by 3 lines (rows Ari and Cy, column Plumb). That's fewer than 4, so adjust: the smallest uncovered element is 3. Subtract 3 from uncovered elements; add 3 where lines cross: \(\begin{bmatrix} 5 &amp; 0 &amp; 5 &amp; 16 \\ 5 &amp; 9 &amp; 2 &amp; 0 \\ 0 &amp; 10 &amp; 0 &amp; 10 \\ 0 &amp; 11 &amp; 7 &amp; 0 \end{bmatrix}\)</p></div>
+<div class="we-s"><p>Now 4 lines are needed. Allocate: Ari's only zero is Tile; Bo's only zero is Plumb; Di then gets Paint; Cy gets Wire.</p></div>
+<div class="we-a"><p><strong>Ari–Tile, Bo–Plumb, Cy–Wire, Di–Paint</strong>: \(7 + 7 + 10 + 9 = \) <strong>33 hours</strong>.</p></div>
+</div>
+<aside class="c-trap" data-title="Trick alert: add up the original numbers"><p>The reduced matrix only tells you <em>which</em> pairs to use. The total comes from the original table. A total of 0 is the classic giveaway that someone added the reduced matrix.</p></aside>
+<aside class="c-def" data-title="Maximising instead"><p>The Hungarian algorithm minimises. To maximise (profit, score), first subtract every element from the largest element in the table, then run the algorithm as usual, and add up the original values for the chosen pairs.</p></aside>
+<aside class="c-exam" data-title="Exam tip: more than one answer"><p>If a row has two zeros that both lead to complete allocations, there are several optimal allocations with the same total. Questions often ask for “all possible” allocations: test each choice.</p></aside>
+
+<h2>Practice</h2>
+<div class="mcq" data-ans="C" data-level="core">
+<div class="mcq-q"><p>After row reduction, the first row of \(\begin{bmatrix} 9 &amp; 4 &amp; 7 \\ \cdots \end{bmatrix}\) becomes</p></div>
+<ol><li>0, 5, 2</li><li>9, 4, 7</li><li>5, 0, 3</li><li>2, 0, 3</li></ol>
+<div class="mcq-x"><p>Subtract the row's smallest element, 4: \(5, 0, 3\).</p></div>
+</div>
+<div class="mcq" data-ans="A" data-level="core">
+<div class="mcq-q"><p>In a 5 × 5 Hungarian problem, the zeros can be covered by 4 lines. The next step is to</p></div>
+<ol><li>adjust using the smallest uncovered element</li><li>allocate using the zeros</li><li>row reduce again</li><li>add up the original costs</li></ol>
+<div class="mcq-x"><p>4 lines is fewer than 5, so an allocation isn't possible yet.</p></div>
+</div>
+<div class="mcq" data-ans="D" data-level="trick">
+<div class="mcq-q"><p>During the adjustment step, an element covered by two lines</p></div>
+<ol><li>stays the same</li><li>becomes 0</li><li>has the smallest uncovered element subtracted</li><li>has the smallest uncovered element added</li></ol>
+<div class="mcq-x"><p>Uncovered elements drop by the smallest uncovered value, elements covered once stay, and elements covered twice go up by it.</p></div>
+</div>
+<div class="mcq" data-ans="B" data-level="hard">
+<div class="mcq-q"><p>A manager wants to <strong>maximise</strong> total sales by allocating staff to stores. Before using the Hungarian algorithm, the manager should</p></div>
+<ol><li>multiply every element by −1 and add 100</li><li>subtract every element from the largest element</li><li>column reduce first instead of row reduce</li><li>divide every element by the largest element</li></ol>
+<div class="mcq-x"><p>“Largest minus element” turns the biggest sales into the smallest costs, without negatives.</p></div>
+</div>
+<div class="pq" data-level="core" data-marks="2">
+<div class="pq-q"><p>A bipartite graph links Dev to jobs X and Y, Eve to job X only, and Fay to jobs Y and Z. Find the allocation and explain how you started.</p></div>
+<div class="pq-s"><p>Eve has only one option, so Eve–X. [1]</p><p>Then Dev–Y and Fay–Z. [1]</p></div>
+</div>
+<div class="pq" data-level="exam" data-marks="3">
+<div class="pq-q"><p>Use the Hungarian algorithm to allocate three machines (rows P, Q, R) to three tasks (columns 1, 2, 3) with costs \(\begin{bmatrix} 11 &amp; 8 &amp; 11 \\ 5 &amp; 7 &amp; 12 \\ 2 &amp; 6 &amp; 11 \end{bmatrix}\) ($100s), and find the minimum cost.</p></div>
+<div class="pq-s"><p>Row reduce (8, 5, 2) then column reduce (0, 0, 3): \(\begin{bmatrix} 3 &amp; 0 &amp; 0 \\ 0 &amp; 2 &amp; 4 \\ 0 &amp; 4 &amp; 6 \end{bmatrix}\). [1]</p><p>2 lines (row P, column 1) cover the zeros. Smallest uncovered is 2: \(\begin{bmatrix} 5 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 2 \\ 0 &amp; 2 &amp; 4 \end{bmatrix}\), which needs 3 lines. [1]</p><p>R–1 (only zero), Q–2, P–3: \(2 + 7 + 11 = 20\), so <strong>$2000</strong>. [1]</p></div>
+</div>
+<h2>Summary</h2>
+<ul>
+  <li data-q="What is a bipartite graph, and how do you start an allocation by inspection?">Two groups of vertices with edges only between groups. Start with any vertex that has only one possible match.</li>
+  <li data-q="List the steps of the Hungarian algorithm.">Row reduce; column reduce; cover zeros with fewest lines; if fewer lines than rows, adjust (subtract smallest uncovered from uncovered, add to intersections) and repeat; allocate.</li>
+  <li data-q="Where does the total cost come from after the Hungarian algorithm?">The original table, for the allocated pairs.</li>
+  <li data-q="How do you use the Hungarian algorithm to maximise?">Subtract every element from the largest element first, then minimise as usual.</li>
+</ul>

@@ -16,19 +16,19 @@ dotpoints: use of a first-order linear recurrence relation to model and analyse 
 <tr><td>1</td><td>3000</td><td>1800.00</td><td>1200.00</td><td>398 800.00</td></tr>
 <tr><td>2</td><td>3000</td><td>1794.60</td><td>1205.40</td><td>397 594.60</td></tr>
 </tbody></table></div>
-<p>The table is for \$400 000 at 5.4% per annum compounding monthly (0.45% per month) paying \$3000 per month: \(V_{n+1} = 1.0045V_n - 3000\).</p>
+<p>The table is for $400 000 at 5.4% per annum compounding monthly (0.45% per month) paying $3000 per month: \(V_{n+1} = 1.0045V_n - 3000\).</p>
 <div class="we" data-title="How long will an annuity last?" data-marks="3">
-<div class="we-q"><p>Pat invests \$400 000 in an annuity at 5.4% per annum compounding monthly and withdraws \$3000 per month. (a) How many withdrawals of \$3000 can be made? (b) What is the balance after 5 years?</p></div>
+<div class="we-q"><p>Pat invests $400 000 in an annuity at 5.4% per annum compounding monthly and withdraws $3000 per month. (a) How many withdrawals of $3000 can be made? (b) What is the balance after 5 years?</p></div>
 <div class="we-t"><p>Solve for N with FV = 0; then solve for FV with N = 60.</p></div>
-<div class="we-s"><p>(a) I% = 5.4, PV = −400 000, Pmt = 3000, FV = 0, PpY = CpY = 12: N = 204.08. So 204 full withdrawals (a small final amount, about \$234, is left for a 205th).</p></div>
+<div class="we-s"><p>(a) I% = 5.4, PV = −400 000, Pmt = 3000, FV = 0, PpY = CpY = 12: N = 204.08. So 204 full withdrawals (a small final amount, about $234, is left for a 205th).</p></div>
 <div class="we-s"><p>(b) N = 60: FV = 317 554.33.</p></div>
-<div class="we-a"><p>(a) <strong>204 withdrawals</strong> of \$3000 (17 years). (b) <strong>\$317 554.33</strong>.</p></div>
+<div class="we-a"><p>(a) <strong>204 withdrawals</strong> of $3000 (17 years). (b) <strong>$317 554.33</strong>.</p></div>
 </div>
 <div class="we" data-title="How much to invest" data-marks="2">
-<div class="we-q"><p>How much must be invested at 5% per annum compounding monthly to provide an income of \$2500 per month for 20 years, after which nothing is left?</p></div>
+<div class="we-q"><p>How much must be invested at 5% per annum compounding monthly to provide an income of $2500 per month for 20 years, after which nothing is left?</p></div>
 <div class="we-t"><p>Solve for PV, with N = 240 and FV = 0.</p></div>
 <div class="we-s"><p>N = 240, I% = 5, Pmt = 2500, FV = 0, PpY = CpY = 12: PV = −378 813.28.</p></div>
-<div class="we-a"><p><strong>\$378 813.28</strong>.</p></div>
+<div class="we-a"><p><strong>$378 813.28</strong>.</p></div>
 </div>
 <aside class="c-trap" data-title="Trick alert: annuity signs"><p>Annuity: PV is negative (money leaves you) and Pmt is positive (money comes to you). This is the opposite of a loan. If Finance Solver returns an error or a nonsense value, check these signs first.</p></aside>
 
@@ -36,41 +36,41 @@ dotpoints: use of a first-order linear recurrence relation to model and analyse 
 <p>A <strong>perpetuity</strong> is an annuity that pays out <strong>only the interest</strong> each period. The balance never falls, so it pays forever (for example, a scholarship fund).</p>
 <div class="eq"><div class="eq-label">Perpetuity</div>\[ d = \frac{r}{100k} \times V_0 \qquad\Longleftrightarrow\qquad V_0 = \frac{d}{\,r/(100k)\,} \qquad V_{n+1} = R\,V_n - d = V_n \]<p>In Finance Solver: PV = −\(V_0\), FV = +\(V_0\) (same size, opposite sign).</p></div>
 <div class="we" data-title="Perpetuity payments and amount needed" data-marks="2">
-<div class="we-q"><p>(a) \$500 000 is invested in a perpetuity at 4.2% per annum, paid monthly. Find the monthly payment. (b) How much must be invested at 4.8% per annum (paid monthly) for a perpetuity of \$2000 per month?</p></div>
+<div class="we-q"><p>(a) $500 000 is invested in a perpetuity at 4.2% per annum, paid monthly. Find the monthly payment. (b) How much must be invested at 4.8% per annum (paid monthly) for a perpetuity of $2000 per month?</p></div>
 <div class="we-t"><p>The payment is exactly one period's interest.</p></div>
 <div class="we-s" data-f="d = \dfrac{r}{100k} \times V_0"><p>(a) \(\frac{4.2}{1200} \times 500\,000 = 1750\).</p></div>
 <div class="we-s" data-f="V_0 = \dfrac{d}{r/(100k)}"><p>(b) Monthly rate \(\frac{4.8}{1200} = 0.004\): \(V_0 = \frac{2000}{0.004} = 500\,000\).</p></div>
-<div class="we-a"><p>(a) <strong>\$1750</strong> per month. (b) <strong>\$500 000</strong>.</p></div>
+<div class="we-a"><p>(a) <strong>$1750</strong> per month. (b) <strong>$500 000</strong>.</p></div>
 </div>
 <aside class="c-key" data-title="Key idea: annuity or perpetuity?"><p>Payment <strong>greater than</strong> the interest: the balance falls, so it's an annuity that runs out. Payment <strong>equal to</strong> the interest: a perpetuity. Payment <strong>less than</strong> the interest: the balance grows.</p></aside>
 
 <h2>Practice</h2>
 <div class="mcq" data-ans="B" data-level="core">
-<div class="mcq-q"><p>An annuity of \$200 000 earns 6% per annum compounding monthly and pays \$1500 per month. The recurrence relation is</p></div>
+<div class="mcq-q"><p>An annuity of $200 000 earns 6% per annum compounding monthly and pays $1500 per month. The recurrence relation is</p></div>
 <ol><li>\(V_{n+1} = 1.06V_n - 1500\)</li><li>\(V_{n+1} = 1.005V_n - 1500\)</li><li>\(V_{n+1} = 1.005V_n + 1500\)</li><li>\(V_{n+1} = 0.995V_n\)</li></ol>
 <div class="mcq-x"><p>0.5% per month, and the payment comes out of the balance.</p></div>
 </div>
 <div class="mcq" data-ans="D" data-level="core">
-<div class="mcq-q"><p>A perpetuity of \$750 000 earns 5.2% per annum and pays quarterly. Each payment is</p></div>
-<ol><li>\$39 000</li><li>\$3250</li><li>\$13 000</li><li>\$9750</li></ol>
+<div class="mcq-q"><p>A perpetuity of $750 000 earns 5.2% per annum and pays quarterly. Each payment is</p></div>
+<ol><li>$39 000</li><li>$3250</li><li>$13 000</li><li>$9750</li></ol>
 <div class="mcq-x"><p>\(\frac{5.2}{400} \times 750\,000 = 9750\).</p></div>
 </div>
 <div class="mcq" data-ans="A" data-level="trick">
-<div class="mcq-q"><p>In Finance Solver, a perpetuity of \$300 000 is set up with PV = −300 000. The value of FV should be</p></div>
+<div class="mcq-q"><p>In Finance Solver, a perpetuity of $300 000 is set up with PV = −300 000. The value of FV should be</p></div>
 <ol><li>300 000</li><li>0</li><li>−300 000</li><li>the total of all payments</li></ol>
 <div class="mcq-x"><p>The balance never changes; from your point of view it is still yours at the end: +300 000.</p></div>
 </div>
 <div class="mcq" data-ans="C" data-level="hard">
-<div class="mcq-q"><p>\$250 000 is invested at 4.5% per annum compounding monthly, to be paid out in equal monthly amounts over 15 years. The monthly payment is closest to</p></div>
-<ol><li>\$1388.89</li><li>\$937.50</li><li>\$1912.48</li><li>\$2187.50</li></ol>
+<div class="mcq-q"><p>$250 000 is invested at 4.5% per annum compounding monthly, to be paid out in equal monthly amounts over 15 years. The monthly payment is closest to</p></div>
+<ol><li>$1388.89</li><li>$937.50</li><li>$1912.48</li><li>$2187.50</li></ol>
 <div class="mcq-x"><p>N = 180, I% = 4.5, PV = −250 000, FV = 0: Pmt = 1912.48.</p></div>
 </div>
 <div class="pq" data-level="core" data-marks="3">
-<div class="pq-q"><p>Complete the third row of the annuity table above (balance \$397 594.60, 0.45% per month, \$3000 payment).</p></div>
+<div class="pq-q"><p>Complete the third row of the annuity table above (balance $397 594.60, 0.45% per month, $3000 payment).</p></div>
 <div class="pq-s"><p>Interest: \(0.0045 \times 397\,594.60 = \$1789.18\). [1]</p><p>Principal reduction: \(3000 - 1789.18 = \$1210.82\). [1]</p><p>Balance: \(397\,594.60 - 1210.82 = \$396\,383.78\). [1]</p></div>
 </div>
 <div class="pq" data-level="exam" data-marks="2">
-<div class="pq-q"><p>A school wants a scholarship of \$6000 paid at the end of every year forever. The fund earns 3.75% per annum compounding annually. How much must be invested, and what type of annuity is this?</p></div>
+<div class="pq-q"><p>A school wants a scholarship of $6000 paid at the end of every year forever. The fund earns 3.75% per annum compounding annually. How much must be invested, and what type of annuity is this?</p></div>
 <div class="pq-s"><p>\(V_0 = \frac{6000}{0.0375} = \$160\,000\). [1]</p><p>A perpetuity: only the interest is paid out, so the fund lasts indefinitely. [1]</p></div>
 </div>
 <h2>Summary</h2>

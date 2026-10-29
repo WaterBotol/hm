@@ -10,22 +10,22 @@ dotpoints: the concepts of simple and compound interest | use of a recurrence re
 <p>With <strong>simple interest</strong>, interest is calculated on the original principal only, so the same amount is added every period. It is linear growth.</p>
 <div class="eq"><div class="eq-label">Simple interest as a recurrence relation</div>\[ V_0 = P, \qquad V_{n+1} = V_n + d, \qquad d = \frac{r}{100} \times P \qquad\Rightarrow\qquad V_n = P + nd \]</div>
 <div class="we" data-title="Simple interest" data-marks="2">
-<div class="we-q"><p>\$8000 is invested at 3.5% per annum simple interest. Write a recurrence relation and find the value after 5 years.</p></div>
-<div class="we-t"><p>The yearly interest is always 3.5% of the original \$8000.</p></div>
+<div class="we-q"><p>$8000 is invested at 3.5% per annum simple interest. Write a recurrence relation and find the value after 5 years.</p></div>
+<div class="we-t"><p>The yearly interest is always 3.5% of the original $8000.</p></div>
 <div class="we-s"><p>\(d = 0.035 \times 8000 = 280\): \(V_0 = 8000\), \(V_{n+1} = V_n + 280\).</p></div>
 <div class="we-s" data-f="V_n = V_0 + nd"><p>\(V_5 = 8000 + 5 \times 280 = 9400\).</p></div>
-<div class="we-a"><p><strong>\$9400</strong>.</p></div>
+<div class="we-a"><p><strong>$9400</strong>.</p></div>
 </div>
 
 <h2>Compound interest: geometric growth</h2>
 <p>With <strong>compound interest</strong>, interest is added to the balance each compounding period, and the next period's interest is calculated on the new, larger balance. An annual (nominal) rate of \(r\%\) compounded \(k\) times a year means \(\frac{r}{k}\%\) per period.</p>
 <div class="eq"><div class="eq-label">Compound interest</div>\[ V_0 = P, \qquad V_{n+1} = R\,V_n, \qquad R = 1 + \frac{r}{100k} \qquad\Rightarrow\qquad V_n = R^n V_0 \]<p>\(r\) = annual rate, \(k\) = compounding periods per year (12 monthly, 4 quarterly, 365 daily, 26 fortnightly), \(n\) = number of compounding periods.</p></div>
 <div class="we" data-title="Compound interest, compounding monthly" data-marks="2">
-<div class="we-q"><p>\$5000 is invested at 4.8% per annum, compounding monthly. Find the value after 3 years and the interest earned.</p></div>
+<div class="we-q"><p>$5000 is invested at 4.8% per annum, compounding monthly. Find the value after 3 years and the interest earned.</p></div>
 <div class="we-t"><p>Convert to a monthly rate and count months, not years.</p></div>
 <div class="we-s" data-f="R = 1 + \dfrac{r}{100k}"><p>\(R = 1 + \frac{4.8}{1200} = 1.004\); \(n = 3 \times 12 = 36\).</p></div>
 <div class="we-s" data-f="V_n = R^n V_0"><p>\(V_{36} = 1.004^{36} \times 5000 = 5772.76\).</p></div>
-<div class="we-a"><p>Value <strong>\$5772.76</strong>; interest \(5772.76 - 5000 =\) <strong>\$772.76</strong>.</p></div>
+<div class="we-a"><p>Value <strong>$5772.76</strong>; interest \(5772.76 - 5000 =\) <strong>$772.76</strong>.</p></div>
 </div>
 <aside class="c-trap" data-title="Trick alert: periods, not years"><p>“4.8% per annum compounding monthly” means 0.4% per month, and 3 years is 36 compounding periods. Using \(1.048^3\) gives the wrong answer unless interest compounds annually.</p></aside>
 <div class="we" data-title="How long to double" data-marks="2">
@@ -57,13 +57,13 @@ dotpoints: the concepts of simple and compound interest | use of a recurrence re
 
 <h2>Practice</h2>
 <div class="mcq" data-ans="C" data-level="core">
-<div class="mcq-q"><p>\$12 000 is invested at 3.5% per annum compounding quarterly. A recurrence relation for the value after \(n\) quarters is</p></div>
+<div class="mcq-q"><p>$12 000 is invested at 3.5% per annum compounding quarterly. A recurrence relation for the value after \(n\) quarters is</p></div>
 <ol><li>\(V_{n+1} = 1.035V_n\)</li><li>\(V_{n+1} = V_n + 105\)</li><li>\(V_{n+1} = 1.00875V_n\)</li><li>\(V_{n+1} = 0.875V_n\)</li></ol>
 <div class="mcq-x"><p>\(\frac{3.5}{4} = 0.875\%\) per quarter, so \(R = 1.00875\).</p></div>
 </div>
 <div class="mcq" data-ans="A" data-level="core">
 <div class="mcq-q"><p>The value of that investment after 5 years is closest to</p></div>
-<ol><li>\$14 284</li><li>\$14 100</li><li>\$14 252</li><li>\$13 650</li></ol>
+<ol><li>$14 284</li><li>$14 100</li><li>$14 252</li><li>$13 650</li></ol>
 <div class="mcq-x"><p>\(1.00875^{20} \times 12\,000 \approx 14\,284.08\).</p></div>
 </div>
 <div class="mcq" data-ans="D" data-level="trick">
@@ -73,7 +73,7 @@ dotpoints: the concepts of simple and compound interest | use of a recurrence re
 </div>
 <div class="mcq" data-ans="B" data-level="hard">
 <div class="mcq-q"><p>The recurrence relation \(V_0 = 2000\), \(V_{n+1} = 1.02V_n\) models an investment with interest compounding quarterly. The annual interest rate and the value after 9 months are</p></div>
-<ol><li>2% per annum; \$2040</li><li>8% per annum; \$2122.42</li><li>8% per annum; \$2160</li><li>2% per annum; \$2122.42</li></ol>
+<ol><li>2% per annum; $2040</li><li>8% per annum; $2122.42</li><li>8% per annum; $2160</li><li>2% per annum; $2122.42</li></ol>
 <div class="mcq-x"><p>2% per quarter = 8% per annum. Nine months = 3 quarters: \(1.02^3 \times 2000 = 2122.42\).</p></div>
 </div>
 <div class="pq" data-level="core" data-marks="2">
@@ -81,7 +81,7 @@ dotpoints: the concepts of simple and compound interest | use of a recurrence re
 <div class="pq-s"><p>\(\left(1 + \frac{5.2}{2600}\right)^{26} - 1 = 1.002^{26} - 1\). [1]</p><p>\(\approx 5.33\%\). [1]</p></div>
 </div>
 <div class="pq" data-level="exam" data-marks="3">
-<div class="pq-q"><p>Sam borrows \$3000 at 9% per annum compounding monthly and makes no repayments. (a) Write a recurrence relation for the amount owed after \(n\) months. (b) Find the amount owed after 18 months. (c) How much of this is interest?</p></div>
+<div class="pq-q"><p>Sam borrows $3000 at 9% per annum compounding monthly and makes no repayments. (a) Write a recurrence relation for the amount owed after \(n\) months. (b) Find the amount owed after 18 months. (c) How much of this is interest?</p></div>
 <div class="pq-s"><p>(a) \(A_0 = 3000\), \(A_{n+1} = 1.0075A_n\). [1]</p><p>(b) \(1.0075^{18} \times 3000 \approx \$3431.88\). [1]</p><p>(c) \(3431.88 - 3000 = \$431.88\). [1]</p></div>
 </div>
 <h2>Summary</h2>

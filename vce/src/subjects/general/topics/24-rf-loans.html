@@ -10,11 +10,11 @@ dotpoints: use of a first-order linear recurrence relation to model and analyse 
 <p>Each period, interest is added to the balance and then a payment is subtracted. The balance falls, but only by the part of the payment left over after interest.</p>
 <div class="eq"><div class="eq-label">Reducing balance loan</div>\[ V_0 = \text{amount borrowed}, \qquad V_{n+1} = R\,V_n - d, \qquad R = 1 + \frac{r}{100k} \]<p>\(d\) is the regular payment and \(k\) the number of payments (and compounding periods) per year.</p></div>
 <div class="we" data-title="Balance after a few payments, from first principles" data-marks="2">
-<div class="we-q"><p>Lee borrows \$20 000 at 6% per annum compounding monthly and repays \$400 per month. Write a recurrence relation and find the balance after 3 payments.</p></div>
+<div class="we-q"><p>Lee borrows $20 000 at 6% per annum compounding monthly and repays $400 per month. Write a recurrence relation and find the balance after 3 payments.</p></div>
 <div class="we-t"><p>Monthly rate \(\frac{6}{12} = 0.5\%\), so \(R = 1.005\). Apply the rule three times.</p></div>
 <div class="we-s" data-f="V_{n+1} = R\,V_n - d"><p>\(V_0 = 20\,000\), \(V_{n+1} = 1.005V_n - 400\). \(V_1 = 19\,700\), \(V_2 = 19\,398.50\).</p></div>
 <div class="we-s" data-f="V_{n+1} = R\,V_n - d"><p>\(V_3 = 1.005 \times 19\,398.50 - 400 = 19\,095.49\).</p></div>
-<div class="we-a"><p><strong>\$19 095.49</strong>.</p></div>
+<div class="we-a"><p><strong>$19 095.49</strong>.</p></div>
 </div>
 
 <h2>Amortisation tables</h2>
@@ -33,33 +33,33 @@ dotpoints: use of a first-order linear recurrence relation to model and analyse 
 
 <h2>Changing the interest rate</h2>
 <div class="we" data-title="An interest rate rise" data-marks="3">
-<div class="we-q"><p>A \$300 000 mortgage at 6% per annum compounding monthly is to be repaid over 25 years with monthly payments of \$1932.90. After 3 years the rate rises to 7%. (a) Find the balance after 3 years. (b) Find the new payment that keeps the loan on track to finish in 25 years in total.</p></div>
+<div class="we-q"><p>A $300 000 mortgage at 6% per annum compounding monthly is to be repaid over 25 years with monthly payments of $1932.90. After 3 years the rate rises to 7%. (a) Find the balance after 3 years. (b) Find the new payment that keeps the loan on track to finish in 25 years in total.</p></div>
 <div class="we-t"><p>Use Finance Solver twice: first for the balance at the change, then a new loan for the remaining time with the new rate.</p></div>
 <div class="we-s"><p>(a) N = 36, I% = 6, PV = 300 000, Pmt = −1932.90, PpY = CpY = 12: FV = −282 971.40.</p></div>
 <div class="we-s"><p>(b) N = 300 − 36 = 264, I% = 7, PV = 282 971.40, FV = 0: Pmt = −2103.68.</p></div>
-<div class="we-a"><p>(a) <strong>\$282 971.40</strong>. (b) <strong>\$2103.68</strong> per month (about \$171 more). If the payment stayed at \$1932.90, the remaining 264 months would stretch to about 331 months.</p></div>
+<div class="we-a"><p>(a) <strong>$282 971.40</strong>. (b) <strong>$2103.68</strong> per month (about $171 more). If the payment stayed at $1932.90, the remaining 264 months would stretch to about 331 months.</p></div>
 </div>
 
 <h2>Extra repayments and interest-only loans</h2>
 <div class="we" data-title="Paying more each month" data-marks="3">
-<div class="we-q"><p>Instead of \$1932.90, the borrower pays \$2100 per month from the start (6% p.a., \$300 000). How many payments are needed and how much interest is saved? (On the original plan, total interest is \$279 870.)</p></div>
+<div class="we-q"><p>Instead of $1932.90, the borrower pays $2100 per month from the start (6% p.a., $300 000). How many payments are needed and how much interest is saved? (On the original plan, total interest is $279 870.)</p></div>
 <div class="we-t"><p>Solve for N, then work out the final payment and total paid.</p></div>
-<div class="we-s"><p>N = 251.2: 251 payments of \$2100 then a final payment of \$375.52 (from the balance after 251 payments).</p></div>
+<div class="we-s"><p>N = 251.2: 251 payments of $2100 then a final payment of $375.52 (from the balance after 251 payments).</p></div>
 <div class="we-s"><p>Total paid: \(251 \times 2100 + 375.52 = 527\,475.52\); interest \(= 227\,475.52\).</p></div>
-<div class="we-a"><p><strong>252 payments</strong> (about 4 years sooner) and <strong>\$52 394.48</strong> less interest.</p></div>
+<div class="we-a"><p><strong>252 payments</strong> (about 4 years sooner) and <strong>$52 394.48</strong> less interest.</p></div>
 </div>
-<aside class="c-def" data-title="Interest-only loan"><p>The payment equals the interest each period, so the balance never falls: \(V_{n+1} = R\,V_n - d\) with \(d = \frac{r}{100k}V_0\). For \$400 000 at 6.6% per annum, monthly payments are \(\frac{0.066}{12} \times 400\,000 = \$2200\), and the full \$400 000 is still owed at the end.</p></aside>
+<aside class="c-def" data-title="Interest-only loan"><p>The payment equals the interest each period, so the balance never falls: \(V_{n+1} = R\,V_n - d\) with \(d = \frac{r}{100k}V_0\). For $400 000 at 6.6% per annum, monthly payments are \(\frac{0.066}{12} \times 400\,000 = \$2200\), and the full $400 000 is still owed at the end.</p></aside>
 <aside class="c-exam" data-title="Exam tip: read the question's numbers"><p>Questions often say “the final repayment is slightly different from the others”. Solve for N, use the whole number of full payments to find the remaining balance, and calculate the last payment. Don't assume every payment is equal.</p></aside>
 
 <h2>Practice</h2>
 <div class="mcq" data-ans="C" data-level="core">
-<div class="mcq-q"><p>A loan of \$15 000 at 8.4% per annum compounding monthly is repaid at \$350 per month. The recurrence relation is</p></div>
+<div class="mcq-q"><p>A loan of $15 000 at 8.4% per annum compounding monthly is repaid at $350 per month. The recurrence relation is</p></div>
 <ol><li>\(V_{n+1} = 1.084V_n - 350\)</li><li>\(V_{n+1} = 1.007V_n + 350\)</li><li>\(V_{n+1} = 1.007V_n - 350\)</li><li>\(V_{n+1} = 0.993V_n - 350\)</li></ol>
 <div class="mcq-x"><p>\(\frac{8.4}{12} = 0.7\%\) per month: \(R = 1.007\); payments are subtracted.</p></div>
 </div>
 <div class="mcq" data-ans="A" data-level="core">
 <div class="mcq-q"><p>The interest in the first month of that loan is</p></div>
-<ol><li>\$105</li><li>\$1260</li><li>\$350</li><li>\$245</li></ol>
+<ol><li>$105</li><li>$1260</li><li>$350</li><li>$245</li></ol>
 <div class="mcq-x"><p>\(0.007 \times 15\,000 = 105\).</p></div>
 </div>
 <div class="mcq" data-ans="D" data-level="trick">
@@ -70,14 +70,14 @@ dotpoints: use of a first-order linear recurrence relation to model and analyse 
 <div class="mcq" data-ans="B" data-level="hard">
 <div class="mcq-q"><p>A loan is modelled by \(V_0 = 80\,000\), \(V_{n+1} = 1.005V_n - 400\). This is</p></div>
 <ol><li>a reducing balance loan that is paid off in about 20 years</li><li>an interest-only loan</li><li>an annuity investment</li><li>a loan whose balance grows</li></ol>
-<div class="mcq-x"><p>Interest each month is \(0.005 \times 80\,000 = 400\), exactly the payment, so the balance stays at \$80 000.</p></div>
+<div class="mcq-x"><p>Interest each month is \(0.005 \times 80\,000 = 400\), exactly the payment, so the balance stays at $80 000.</p></div>
 </div>
 <div class="pq" data-level="core" data-marks="3">
-<div class="pq-q"><p>Complete the next row of the amortisation table for Lee's loan (balance \$19 095.49, 0.5% per month, \$400 payment): interest, principal reduction and new balance.</p></div>
+<div class="pq-q"><p>Complete the next row of the amortisation table for Lee's loan (balance $19 095.49, 0.5% per month, $400 payment): interest, principal reduction and new balance.</p></div>
 <div class="pq-s"><p>Interest: \(0.005 \times 19\,095.49 = \$95.48\). [1]</p><p>Principal reduction: \(400 - 95.48 = \$304.52\). [1]</p><p>Balance: \(19\,095.49 - 304.52 = \$18\,790.97\). [1]</p></div>
 </div>
 <div class="pq" data-level="exam" data-marks="2">
-<div class="pq-q"><p>How many monthly payments of \$400 are needed to repay Lee's \$20 000 loan at 6% per annum compounding monthly?</p></div>
+<div class="pq-q"><p>How many monthly payments of $400 are needed to repay Lee's $20 000 loan at 6% per annum compounding monthly?</p></div>
 <div class="pq-s"><p>N = ?, I% = 6, PV = 20 000, Pmt = −400, FV = 0, PpY = CpY = 12: N = 57.7. [1]</p><p>58 payments (the last one smaller). [1]</p></div>
 </div>
 <h2>Summary</h2>

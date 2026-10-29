@@ -19,27 +19,27 @@ dotpoints: use of a recurrence relation to model and compare (numerically and gr
 
 <h2>Flat rate and unit cost</h2>
 <div class="we" data-title="Flat rate depreciation" data-marks="2">
-<div class="we-q"><p>A ute bought for \$40 000 depreciates at a flat rate of 15% of its purchase price per year. Write a recurrence relation and find its value after 4 years.</p></div>
+<div class="we-q"><p>A ute bought for $40 000 depreciates at a flat rate of 15% of its purchase price per year. Write a recurrence relation and find its value after 4 years.</p></div>
 <div class="we-t"><p>Flat rate: a fixed amount each year, worked out from the purchase price.</p></div>
 <div class="we-s"><p>\(d = 0.15 \times 40\,000 = 6000\). Recurrence: \(V_0 = 40\,000\), \(V_{n+1} = V_n - 6000\).</p></div>
 <div class="we-s" data-f="V_n = V_0 - nd"><p>\(V_4 = 40\,000 - 4 \times 6000 = 16\,000\).</p></div>
-<div class="we-a"><p><strong>\$16 000</strong> after 4 years.</p></div>
+<div class="we-a"><p><strong>$16 000</strong> after 4 years.</p></div>
 </div>
 <div class="we" data-title="Unit cost depreciation" data-marks="2">
-<div class="we-q"><p>A delivery van worth \$38 000 depreciates by \$0.25 for every kilometre travelled. It travels 20 000 km each year. Find the annual depreciation and its value after 3 years. After how many kilometres will it be worth \$10 000?</p></div>
+<div class="we-q"><p>A delivery van worth $38 000 depreciates by $0.25 for every kilometre travelled. It travels 20 000 km each year. Find the annual depreciation and its value after 3 years. After how many kilometres will it be worth $10 000?</p></div>
 <div class="we-t"><p>Unit cost: depreciation = cost per unit × number of units.</p></div>
 <div class="we-s"><p>Annual depreciation: \(0.25 \times 20\,000 = \$5000\). After 3 years: \(38\,000 - 3 \times 5000 = \$23\,000\).</p></div>
-<div class="we-s"><p>Total drop to \$10 000 is \$28 000, which takes \(\frac{28\,000}{0.25} = 112\,000\) km.</p></div>
-<div class="we-a"><p>\$5000 per year; <strong>\$23 000</strong> after 3 years; worth \$10 000 after <strong>112 000 km</strong>.</p></div>
+<div class="we-s"><p>Total drop to $10 000 is $28 000, which takes \(\frac{28\,000}{0.25} = 112\,000\) km.</p></div>
+<div class="we-a"><p>$5000 per year; <strong>$23 000</strong> after 3 years; worth $10 000 after <strong>112 000 km</strong>.</p></div>
 </div>
 
 <h2>Reducing balance</h2>
 <div class="we" data-title="Reducing balance depreciation" data-marks="3">
-<div class="we-q"><p>The same \$40 000 ute instead depreciates by 20% of its current value each year. (a) Find its value after 4 years. (b) After how many whole years is it first worth less than \$10 000?</p></div>
+<div class="we-q"><p>The same $40 000 ute instead depreciates by 20% of its current value each year. (a) Find its value after 4 years. (b) After how many whole years is it first worth less than $10 000?</p></div>
 <div class="we-t"><p>Reducing balance is geometric decay with \(R = 1 - 0.2 = 0.8\).</p></div>
 <div class="we-s" data-f="V_n = R^n V_0"><p>(a) \(V_4 = 0.8^4 \times 40\,000 = 16\,384\).</p></div>
 <div class="we-s"><p>(b) Generate terms (\(V_5 = 13\,107.20\), \(V_6 = 10\,485.76\), \(V_7 = 8388.61\)) or solve \(0.8^n \times 40\,000 &lt; 10\,000\) on CAS (\(n &gt; 6.2\)).</p></div>
-<div class="we-a"><p>(a) <strong>\$16 384</strong>. (b) After <strong>7 years</strong>.</p></div>
+<div class="we-a"><p>(a) <strong>$16 384</strong>. (b) After <strong>7 years</strong>.</p></div>
 </div>
 <div class="sim" data-sim="gmDepreciation"></div>
 <figure class="fig">
@@ -56,12 +56,12 @@ dotpoints: use of a recurrence relation to model and compare (numerically and gr
 </svg>
 <figcaption>Flat rate falls by the same amount each year (straight line); reducing balance falls by less each year (curve) and never reaches zero.</figcaption>
 </figure>
-<aside class="c-key" data-title="Key idea: comparing methods"><p>Reducing balance loses <em>more</em> in the early years (20% of \$40 000 = \$8000 in year 1, versus \$6000 flat rate) but less later. The two value curves cross: here the flat-rate value is lower from year 4 onwards. To find when one method gives a lower value, generate both sequences side by side on your CAS.</p></aside>
+<aside class="c-key" data-title="Key idea: comparing methods"><p>Reducing balance loses <em>more</em> in the early years (20% of $40 000 = $8000 in year 1, versus $6000 flat rate) but less later. The two value curves cross: here the flat-rate value is lower from year 4 onwards. To find when one method gives a lower value, generate both sequences side by side on your CAS.</p></aside>
 
 <h2>Practice</h2>
 <div class="mcq" data-ans="B" data-level="core">
-<div class="mcq-q"><p>A laptop costing \$2400 depreciates at a flat rate of \$480 per year. Its value after 3 years is</p></div>
-<ol><li>\$1440</li><li>\$960</li><li>\$1229</li><li>\$480</li></ol>
+<div class="mcq-q"><p>A laptop costing $2400 depreciates at a flat rate of $480 per year. Its value after 3 years is</p></div>
+<ol><li>$1440</li><li>$960</li><li>$1229</li><li>$480</li></ol>
 <div class="mcq-x"><p>\(2400 - 3 \times 480 = 960\).</p></div>
 </div>
 <div class="mcq" data-ans="D" data-level="core">
@@ -70,22 +70,22 @@ dotpoints: use of a recurrence relation to model and compare (numerically and gr
 <div class="mcq-x"><p>Reducing balance: \(R = 1 - 0.12 = 0.88\).</p></div>
 </div>
 <div class="mcq" data-ans="A" data-level="trick">
-<div class="mcq-q"><p>A printer depreciates by \$0.02 per page printed. It was bought for \$900 and prints 6000 pages a year. Its value after 2 years is</p></div>
-<ol><li>\$660</li><li>\$780</li><li>\$899.76</li><li>\$240</li></ol>
+<div class="mcq-q"><p>A printer depreciates by $0.02 per page printed. It was bought for $900 and prints 6000 pages a year. Its value after 2 years is</p></div>
+<ol><li>$660</li><li>$780</li><li>$899.76</li><li>$240</li></ol>
 <div class="mcq-x"><p>\(0.02 \times 6000 = \$120\) per year, so \(900 - 2 \times 120 = 660\).</p></div>
 </div>
 <div class="mcq" data-ans="C" data-level="hard">
 <div class="mcq-q"><p>A tractor's value is given by \(V_n = 85\,000 \times 0.9^n\). The depreciation during the third year is closest to</p></div>
-<ol><li>\$8500</li><li>\$61 965</li><li>\$6885</li><li>\$7650</li></ol>
+<ol><li>$8500</li><li>$61 965</li><li>$6885</li><li>$7650</li></ol>
 <div class="mcq-x"><p>\(V_2 = 68\,850\) and \(V_3 = 61\,965\); the drop during year 3 is \(68\,850 - 61\,965 = 6885\).</p></div>
 </div>
 <div class="pq" data-level="core" data-marks="2">
-<div class="pq-q"><p>A coffee machine bought for \$6500 depreciates at a flat rate of 18% of its purchase price each year. Write the rule for its value after \(n\) years and find its value after 5 years.</p></div>
+<div class="pq-q"><p>A coffee machine bought for $6500 depreciates at a flat rate of 18% of its purchase price each year. Write the rule for its value after \(n\) years and find its value after 5 years.</p></div>
 <div class="pq-s"><p>\(d = 0.18 \times 6500 = 1170\), so \(V_n = 6500 - 1170n\). [1]</p><p>\(V_5 = 6500 - 5850 = \$650\). [1]</p></div>
 </div>
 <div class="pq" data-level="exam" data-marks="3">
-<div class="pq-q"><p>Equipment worth \$24 000 can be depreciated either at a flat rate of \$3000 per year or by reducing balance at 16% per year. (a) Find the value after 3 years by each method. (b) Which method first gives the lower value, and from which year?</p></div>
-<div class="pq-s"><p>(a) Flat rate: \(24\,000 - 9000 = \$15\,000\). [1] Reducing balance: \(0.84^3 \times 24\,000 = \$14\,224.90\). [1]</p><p>(b) Year 1: \$21 000 vs \$20 160, so reducing balance is lower from the first year. (It stays lower up to year 4; from year 5 the flat-rate value is lower.) [1]</p></div>
+<div class="pq-q"><p>Equipment worth $24 000 can be depreciated either at a flat rate of $3000 per year or by reducing balance at 16% per year. (a) Find the value after 3 years by each method. (b) Which method first gives the lower value, and from which year?</p></div>
+<div class="pq-s"><p>(a) Flat rate: \(24\,000 - 9000 = \$15\,000\). [1] Reducing balance: \(0.84^3 \times 24\,000 = \$14\,224.90\). [1]</p><p>(b) Year 1: $21 000 vs $20 160, so reducing balance is lower from the first year. (It stays lower up to year 4; from year 5 the flat-rate value is lower.) [1]</p></div>
 </div>
 <h2>Summary</h2>
 <ul>
