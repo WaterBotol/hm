@@ -1657,7 +1657,7 @@ html.sheet-lock, html.sheet-lock body { overflow: hidden; }
 .nt-bar .bl-btn { gap: 6px; }
 
 /* ==========================================================================
-   Official VCAA question, drawn from the paper (private copy only)
+   Official VCAA question, drawn from the paper (Artifact copies only)
    ========================================================================== */
 .vq { margin: 10px 0 4px; border-radius: 14px; background: #fff; box-shadow: inset 0 0 0 1px var(--line); overflow: hidden; }
 .vq-bar { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 7px 8px 7px 13px; background: var(--surface-2); }

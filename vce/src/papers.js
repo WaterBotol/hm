@@ -1,11 +1,12 @@
 /* ==========================================================================
    Official VCAA questions, inline.
    The practice papers link each real VCAA question to the official exam PDF.
-   In the private copy of the guide (the claude.ai Artifact) those PDFs sit in
-   the artifact's own storage, so here each question is drawn straight from
-   the official paper, cropped to that question (crop boxes worked out ahead
-   of time), with its options, graphs and diagrams. Claude can be handed the
-   same crop as an image when it marks or explains a question.
+   In the claude.ai Artifact copies of the guide those PDFs sit next to the
+   page (in the artifact's storage, or published alongside it), so here each
+   question is drawn straight from the official paper, cropped to that
+   question (crop boxes worked out ahead of time), with its options, graphs
+   and diagrams. Claude can be handed the same crop as an image when it marks
+   or explains a question.
    Anywhere else (GitHub Pages, a saved file) there is no paper map: nothing
    changes and the links open the PDF on the VCAA site as before.
    ========================================================================== */

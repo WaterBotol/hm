@@ -204,7 +204,7 @@
   }
 
   /* ---------------------------------------------------------------- the official question, for Claude */
-  // In the private copy, real VCAA questions come from the official paper: Claude gets the cropped question as an
+  // In the Artifact copies, real VCAA questions come from the official paper: Claude gets the cropped question as an
   // image (when this view can send images) and any text the paper carries, instead of only the guide's summary.
   let imgMax = null;
   async function imageCap() {

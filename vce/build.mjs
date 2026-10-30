@@ -1,7 +1,8 @@
 // Build script: bundles every subject into ONE self-contained HTML file.
 //   node build.mjs                          -> ./index.html (works offline, host anywhere)
-//   node build.mjs --artifact <out.html> [--artifact-url <url>] [--no-papers]  -> fragment for claude.ai Artifacts
-//     (includes papers.json, the private copy's official-paper map, unless --no-papers)
+//   node build.mjs --artifact <out.html> [--artifact-url <url>] [--no-papers | --papers-base <dir>]  -> fragment for claude.ai Artifacts
+//     (includes papers.json, the private copy's official-paper map, unless --no-papers;
+//      --papers-base points each paper at <dir>/<file name> instead, for a copy that publishes the PDFs next to the page)
 // Sources: src/hub/*.html (global pages) and src/subjects/<id>/{subject.json,topics/*.html}.
 import { readFileSync, writeFileSync, readdirSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
@@ -163,10 +164,17 @@ console.log(`✓ index.html ${(full.length / 1024).toFixed(0)} KB · ${subjects.
 const out = arg('--artifact');
 if (out) {
   const cdn = `https://cdn.jsdelivr.net/npm/katex@${KATEX_VERSION}/dist`;
-  // the private artifact holds the official VCAA papers in its own storage: papers.json maps each paper to its
-  // stored copy plus the crop box of every linked question (numbers only). The public index.html never gets it.
-  const papersMap = existsSync(join(here, 'papers.json')) ? readFileSync(join(here, 'papers.json'), 'utf8') : '';
-  const papersOk = !process.argv.includes('--no-papers') && papersMap && Object.keys(JSON.parse(papersMap).papers || {}).length > 0;   // --no-papers for a public copy
+  // the artifact copies hold the official VCAA papers: papers.json maps each paper to its stored copy plus the
+  // crop box of every linked question (numbers only). The plain index.html never gets it.
+  let papersMap = existsSync(join(here, 'papers.json')) ? readFileSync(join(here, 'papers.json'), 'utf8') : '';
+  const papersOk = !process.argv.includes('--no-papers') && papersMap && Object.keys(JSON.parse(papersMap).papers || {}).length > 0;   // --no-papers for a copy without them
+  const papersBase = arg('--papers-base');
+  if (papersOk && papersBase) {
+    const m = JSON.parse(papersMap);
+    for (const u of Object.keys(m.papers)) m.papers[u] = papersBase.replace(/\/$/, '') + '/' + u.split('/').pop();
+    delete m.artifact;
+    papersMap = JSON.stringify(m);
+  }
   const frag = `<title>${TITLE}</title>
 ${FONTS}
 <style>${katexCss}</style>
