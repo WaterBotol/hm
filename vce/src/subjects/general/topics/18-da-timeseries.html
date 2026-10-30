@@ -1,0 +1,100 @@
+<!--
+id: da-timeseries
+title: Time series plots and smoothing
+short: Time series & smoothing
+summary: Features of time series plots (trend, seasonality, irregular fluctuations, possible outliers, structural change); numerical smoothing with moving means (odd numbers of points, and centring for even numbers); and graphical smoothing with moving medians.
+keywords: time series, time series plot, trend, seasonality, seasonal, irregular fluctuations, random variation, outlier, structural change, discontinuity, smoothing, moving mean, moving average, three point moving mean, five point moving mean, four point moving mean, centring, centred moving mean, two point centring, moving median, median smoothing, graphical smoothing
+dotpoints: qualitative features of time series plots; recognition of features such as trend (long-term direction), seasonality (systematic, calendar related movements) and irregular fluctuations (unsystematic, short-term fluctuations); possible outliers and their sources, including one-off real-world events, and signs of structural change such as a discontinuity in the time series | numerical smoothing of time series data using moving means with consideration of the number of terms required (using centring when appropriate) to help identify trends in time series plot with large fluctuations | graphical smoothing of time series plots using moving medians (involving an odd number of points only) to help identify long-term trends in time series with large fluctuations
+-->
+<h2>Features of a time series</h2>
+<p>A <strong>time series plot</strong> graphs a variable against time (time is always the explanatory variable, on the horizontal axis), with the points joined by lines. Use the exact study design terms when describing one.</p>
+<div class="tbl"><table>
+<thead><tr><th>Feature</th><th>What it is</th><th>Example</th></tr></thead>
+<tbody>
+<tr><td><strong>Trend</strong></td><td>The long-term direction: increasing, decreasing or no trend</td><td>Steadily rising house prices</td></tr>
+<tr><td><strong>Seasonality</strong></td><td>A regular pattern that repeats over a fixed calendar period (a year, a week, a day)</td><td>Ice-cream sales peak every summer</td></tr>
+<tr><td><strong>Irregular fluctuations</strong></td><td>Unpredictable, short-term ups and downs with no pattern</td><td>Day-to-day changes in a share price</td></tr>
+<tr><td><strong>Possible outlier</strong></td><td>A single value well away from the pattern, often from a one-off event</td><td>A spike in umbrella sales during a freak storm</td></tr>
+<tr><td><strong>Structural change</strong></td><td>A sudden, lasting change (a discontinuity) in level or pattern</td><td>A drop in road deaths after a new law</td></tr>
+</tbody></table></div>
+<figure class="fig">
+<svg viewBox="0 0 420 190" width="420" role="img" aria-label="Quarterly time series over three years: values peak every third quarter and the peaks get higher each year, showing seasonality with an increasing trend">
+  <line x1="30" y1="160" x2="400" y2="160" class="s-ink"/><line x1="30" y1="20" x2="30" y2="160" class="s-ink"/>
+  <polyline points="40,136 70,107.2 100,76 130,121.6 160,126.4 190,95.2 220,64 250,112 280,116.8 310,88 340,54.4 370,102.4" class="s-acc" style="stroke-width:2.2"/>
+  <g class="f-acc"><circle cx="40" cy="136" r="3"/><circle cx="70" cy="107.2" r="3"/><circle cx="100" cy="76" r="3"/><circle cx="130" cy="121.6" r="3"/><circle cx="160" cy="126.4" r="3"/><circle cx="190" cy="95.2" r="3"/><circle cx="220" cy="64" r="3"/><circle cx="250" cy="112" r="3"/><circle cx="280" cy="116.8" r="3"/><circle cx="310" cy="88" r="3"/><circle cx="340" cy="54.4" r="3"/><circle cx="370" cy="102.4" r="3"/></g>
+  <line x1="40" y1="120" x2="370" y2="86" class="s-dash"/>
+  <g class="t-sm t-mut" text-anchor="middle"><text x="85" y="176">Year 1</text><text x="205" y="176">Year 2</text><text x="325" y="176">Year 3</text></g>
+  <g class="s-line"><line x1="145" y1="20" x2="145" y2="160"/><line x1="265" y1="20" x2="265" y2="160"/></g>
+  <text x="372" y="80" class="t-sm t-mut">trend</text>
+</svg>
+<figcaption>Seasonality (a peak in quarter 3 every year) on top of an increasing trend.</figcaption>
+</figure>
+<aside class="c-exam" data-title="Exam tip: name features precisely"><p>VCAA marks the study design words. “The time series shows an increasing trend and seasonality, with peaks in the third quarter of each year.” Saying “it goes up and down” earns nothing; “irregular fluctuations” and “seasonality” are different things.</p></aside>
+
+<h2>Smoothing with moving means</h2>
+<p>When large fluctuations hide the trend, <strong>smooth</strong> the series. A 3-point moving mean replaces each value by the mean of itself and its two neighbours; a 5-point moving mean uses five values centred on it. More points means a smoother result, but you lose more values at each end.</p>
+<div class="eq"><div class="eq-label">Odd-point moving means</div>\[ \text{3-point: } \frac{y_{t-1} + y_t + y_{t+1}}{3} \qquad \text{5-point: } \frac{y_{t-2} + y_{t-1} + y_t + y_{t+1} + y_{t+2}}{5} \]</div>
+<div class="we" data-title="Three-point moving means" data-marks="2">
+<div class="we-q"><p>Monthly sales are 12, 15, 11, 18, 20, 17, 23. Find the 3-point moving means.</p></div>
+<div class="we-t"><p>Each smoothed value sits at the middle of its three months, so there is no smoothed value for the first or last month.</p></div>
+<div class="we-s" data-f="\dfrac{y_{t-1} + y_t + y_{t+1}}{3}"><p>Month 2: \(\frac{12 + 15 + 11}{3} = 12.67\); month 3: \(\frac{15 + 11 + 18}{3} = 14.67\); month 4: 16.33; month 5: 18.33; month 6: 20.00.</p></div>
+<div class="we-a"><p>Smoothed values (months 2 to 6): <strong>12.67, 14.67, 16.33, 18.33, 20.00</strong>, which show a clear increasing trend.</p></div>
+</div>
+
+<h2>Even numbers of points: centring</h2>
+<p>To remove seasonality from quarterly data you need a 4-point mean (one full year). But the mean of four values sits <em>between</em> two time periods. <strong>Centring</strong> fixes this: average two neighbouring 4-point means so the result lines up with an actual time period. The same applies to 2-point and 12-point (monthly) means.</p>
+<div class="eq"><div class="eq-label">Centred 4-point moving mean at time t</div>\[ \frac{1}{2}\left(\frac{y_{t-2} + y_{t-1} + y_t + y_{t+1}}{4} + \frac{y_{t-1} + y_t + y_{t+1} + y_{t+2}}{4}\right) \]</div>
+<div class="we" data-title="A centred four-point moving mean" data-marks="2">
+<div class="we-q"><p>Quarterly sales are 30, 42, 55, 36, 34, 47 (quarters 1 to 6). Find the centred 4-point moving mean for quarter 3.</p></div>
+<div class="we-t"><p>Find the two 4-point means that straddle quarter 3, then average them.</p></div>
+<div class="we-s"><p>Quarters 1–4: \(\frac{30 + 42 + 55 + 36}{4} = 40.75\) (sits between Q2 and Q3). Quarters 2–5: \(\frac{42 + 55 + 36 + 34}{4} = 41.75\) (between Q3 and Q4).</p></div>
+<div class="we-a"><p>Centred value at quarter 3: \(\frac{40.75 + 41.75}{2} =\) <strong>41.25</strong>.</p></div>
+</div>
+<div class="sim" data-sim="gmSmooth"></div>
+<aside class="c-trap" data-title="Trick alert: where does the smoothed value go?"><p>An odd-point mean sits at the middle time period. An uncentred 4-point mean sits halfway between periods 2 and 3. Exam questions often ask “which time period does the smoothed value correspond to?”, so line it up carefully.</p></aside>
+
+<h2>Smoothing with moving medians</h2>
+<p><strong>Moving median smoothing</strong> is done graphically, with an odd number of points only. For 3-median smoothing, take each group of three consecutive points on the plot and mark the middle one <em>by value</em> (its height) at the middle <em>time</em>. Medians resist outliers better than means.</p>
+<div class="we" data-title="Three-point median smoothing" data-marks="2">
+<div class="we-q"><p>The values for times 1 to 6 are 14, 22, 18, 25, 19, 30. Find the 3-median smoothed values.</p></div>
+<div class="we-t"><p>For each window of three, take the middle value when sorted, and place it at the centre time.</p></div>
+<div class="we-s"><p>Times 1–3: 14, 22, 18 gives 18 at time 2. Times 2–4: 22, 18, 25 gives 22 at time 3. Times 3–5: 18, 25, 19 gives 19 at time 4. Times 4–6: 25, 19, 30 gives 25 at time 5.</p></div>
+<div class="we-a"><p>Smoothed values at times 2 to 5: <strong>18, 22, 19, 25</strong>.</p></div>
+</div>
+
+<h2>Practice</h2>
+<div class="mcq" data-ans="C" data-level="core">
+<div class="mcq-q"><p>Electricity use in a house is higher every winter and lower every summer, year after year. This feature is called</p></div>
+<ol><li>trend</li><li>irregular fluctuation</li><li>seasonality</li><li>structural change</li></ol>
+<div class="mcq-x"><p>A repeating pattern tied to the calendar is seasonality.</p></div>
+</div>
+<div class="mcq" data-ans="A" data-level="core">
+<div class="mcq-q"><p>The 5-point moving mean at time 3 for the values 8, 12, 10, 15, 20 (times 1 to 5) is</p></div>
+<ol><li>13</li><li>12.33</li><li>10</li><li>15</li></ol>
+<div class="mcq-x"><p>\(\frac{8 + 12 + 10 + 15 + 20}{5} = 13\).</p></div>
+</div>
+<div class="mcq" data-ans="D" data-level="trick">
+<div class="mcq-q"><p>Smoothing quarterly data with a 4-point moving mean requires centring because</p></div>
+<ol><li>4 is too small a number of points</li><li>quarterly data have no seasonality</li><li>moving means can only use odd numbers</li><li>the mean of four consecutive values falls between two time periods</li></ol>
+<div class="mcq-x"><p>Centring averages two neighbouring 4-point means so the result sits on an actual time period.</p></div>
+</div>
+<div class="mcq" data-ans="B" data-level="hard">
+<div class="mcq-q"><p>After a new freeway opened, average daily traffic on an old road dropped suddenly and stayed lower. This is best described as</p></div>
+<ol><li>an outlier</li><li>structural change</li><li>seasonality</li><li>a negative trend</li></ol>
+<div class="mcq-x"><p>A sudden, lasting change in level is a structural change (a discontinuity), not a single outlier.</p></div>
+</div>
+<div class="pq" data-level="core" data-marks="2">
+<div class="pq-q"><p>Values for days 1 to 5 are 40, 46, 37, 52, 49. Find the 3-point moving means and say which days they correspond to.</p></div>
+<div class="pq-s"><p>Day 2: \(\frac{40 + 46 + 37}{3} = 41\); day 3: \(\frac{46 + 37 + 52}{3} = 45\). [1]</p><p>Day 4: \(\frac{37 + 52 + 49}{3} = 46\). [1]</p></div>
+</div>
+<div class="pq" data-level="exam" data-marks="2">
+<div class="pq-q"><p>Quarterly data are 30, 42, 55, 36, 34, 47, 60, 40. The centred 4-point moving mean for quarter 5 is required. Find it.</p></div>
+<div class="pq-s"><p>Quarters 3–6: \(\frac{55 + 36 + 34 + 47}{4} = 43\); quarters 4–7: \(\frac{36 + 34 + 47 + 60}{4} = 44.25\). [1]</p><p>Centred: \(\frac{43 + 44.25}{2} = 43.625\). [1]</p></div>
+</div>
+<h2>Summary</h2>
+<ul>
+  <li data-q="Name the five features of a time series in the study design and define each briefly.">Trend (long-term direction), seasonality (regular calendar pattern), irregular fluctuations (random short-term changes), possible outliers (one-off events), structural change (sudden lasting change).</li>
+  <li data-q="How do you calculate a 3-point moving mean, and where is the smoothed value placed?">Average each value with its two neighbours; place it at the middle time period.</li>
+  <li data-q="Why and how do you centre an even-point moving mean?">An even-point mean falls between periods; average two neighbouring means so it sits on a period.</li>
+  <li data-q="How is moving median smoothing done, and why is it useful?">Graphically, with an odd number of points: take the middle value of each window at the middle time. Medians resist outliers.</li>
+</ul>

@@ -1,0 +1,90 @@
+<!--
+id: da-seasonal
+title: Seasonal indices, deseasonalising and forecasting
+short: Seasonal indices & forecasts
+summary: Calculating seasonal indices from seasonal and yearly means; interpreting them as percentages above or below the average; deseasonalising and reseasonalising data; fitting a least squares trend line with time as the explanatory variable; and forecasting, with the limitations of extending a linear trend.
+keywords: seasonal index, seasonal indices, deseasonalise, deseasonalised, deseasonalized, reseasonalise, seasonal adjustment, yearly mean, seasonal mean, sum of seasonal indices, missing seasonal index, trend line, least squares trend line, time as explanatory variable, forecast, forecasting, prediction, limitations, quarterly, monthly, percentage above average
+dotpoints: seasonal adjustment including the use and interpretation of seasonal indices and their calculation using seasonal and yearly means | modelling trend by fitting a least squares line to a time series with time as the explanatory variable (data de-seasonalised where necessary), and the use of the model to make forecasts (with re-seasonalisation where necessary) including consideration of the possible limitations of fitting a linear model and the limitations of extending into the future
+-->
+<h2>What a seasonal index means</h2>
+<p>A <strong>seasonal index</strong> (SI) compares a season with the average season. An index of 1 means a typical season; above 1 means busier than average; below 1 means quieter.</p>
+<aside class="c-def" data-title="Interpreting a seasonal index"><p>A seasonal index of 1.30 for summer means summer values are typically <strong>30% above</strong> the seasonal average. An index of 0.85 for winter means winter values are typically <strong>15% below</strong> the average.</p></aside>
+<div class="eq"><div class="eq-label">Seasonal indices always add to the number of seasons</div>\[ \sum \text{SI} = 4 \text{ (quarterly)}, \qquad 12 \text{ (monthly)}, \qquad 7 \text{ (daily, for days of the week)} \]<p>Use this to find a missing index: subtract the known indices from the total.</p></div>
+
+<h2>Calculating seasonal indices</h2>
+<ol>
+  <li>Find the <strong>yearly mean</strong> (the mean of the seasons in each year).</li>
+  <li>Divide each value by its own year's mean.</li>
+  <li>Average these ratios for each season across the years. That average is the seasonal index.</li>
+</ol>
+<div class="we" data-title="Seasonal indices from two years of data" data-marks="3">
+<div class="we-q"><p>Quarterly sales were Year 1: 120, 150, 210, 160 and Year 2: 140, 170, 240, 190. Calculate the seasonal index for each quarter.</p></div>
+<div class="we-t"><p>Divide each value by its yearly mean, then average the two ratios for each quarter. Check that the indices add to 4.</p></div>
+<div class="we-s" data-f="\text{yearly mean} = \dfrac{\text{sum of seasons}}{\text{number of seasons}}"><p>Yearly means: \(\frac{640}{4} = 160\) and \(\frac{740}{4} = 185\).</p></div>
+<div class="we-s"><p>Year 1 ratios: 0.75, 0.9375, 1.3125, 1.0. Year 2 ratios: 0.7568, 0.9189, 1.2973, 1.0270.</p></div>
+<div class="we-s"><p>Average each quarter: Q1 \(\frac{0.75 + 0.7568}{2} = 0.7534\), Q2 0.9282, Q3 1.3049, Q4 1.0135 (sum 4.0000).</p></div>
+<div class="we-a"><p>SI: <strong>Q1 0.753, Q2 0.928, Q3 1.305, Q4 1.014</strong>. Quarter 3 sales are typically about 30% above average.</p></div>
+</div>
+
+<h2>Deseasonalising and reseasonalising</h2>
+<p><strong>Deseasonalised</strong> data show what the value would have been without the seasonal effect, so you can see the trend.</p>
+<div class="eq"><div class="eq-label">Seasonal index (on the formula sheet) and its rearrangements</div>\[ \text{seasonal index} = \frac{\text{actual figure}}{\text{deseasonalised figure}} \]\[ \text{deseasonalised} = \frac{\text{actual}}{\text{SI}} \qquad \text{actual} = \text{deseasonalised} \times \text{SI} \]</div>
+<div class="we" data-title="Deseasonalising a value" data-marks="1">
+<div class="we-q"><p>Using a Q3 seasonal index of 1.305, deseasonalise Year 2 Q3 sales of 240.</p></div>
+<div class="we-t"><p>Divide the actual figure by the seasonal index.</p></div>
+<div class="we-s" data-f="\text{deseasonalised} = \dfrac{\text{actual}}{\text{SI}}"><p>\(\frac{240}{1.305} = 183.9\).</p></div>
+<div class="we-a"><p><strong>183.9</strong>: once the summer boost is removed, Q3 sales were close to the Year 2 average of 185.</p></div>
+</div>
+<aside class="c-trap" data-title="Trick alert: the percentage to correct for seasonality"><p>A seasonal index of 1.25 means values are 25% above average. To deseasonalise you divide by 1.25, which is the same as multiplying by 0.8: a <strong>20% decrease</strong>, not 25%. Similarly an SI of 0.8 needs a 25% increase (\(\frac{1}{0.8} = 1.25\)). This appears in exams almost every year.</p></aside>
+
+<h2>Trend lines and forecasts</h2>
+<p>Number the time periods 1, 2, 3, … and fit a least squares line with <strong>time as the explanatory variable</strong>. If the data are seasonal, fit the line to the <strong>deseasonalised</strong> data. To forecast:</p>
+<ol>
+  <li>Substitute the future time period into the trend line (this gives a deseasonalised forecast).</li>
+  <li>Multiply by that season's index to <strong>reseasonalise</strong>.</li>
+</ol>
+<div class="we" data-title="Forecasting with a deseasonalised trend line" data-marks="2">
+<div class="we-q"><p>The trend line for deseasonalised quarterly sales is \(\text{deseasonalised sales} = 150 + 4.2t\), where \(t = 1\) is Q1 of Year 1. Using SI = 0.75 for Q1, forecast actual sales in Q1 of Year 4.</p></div>
+<div class="we-t"><p>Q1 of Year 4 is \(t = 13\). The line gives a deseasonalised value, so reseasonalise by multiplying by the Q1 index.</p></div>
+<div class="we-s" data-f="y = a + bt"><p>\(150 + 4.2 \times 13 = 204.6\) (deseasonalised).</p></div>
+<div class="we-s" data-f="\text{actual} = \text{deseasonalised} \times \text{SI}"><p>\(204.6 \times 0.75 = 153.45\).</p></div>
+<div class="we-a"><p>Forecast actual sales: about <strong>153</strong>.</p></div>
+</div>
+<aside class="c-key" data-title="Key idea: limitations of forecasting"><p>A forecast assumes the trend stays linear and the seasonal pattern stays the same. The further into the future you forecast, the less reliable it is (extrapolation). Structural changes, such as new competitors or a pandemic, can break the pattern completely.</p></aside>
+
+<h2>Practice</h2>
+<div class="mcq" data-ans="B" data-level="core">
+<div class="mcq-q"><p>The seasonal indices for three quarters are 0.85, 1.20 and 0.92. The seasonal index for the fourth quarter is</p></div>
+<ol><li>0.97</li><li>1.03</li><li>1.00</li><li>2.97</li></ol>
+<div class="mcq-x"><p>\(4 - (0.85 + 1.20 + 0.92) = 4 - 2.97 = 1.03\).</p></div>
+</div>
+<div class="mcq" data-ans="C" data-level="core">
+<div class="mcq-q"><p>Actual sales in a quarter were 300 and the seasonal index is 1.2. The deseasonalised sales are</p></div>
+<ol><li>360</li><li>240</li><li>250</li><li>301.2</li></ol>
+<div class="mcq-x"><p>\(\frac{300}{1.2} = 250\).</p></div>
+</div>
+<div class="mcq" data-ans="A" data-level="trick">
+<div class="mcq-q"><p>The seasonal index for December is 1.60. To correct December figures for seasonality, they should be</p></div>
+<ol><li>decreased by 37.5%</li><li>decreased by 60%</li><li>increased by 60%</li><li>decreased by 1.6%</li></ol>
+<div class="mcq-x"><p>Divide by 1.6: \(\frac{1}{1.6} = 0.625\), a 37.5% decrease.</p></div>
+</div>
+<div class="mcq" data-ans="D" data-level="hard">
+<div class="mcq-q"><p>A trend line for deseasonalised monthly visitor numbers is \(\text{deseasonalised visitors} = 2400 + 35t\), where \(t = 1\) is January 2024. The seasonal index for July is 0.70. The forecast for July 2025 is closest to</p></div>
+<ol><li>2659</li><li>3065</li><li>1953</li><li>2146</li></ol>
+<div class="mcq-x"><p>July 2025 is \(t = 19\): \(2400 + 35 \times 19 = 3065\), then \(3065 \times 0.70 = 2145.5\).</p></div>
+</div>
+<div class="pq" data-level="core" data-marks="2">
+<div class="pq-q"><p>A café's seasonal index for winter is 0.82. Interpret this, and find the deseasonalised value of winter takings of $41 000.</p></div>
+<div class="pq-s"><p>Winter takings are typically 18% below the seasonal average. [1]</p><p>\(\frac{41\,000}{0.82} = \$50\,000\). [1]</p></div>
+</div>
+<div class="pq" data-level="exam" data-marks="3">
+<div class="pq-q"><p>Monthly data for one year give a mean of 500. January's value was 650. (a) Using only this year, find January's seasonal index. (b) Explain why seasonal indices should be averaged over several years. (c) The final seasonal index for January is 1.25. By what percentage must January figures be adjusted to remove seasonality?</p></div>
+<div class="pq-s"><p>(a) \(\frac{650}{500} = 1.3\). [1]</p><p>(b) One year can include irregular fluctuations; averaging over several years gives a more reliable index. [1]</p><p>(c) Divide by 1.25, i.e. multiply by 0.8: decrease by 20%. [1]</p></div>
+</div>
+<h2>Summary</h2>
+<ul>
+  <li data-q="What does a seasonal index of 1.30 mean? What do seasonal indices add up to?">The season is typically 30% above average. They add to the number of seasons (4, 12, …).</li>
+  <li data-q="How do you calculate seasonal indices from several years of data?">Divide each value by its year's mean, then average those ratios for each season.</li>
+  <li data-q="Write the formulas for deseasonalising and reseasonalising.">Deseasonalised = actual ÷ SI; actual = deseasonalised × SI.</li>
+  <li data-q="Why isn't the correction for an SI of 1.25 a 25% decrease? How do you forecast with seasonal data?">Dividing by 1.25 is ×0.8, a 20% decrease. Forecast: substitute t in the deseasonalised trend line, then multiply by the season's index.</li>
+</ul>

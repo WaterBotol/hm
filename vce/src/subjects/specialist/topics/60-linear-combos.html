@@ -1,0 +1,67 @@
+<!--
+id: linear-combos
+title: Linear combinations of random variables
+short: Linear combinations
+summary: Mean and variance of aX + b and of linear combinations of independent random variables, the difference between 2X and X₁ + X₂, and the fact that linear combinations of independent normal variables are normal, with typical applications to totals, differences and comparisons.
+keywords: linear combination, random variable, E(aX + b), Var(aX + b), E(X + Y), Var(X + Y), independent, sum of random variables, difference of random variables, X1 + X2, 2X versus X1 + X2, normal distribution, sum of normals, standard deviation, total weight, comparing two variables
+dotpoints: linear functions of a random variable, E(aX + b) and Var(aX + b) | linear combinations of independent random variables | sums and differences of independent normal random variables
+-->
+<h2>Linear functions of one variable</h2>
+<div class="eq"><div class="eq-label">aX + b</div>\[ E(aX + b) = aE(X) + b, \qquad \operatorname{Var}(aX + b) = a^2\operatorname{Var}(X), \qquad \operatorname{sd}(aX + b) = |a|\operatorname{sd}(X) \]<p>Adding a constant shifts the mean but doesn't change the spread.</p></div>
+
+<h2>Combinations of independent variables</h2>
+<div class="eq"><div class="eq-label">Independent X and Y</div>\[ E(aX \pm bY) = aE(X) \pm bE(Y), \qquad \operatorname{Var}(aX \pm bY) = a^2\operatorname{Var}(X) + b^2\operatorname{Var}(Y) \]<p>Variances <strong>always add</strong>, even for a difference. The mean result holds without independence; the variance result needs it.</p></div>
+<aside class="c-key"><p>\(2X\) (one item doubled) vs \(X_1 + X_2\) (two independent items): same mean \(2\mu\), but \(\operatorname{Var}(2X) = 4\sigma^2\) while \(\operatorname{Var}(X_1 + X_2) = 2\sigma^2\). Independent items partly cancel each other's variation.</p></aside>
+<aside class="c-def" data-title="Normal combinations"><p>If \(X\) and \(Y\) are independent and normally distributed, then \(aX + bY + c\) is also <strong>normal</strong>. So find its mean and variance, then use the normal distribution.</p></aside>
+<div class="we" data-title="Total of several items" data-marks="3">
+<div class="we-q"><p>Apples have mass \(A \sim N(150, 10^2)\) g, independently. A bag holds 6 apples and the bag itself has mass 20 g (fixed). Find the probability the bag weighs more than 950 g.</p></div>
+<div class="we-t"><p>Total \(T = A_1 + \dots + A_6 + 20\): six independent apples, not \(6A\).</p></div>
+<div class="we-s"><p>\(E(T) = 6(150) + 20 = 920\); \(\operatorname{Var}(T) = 6(100) = 600\).</p></div>
+<div class="we-s"><p>\(T \sim N(920, 600)\), sd \(= \sqrt{600} \approx 24.49\).</p></div>
+<div class="we-a"><p>\(\Pr(T &gt; 950) \approx 0.1103\) (CAS: <code>normCdf(950, ∞, 920, √600)</code>).</p></div>
+</div>
+<div class="we" data-title="Comparing two variables (a difference)" data-marks="3">
+<div class="we-q"><p>Times for runner A are \(N(62, 2^2)\) s and for runner B are \(N(60, 1.5^2)\) s, independently. Find the probability that A beats B (has a smaller time).</p></div>
+<div class="we-t"><p>Let \(D = A - B\); A beats B when \(D &lt; 0\). Variances add.</p></div>
+<div class="we-s"><p>\(E(D) = 2\), \(\operatorname{Var}(D) = 4 + 2.25 = 6.25\), so \(D \sim N(2, 2.5^2)\).</p></div>
+<div class="we-a"><p>\(\Pr(D &lt; 0) = \Pr(Z &lt; -0.8) \approx 0.2119\).</p></div>
+</div>
+<aside class="c-trap"><p>\(\operatorname{Var}(X - Y) \ne \operatorname{Var}(X) - \operatorname{Var}(Y)\). And don't add standard deviations: add variances, then square-root.</p></aside>
+<aside class="c-exam"><p>Exam 2 MC frequently tests \(2X\) vs \(X_1 + X_2\) and \(\operatorname{Var}(X - Y)\). In extended questions, define the combination (e.g. \(T = X_1 + X_2 + X_3\)) before computing, and state the distribution with both parameters.</p></aside>
+
+<h2>Practice</h2>
+<div class="mcq" data-ans="B" data-level="core">
+<div class="mcq-q"><p>If \(E(X) = 5\) and \(\operatorname{Var}(X) = 4\), then \(\operatorname{Var}(3 - 2X)\) is</p></div>
+<ol><li>−5</li><li>16</li><li>8</li><li>11</li></ol>
+<div class="mcq-x"><p>\((-2)^2\times4 = 16\); the 3 doesn't affect variance.</p></div>
+</div>
+<div class="mcq" data-ans="C" data-level="core">
+<div class="mcq-q"><p>\(X\) and \(Y\) are independent with sd 3 and 4. The sd of \(X - Y\) is</p></div>
+<ol><li>1</li><li>−1</li><li>5</li><li>7</li></ol>
+<div class="mcq-x"><p>\(\operatorname{Var} = 9 + 16 = 25\), sd 5.</p></div>
+</div>
+<div class="mcq" data-ans="A" data-level="trick">
+<div class="mcq-q"><p>\(X_1, X_2, X_3\) are independent copies of \(X\) with variance \(\sigma^2\). Then \(\operatorname{Var}(X_1 + X_2 + X_3) - \operatorname{Var}(3X) =\)</p></div>
+<ol><li>\(-6\sigma^2\)</li><li>0</li><li>\(6\sigma^2\)</li><li>\(-2\sigma^2\)</li></ol>
+<div class="mcq-x"><p>\(3\sigma^2 - 9\sigma^2 = -6\sigma^2\).</p></div>
+</div>
+<div class="mcq" data-ans="D" data-level="hard">
+<div class="mcq-q"><p>\(X \sim N(10, 4)\) and \(Y \sim N(6, 5)\) independently (variances given). \(\Pr(X &gt; Y)\) is closest to</p></div>
+<ol><li>0.5</li><li>0.84</li><li>0.75</li><li>0.91</li></ol>
+<div class="mcq-x"><p>\(X - Y \sim N(4, 9)\): \(\Pr(Z &gt; -\frac43) \approx 0.909\), so 0.91.</p></div>
+</div>
+<div class="pq" data-level="core" data-marks="2">
+<div class="pq-q"><p>A test score \(X\) has mean 60 and sd 8. Scores are scaled by \(Y = 1.5X - 10\). Find the mean and sd of \(Y\).</p></div>
+<div class="pq-s"><p>\(E(Y) = 1.5(60) - 10 = 80\). [1]</p><p>\(\operatorname{sd}(Y) = 1.5\times8 = 12\). [1]</p></div>
+</div>
+<div class="pq" data-level="exam" data-marks="3">
+<div class="pq-q"><p>Bolts have length \(N(50, 0.2^2)\) mm and nuts add \(N(8, 0.1^2)\) mm, independently. An assembly is one bolt and two nuts. Find \(\Pr(\text{assembly} &gt; 66.5)\).</p></div>
+<div class="pq-s"><p>\(L = B + N_1 + N_2\): \(E(L) = 66\). [1]</p><p>\(\operatorname{Var}(L) = 0.04 + 0.01 + 0.01 = 0.06\). [1]</p><p>\(\Pr(L &gt; 66.5) = \Pr\left(Z &gt; \frac{0.5}{\sqrt{0.06}}\right) = \Pr(Z &gt; 2.041) \approx 0.0206\). [1]</p></div>
+</div>
+<h2>Summary</h2>
+<ul>
+  <li data-q="Write \(E(aX + b)\) and \(\operatorname{Var}(aX + b)\).">\(E(aX + b) = aE(X) + b\); \(\operatorname{Var}(aX + b) = a^2\operatorname{Var}(X)\).</li>
+  <li data-q="For independent \(X\) and \(Y\), write \(\operatorname{Var}(aX - bY)\).">Independent: \(\operatorname{Var}(aX \pm bY) = a^2\operatorname{Var}(X) + b^2\operatorname{Var}(Y)\), always plus.</li>
+  <li data-q="How do \(\operatorname{Var}(X_1 + \dots + X_n)\) and \(\operatorname{Var}(nX)\) differ?">\(\operatorname{Var}(X_1 + \dots + X_n) = n\sigma^2\), but \(\operatorname{Var}(nX) = n^2\sigma^2\).</li>
+  <li data-q="What distribution does a linear combination of independent normal variables have?">Combinations of independent normals are normal.</li>
+</ul>

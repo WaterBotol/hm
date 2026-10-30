@@ -1,0 +1,91 @@
+<!--
+id: da-regression
+title: The least squares line
+short: Least squares line
+summary: Fitting the least squares line y = a + bx with technology or from summary statistics (b = r s_y/s_x, a = ȳ − b x̄); interpreting the slope and intercept in context; making predictions while being careful about extrapolation; and the coefficient of determination r² as explained variation.
+keywords: least squares line, line of best fit, least squares regression line, regression, linear regression, y = a + bx, slope, gradient, intercept, y intercept, interpret slope, interpret intercept, prediction, predict, interpolation, extrapolation, reliable, coefficient of determination, r squared, r^2, explained variation, summary statistics, b = r sy/sx
+dotpoints: least squares line of best fit y = a + bx, the determination of the coefficients a and b using technology, and the formulas b = r s_y/s_x and a = ȳ − b x̄ | identification of the explanatory and response variables; use of the least squares method to fit a linear model to the data | interpretation of the slope and intercepts of the least squares line in the context of the situation being modelled | use of the rule of the fitted line to make predictions being aware of the limitations of extrapolation | use of the coefficient of determination, r², to assess the strength of the association in terms of explained variation
+-->
+<h2>Fitting the line</h2>
+<p>The <strong>least squares line</strong> is the straight line that makes the sum of the squared vertical distances from the points to the line (the squared residuals) as small as possible. Always regress the <strong>response</strong> variable (y) on the <strong>explanatory</strong> variable (x).</p>
+<div class="eq"><div class="eq-label">Least squares line (on the formula sheet)</div>\[ y = a + bx, \qquad b = r\,\frac{s_y}{s_x}, \qquad a = \bar y - b\bar x \]<p>With raw data, use your CAS (linear regression, a + bx). With only summary statistics, use the formulas. The line always passes through \((\bar x, \bar y)\).</p></div>
+<div class="sim" data-sim="gmRegression"></div>
+
+<div class="we" data-title="The line from summary statistics" data-marks="2">
+<div class="we-q"><p>For a group of adults, arm span (x, cm) has mean 168 and sd 9.2; height (y, cm) has mean 170 and sd 8.6; \(r = 0.92\). Find the least squares line for predicting height from arm span, with coefficients to two decimal places.</p></div>
+<div class="we-t"><p>Find the slope first, then use the fact that the line passes through the means.</p></div>
+<div class="we-s" data-f="b = r\,\dfrac{s_y}{s_x}"><p>\(b = 0.92 \times \frac{8.6}{9.2} = 0.86\).</p></div>
+<div class="we-s" data-f="a = \bar y - b\bar x"><p>\(a = 170 - 0.86 \times 168 = 25.52\).</p></div>
+<div class="we-a"><p>\(\text{height} = 25.52 + 0.86 \times \text{arm span}\).</p></div>
+</div>
+<aside class="c-trap" data-title="Trick alert: don't round b too early"><p>If you round \(b\) to 1 decimal place before calculating \(a\), your intercept can be well out. Keep full accuracy (or at least four significant figures) until the final answer.</p></aside>
+
+<h2>Interpreting slope and intercept</h2>
+<p>Use these templates, filling in the variable names, units and direction.</p>
+<aside class="c-def" data-title="Slope (b)"><p>“On average, <em>[response]</em> <strong>increases/decreases by <em>b</em> [units]</strong> for each one-[unit] increase in <em>[explanatory]</em>.”</p></aside>
+<aside class="c-def" data-title="Intercept (a)"><p>“When <em>[explanatory]</em> is zero, <em>[response]</em> is predicted to be <em>a</em> [units].” Only say this if \(x = 0\) is a sensible value; otherwise the intercept has no practical meaning.</p></aside>
+<div class="we" data-title="Interpreting a regression line" data-marks="2">
+<div class="we-q"><p>For 12 students, the least squares line relating test score to hours of study is \(\text{score} = 45.0 + 3.64 \times \text{hours}\). Interpret the slope and the intercept.</p></div>
+<div class="we-t"><p>The slope is the average change in the response per unit increase in the explanatory variable; the intercept is the predicted response when the explanatory variable is zero.</p></div>
+<div class="we-s"><p>Slope 3.64: change in score per extra hour. Intercept 45.0: predicted score at 0 hours (zero hours of study is a realistic value here).</p></div>
+<div class="we-a"><p>On average, test score <strong>increases by 3.64 marks for each additional hour of study</strong>. A student who does <strong>no study is predicted to score 45.0</strong>.</p></div>
+</div>
+
+<h2>Predictions: interpolation and extrapolation</h2>
+<p>Substitute the explanatory value into the equation. A prediction is <strong>interpolation</strong> if the x-value is inside the range of the data (reliable when the association is strong and linear) and <strong>extrapolation</strong> if it is outside the range (unreliable, because the linear pattern may not continue).</p>
+<div class="we" data-title="Making a prediction" data-marks="2">
+<div class="we-q"><p>Using \(\text{score} = 45.0 + 3.64 \times \text{hours}\) (data collected for 1 to 12 hours), predict the score for 7.5 hours and for 20 hours, and comment on each.</p></div>
+<div class="we-t"><p>Substitute, then check whether the x-value is inside the data range.</p></div>
+<div class="we-s" data-f="y = a + bx"><p>7.5 hours: \(45.0 + 3.64 \times 7.5 = 72.3\). This is interpolation.</p></div>
+<div class="we-s" data-f="y = a + bx"><p>20 hours: \(45.0 + 3.64 \times 20 = 117.8\). This is extrapolation, and a score over 100 is impossible.</p></div>
+<div class="we-a"><p><strong>72.3</strong> (interpolation, reliable); <strong>117.8</strong> (extrapolation, not reliable: the linear pattern can't continue).</p></div>
+</div>
+
+<h2>The coefficient of determination, r²</h2>
+<p>\(r^2\) is the square of the correlation coefficient. It tells you how much of the variation in the response variable is explained by the linear association with the explanatory variable.</p>
+<aside class="c-def" data-title="Interpreting r²"><p>“\(r^2 \times 100\%\) of the variation in <em>[response]</em> can be explained by the variation in <em>[explanatory]</em>.” The other \((1 - r^2) \times 100\%\) is due to other factors.</p></aside>
+<div class="we" data-title="From r to r² and back" data-marks="2">
+<div class="we-q"><p>For the study data, \(r = 0.963\). (a) Interpret \(r^2\). (b) Another data set has \(r^2 = 0.49\) and a negative slope. Find \(r\).</p></div>
+<div class="we-t"><p>Square \(r\) to get \(r^2\). To go back, take the square root and give it the sign of the slope.</p></div>
+<div class="we-s"><p>(a) \(r^2 = 0.963^2 = 0.927\), so 92.7%.</p></div>
+<div class="we-s"><p>(b) \(\sqrt{0.49} = 0.7\), and a negative slope means \(r\) is negative.</p></div>
+<div class="we-a"><p>(a) <strong>92.7% of the variation in test score can be explained by the variation in hours of study.</strong> (b) \(r = -0.7\).</p></div>
+</div>
+<aside class="c-trap" data-title="Trick alert: the sign of r"><p>\(r^2\) is always positive, so it loses the direction. When working back from \(r^2\), the sign of \(r\) must match the sign of the slope \(b\).</p></aside>
+
+<h2>Practice</h2>
+<div class="mcq" data-ans="A" data-level="core">
+<div class="mcq-q"><p>The least squares line for predicting fuel used (L) from distance (km) is \(\text{fuel} = 0.6 + 0.082 \times \text{distance}\). The slope means that, on average,</p></div>
+<ol><li>fuel used increases by 0.082 L for each additional kilometre</li><li>distance increases by 0.082 km for each additional litre</li><li>fuel used increases by 0.6 L for each kilometre</li><li>0.082% of the variation in fuel is explained</li></ol>
+<div class="mcq-x"><p>Response (fuel) changes by \(b\) per one-unit increase in the explanatory variable (distance).</p></div>
+</div>
+<div class="mcq" data-ans="C" data-level="core">
+<div class="mcq-q"><p>Given \(\bar x = 20\), \(s_x = 4\), \(\bar y = 50\), \(s_y = 10\), \(r = 0.8\), the slope of the least squares line is</p></div>
+<ol><li>0.32</li><li>3.2</li><li>2</li><li>12.5</li></ol>
+<div class="mcq-x"><p>\(b = 0.8 \times \frac{10}{4} = 2\).</p></div>
+</div>
+<div class="mcq" data-ans="D" data-level="trick">
+<div class="mcq-q"><p>A regression of weekly earnings on age has \(r = -0.6\). The percentage of variation in earnings explained by age is</p></div>
+<ol><li>60%</li><li>−36%</li><li>40%</li><li>36%</li></ol>
+<div class="mcq-x"><p>\(r^2 = 0.36\), so 36%. A percentage of variation is never negative.</p></div>
+</div>
+<div class="mcq" data-ans="B" data-level="hard">
+<div class="mcq-q"><p>A least squares line passes through \((\bar x, \bar y) = (10, 30)\) and has slope −1.5. Its intercept is</p></div>
+<ol><li>15</li><li>45</li><li>28.5</li><li>−45</li></ol>
+<div class="mcq-x"><p>\(a = 30 - (-1.5)(10) = 45\).</p></div>
+</div>
+<div class="pq" data-level="core" data-marks="3">
+<div class="pq-q"><p>For 10 cafés, the number of coffees sold (y) and the daily temperature (x, °C) give the line \(y = 310 - 6.2x\), with \(r = -0.81\). The data cover 12 °C to 31 °C. (a) Interpret the slope. (b) Predict the number sold at 25 °C. (c) Interpret \(r^2\).</p></div>
+<div class="pq-s"><p>(a) On average, the number of coffees sold decreases by 6.2 for each 1 °C increase in temperature. [1]</p><p>(b) \(310 - 6.2 \times 25 = 155\) coffees. [1]</p><p>(c) \(r^2 = 0.656\): 65.6% of the variation in the number of coffees sold can be explained by the variation in temperature. [1]</p></div>
+</div>
+<div class="pq" data-level="exam" data-marks="2">
+<div class="pq-q"><p>In the café data, a student uses the line to predict sales on a 40 °C day. Find the prediction and explain why it may not be reliable.</p></div>
+<div class="pq-s"><p>\(310 - 6.2 \times 40 = 62\) coffees. [1]</p><p>40 °C is outside the data range (12 °C to 31 °C), so this is extrapolation and the linear pattern may not continue. [1]</p></div>
+</div>
+<h2>Summary</h2>
+<ul>
+  <li data-q="Write the least squares line and the formulas for its slope and intercept from summary statistics. What point does it always pass through?">\(y = a + bx\), \(b = r\frac{s_y}{s_x}\), \(a = \bar y - b\bar x\). It passes through \((\bar x, \bar y)\).</li>
+  <li data-q="Give the templates for interpreting the slope and the intercept.">Slope: on average, [response] increases/decreases by b for each one-unit increase in [explanatory]. Intercept: when [explanatory] is 0, [response] is predicted to be a.</li>
+  <li data-q="What is the difference between interpolation and extrapolation, and which is reliable?">Interpolation predicts inside the data range (reliable for strong linear data); extrapolation predicts outside it (unreliable).</li>
+  <li data-q="How do you interpret r², and how do you get r back from r²?">r² × 100% of the variation in the response is explained by the variation in the explanatory variable. \(r = \pm\sqrt{r^2}\) with the sign of the slope.</li>
+</ul>

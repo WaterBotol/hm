@@ -1,0 +1,96 @@
+<!--
+id: nw-flow
+title: Flow problems and the max-flow min-cut theorem
+short: Flow & minimum cuts
+summary: Directed networks for flow problems (capacity, source, sink); conservation of flow; cuts and their capacities, including edges that run back from the sink side to the source side; finding the maximum flow by inspection; and the maximum-flow minimum-cut theorem.
+keywords: flow, network flow, flow problem, capacity, source, sink, directed network, pipes, traffic, water, maximum flow, max flow, minimum cut, min cut, cut, capacity of a cut, backward edge, edge from sink side to source side, not counted, max flow min cut theorem, bottleneck, conservation of flow, inflow equals outflow, increase capacity
+dotpoints: use of networks to model flow problems: capacity, sinks and sources | solution of small-scale network flow problems by inspection and the use of the 'maximum-flow minimum-cut' theorem to aid the solution of larger scale problems
+-->
+<h2>Flow networks</h2>
+<p>A <strong>flow network</strong> is a directed network where each weight is a <strong>capacity</strong>: the most that can flow along that edge (litres per minute, cars per hour, and so on). Flow starts at the <strong>source</strong> and ends at the <strong>sink</strong>.</p>
+<figure class="fig"><svg viewBox="0 0 400 205" role="img" aria-label="Flow network from S to T: S to A 10, S to B 7, A to B 3, A to C 4, A to T 5, B to C 6, C to T 12, with Cut 1 and Cut 2 drawn">
+<defs><marker id="gmf-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="f-ink"/></marker></defs>
+<path d="M53 94 L146 47" class="s-ink" stroke-width="1.6" marker-end="url(#gmf-ar)"/>
+<path d="M53 106 L146 153" class="s-ink" stroke-width="1.6" marker-end="url(#gmf-ar)"/>
+<path d="M160 54 L160 144" class="s-ink" stroke-width="1.6" marker-end="url(#gmf-ar)"/>
+<path d="M170 49 L278 149" class="s-ink" stroke-width="1.6" marker-end="url(#gmf-ar)"/>
+<path d="M174 44 L365 96" class="s-ink" stroke-width="1.6" marker-end="url(#gmf-ar)"/>
+<path d="M174 160 L274 160" class="s-ink" stroke-width="1.6" marker-end="url(#gmf-ar)"/>
+<path d="M302 152 L367 109" class="s-ink" stroke-width="1.6" marker-end="url(#gmf-ar)"/>
+<path d="M225 15 L225 190" class="s-acc s-dash" stroke-width="1.8" fill="none"/>
+<path d="M95 15 L115 105 L215 125 L215 190" class="s-mut s-dash" stroke-width="1.8" fill="none"/>
+<text x="95" y="64" text-anchor="middle" class="t-sm t-acc">10</text>
+<text x="95" y="144" text-anchor="middle" class="t-sm t-acc">7</text>
+<text x="149" y="104" text-anchor="middle" class="t-sm t-acc">3</text>
+<text x="262" y="120" text-anchor="middle" class="t-sm t-acc">4</text>
+<text x="273" y="63" text-anchor="middle" class="t-sm t-acc">5</text>
+<text x="250" y="176" text-anchor="middle" class="t-sm t-acc">6</text>
+<text x="341" y="143" text-anchor="middle" class="t-sm t-acc">12</text>
+<text x="232" y="201" class="t-sm t-acc">Cut 1</text>
+<text x="208" y="201" text-anchor="end" class="t-sm t-mut">Cut 2</text>
+<circle cx="40" cy="100" r="14" class="f-accsoft s-acc"/><text x="40" y="105" text-anchor="middle" class="t-b">S</text>
+<circle cx="160" cy="40" r="14" class="f-accsoft s-acc"/><text x="160" y="45" text-anchor="middle" class="t-b">A</text>
+<circle cx="160" cy="160" r="14" class="f-accsoft s-acc"/><text x="160" y="165" text-anchor="middle" class="t-b">B</text>
+<circle cx="290" cy="160" r="14" class="f-accsoft s-acc"/><text x="290" y="165" text-anchor="middle" class="t-b">C</text>
+<circle cx="380" cy="100" r="14" class="f-accsoft s-acc"/><text x="380" y="105" text-anchor="middle" class="t-b">T</text>
+</svg><figcaption>Water pipes from a reservoir S to a town T (capacities in ML per day).</figcaption></figure>
+<aside class="c-key" data-title="Key idea: what goes in comes out"><p>At every vertex other than the source and sink, the total flow in equals the total flow out. Flow along an edge can be anything from 0 up to its capacity, and only in the arrow's direction.</p></aside>
+
+<h2>Cuts</h2>
+<p>A <strong>cut</strong> is a line that splits the network into two parts, with the source on one side and the sink on the other, so that no flow could get from S to T without crossing it. Its <strong>capacity</strong> is the total capacity of the edges it crosses <strong>from the source side to the sink side</strong>.</p>
+<div class="we" data-title="Capacities of two cuts" data-marks="2">
+<div class="we-q"><p>Find the capacities of Cut 1 and Cut 2 in the figure.</p></div>
+<div class="we-t"><p>For each edge the cut crosses, ask: does this edge point from the S side to the T side? Only those count.</p></div>
+<div class="we-s"><p>Cut 1 crosses A → C (4), A → T (5) and B → C (6), all from the S side to the T side: \(4 + 5 + 6 = 15\).</p></div>
+<div class="we-s"><p>Cut 2 has S and B on one side. It crosses S → A (10), A → B (3) and B → C (6). But A → B points from the T side back to the S side, so it is <strong>not counted</strong>: \(10 + 6 = 16\).</p></div>
+<div class="we-a"><p>Cut 1: <strong>15</strong>. Cut 2: <strong>16</strong>.</p></div>
+</div>
+<aside class="c-trap" data-title="Trick alert: backward edges count zero"><p>The most common error in flow questions is adding an edge that crosses the cut the wrong way. Shade or label the source side, then check each crossed arrow's direction.</p></aside>
+
+<h2>Maximum flow = minimum cut</h2>
+<div class="eq"><div class="eq-label">Maximum-flow minimum-cut theorem</div>\[ \text{maximum flow from source to sink} = \text{capacity of the minimum cut} \]<p>The minimum cut is the bottleneck. To find the maximum flow, find the cut with the smallest capacity (and check that a flow that big is possible).</p></div>
+<div class="we" data-title="Maximum flow by inspection" data-marks="2">
+<div class="we-q"><p>Find the maximum flow from S to T and show a flow that achieves it.</p></div>
+<div class="we-t"><p>Push flow along routes until something is full, then confirm with a cut of the same capacity.</p></div>
+<div class="we-s"><p>S → A → T: 5 (A → T full). S → A → C → T: 4 (A → C full). S → B → C → T: 6 (B → C full). Total 15.</p></div>
+<div class="we-s"><p>Cut 1 has capacity 15, and no flow can be bigger than any cut, so 15 is the maximum.</p></div>
+<div class="we-a"><p>Maximum flow = <strong>15 ML per day</strong>. The minimum cut is Cut 1.</p></div>
+</div>
+<aside class="c-exam" data-title="Exam tip: increasing the flow"><p>To increase the maximum flow, you must increase the capacity of an edge in <strong>every</strong> minimum cut. Then recheck: another cut may become the new bottleneck. Here, adding 5 to B → C raises the maximum to 17, where cut {S} (\(10 + 7\)) takes over.</p></aside>
+
+<h2>Practice</h2>
+<div class="mcq" data-ans="C" data-level="core">
+<div class="mcq-q"><p>The cut that separates S from every other vertex in the figure has capacity</p></div>
+<ol><li>10</li><li>15</li><li>17</li><li>20</li></ol>
+<div class="mcq-x"><p>It crosses S → A (10) and S → B (7): 17.</p></div>
+</div>
+<div class="mcq" data-ans="A" data-level="core">
+<div class="mcq-q"><p>A cut separating {S, A, B, C} from {T} has capacity</p></div>
+<ol><li>17</li><li>12</li><li>15</li><li>22</li></ol>
+<div class="mcq-x"><p>It crosses A → T (5) and C → T (12): 17.</p></div>
+</div>
+<div class="mcq" data-ans="B" data-level="trick">
+<div class="mcq-q"><p>A cut crosses three edges with capacities 8, 5 and 6. The edge with capacity 5 points from the sink side to the source side. The capacity of the cut is</p></div>
+<ol><li>19</li><li>14</li><li>9</li><li>8</li></ol>
+<div class="mcq-x"><p>Only edges from the source side to the sink side count: \(8 + 6 = 14\).</p></div>
+</div>
+<div class="mcq" data-ans="C" data-level="hard">
+<div class="mcq-q"><p>In the figure, increasing the capacity of which single pipe by 5 gives the largest maximum flow?</p></div>
+<ol><li>S → A</li><li>A → T</li><li>B → C</li><li>C → T</li></ol>
+<div class="mcq-x"><p>S → A and C → T aren't in the minimum cut: no change (15). A → T + 5 gives 16 (Cut 2 becomes the limit). B → C + 5 gives 17.</p></div>
+</div>
+<div class="pq" data-level="core" data-marks="2">
+<div class="pq-q"><p>In the maximum flow above, how much water flows along C → T, and how much spare capacity does it have?</p></div>
+<div class="pq-s"><p>Into C: \(4 + 6 = 10\), so 10 flows along C → T. [1]</p><p>Spare: \(12 - 10 = 2\) ML per day. [1]</p></div>
+</div>
+<div class="pq" data-level="exam" data-marks="2">
+<div class="pq-q"><p>A new pipe from B directly to T, with capacity 4, is added. Find the new maximum flow and the minimum cut.</p></div>
+<div class="pq-s"><p>Cut 1 now also crosses B → T: \(15 + 4 = 19\). The cut around S alone is \(10 + 7 = 17\). [1]</p><p>No cut is smaller, and a flow of 17 is possible (on top of the 15, send 1 more along S → B → T and 1 more along S → A → B → T), so the maximum flow is <strong>17</strong>, with the minimum cut around S. [1]</p></div>
+</div>
+<h2>Summary</h2>
+<ul>
+  <li data-q="What are the source, sink and capacity in a flow network?">Flow starts at the source and ends at the sink; capacity is the most that can flow along an edge.</li>
+  <li data-q="How do you calculate the capacity of a cut?">Add the capacities of edges crossing from the source side to the sink side; edges crossing back count 0.</li>
+  <li data-q="State the maximum-flow minimum-cut theorem.">The maximum flow from source to sink equals the capacity of the minimum cut.</li>
+  <li data-q="How can the maximum flow be increased?">Increase capacity on an edge in every minimum cut, then recheck: another cut may become the bottleneck.</li>
+</ul>

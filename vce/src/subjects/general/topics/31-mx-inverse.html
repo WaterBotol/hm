@@ -1,0 +1,82 @@
+<!--
+id: mx-inverse
+title: Determinants, inverses and matrix equations
+short: Inverses & matrix equations
+summary: The determinant of a 2 × 2 matrix and the condition for an inverse to exist (det ≠ 0); the inverse of a 2 × 2 matrix by formula and of larger matrices with CAS; solving matrix equations AX = B; and solving systems of simultaneous linear equations with matrices.
+keywords: determinant, det, inverse matrix, inverse of a 2 by 2 matrix, singular matrix, non singular, invertible, condition for inverse, identity matrix, matrix equation, AX = B, X = A inverse B, simultaneous equations, system of linear equations, solving with matrices, coefficient matrix, unique solution, no unique solution
+dotpoints: inverse of a matrix, its determinant, and the condition for a matrix to have an inverse
+-->
+<h2>The determinant</h2>
+<p>Every square matrix has a number called its <strong>determinant</strong>. For a 2 × 2 matrix it is the product of the leading diagonal minus the product of the other diagonal.</p>
+<div class="eq"><div class="eq-label">Determinant of a 2 × 2 matrix (on the formula sheet)</div>\[ A = \begin{bmatrix} a &amp; b \\ c &amp; d \end{bmatrix} \qquad \det A = \begin{vmatrix} a &amp; b \\ c &amp; d \end{vmatrix} = ad - bc \]<p>Use CAS (det) for 3 × 3 and larger.</p></div>
+
+<h2>The inverse</h2>
+<p>The <strong>inverse</strong> \(A^{-1}\) undoes \(A\): \(AA^{-1} = A^{-1}A = I\). Only square matrices can have an inverse, and only when the determinant is not zero.</p>
+<div class="eq"><div class="eq-label">Inverse of a 2 × 2 matrix (on the formula sheet)</div>\[ A^{-1} = \frac{1}{\det A}\begin{bmatrix} d &amp; -b \\ -c &amp; a \end{bmatrix}, \qquad \det A \ne 0 \]<p>Swap the leading diagonal, change the signs of the other two, divide by the determinant.</p></div>
+<aside class="c-def" data-title="Singular matrices"><p>If \(\det A = 0\), \(A\) is <strong>singular</strong> and has no inverse. Example: \(\begin{bmatrix} 2 &amp; 4 \\ 1 &amp; 2 \end{bmatrix}\) has determinant \(4 - 4 = 0\).</p></aside>
+<div class="we" data-title="Finding a 2 × 2 inverse" data-marks="2">
+<div class="we-q"><p>Find the inverse of \(A = \begin{bmatrix} 4 &amp; 3 \\ 2 &amp; 2 \end{bmatrix}\).</p></div>
+<div class="we-t"><p>Check the determinant is not zero, then apply the formula.</p></div>
+<div class="we-s" data-f="\det A = ad - bc"><p>\(\det A = 4(2) - 3(2) = 2\).</p></div>
+<div class="we-s" data-f="A^{-1} = \dfrac{1}{\det A}\begin{bmatrix} d &amp; -b \\ -c &amp; a \end{bmatrix}"><p>\(A^{-1} = \frac12\begin{bmatrix} 2 &amp; -3 \\ -2 &amp; 4 \end{bmatrix}\).</p></div>
+<div class="we-a"><p>\(A^{-1} = \begin{bmatrix} 1 &amp; -1.5 \\ -1 &amp; 2 \end{bmatrix}\). (Check: \(AA^{-1} = I\).)</p></div>
+</div>
+
+<h2>Solving matrix equations</h2>
+<p>To solve \(AX = B\), multiply both sides on the <strong>left</strong> by \(A^{-1}\):</p>
+<div class="eq"><div class="eq-label">Matrix equations</div>\[ AX = B \;\Rightarrow\; X = A^{-1}B \qquad\qquad XA = B \;\Rightarrow\; X = BA^{-1} \]</div>
+<aside class="c-trap" data-title="Trick alert: left or right?"><p>Because matrix multiplication isn't commutative, \(A^{-1}B\) and \(BA^{-1}\) are usually different (one may not even be defined). Put \(A^{-1}\) on the same side that \(A\) was on.</p></aside>
+
+<h2>Simultaneous equations</h2>
+<p>A system of linear equations can be written as one matrix equation: (coefficient matrix)(variable matrix) = (constant matrix).</p>
+<div class="we" data-title="Two equations, two unknowns" data-marks="3">
+<div class="we-q"><p>Use matrices to solve \(2x + 3y = 13\) and \(x - y = -1\).</p></div>
+<div class="we-t"><p>Write \(AX = B\), find \(A^{-1}\), then \(X = A^{-1}B\).</p></div>
+<div class="we-s"><p>\(\begin{bmatrix} 2 &amp; 3 \\ 1 &amp; -1 \end{bmatrix}\begin{bmatrix} x \\ y \end{bmatrix} = \begin{bmatrix} 13 \\ -1 \end{bmatrix}\). \(\det A = -2 - 3 = -5\).</p></div>
+<div class="we-s" data-f="X = A^{-1}B"><p>\(A^{-1} = -\frac15\begin{bmatrix} -1 &amp; -3 \\ -1 &amp; 2 \end{bmatrix}\), so \(X = -\frac15\begin{bmatrix} -13 + 3 \\ -13 - 2 \end{bmatrix} = -\frac15\begin{bmatrix} -10 \\ -15 \end{bmatrix}\).</p></div>
+<div class="we-a"><p>\(x = 2\), \(y = 3\).</p></div>
+</div>
+<div class="we" data-title="Three equations with CAS" data-marks="2">
+<div class="we-q"><p>Use matrices to solve \(x + y + z = 6\), \(2x - y + 3z = 9\) and \(x + 2y - z = 2\).</p></div>
+<div class="we-t"><p>Write the coefficient matrix and constant matrix, then calculate \(A^{-1}B\) on CAS.</p></div>
+<div class="we-s"><p>\(\begin{bmatrix} 1 &amp; 1 &amp; 1 \\ 2 &amp; -1 &amp; 3 \\ 1 &amp; 2 &amp; -1 \end{bmatrix}\begin{bmatrix} x \\ y \\ z \end{bmatrix} = \begin{bmatrix} 6 \\ 9 \\ 2 \end{bmatrix}\). \(\det A = 5 \ne 0\) (CAS), so there is a unique solution.</p></div>
+<div class="we-a"><p>\(A^{-1}B\) gives \(x = 1\), \(y = 2\), \(z = 3\). (Check in the first equation: \(1 + 2 + 3 = 6\).)</p></div>
+</div>
+<aside class="c-key" data-title="Key idea: det = 0 means no unique solution"><p>If the coefficient matrix is singular, the system has either no solution or infinitely many. Graphically for two equations, the lines are parallel (no solution) or the same line (infinitely many).</p></aside>
+
+<h2>Practice</h2>
+<div class="mcq" data-ans="A" data-level="core">
+<div class="mcq-q"><p>The determinant of \(\begin{bmatrix} 5 &amp; 2 \\ 3 &amp; 4 \end{bmatrix}\) is</p></div>
+<ol><li>14</li><li>26</li><li>−14</li><li>20</li></ol>
+<div class="mcq-x"><p>\(5(4) - 2(3) = 14\).</p></div>
+</div>
+<div class="mcq" data-ans="C" data-level="core">
+<div class="mcq-q"><p>For which value of \(k\) does \(\begin{bmatrix} k &amp; 6 \\ 2 &amp; 3 \end{bmatrix}\) have no inverse?</p></div>
+<ol><li>2</li><li>3</li><li>4</li><li>6</li></ol>
+<div class="mcq-x"><p>\(3k - 12 = 0\) gives \(k = 4\).</p></div>
+</div>
+<div class="mcq" data-ans="D" data-level="trick">
+<div class="mcq-q"><p>If \(XA = B\), then \(X\) equals</p></div>
+<ol><li>\(A^{-1}B\)</li><li>\(B - A\)</li><li>\(\frac{B}{A}\)</li><li>\(BA^{-1}\)</li></ol>
+<div class="mcq-x"><p>Multiply on the right by \(A^{-1}\): \(XAA^{-1} = BA^{-1}\).</p></div>
+</div>
+<div class="mcq" data-ans="B" data-level="hard">
+<div class="mcq-q"><p>The system \(3x + 6y = 9\), \(x + 2y = 5\) has</p></div>
+<ol><li>a unique solution</li><li>no solution</li><li>infinitely many solutions</li><li>the solution \(x = 1\), \(y = 1\)</li></ol>
+<div class="mcq-x"><p>\(\det = 6 - 6 = 0\), so no unique solution. The first equation is \(x + 2y = 3\), parallel to \(x + 2y = 5\): no solution.</p></div>
+</div>
+<div class="pq" data-level="core" data-marks="2">
+<div class="pq-q"><p>Find the inverse of \(\begin{bmatrix} 3 &amp; 1 \\ 5 &amp; 2 \end{bmatrix}\).</p></div>
+<div class="pq-s"><p>\(\det = 6 - 5 = 1\). [1]</p><p>Inverse \(= \begin{bmatrix} 2 &amp; -1 \\ -5 &amp; 3 \end{bmatrix}\). [1]</p></div>
+</div>
+<div class="pq" data-level="exam" data-marks="3">
+<div class="pq-q"><p>A café sells muffins ($m) and coffees ($c). One order of 2 muffins and 3 coffees cost $23.50; another of 4 muffins and 1 coffee cost $21.50. Write a matrix equation and solve it.</p></div>
+<div class="pq-s"><p>\(\begin{bmatrix} 2 &amp; 3 \\ 4 &amp; 1 \end{bmatrix}\begin{bmatrix} m \\ c \end{bmatrix} = \begin{bmatrix} 23.50 \\ 21.50 \end{bmatrix}\). [1]</p><p>\(\det = 2 - 12 = -10\); \(\begin{bmatrix} m \\ c \end{bmatrix} = -\frac{1}{10}\begin{bmatrix} 1 &amp; -3 \\ -4 &amp; 2 \end{bmatrix}\begin{bmatrix} 23.50 \\ 21.50 \end{bmatrix}\). [1]</p><p>\(m = 4.10\), \(c = 5.10\) (muffins $4.10, coffees $5.10). [1]</p></div>
+</div>
+<h2>Summary</h2>
+<ul>
+  <li data-q="Write the formula for the determinant and the inverse of a 2 × 2 matrix.">\(\det A = ad - bc\); \(A^{-1} = \frac{1}{\det A}\begin{bmatrix} d &amp; -b \\ -c &amp; a \end{bmatrix}\).</li>
+  <li data-q="When does a matrix have an inverse? What is a matrix with determinant zero called?">When it is square and \(\det A \ne 0\). If \(\det A = 0\) it is singular (no inverse).</li>
+  <li data-q="How do you solve AX = B and XA = B?">\(X = A^{-1}B\) and \(X = BA^{-1}\).</li>
+  <li data-q="How do you solve simultaneous equations with matrices, and what does det = 0 tell you?">Write coefficient × variables = constants and calculate \(A^{-1}B\). If det = 0 there is no unique solution.</li>
+</ul>

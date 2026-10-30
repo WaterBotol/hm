@@ -1,0 +1,106 @@
+<!--
+id: circular
+title: Reciprocal and inverse circular functions, identities
+short: Circular functions toolkit
+summary: The assumed knowledge you need for Specialist calculus: sec, cosec and cot and their graphs, the inverse circular functions arcsin, arccos and arctan with their domains and ranges, and the Pythagorean, compound-angle and double-angle identities used to simplify, solve and integrate.
+keywords: sec, cosec, cot, secant, cosecant, cotangent, reciprocal circular functions, inverse circular functions, arcsin, arccos, arctan, sin inverse, cos inverse, tan inverse, domain, range, compound angle, double angle, identity, 1 + tan^2 = sec^2, trig identities, exact values
+dotpoints: assumed knowledge from Specialist Units 1 and 2: reciprocal and inverse circular functions, compound and double angle identities (used throughout the Units 3 and 4 calculus)
+-->
+<aside class="c-def" data-title="Why this page is here"><p>Reciprocal and inverse circular functions and the angle identities are Units 1 and 2 content, but the Units 3 and 4 calculus (derivatives of inverse circular functions, \(\int\frac{1}{\sqrt{a^2 - x^2}}dx\), \(\int\sin^2 x\,dx\)) uses them constantly, and exams test them directly.</p></aside>
+
+<h2>Reciprocal circular functions</h2>
+<div class="eq"><div class="eq-label">Definitions</div>\[ \sec x = \frac{1}{\cos x} \qquad \operatorname{cosec} x = \frac{1}{\sin x} \qquad \cot x = \frac{1}{\tan x} = \frac{\cos x}{\sin x} \]</div>
+<ul>
+  <li>\(\sec x\): undefined where \(\cos x = 0\) (asymptotes at \(x = \frac\pi2 + k\pi\)); range \((-\infty, -1] \cup [1, \infty)\); period \(2\pi\).</li>
+  <li>\(\operatorname{cosec} x\): asymptotes where \(\sin x = 0\) (\(x = k\pi\)); same range; period \(2\pi\).</li>
+  <li>\(\cot x\): asymptotes at \(x = k\pi\); range \(\mathbb{R}\); period \(\pi\); zeros at \(x = \frac\pi2 + k\pi\).</li>
+</ul>
+<aside class="c-key"><p>Sketch \(y = \sec x\) from \(y = \cos x\): wherever \(\cos x = \pm1\), \(\sec x = \pm1\) too (turning points); wherever \(\cos x = 0\), draw an asymptote; the "U" shapes open away from the axis. Same idea for cosec from sin.</p></aside>
+<div class="eq"><div class="eq-label">Pythagorean identities</div>\[ \sin^2 x + \cos^2 x = 1 \qquad 1 + \tan^2 x = \sec^2 x \qquad \cot^2 x + 1 = \operatorname{cosec}^2 x \]<p>Divide the first by \(\cos^2 x\) or \(\sin^2 x\) to get the others.</p></div>
+
+<h2>Inverse circular functions</h2>
+<p>Each circular function is restricted to a one-to-one domain so it has an inverse.</p>
+<div class="tbl"><table>
+<thead><tr><th>Function</th><th>Domain</th><th>Range</th></tr></thead>
+<tbody>
+<tr><td>\(\sin^{-1} x = \arcsin x\)</td><td>\([-1, 1]\)</td><td>\(\left[-\frac\pi2, \frac\pi2\right]\)</td></tr>
+<tr><td>\(\cos^{-1} x = \arccos x\)</td><td>\([-1, 1]\)</td><td>\([0, \pi]\)</td></tr>
+<tr><td>\(\tan^{-1} x = \arctan x\)</td><td>\(\mathbb{R}\)</td><td>\(\left(-\frac\pi2, \frac\pi2\right)\) (horizontal asymptotes \(y = \pm\frac\pi2\))</td></tr>
+</tbody></table></div>
+<aside class="c-trap"><p>\(\sin^{-1} x\) means arcsin, <strong>not</strong> \(\frac{1}{\sin x}\) (that's cosec). And \(\sin^{-1}(\sin x) = x\) only when \(x \in [-\frac\pi2, \frac\pi2]\): \(\sin^{-1}(\sin \frac{5\pi}{6}) = \frac\pi6\), not \(\frac{5\pi}{6}\).</p></aside>
+<div class="we" data-title="Domain and range of a transformed inverse function" data-marks="2">
+<div class="we-q"><p>Find the maximal domain and the range of \(f(x) = 2\cos^{-1}(3x - 1) + \frac{\pi}{2}\).</p></div>
+<div class="we-t"><p>Whatever is inside \(\cos^{-1}\) must lie in \([-1, 1]\): that gives the domain. The range of \(\cos^{-1}\) is \([0, \pi]\); then apply the dilation by 2 and the translation up \(\frac\pi2\).</p></div>
+<div class="we-s" data-f="-1 \le 3x - 1 \le 1"><p>\(-1 \le 3x - 1 \le 1 \Rightarrow 0 \le x \le \frac23\). Domain \(\left[0, \frac23\right]\).</p></div>
+<div class="we-a"><p>Range: \(2[0, \pi] + \frac\pi2 = \left[\frac\pi2, \frac{5\pi}{2}\right]\).</p></div>
+</div>
+<div class="we" data-title="Exact value of a composition" data-marks="2">
+<div class="we-q"><p>Find the exact value of \(\cos\!\left(\sin^{-1}\frac{3}{5}\right)\) and of \(\tan\!\left(\cos^{-1}\!\left(-\frac{1}{3}\right)\right)\).</p></div>
+<div class="we-t"><p>Let the inverse be an angle \(\theta\), draw or use Pythagoras, and use the range to fix the sign. \(\sin^{-1}\) gives an angle in quadrant 1 or 4 (cos positive); \(\cos^{-1}\) of a negative gives quadrant 2.</p></div>
+<div class="we-s" data-f="\sin^2\theta + \cos^2\theta = 1"><p>\(\theta = \sin^{-1}\frac35\): \(\cos\theta = +\sqrt{1 - \frac{9}{25}} = \frac45\).</p></div>
+<div class="we-a"><p>\(\phi = \cos^{-1}(-\frac13) \in (\frac\pi2, \pi)\): \(\sin\phi = \frac{2\sqrt2}{3}\), so \(\tan\phi = \frac{2\sqrt2/3}{-1/3} = -2\sqrt2\).</p></div>
+</div>
+
+<h2>Compound and double angle identities</h2>
+<div class="eq"><div class="eq-label">Compound angles</div>\[ \sin(A \pm B) = \sin A\cos B \pm \cos A\sin B \qquad \cos(A \pm B) = \cos A\cos B \mp \sin A\sin B \]
+\[ \tan(A \pm B) = \frac{\tan A \pm \tan B}{1 \mp \tan A\tan B} \]</div>
+<div class="eq"><div class="eq-label">Double angles</div>\[ \sin 2A = 2\sin A\cos A \qquad \cos 2A = \cos^2 A - \sin^2 A = 2\cos^2 A - 1 = 1 - 2\sin^2 A \qquad \tan 2A = \frac{2\tan A}{1 - \tan^2 A} \]<p>Rearranged for integration: \(\sin^2 A = \frac12(1 - \cos 2A)\) and \(\cos^2 A = \frac12(1 + \cos 2A)\).</p></div>
+<div class="we" data-title="Exact value with a compound angle" data-marks="2">
+<div class="we-q"><p>Find the exact value of \(\cos\frac{\pi}{12}\).</p></div>
+<div class="we-t"><p>Write \(\frac{\pi}{12}\) as a difference of standard angles: \(\frac\pi3 - \frac\pi4\).</p></div>
+<div class="we-s" data-f="\cos(A - B) = \cos A\cos B + \sin A\sin B"><p>\(\cos\frac\pi3\cos\frac\pi4 + \sin\frac\pi3\sin\frac\pi4 = \frac12\cdot\frac{\sqrt2}{2} + \frac{\sqrt3}{2}\cdot\frac{\sqrt2}{2}\).</p></div>
+<div class="we-a"><p>\(= \dfrac{\sqrt2 + \sqrt6}{4}\).</p></div>
+</div>
+<div class="we" data-title="Solve using a double-angle identity" data-marks="3">
+<div class="we-q"><p>Solve \(\cos 2x = \sin x\) for \(x \in [0, 2\pi]\).</p></div>
+<div class="we-t"><p>Choose the version of \(\cos 2x\) that matches the other function: \(1 - 2\sin^2 x\) turns it into a quadratic in \(\sin x\).</p></div>
+<div class="we-s" data-f="\cos 2x = 1 - 2\sin^2 x"><p>\(1 - 2\sin^2 x = \sin x \Rightarrow 2\sin^2 x + \sin x - 1 = 0 \Rightarrow (2\sin x - 1)(\sin x + 1) = 0\).</p></div>
+<div class="we-a"><p>\(\sin x = \frac12\): \(x = \frac\pi6, \frac{5\pi}{6}\). \(\sin x = -1\): \(x = \frac{3\pi}{2}\).</p></div>
+</div>
+<aside class="c-exam"><p>Exam 1 favourites: exact values of \(\sec, \operatorname{cosec}, \cot\) at standard angles; simplifying \(\frac{\sin 2x}{1 + \cos 2x} = \tan x\); proving an identity by working on one side only. In "show that" identity proofs, never manipulate both sides at once.</p></aside>
+
+<h2>Practice</h2>
+<div class="mcq" data-ans="C" data-level="core">
+<div class="mcq-q"><p>The range of \(y = \tan^{-1} x\) is</p></div>
+<ol><li>\(\mathbb{R}\)</li><li>\(\left[-\frac\pi2, \frac\pi2\right]\)</li><li>\(\left(-\frac\pi2, \frac\pi2\right)\)</li><li>\((0, \pi)\)</li></ol>
+<div class="mcq-x"><p>Open interval: \(\pm\frac\pi2\) are horizontal asymptotes, never reached.</p></div>
+</div>
+<div class="mcq" data-ans="B" data-level="trick">
+<div class="mcq-q"><p>\(\cos^{-1}\!\left(\cos\frac{4\pi}{3}\right)\) equals</p></div>
+<ol><li>\(\frac{4\pi}{3}\)</li><li>\(\frac{2\pi}{3}\)</li><li>\(-\frac{2\pi}{3}\)</li><li>\(\frac{\pi}{3}\)</li></ol>
+<div class="mcq-x"><p>\(\cos\frac{4\pi}{3} = -\frac12\), and \(\cos^{-1}(-\frac12) = \frac{2\pi}{3}\) (range \([0, \pi]\)).</p></div>
+</div>
+<div class="mcq" data-ans="A" data-level="core">
+<div class="mcq-q"><p>\(\sec^2 x - \tan^2 x\) simplifies to</p></div>
+<ol><li>1</li><li>\(-1\)</li><li>\(\cos 2x\)</li><li>\(\sec 2x\)</li></ol>
+<div class="mcq-x"><p>From \(1 + \tan^2 x = \sec^2 x\).</p></div>
+</div>
+<div class="mcq" data-ans="D" data-level="hard">
+<div class="mcq-q"><p>The maximal domain of \(f(x) = \sin^{-1}\!\left(\frac{x}{2} - 1\right)\) is</p></div>
+<ol><li>\([-1, 1]\)</li><li>\([-2, 2]\)</li><li>\([2, 6]\)</li><li>\([0, 4]\)</li></ol>
+<div class="mcq-x"><p>\(-1 \le \frac x2 - 1 \le 1 \Rightarrow 0 \le \frac x2 \le 2 \Rightarrow 0 \le x \le 4\).</p></div>
+</div>
+<div class="mcq" data-ans="C" data-level="exam">
+<div class="mcq-q"><p>If \(\tan\theta = 2\) with \(\theta \in \left(\pi, \frac{3\pi}{2}\right)\), then \(\sin 2\theta\) equals</p></div>
+<ol><li>\(-\frac45\)</li><li>\(\frac{2}{\sqrt5}\)</li><li>\(\frac45\)</li><li>\(-\frac{3}{5}\)</li></ol>
+<div class="mcq-x"><p>\(\sin 2\theta = \frac{2\tan\theta}{1 + \tan^2\theta} = \frac{4}{5}\). Quadrant 3 has both sin and cos negative, so their product is positive.</p></div>
+</div>
+<div class="pq" data-level="core" data-marks="2" data-f="1 + \cot^2 x = \operatorname{cosec}^2 x">
+<div class="pq-q"><p>Given \(\cot x = -\frac{3}{4}\) and \(\frac\pi2 &lt; x &lt; \pi\), find \(\operatorname{cosec} x\) and \(\sec x\).</p></div>
+<div class="pq-s"><p>\(\operatorname{cosec}^2 x = 1 + \frac{9}{16} = \frac{25}{16}\); sin is positive in quadrant 2, so \(\operatorname{cosec} x = \frac54\). [1]</p><p>\(\tan x = -\frac43\), \(\sec^2 x = 1 + \frac{16}{9} = \frac{25}{9}\); cos negative, so \(\sec x = -\frac53\). [1]</p></div>
+</div>
+<div class="pq" data-level="hard" data-marks="3" data-f="\sin 2A = 2\sin A\cos A ;; \cos 2A = 2\cos^2 A - 1">
+<div class="pq-q"><p>Show that \(\dfrac{\sin 2x}{1 + \cos 2x} = \tan x\).</p></div>
+<div class="pq-s"><p>LHS \(= \dfrac{2\sin x\cos x}{1 + 2\cos^2 x - 1}\). [1]</p><p>\(= \dfrac{2\sin x\cos x}{2\cos^2 x}\). [1]</p><p>\(= \dfrac{\sin x}{\cos x} = \tan x\) = RHS. [1]</p></div>
+</div>
+<div class="pq" data-level="exam" data-marks="3">
+<div class="pq-q"><p>Find the exact value of \(\sin\!\left(2\tan^{-1}\frac{1}{2}\right)\).</p></div>
+<div class="pq-s"><p>Let \(\theta = \tan^{-1}\frac12\), so \(\tan\theta = \frac12\) with \(\theta\) in quadrant 1. [1]</p><p>\(\sin\theta = \frac{1}{\sqrt5},\ \cos\theta = \frac{2}{\sqrt5}\). [1]</p><p>\(\sin 2\theta = 2\cdot\frac{1}{\sqrt5}\cdot\frac{2}{\sqrt5} = \frac45\). [1]</p></div>
+</div>
+<h2>Summary</h2>
+<ul>
+  <li data-q="Define sec, cosec and cot, and write the two Pythagorean identities that involve them.">\(\sec = \frac1{\cos}\), \(\operatorname{cosec} = \frac1{\sin}\), \(\cot = \frac{\cos}{\sin}\); \(1 + \tan^2 = \sec^2\), \(\cot^2 + 1 = \operatorname{cosec}^2\).</li>
+  <li data-q="State the domain and range of arcsin, arccos and arctan.">arcsin: \([-1,1] \to [-\frac\pi2, \frac\pi2]\); arccos: \([-1,1] \to [0, \pi]\); arctan: \(\mathbb{R} \to (-\frac\pi2, \frac\pi2)\).</li>
+  <li data-q="Write the double-angle formulas, and the identities for \(\sin^2 A\) and \(\cos^2 A\) in terms of \(\cos 2A\).">Compound and double angle formulas; \(\sin^2 A = \frac12(1 - \cos 2A)\), \(\cos^2 A = \frac12(1 + \cos 2A)\).</li>
+  <li data-q="How do you evaluate a composition like \(\cos(\sin^{-1} a)\), and what decides its sign?">For compositions like \(\cos(\sin^{-1} a)\), use a triangle and the range for the sign.</li>
+</ul>

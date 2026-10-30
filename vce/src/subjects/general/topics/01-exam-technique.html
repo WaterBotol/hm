@@ -1,0 +1,91 @@
+<!--
+id: exam-technique
+title: General Maths exam technique
+short: Exam technique
+summary: The rounding rules that cost the most marks, command words, how to write interpretations (slope, intercept, r², residuals), Finance Solver habits, building and using your bound reference, multiple-choice strategy, and the errors General Maths examiners' reports keep flagging.
+keywords: exam technique, general maths exam, rounding, decimal places, significant figures, exact answer, nearest cent, show that, command words, interpret the slope, interpret the intercept, coefficient of determination sentence, finance solver habits, bound reference, multiple choice, examiners report, common errors, reading time, CAS
+special: reference
+-->
+<h2>Rounding: the rule that costs the most marks</h2>
+<p>The instructions on page 2 of every exam say: only round when the question tells you to. Examiners' reports flag rounding every year.</p>
+<div class="tbl"><table>
+<thead><tr><th>The question says</th><th>What to write</th></tr></thead>
+<tbody>
+<tr><td>Nothing about rounding</td><td>The exact value (e.g. 11.42, not 11.4).</td></tr>
+<tr><td>“Correct to two decimal places” / “nearest cent”</td><td>Two digits after the decimal point: $1234.57.</td></tr>
+<tr><td>“Correct to three significant figures”</td><td>Three digits counting from the first non-zero one: 0.004 528 → 0.004 53; 12 345 → 12 300.</td></tr>
+<tr><td>“Round to four significant figures” (regression coefficients)</td><td>Each coefficient separately: \(y = 12.35 + 0.004\,876x\).</td></tr>
+</tbody></table></div>
+<aside class="c-trap" data-title="Trick alert: rounding in the middle"><p>Never round part-way through a calculation (especially recurrence steps and Finance Solver values carried into the next part). Keep full CAS values and round only the final answer. Read CAS exponent notation carefully: 5.16E−3 means 0.005 16.</p></aside>
+
+<h2>Command words</h2>
+<div class="tbl"><table>
+<thead><tr><th>Phrase</th><th>What it means</th></tr></thead>
+<tbody>
+<tr><td><strong>Write down / state</strong></td><td>No working needed; read it off or recall it.</td></tr>
+<tr><td><strong>Determine / find / calculate</strong></td><td>Get the answer; show working for anything worth more than 1 mark.</td></tr>
+<tr><td><strong>Show that</strong></td><td>The answer is given. Show every calculation that leads to it, with enough working (and more decimal places than the answer) to be convincing. Substituting the answer back in isn't enough.</td></tr>
+<tr><td><strong>Interpret / describe in context</strong></td><td>Use the variable names and units from the question, not x and y.</td></tr>
+<tr><td><strong>Explain why</strong></td><td>A reason linked to the data or the model, not a definition.</td></tr>
+</tbody></table></div>
+
+<h2>Data analysis sentences that score</h2>
+<div class="tbl"><table>
+<thead><tr><th>Asked to interpret</th><th>Template</th></tr></thead>
+<tbody>
+<tr><td>Slope \(b\)</td><td>On average, <em>response</em> increases (decreases) by \(|b|\) <em>units</em> for each one-<em>unit</em> increase in <em>explanatory</em>.</td></tr>
+<tr><td>Intercept \(a\)</td><td>When <em>explanatory</em> is 0, the predicted <em>response</em> is \(a\) <em>units</em>.</td></tr>
+<tr><td>\(r^2\)</td><td>\(r^2 \times 100\)% of the variation in <em>response</em> can be explained by the variation in <em>explanatory</em>.</td></tr>
+<tr><td>Association</td><td>Direction (positive/negative), form (linear/non-linear) and strength (strong/moderate/weak), with the value of \(r\).</td></tr>
+<tr><td>Reliability of a prediction</td><td>Interpolation (inside the data range) is reliable; extrapolation (outside it) isn't. Mention both.</td></tr>
+</tbody></table></div>
+<p>Interpret only what you're asked: a slope question doesn't want the intercept too. Use a ruler to draw lines, and plot two calculated points far apart to place a least squares line accurately.</p>
+
+<h2>Finance Solver habits</h2>
+<ul>
+  <li>Sign convention: money you hand over is negative, money you receive is positive (loan: PV +, Pmt −; investment: PV −, Pmt −, FV +; annuity: PV −, Pmt +). See <a href="#rf-tvm">Finance Solver</a>.</li>
+  <li>Set PpY and CpY every time; they don't reset themselves and the question may change them.</li>
+  <li>Write the values you entered (N, I%, PV, Pmt, FV, PpY, CpY) as your working.</li>
+  <li>Total interest = total paid − amount borrowed. “Total cost of the loan” = everything paid.</li>
+  <li>“The final payment is slightly different”: solve for N, use the whole number of full payments to find the balance, then work out the last payment. A final payment of a few dollars means you've miscounted.</li>
+  <li>Recurrence questions that say “show the recursive calculation” need the line-by-line steps, not just Finance Solver.</li>
+</ul>
+
+<h2>Your bound reference</h2>
+<p>You may take one bound reference into both exams. Treat it as an index to your own knowledge, not a textbook to read during the exam.</p>
+<ul>
+  <li><strong>Tab it by area of study</strong> (data, finance, matrices, networks) so you can open the right section in seconds.</li>
+  <li><strong>Lead with worked examples</strong> of the question types that recur: Finance Solver set-ups for loans, annuities and investments; Hungarian steps; EST/LST tables; seasonal index calculations.</li>
+  <li><strong>Include the sentence templates</strong> above and the CAS keystrokes you forget under pressure.</li>
+  <li><strong>Don't copy the formula sheet</strong>: you get it anyway. Use the space for what isn't on it.</li>
+  <li>Build pages with the <a href="#sheet">bound reference designer</a>, print them, and bind them with your other notes.</li>
+</ul>
+
+<h2>Multiple-choice strategy (Exam 1)</h2>
+<ul>
+  <li>40 questions in 90 minutes is just over 2 minutes each. Don't sink 6 minutes into one.</li>
+  <li>Each wrong option usually matches a specific error: a transposed matrix, rows instead of columns, monthly vs annual rate, forgetting a backward edge in a cut. Work it out, then check your answer isn't the trap.</li>
+  <li>Answer every question; there's no penalty for guessing.</li>
+</ul>
+
+<h2>Errors examiners' reports mention every year</h2>
+<aside class="c-trap" data-title="Don't lose these marks">
+<ul>
+  <li>Rounding when no rounding was asked for, rounding mid-calculation, and mixing up decimal places with significant figures.</li>
+  <li>Writing a definition (e.g. of seasonality) instead of answering the question about the data.</li>
+  <li>Interpreting the slope when asked for the intercept (or both when asked for one).</li>
+  <li>Not mentioning the variation in <em>both</em> variables in an \(r^2\) sentence.</li>
+  <li>Summing rows instead of columns of a transition matrix, or confusing row/column labels in matrix questions.</li>
+  <li>Including people who have left (culling) when counting a population.</li>
+  <li>Calling a route a “path” when it's a trail or circuit; missing a vertex in the middle of a Hamiltonian route.</li>
+  <li>Transcription errors copying from CAS or between lines.</li>
+</ul>
+</aside>
+
+<h2>Reading time plan (15 minutes)</h2>
+<ol>
+  <li>Exam 1: start answering mentally from Question 1; data analysis questions are quick wins.</li>
+  <li>Exam 2: skim every question and note which ones need your bound reference.</li>
+  <li>Find the “show that” and multi-part questions where a later part depends on an earlier answer.</li>
+  <li>Plan to bank the easy marks first, but attempt part (a) of every question.</li>
+</ol>

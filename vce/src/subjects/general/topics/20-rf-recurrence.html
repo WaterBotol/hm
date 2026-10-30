@@ -1,0 +1,97 @@
+<!--
+id: rf-recurrence
+title: First-order linear recurrence relations
+short: Recurrence relations
+summary: The recurrence relation u₀ = a, uₙ₊₁ = Ruₙ + d; generating terms by hand and with CAS; the special cases of linear growth or decay (R = 1) and geometric growth or decay (d = 0) and their rules; reading what R and d mean in context; and graphing sequences.
+keywords: recurrence relation, first order linear recurrence relation, u0, u n plus 1, R u n plus d, sequence, terms, generate terms, arithmetic sequence, geometric sequence, linear growth, linear decay, geometric growth, geometric decay, rule for nth term, explicit rule, multiplier R, common difference, ans key, CAS, graph of a sequence
+dotpoints: use of a first-order linear recurrence relation of the form u₀ = a, uₙ₊₁ = Ruₙ + d where a, R and d are constants to generate the terms of a sequence
+-->
+<h2>The recurrence relation</h2>
+<p>A <strong>recurrence relation</strong> gives the starting value of a sequence and a rule for getting each term from the one before. Every model in this unit (depreciation, interest, loans, annuities, investments) is one recurrence relation:</p>
+<div class="eq"><div class="eq-label">First-order linear recurrence relation (on the formula sheet)</div>\[ u_0 = a, \qquad u_{n+1} = R\,u_n + d \]<p>\(u_0\) is the starting value, \(u_n\) the value after \(n\) steps, \(R\) multiplies the current value and \(d\) is added (or subtracted, if negative) each step.</p></div>
+<aside class="c-trap" data-title="Trick alert: u₀ is the start"><p>\(u_0\) is the value before anything happens: the purchase price, the amount borrowed, the opening balance. \(u_3\) is the value after 3 steps (3 years, 3 months, 3 payments), not the third value written down (that is \(u_2\)).</p></aside>
+
+<h2>Generating terms</h2>
+<div class="we" data-title="Generating terms by hand" data-marks="2">
+<div class="we-q"><p>A sequence is defined by \(u_0 = 200\), \(u_{n+1} = 1.1u_n - 15\). Find \(u_1\), \(u_2\) and \(u_3\).</p></div>
+<div class="we-t"><p>Apply the rule one step at a time, always to the previous term.</p></div>
+<div class="we-s" data-f="u_{n+1} = R\,u_n + d"><p>\(u_1 = 1.1(200) - 15 = 205\); \(u_2 = 1.1(205) - 15 = 210.5\).</p></div>
+<div class="we-s" data-f="u_{n+1} = R\,u_n + d"><p>\(u_3 = 1.1(210.5) - 15 = 216.55\).</p></div>
+<div class="we-a"><p>\(u_1 = 205\), \(u_2 = 210.5\), \(u_3 =\) <strong>216.55</strong>.</p></div>
+</div>
+<aside class="c-exam" data-title="Exam tip: the CAS 'Ans' method"><p>Type the starting value and press enter. Then type <code>1.1 × Ans − 15</code> and press enter repeatedly: each press gives the next term. Count presses carefully: the first press gives \(u_1\). To find when a sequence first passes a value, keep pressing and count.</p></aside>
+
+<h2>Special cases with rules</h2>
+<div class="tbl"><table>
+<thead><tr><th>Case</th><th>Recurrence</th><th>Rule for the nth term</th><th>Graph of terms</th></tr></thead>
+<tbody>
+<tr><td>Linear growth or decay (\(R = 1\))</td><td>\(u_{n+1} = u_n + d\)</td><td>\(u_n = u_0 + nd\)</td><td>points on a straight line</td></tr>
+<tr><td>Geometric growth or decay (\(d = 0\))</td><td>\(u_{n+1} = R\,u_n\)</td><td>\(u_n = R^n u_0\)</td><td>points on a curve</td></tr>
+</tbody></table></div>
+<p>For growth by \(r\%\) per step, \(R = 1 + \frac{r}{100}\). For decay by \(r\%\) per step, \(R = 1 - \frac{r}{100}\).</p>
+<figure class="fig">
+<svg viewBox="0 0 420 180" width="420" role="img" aria-label="Two graphs of sequence terms: linear decay with points falling in a straight line, and geometric decay with points falling along a curve that flattens out">
+  <line x1="30" y1="150" x2="190" y2="150" class="s-ink"/><line x1="30" y1="20" x2="30" y2="150" class="s-ink"/>
+  <g class="f-acc"><circle cx="40" cy="30" r="4"/><circle cx="60" cy="45" r="4"/><circle cx="80" cy="60" r="4"/><circle cx="100" cy="75" r="4"/><circle cx="120" cy="90" r="4"/><circle cx="140" cy="105" r="4"/><circle cx="160" cy="120" r="4"/><circle cx="180" cy="135" r="4"/></g>
+  <text x="110" y="170" class="t-sm" text-anchor="middle">R = 1: linear decay</text>
+  <line x1="230" y1="150" x2="390" y2="150" class="s-ink"/><line x1="230" y1="20" x2="230" y2="150" class="s-ink"/>
+  <g class="f-v"><circle cx="240" cy="30" r="4"/><circle cx="260" cy="54" r="4"/><circle cx="280" cy="73" r="4"/><circle cx="300" cy="88" r="4"/><circle cx="320" cy="101" r="4"/><circle cx="340" cy="111" r="4"/><circle cx="360" cy="119" r="4"/><circle cx="380" cy="126" r="4"/></g>
+  <text x="310" y="170" class="t-sm" text-anchor="middle">d = 0: geometric decay</text>
+</svg>
+<figcaption>Equal differences give a straight line; equal ratios give a curve. Points are not joined, because \(n\) only takes whole-number values.</figcaption>
+</figure>
+<div class="we" data-title="Using a rule" data-marks="2">
+<div class="we-q"><p>A town's population of 8500 grows by 3% each year. Write a recurrence relation for the population after \(n\) years and use a rule to find the population after 10 years.</p></div>
+<div class="we-t"><p>Growth by a percentage of the current value is geometric: \(d = 0\) and \(R = 1 + \frac{3}{100}\).</p></div>
+<div class="we-s" data-f="u_{n+1} = R\,u_n"><p>\(P_0 = 8500\), \(P_{n+1} = 1.03P_n\).</p></div>
+<div class="we-s" data-f="u_n = R^n u_0"><p>\(P_{10} = 1.03^{10} \times 8500 = 11\,423.2\ldots\)</p></div>
+<div class="we-a"><p>About <strong>11 423</strong> people.</p></div>
+</div>
+
+<h2>Reading R and d in context</h2>
+<p>Turn the words into the recurrence relation (or the recurrence relation into words) piece by piece.</p>
+<div class="tbl"><table>
+<thead><tr><th>Words</th><th>Recurrence relation</th></tr></thead>
+<tbody>
+<tr><td>A fish population of 2000 increases by 6% each year, and 150 fish are removed at the end of each year.</td><td>\(F_0 = 2000,\ F_{n+1} = 1.06F_n - 150\)</td></tr>
+<tr><td>A savings account opens with $500 and $40 is deposited every week (no interest).</td><td>\(S_0 = 500,\ S_{n+1} = S_n + 40\)</td></tr>
+<tr><td>A machine worth $12 000 loses 15% of its value each year.</td><td>\(V_0 = 12\,000,\ V_{n+1} = 0.85V_n\)</td></tr>
+</tbody></table></div>
+<aside class="c-trap" data-title="Trick alert: 6% growth means R = 1.06"><p>Writing \(R = 0.06\) or \(R = 6\) is the classic error. The new value is the old value plus 6% of it: \(1 + 0.06 = 1.06\). A 15% decrease is \(1 - 0.15 = 0.85\).</p></aside>
+
+<h2>Practice</h2>
+<div class="mcq" data-ans="C" data-level="core">
+<div class="mcq-q"><p>If \(u_0 = 50\) and \(u_{n+1} = 2u_n - 30\), then \(u_2\) is</p></div>
+<ol><li>70</li><li>100</li><li>110</li><li>140</li></ol>
+<div class="mcq-x"><p>\(u_1 = 70\), \(u_2 = 2(70) - 30 = 110\).</p></div>
+</div>
+<div class="mcq" data-ans="A" data-level="core">
+<div class="mcq-q"><p>A sequence starts at 1000 and decreases by 40 each step. A rule for \(u_n\) is</p></div>
+<ol><li>\(u_n = 1000 - 40n\)</li><li>\(u_n = 1000 \times 0.96^n\)</li><li>\(u_n = 40 - 1000n\)</li><li>\(u_n = 960n\)</li></ol>
+<div class="mcq-x"><p>Linear decay (\(R = 1\), \(d = -40\)): \(u_n = u_0 + nd\).</p></div>
+</div>
+<div class="mcq" data-ans="D" data-level="trick">
+<div class="mcq-q"><p>A colony of 500 bees grows by 8% each month. The recurrence relation is</p></div>
+<ol><li>\(B_0 = 500,\ B_{n+1} = 0.08B_n\)</li><li>\(B_0 = 500,\ B_{n+1} = B_n + 8\)</li><li>\(B_0 = 500,\ B_{n+1} = 8B_n\)</li><li>\(B_0 = 500,\ B_{n+1} = 1.08B_n\)</li></ol>
+<div class="mcq-x"><p>Growth by 8% of the current value: \(R = 1.08\).</p></div>
+</div>
+<div class="mcq" data-ans="B" data-level="hard">
+<div class="mcq-q"><p>For \(u_0 = 4000\), \(u_{n+1} = 0.9u_n + 300\), the sequence</p></div>
+<ol><li>increases forever</li><li>decreases towards 3000</li><li>decreases to 0</li><li>stays at 4000</li></ol>
+<div class="mcq-x"><p>The value stops changing when \(u = 0.9u + 300\), i.e. \(u = 3000\). Starting above that, the terms decrease towards 3000 (\(u_1 = 3900\), \(u_2 = 3810\), …).</p></div>
+</div>
+<div class="pq" data-level="core" data-marks="2">
+<div class="pq-q"><p>Write a recurrence relation for a herd of 120 cattle that grows by 10% each year, with 20 cattle sold at the end of each year. Find the size of the herd after 2 years.</p></div>
+<div class="pq-s"><p>\(H_0 = 120\), \(H_{n+1} = 1.1H_n - 20\). [1]</p><p>\(H_1 = 112\), \(H_2 = 1.1(112) - 20 = 103.2\), so about 103 cattle. [1]</p></div>
+</div>
+<div class="pq" data-level="exam" data-marks="2">
+<div class="pq-q"><p>The value of a coin collection is modelled by \(V_0 = 2500\), \(V_{n+1} = 1.04V_n + 100\), where \(n\) is in years. Explain what 1.04 and 100 represent, and find after how many years the value first exceeds $3500.</p></div>
+<div class="pq-s"><p>1.04: the value grows by 4% each year; 100: $100 worth of coins is added each year. [1]</p><p>\(V_1 = 2700\), \(V_2 = 2908\), \(V_3 = 3124.32\), \(V_4 = 3349.29\), \(V_5 = 3583.26\): after 5 years. [1]</p></div>
+</div>
+<h2>Summary</h2>
+<ul>
+  <li data-q="Write the general first-order linear recurrence relation and say what u₀, R and d represent.">\(u_0 = a\), \(u_{n+1} = Ru_n + d\): starting value, multiplier, amount added each step.</li>
+  <li data-q="What are the rules for the nth term when R = 1 and when d = 0, and what do their graphs look like?">\(R = 1\): \(u_n = u_0 + nd\) (straight line). \(d = 0\): \(u_n = R^n u_0\) (curve).</li>
+  <li data-q="What value of R models growth of r% and decay of r%?">Growth: \(R = 1 + \frac{r}{100}\). Decay: \(R = 1 - \frac{r}{100}\).</li>
+  <li data-q="How do you generate terms quickly on a CAS?">Enter \(u_0\), then type R × Ans + d and press enter repeatedly (first press gives \(u_1\)).</li>
+</ul>

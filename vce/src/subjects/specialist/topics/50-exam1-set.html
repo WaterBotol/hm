@@ -1,0 +1,90 @@
+<!--
+id: exam1-set
+title: Exam 1 practice set (technology-free)
+short: Exam 1 practice set
+summary: A mixed, technology-free practice set in the style of VCAA Specialist Exam 1, ordered from routine to the hardest style of question, with marking-scheme solutions.
+keywords: exam 1, tech free, technology free, no calculator, practice exam, mixed questions, past exam style, hardest questions, exam practice, marking scheme, specialist
+dotpoints: mixed practice across all areas of study without technology
+-->
+<aside class="c-exam" data-title="How to use this set"><p>Specialist Exam 1 is 1 hour (plus 15 min reading) for about 40 marks: tech-free, exact answers, and at least one proof. Allow about 1.5 minutes per mark. Do these with no CAS or calculator, then mark yourself strictly: VCAA awards method and answer marks separately, and proofs need every step. The questions start routine and finish with the styles that usually have the lowest averages.</p></aside>
+
+<h2>Section 1: routine (aim for full marks)</h2>
+<div class="pq" data-level="core" data-marks="2" data-f="|z| = \sqrt{x^2 + y^2} ;; (r\operatorname{cis}\theta)^n = r^n\operatorname{cis}(n\theta)">
+<div class="pq-q"><p><strong>Q1.</strong> Write \(z = 1 - \sqrt3 i\) in polar form, and hence find \(z^6\).</p></div>
+<div class="pq-s"><p>\(|z| = 2\), \(\operatorname{Arg} z = -\frac\pi3\): \(z = 2\operatorname{cis}\left(-\frac\pi3\right)\). [1]</p><p>\(z^6 = 64\operatorname{cis}(-2\pi) = 64\). [1]</p></div>
+</div>
+
+<div class="pq" data-level="core" data-marks="2" data-f="\text{implicit: } \dfrac{d}{dx}(y^2) = 2y\dfrac{dy}{dx} ;; \dfrac{d}{dx}(xy) = y + x\dfrac{dy}{dx}">
+<div class="pq-q"><p><strong>Q2.</strong> Find the gradient of \(x^2 + xy + y^2 = 7\) at the point \((1, 2)\).</p></div>
+<div class="pq-s"><p>\(2x + y + x\frac{dy}{dx} + 2y\frac{dy}{dx} = 0 \Rightarrow \frac{dy}{dx} = -\frac{2x + y}{x + 2y}\). [1]</p><p>At \((1, 2)\): \(-\frac45\). [1]</p></div>
+</div>
+
+<div class="pq" data-level="core" data-marks="3" data-f="\dfrac{1}{x^2 - 1} = \dfrac{1}{2}\left(\dfrac{1}{x - 1} - \dfrac{1}{x + 1}\right) ;; \int \dfrac{1}{x - a}dx = \log_e|x - a| + c">
+<div class="pq-q"><p><strong>Q3.</strong> Evaluate \(\displaystyle\int_2^3 \frac{1}{x^2 - 1}\,dx\).</p></div>
+<div class="pq-s"><p>\(\frac{1}{x^2 - 1} = \frac{1}{2(x - 1)} - \frac{1}{2(x + 1)}\). [1]</p><p>\(\frac12\big[\log_e|x - 1| - \log_e|x + 1|\big]_2^3 = \frac12\left(\log_e\frac24 - \log_e\frac13\right)\). [1]</p><p>\(= \frac12\log_e\frac32\). [1]</p></div>
+</div>
+
+<div class="pq" data-level="core" data-marks="3" data-f="\int u v&#x27; dx = uv - \int u&#x27;v\,dx">
+<div class="pq-q"><p><strong>Q4.</strong> Evaluate \(\displaystyle\int_0^1 xe^{-x}\,dx\).</p></div>
+<div class="pq-s"><p>\(u = x\), \(v' = e^{-x}\): \(\big[-xe^{-x}\big]_0^1 + \int_0^1 e^{-x}dx\). [1]</p><p>\(= -e^{-1} + \big[-e^{-x}\big]_0^1 = -e^{-1} - e^{-1} + 1\). [1]</p><p>\(= 1 - \frac2e\). [1]</p></div>
+</div>
+
+<div class="pq" data-level="core" data-marks="3" data-f="\text{vector resolute} = \dfrac{a\cdot b}{b\cdot b}\,b">
+<div class="pq-q"><p><strong>Q5.</strong> Find the vector resolute of \(\underset{\sim}{a} = 3\underset{\sim}{i} - \underset{\sim}{j} + 2\underset{\sim}{k}\) in the direction of \(\underset{\sim}{b} = 2\underset{\sim}{i} + 2\underset{\sim}{j} + \underset{\sim}{k}\).</p></div>
+<div class="pq-s"><p>\(\underset{\sim}{a}\cdot\underset{\sim}{b} = 6 - 2 + 2 = 6\). [1]</p><p>\(\underset{\sim}{b}\cdot\underset{\sim}{b} = 9\). [1]</p><p>\(\frac23(2\underset{\sim}{i} + 2\underset{\sim}{j} + \underset{\sim}{k})\). [1]</p></div>
+</div>
+
+<h2>Section 2: standard</h2>
+<div class="pq" data-level="hard" data-marks="3" data-f="z^n = a\operatorname{cis}\phi \Rightarrow z = a^{1/n}\operatorname{cis}\left(\dfrac{\phi + 2k\pi}{n}\right)">
+<div class="pq-q"><p><strong>Q6.</strong> Solve \(z^3 = 8i\), giving the solutions in Cartesian form.</p></div>
+<div class="pq-s"><p>\(8i = 8\operatorname{cis}\frac\pi2\), so \(z = 2\operatorname{cis}\left(\frac\pi6 + \frac{2k\pi}{3}\right)\). [1]</p><p>Arguments \(\frac\pi6, \frac{5\pi}{6}, -\frac\pi2\). [1]</p><p>\(z = \sqrt3 + i,\ -\sqrt3 + i,\ -2i\). [1]</p></div>
+</div>
+
+<div class="pq" data-level="hard" data-marks="3" data-f="\int\dfrac{dy}{g(y)} = \int f(x)\,dx">
+<div class="pq-q"><p><strong>Q7.</strong> Solve \(\frac{dy}{dx} = xy^2\), given \(y(0) = 1\). State the maximal domain of the solution containing \(x = 0\).</p></div>
+<div class="pq-s"><p>\(\int y^{-2}dy = \int x\,dx \Rightarrow -\frac1y = \frac{x^2}{2} + c\); \(c = -1\). [1]</p><p>\(y = \frac{2}{2 - x^2}\). [1]</p><p>Domain \((-\sqrt2, \sqrt2)\). [1]</p></div>
+</div>
+
+<div class="pq" data-level="hard" data-marks="3" data-f="V = \pi\int_a^b y^2\,dx ;; \int\dfrac{1}{1 + x^2}dx = \tan^{-1}x + c">
+<div class="pq-q"><p><strong>Q8.</strong> The region between \(y = \frac{1}{\sqrt{1 + x^2}}\), the axes and \(x = 1\) is rotated about the \(x\)-axis. Find the exact volume.</p></div>
+<div class="pq-s"><p>\(V = \pi\int_0^1\frac{1}{1 + x^2}dx\). [1]</p><p>\(= \pi\big[\tan^{-1}x\big]_0^1\). [1]</p><p>\(= \frac{\pi^2}{4}\). [1]</p></div>
+</div>
+
+<div class="pq" data-level="hard" data-marks="3" data-f="a = v\dfrac{dv}{dx} ;; v = \dfrac{dx}{dt}">
+<div class="pq-q"><p><strong>Q9.</strong> A particle moves in a line with \(v = e^{-x}\), starting at \(x = 0\) when \(t = 0\). Find its acceleration in terms of \(x\), and \(x\) in terms of \(t\).</p></div>
+<div class="pq-s"><p>\(a = v\frac{dv}{dx} = e^{-x}(-e^{-x}) = -e^{-2x}\). [1]</p><p>\(\frac{dt}{dx} = e^x \Rightarrow t = e^x + c\), \(c = -1\). [1]</p><p>\(x = \log_e(t + 1)\). [1]</p></div>
+</div>
+
+<div class="pq" data-level="hard" data-marks="3" data-f="\int\sin^3x\,dx = \int(1 - \cos^2x)\sin x\,dx">
+<div class="pq-q"><p><strong>Q10.</strong> Evaluate \(\displaystyle\int_0^{\pi/2}\sin^3x\,dx\).</p></div>
+<div class="pq-s"><p>\(\int_0^{\pi/2}(1 - \cos^2x)\sin x\,dx\); let \(u = \cos x\). [1]</p><p>\(= \left[-\cos x + \frac{\cos^3x}{3}\right]_0^{\pi/2}\). [1]</p><p>\(= 0 - \left(-1 + \frac13\right) = \frac23\). [1]</p></div>
+</div>
+
+<div class="pq" data-level="hard" data-marks="3" data-f="\text{conjugate root theorem}">
+<div class="pq-q"><p><strong>Q11.</strong> Given that \(1 + i\) is a root of \(P(z) = z^3 - 4z^2 + 6z - 4\), factorise \(P(z)\) over \(\mathbb{C}\).</p></div>
+<div class="pq-s"><p>\(1 - i\) is also a root (real coefficients), so \(z^2 - 2z + 2\) is a factor. [1]</p><p>\(P(z) = (z^2 - 2z + 2)(z - 2)\). [1]</p><p>\(= (z - 1 - i)(z - 1 + i)(z - 2)\). [1]</p></div>
+</div>
+
+<h2>Section 3: hardest styles</h2>
+<div class="pq" data-level="exam" data-marks="4" data-f="\text{induction: base case, assume } n = k\text{, prove } n = k + 1">
+<div class="pq-q"><p><strong>Q12.</strong> Prove by induction that \(7^n - 1\) is divisible by 6 for all \(n \in \mathbb{N}\).</p></div>
+<div class="pq-s"><p>Base: \(n = 1\): \(7 - 1 = 6\), divisible by 6. [1]</p><p>Assume \(7^k - 1 = 6m\) for some integer \(m\). [1]</p><p>\(7^{k+1} - 1 = 7\cdot7^k - 1 = 7(6m + 1) - 1 = 42m + 6 = 6(7m + 1)\). [1]</p><p>So true for \(n = k + 1\); by induction true for all \(n \in \mathbb{N}\). [1]</p></div>
+</div>
+
+<div class="pq" data-level="exam" data-marks="3" data-f="|z - a| = |z - b| \text{ is the perpendicular bisector}">
+<div class="pq-q"><p><strong>Q13.</strong> Find the complex numbers \(z\) satisfying both \(|z - 2| = |z + 2i|\) and \(|z| = 2\).</p></div>
+<div class="pq-s"><p>\((x - 2)^2 + y^2 = x^2 + (y + 2)^2 \Rightarrow y = -x\). [1]</p><p>\(x^2 + y^2 = 4 \Rightarrow 2x^2 = 4\), \(x = \pm\sqrt2\). [1]</p><p>\(z = \sqrt2 - \sqrt2 i\) or \(z = -\sqrt2 + \sqrt2 i\). [1]</p></div>
+</div>
+
+<div class="pq" data-level="exam" data-marks="3" data-f="s = \int_a^b\sqrt{1 + \left(\dfrac{dy}{dx}\right)^2}dx">
+<div class="pq-q"><p><strong>Q14.</strong> Find the length of the curve \(y = \frac23x^{3/2}\) from \(x = 0\) to \(x = 3\).</p></div>
+<div class="pq-s"><p>\(y' = x^{1/2}\), so \(1 + (y')^2 = 1 + x\). [1]</p><p>\(s = \int_0^3(1 + x)^{1/2}dx = \left[\frac23(1 + x)^{3/2}\right]_0^3\). [1]</p><p>\(= \frac23(8 - 1) = \frac{14}{3}\). [1]</p></div>
+</div>
+
+<div class="pq" data-level="exam" data-marks="4" data-f="n = \overrightarrow{AB}\times\overrightarrow{AC} ;; D = \dfrac{|n\cdot p - d|}{|n|}">
+<div class="pq-q"><p><strong>Q15.</strong> Find the Cartesian equation of the plane through \(A(1, 0, 1)\), \(B(2, 1, 0)\) and \(C(0, 1, 2)\), and its distance from the origin.</p></div>
+<div class="pq-s"><p>\(\overrightarrow{AB} = (1, 1, -1)\), \(\overrightarrow{AC} = (-1, 1, 1)\). [1]</p><p>\(\overrightarrow{AB}\times\overrightarrow{AC} = (2, 0, 2)\), so a normal is \((1, 0, 1)\). [1]</p><p>\(x + z = 2\) (check: \(A, B, C\) all give 2). [1]</p><p>Distance \(= \frac{|0 - 2|}{\sqrt2} = \sqrt2\). [1]</p></div>
+</div>
+
+<h2>Marking yourself</h2>
+<p>Total 45 marks. Roughly: 37+ is A+ standard for Exam 1, and 30+ is solid. Fix any Section 1 losses first: those are the cheapest marks. If Q12–Q15 went badly, revisit <a href="#induction">induction</a>, <a href="#complex-plane">loci in the complex plane</a>, <a href="#arc-length">arc length</a> and <a href="#cross-planes">planes</a>.</p>

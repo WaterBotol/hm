@@ -1,0 +1,100 @@
+<!--
+id: da-normal
+title: The normal model and z-scores
+short: Normal model & z-scores
+summary: Bell-shaped distributions and the 68–95–99.7% rule for estimating percentages; what the standard deviation means; standardised values (z-scores) for comparing values across different distributions, and converting a z-score back to a data value.
+keywords: normal distribution, normal model, bell shaped, 68 95 99.7, 68-95-99.7 rule, empirical rule, standard deviation, standardised score, z score, z-score, standard score, comparing scores, percentage above, percentage below, percentile, symmetric
+dotpoints: the normal model for bell-shaped distributions and the use of the 68–95–99.7% rule to estimate percentages and to give meaning to the standard deviation | standardised values (z-scores) and their use in comparing data values across distributions
+-->
+<h2>The 68–95–99.7% rule</h2>
+<p>Many measurements (heights, test scores, masses of manufactured items) have a symmetric, <strong>bell-shaped</strong> distribution. For these, the mean and median are equal, and the standard deviation tells you exactly how the data spread out.</p>
+<aside class="c-def" data-title="The 68–95–99.7% rule"><p>In a bell-shaped (normal) distribution, approximately:</p><ul><li><strong>68%</strong> of values lie within 1 standard deviation of the mean,</li><li><strong>95%</strong> within 2 standard deviations,</li><li><strong>99.7%</strong> within 3 standard deviations.</li></ul></aside>
+<figure class="fig">
+<svg viewBox="0 0 440 200" width="440" role="img" aria-label="Normal curve divided at the mean and at 1, 2 and 3 standard deviations either side, labelled with the percentages 0.15, 2.35, 13.5, 34, 34, 13.5, 2.35 and 0.15">
+  <path d="M162.9 150 L162.9 83.3 L170.0 75.0 L177.1 67.0 L184.3 59.5 L191.4 52.9 L198.6 47.5 L205.7 43.4 L212.9 40.9 L220.0 40.0 L227.1 40.9 L234.3 43.4 L241.4 47.5 L248.6 52.9 L255.7 59.5 L262.9 67.0 L270.0 75.0 L277.1 83.3 L277.1 150 Z" class="f-accsoft"/>
+  <path d="M20.0 149.8 L34.3 149.4 L48.6 148.8 L62.9 147.5 L77.1 145.2 L91.4 141.2 L105.7 135.1 L120.0 126.2 L134.3 114.3 L148.6 99.6 L162.9 83.3 L177.1 67.0 L191.4 52.9 L205.7 43.4 L220.0 40.0 L234.3 43.4 L248.6 52.9 L262.9 67.0 L277.1 83.3 L291.4 99.6 L305.7 114.3 L320.0 126.2 L334.3 135.1 L348.6 141.2 L362.9 145.2 L377.1 147.5 L391.4 148.8 L405.7 149.4 L420.0 149.8" class="s-acc"/>
+  <line x1="15" y1="150" x2="425" y2="150" class="s-ink"/>
+  <g class="s-dash"><line x1="48.6" y1="148.8" x2="48.6" y2="155"/><line x1="105.7" y1="135.1" x2="105.7" y2="155"/><line x1="162.9" y1="83.3" x2="162.9" y2="155"/><line x1="220" y1="40" x2="220" y2="155"/><line x1="277.1" y1="83.3" x2="277.1" y2="155"/><line x1="334.3" y1="135.1" x2="334.3" y2="155"/><line x1="391.4" y1="148.8" x2="391.4" y2="155"/></g>
+  <g class="t-sm" text-anchor="middle"><text x="191" y="125">34%</text><text x="249" y="125">34%</text><text x="134" y="142">13.5%</text><text x="306" y="142">13.5%</text><text x="77" y="132">2.35%</text><text x="363" y="132">2.35%</text><text x="30" y="132">0.15%</text><text x="410" y="132">0.15%</text></g>
+  <g class="t-sm t-mut" text-anchor="middle"><text x="48.6" y="168">x̄ − 3s</text><text x="105.7" y="168">x̄ − 2s</text><text x="162.9" y="168">x̄ − s</text><text x="220" y="168">x̄</text><text x="277.1" y="168">x̄ + s</text><text x="334.3" y="168">x̄ + 2s</text><text x="391.4" y="168">x̄ + 3s</text></g>
+  <g class="t-sm t-acc" text-anchor="middle"><text x="48.6" y="184">z = −3</text><text x="105.7" y="184">−2</text><text x="162.9" y="184">−1</text><text x="220" y="184">0</text><text x="277.1" y="184">1</text><text x="334.3" y="184">2</text><text x="391.4" y="184">3</text></g>
+</svg>
+<figcaption>Split the 68%, 95% and 99.7% in half and subtract to get each band: 34%, 13.5%, 2.35%, 0.15%.</figcaption>
+</figure>
+<div class="sim" data-sim="gmNormal"></div>
+<p>Because the curve is symmetric, 50% of values are above the mean. Combine bands to answer any “what percentage” question:</p>
+<div class="tbl"><table>
+<thead><tr><th>Region</th><th>Percentage</th><th>How</th></tr></thead>
+<tbody>
+<tr><td>above \(\bar x + s\)</td><td>16%</td><td>\(50\% - 34\%\)</td></tr>
+<tr><td>above \(\bar x + 2s\)</td><td>2.5%</td><td>\(\frac{100\% - 95\%}{2}\)</td></tr>
+<tr><td>above \(\bar x + 3s\)</td><td>0.15%</td><td>\(\frac{100\% - 99.7\%}{2}\)</td></tr>
+<tr><td>between \(\bar x - s\) and \(\bar x + 2s\)</td><td>81.5%</td><td>\(34\% + 47.5\%\)</td></tr>
+<tr><td>between \(\bar x - 2s\) and \(\bar x + s\)</td><td>81.5%</td><td>\(47.5\% + 34\%\)</td></tr>
+</tbody></table></div>
+<aside class="c-trap" data-title="Trick alert: only for bell-shaped data"><p>The 68–95–99.7% rule only works when the distribution is approximately symmetric and bell-shaped. For skewed data it gives wrong answers, and VCAA will not expect you to use it.</p></aside>
+
+<div class="we" data-title="Percentages with the 68–95–99.7% rule" data-marks="2">
+<div class="we-q"><p>The lengths of a species of fish are approximately normally distributed with mean 42 cm and standard deviation 5 cm. What percentage of these fish are between 37 cm and 52 cm long? In a catch of 400 fish, how many would you expect to be longer than 52 cm?</p></div>
+<div class="we-t"><p>Turn each length into a number of standard deviations from the mean, then add the band percentages.</p></div>
+<div class="we-s"><p>37 = 42 − 5 is one sd below; 52 = 42 + 10 is two sd above. Between them: 34% + 47.5% = 81.5%.</p></div>
+<div class="we-s"><p>Above two sd: 2.5%, and 2.5% of 400 = 10.</p></div>
+<div class="we-a"><p><strong>81.5%</strong> of fish; about <strong>10 fish</strong> longer than 52 cm.</p></div>
+</div>
+
+<h2>Standardised scores (z-scores)</h2>
+<p>A <strong>z-score</strong> says how many standard deviations a value is above (positive) or below (negative) the mean. It lets you compare values from distributions with different means and spreads.</p>
+<div class="eq"><div class="eq-label">Standardised score (on the formula sheet)</div>\[ z = \frac{x - \bar x}{s} \qquad\Longleftrightarrow\qquad x = \bar x + z\,s \]</div>
+<aside class="c-key" data-title="Key idea: higher z means relatively better"><p>A test mark of 72 in a test with mean 60 and sd 8 has \(z = 1.5\). A mark of 76 in a test with mean 70 and sd 5 has \(z = 1.2\). The 72 is the better <em>relative</em> performance, even though 76 is the higher mark.</p></aside>
+
+<div class="we" data-title="Comparing with z-scores" data-marks="3">
+<div class="we-q"><p>Mia ran 100 m in 12.8 s (her age group: mean 14.0 s, sd 0.6 s) and did a long jump of 4.9 m (mean 4.4 m, sd 0.4 m). In which event did she perform better relative to her age group?</p></div>
+<div class="we-t"><p>For running, a <em>lower</em> time is better, so a negative z-score is good there. Compare how far from the mean each result is in the good direction.</p></div>
+<div class="we-s" data-f="z = \dfrac{x - \bar x}{s}"><p>Sprint: \(z = \frac{12.8 - 14.0}{0.6} = -2\) (2 sd faster than average).</p></div>
+<div class="we-s" data-f="z = \dfrac{x - \bar x}{s}"><p>Long jump: \(z = \frac{4.9 - 4.4}{0.4} = 1.25\) (1.25 sd further than average).</p></div>
+<div class="we-a"><p>The <strong>sprint</strong>: she was 2 standard deviations better than average there, compared with 1.25 in the long jump.</p></div>
+</div>
+<div class="we" data-title="From a z-score back to a value" data-marks="1">
+<div class="we-q"><p>Exam marks have mean 64 and sd 9. What mark corresponds to a standardised score of −1.4?</p></div>
+<div class="we-t"><p>Rearrange the z-score formula: \(x = \bar x + z s\).</p></div>
+<div class="we-s" data-f="x = \bar x + z\,s"><p>\(x = 64 + (-1.4)(9) = 64 - 12.6\).</p></div>
+<div class="we-a"><p><strong>51.4</strong> marks.</p></div>
+</div>
+<aside class="c-exam" data-title="Exam tip: combine the two ideas"><p>A common question gives a z-score and asks for a percentage: \(z = 2\) means 2.5% of values are higher; \(z = -1\) means 16% are lower. Draw the bell curve and label the bands every time: it takes 10 seconds and prevents most errors.</p></aside>
+
+<h2>Practice</h2>
+<div class="mcq" data-ans="C" data-level="core">
+<div class="mcq-q"><p>Heights are approximately normal with mean 170 cm and sd 6 cm. The percentage of heights above 182 cm is closest to</p></div>
+<ol><li>16%</li><li>5%</li><li>2.5%</li><li>0.15%</li></ol>
+<div class="mcq-x"><p>182 = 170 + 2 × 6, two sd above: 2.5%.</p></div>
+</div>
+<div class="mcq" data-ans="B" data-level="core">
+<div class="mcq-q"><p>A score of 58 in a test with mean 70 and sd 8 has a standardised score of</p></div>
+<ol><li>1.5</li><li>−1.5</li><li>−12</li><li>0.67</li></ol>
+<div class="mcq-x"><p>\(\frac{58 - 70}{8} = -1.5\).</p></div>
+</div>
+<div class="mcq" data-ans="D" data-level="trick">
+<div class="mcq-q"><p>Pulse rates are bell-shaped with mean 72 and sd 6. The percentage of pulse rates between 60 and 78 is</p></div>
+<ol><li>68%</li><li>95%</li><li>47.5%</li><li>81.5%</li></ol>
+<div class="mcq-x"><p>60 is 2 sd below (47.5% between 60 and 72) and 78 is 1 sd above (34%): 81.5%.</p></div>
+</div>
+<div class="mcq" data-ans="A" data-level="hard">
+<div class="mcq-q"><p>In a bell-shaped distribution with mean 50, 16% of values are below 38. The standard deviation is closest to</p></div>
+<ol><li>12</li><li>6</li><li>16</li><li>24</li></ol>
+<div class="mcq-x"><p>16% below means one sd below the mean: \(50 - s = 38\), so \(s = 12\).</p></div>
+</div>
+<div class="pq" data-level="core" data-marks="2">
+<div class="pq-q"><p>The masses of eggs from a farm are approximately normal with mean 60 g and sd 4 g. Of 1000 eggs, how many would you expect to weigh less than 52 g?</p></div>
+<div class="pq-s"><p>52 = 60 − 2 × 4, two sd below the mean, so 2.5% are lighter. [1]</p><p>2.5% of 1000 = 25 eggs. [1]</p></div>
+</div>
+<div class="pq" data-level="exam" data-marks="3">
+<div class="pq-q"><p>Josh scored 74 in Maths (class mean 66, sd 5) and 80 in English (class mean 71, sd 6). (a) Find both standardised scores. (b) In which subject did he do relatively better? (c) What English mark would have given the same standardised score as his Maths mark?</p></div>
+<div class="pq-s"><p>(a) Maths \(z = \frac{74 - 66}{5} = 1.6\); English \(z = \frac{80 - 71}{6} = 1.5\). [1]</p><p>(b) Maths, since 1.6 &gt; 1.5. [1]</p><p>(c) \(x = 71 + 1.6 \times 6 = 80.6\). [1]</p></div>
+</div>
+<h2>Summary</h2>
+<ul>
+  <li data-q="State the 68–95–99.7% rule. What percentages are in each band (between the mean and 1 sd, 1 to 2 sd, 2 to 3 sd, beyond 3 sd)?">68%, 95%, 99.7% within 1, 2, 3 sd. Bands each side: 34%, 13.5%, 2.35%, 0.15%.</li>
+  <li data-q="What percentage of values is above 1 sd above the mean? Above 2 sd above the mean?">16% above \(\bar x + s\); 2.5% above \(\bar x + 2s\).</li>
+  <li data-q="Write the z-score formula and its rearrangement for x. What does a negative z-score mean?">\(z = \frac{x - \bar x}{s}\), \(x = \bar x + zs\). Negative means below the mean.</li>
+  <li data-q="When can you use the 68–95–99.7% rule, and how do z-scores compare values across distributions?">Only for bell-shaped data. The higher z-score is the better relative performance (for times, lower is better).</li>
+</ul>

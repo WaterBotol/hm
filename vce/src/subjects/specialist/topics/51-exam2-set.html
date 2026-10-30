@@ -1,0 +1,92 @@
+<!--
+id: exam2-set
+title: Exam 2 practice set (CAS)
+short: Exam 2 practice set
+summary: Twelve Exam 2-style multiple-choice questions and four multi-part extended-response questions combining complex numbers, differential equations, vectors and inference, with full CAS-assumed solutions.
+keywords: exam 2, CAS, technology active, multiple choice, extended response, practice exam, mixed, hardest questions, section a, section b, exam practice, specialist
+dotpoints: mixed practice across all areas of study with technology
+-->
+<aside class="c-exam" data-title="How to use this set"><p>Specialist Exam 2 is 2 hours (plus 15 min reading): Section A is 20 multiple-choice questions (1 mark each); Section B is extended response (about 60 marks). Budget about 1.5 minutes per MCQ and per mark. Use CAS for heavy algebra, but write the set-up in Section B: that's where the method marks are.</p></aside>
+
+<h2>Section A: multiple choice</h2>
+<div class="mcq" data-ans="D" data-level="core">
+<div class="mcq-q"><p><strong>1.</strong> The negation of "for all real \(x\), \(x^2 \ge x\)" is</p></div>
+<ol><li>for all real \(x\), \(x^2 &lt; x\)</li><li>there exists real \(x\) with \(x^2 \ge x\)</li><li>for all real \(x\), \(x^2 \le x\)</li><li>there exists real \(x\) with \(x^2 &lt; x\)</li><li>there is no real \(x\) with \(x^2 &lt; x\)</li></ol>
+<div class="mcq-x"><p>Negation swaps \(\forall\) to \(\exists\) and negates the inequality. (It's true: \(x = \frac12\).)</p></div>
+</div>
+<div class="mcq" data-ans="A" data-level="core">
+<div class="mcq-q"><p><strong>2.</strong> The maximal domain of \(f(x) = \sin^{-1}(2x - 1)\) is</p></div>
+<ol><li>\([0, 1]\)</li><li>\([-1, 1]\)</li><li>\([0, 2]\)</li><li>\(\left[-\frac12, \frac12\right]\)</li><li>\((0, 1)\)</li></ol>
+<div class="mcq-x"><p>\(-1 \le 2x - 1 \le 1 \Rightarrow 0 \le x \le 1\).</p></div>
+</div>
+<div class="mcq" data-ans="C" data-level="hard">
+<div class="mcq-q"><p><strong>3.</strong> The asymptotes of \(y = \dfrac{x^2 + 1}{x - 1}\) are</p></div>
+<ol><li>\(x = 1\) and \(y = 1\)</li><li>\(x = 1\) and \(y = x\)</li><li>\(x = 1\) and \(y = x + 1\)</li><li>\(x = -1\) and \(y = x - 1\)</li><li>\(x = 1\) only</li></ol>
+<div class="mcq-x"><p>\(\frac{x^2 + 1}{x - 1} = x + 1 + \frac{2}{x - 1}\).</p></div>
+</div>
+<div class="mcq" data-ans="B" data-level="trick">
+<div class="mcq-q"><p><strong>4.</strong> \(\operatorname{Arg}\big((-1 + i)^5\big)\) is</p></div>
+<ol><li>\(\frac{15\pi}{4}\)</li><li>\(-\frac\pi4\)</li><li>\(\frac{3\pi}{4}\)</li><li>\(\frac\pi4\)</li><li>\(-\frac{3\pi}{4}\)</li></ol>
+<div class="mcq-x"><p>\(5\times\frac{3\pi}{4} = \frac{15\pi}{4}\), then subtract \(4\pi\) to land in \((-\pi, \pi]\).</p></div>
+</div>
+<div class="mcq" data-ans="A" data-level="core">
+<div class="mcq-q"><p><strong>5.</strong> Euler's method with step 0.5 is applied to \(\frac{dy}{dx} = \sqrt{x + y}\), \(y(0) = 1\). The estimate of \(y(1)\) is closest to</p></div>
+<ol><li>2.207</li><li>2.000</li><li>2.250</li><li>1.500</li><li>2.414</li></ol>
+<div class="mcq-x"><p>\(y_1 = 1 + 0.5(1) = 1.5\); \(y_2 = 1.5 + 0.5\sqrt{2} \approx 2.207\).</p></div>
+</div>
+<div class="mcq" data-ans="E" data-level="hard">
+<div class="mcq-q"><p><strong>6.</strong> The region inside \(\frac{x^2}{9} + \frac{y^2}{4} = 1\) is rotated about the \(x\)-axis. The volume is</p></div>
+<ol><li>\(24\pi\)</li><li>\(6\pi\)</li><li>\(12\pi\)</li><li>\(36\pi\)</li><li>\(16\pi\)</li></ol>
+<div class="mcq-x"><p>\(\pi\int_{-3}^3 4\left(1 - \frac{x^2}{9}\right)dx = 16\pi\) (\(=\frac43\pi ab^2\)).</p></div>
+</div>
+<div class="mcq" data-ans="C" data-level="trick">
+<div class="mcq-q"><p><strong>7.</strong> \(X \sim N(20, 3^2)\) and \(Y \sim N(15, 4^2)\) are independent. The distribution of \(2X - Y\) is</p></div>
+<ol><li>\(N(25, 2^2)\)</li><li>\(N(25, 5^2)\)</li><li>\(N(25, 52)\)</li><li>\(N(25, 20)\)</li><li>\(N(5, 52)\)</li></ol>
+<div class="mcq-x"><p>Mean \(40 - 15 = 25\); variance \(4(9) + 16 = 52\).</p></div>
+</div>
+<div class="mcq" data-ans="B" data-level="core">
+<div class="mcq-q"><p><strong>8.</strong> A random sample of 64 gives \(\bar x = 50\), with \(\sigma = 8\). An approximate 95% confidence interval for \(\mu\) is</p></div>
+<ol><li>\((34.32, 65.68)\)</li><li>\((48.04, 51.96)\)</li><li>\((49.75, 50.25)\)</li><li>\((48.36, 51.64)\)</li><li>\((42, 58)\)</li></ol>
+<div class="mcq-x"><p>\(50 \pm 1.96\times1\). D uses 90%.</p></div>
+</div>
+<div class="mcq" data-ans="D" data-level="hard">
+<div class="mcq-q"><p><strong>9.</strong> For \(H_0: \mu = 100\), \(H_1: \mu &gt; 100\), with \(\sigma = 12\), \(n = 36\) and \(\bar x = 103\), the p-value is closest to</p></div>
+<ol><li>0.134</li><li>0.401</li><li>0.023</li><li>0.067</li><li>0.933</li></ol>
+<div class="mcq-x"><p>\(z = \frac{3}{2} = 1.5\); \(\Pr(Z &gt; 1.5) \approx 0.067\). A is the two-tailed value.</p></div>
+</div>
+<div class="mcq" data-ans="A" data-level="core">
+<div class="mcq-q"><p><strong>10.</strong> A particle has \(\underset{\sim}{r}(t) = 2\cos t\,\underset{\sim}{i} + 2\sin t\,\underset{\sim}{j} + t\,\underset{\sim}{k}\). Its speed is</p></div>
+<ol><li>\(\sqrt5\)</li><li>3</li><li>\(\sqrt3\)</li><li>5</li><li>varies with \(t\)</li></ol>
+<div class="mcq-x"><p>\(|\underset{\sim}{v}| = \sqrt{4\sin^2t + 4\cos^2t + 1} = \sqrt5\).</p></div>
+</div>
+<div class="mcq" data-ans="E" data-level="core">
+<div class="mcq-q"><p><strong>11.</strong> \(\underset{\sim}{i} + 2\underset{\sim}{j} - \underset{\sim}{k}\) and \(2\underset{\sim}{i} + m\underset{\sim}{j} + 4\underset{\sim}{k}\) are perpendicular when \(m =\)</p></div>
+<ol><li>−1</li><li>2</li><li>−3</li><li>3</li><li>1</li></ol>
+<div class="mcq-x"><p>\(2 + 2m - 4 = 0\).</p></div>
+</div>
+<div class="mcq" data-ans="C" data-level="trick">
+<div class="mcq-q"><p><strong>12.</strong> A particle moves so that \(v^2 = 16 - x^2\). Its acceleration when \(x = 2\) is</p></div>
+<ol><li>\(2\sqrt3\)</li><li>12</li><li>\(-2\)</li><li>\(-4\)</li><li>0</li></ol>
+<div class="mcq-x"><p>\(a = \frac{d}{dx}\left(\frac12v^2\right) = \frac{d}{dx}\left(8 - \frac{x^2}{2}\right) = -x\).</p></div>
+</div>
+
+<h2>Section B: extended response</h2>
+<div class="pq" data-level="exam" data-marks="7" data-f="z^n = a\operatorname{cis}\phi \Rightarrow z = a^{1/n}\operatorname{cis}\left(\dfrac{\phi + 2k\pi}{n}\right) ;; (z - \alpha)(z - \bar\alpha) = z^2 - 2\operatorname{Re}(\alpha)z + |\alpha|^2">
+<div class="pq-q"><p><strong>Q1 (complex numbers).</strong> (a) Find the four solutions of \(z^4 = -16\) in Cartesian form. (b) The solutions form a square on an Argand diagram. Find its area. (c) Hence write \(z^4 + 16\) as a product of two real quadratic factors.</p></div>
+<div class="pq-s"><p>(a) \(-16 = 16\operatorname{cis}\pi\), so \(z = 2\operatorname{cis}\left(\frac\pi4 + \frac{k\pi}{2}\right)\). [1] Solutions \(\pm\sqrt2 \pm \sqrt2 i\). [2]</p><p>(b) Side from \(\sqrt2 + \sqrt2 i\) to \(-\sqrt2 + \sqrt2 i\) is \(2\sqrt2\). [1] Area 8. [1]</p><p>(c) Pair conjugates: \((z^2 - 2\sqrt2 z + 4)(z^2 + 2\sqrt2 z + 4)\). [2]</p></div>
+</div>
+<div class="pq" data-level="exam" data-marks="8" data-f="a = \dfrac{dv}{dt} ;; \text{terminal velocity: } a = 0 ;; x = \int v\,dt">
+<div class="pq-q"><p><strong>Q2 (DEs and kinematics).</strong> An object falls from rest with acceleration \(a = 9.8 - 0.2v\) m/s² (down positive). (a) Find its terminal velocity. (b) Find \(v\) in terms of \(t\). (c) Find the distance fallen in the first 5 s. (d) Find when it reaches 95% of terminal velocity.</p></div>
+<div class="pq-s"><p>(a) \(0 = 9.8 - 0.2v \Rightarrow v_T = 49\) m/s. [1]</p><p>(b) \(\frac{dv}{dt} = 0.2(49 - v)\); \(\int\frac{dv}{49 - v} = \int 0.2\,dt\). [1] \(49 - v = 49e^{-0.2t}\). [1] \(v = 49(1 - e^{-0.2t})\). [1]</p><p>(c) \(\int_0^5 49(1 - e^{-0.2t})\,dt = 49\big[t + 5e^{-0.2t}\big]_0^5\). [1] \(= 245e^{-1} \approx 90.13\) m. [1]</p><p>(d) \(e^{-0.2t} = 0.05 \Rightarrow t = 5\log_e 20\). [1] \(\approx 14.98\) s. [1]</p></div>
+</div>
+<div class="pq" data-level="exam" data-marks="6" data-f="\text{collide: } r_A(t) = r_B(t) ;; \cos\theta = \dfrac{a\cdot b}{|a||b|}">
+<div class="pq-q"><p><strong>Q3 (vectors).</strong> Two drones have \(\underset{\sim}{r}_A(t) = (1 + t)\underset{\sim}{i} + 2t\underset{\sim}{j} + (3 - t)\underset{\sim}{k}\) and \(\underset{\sim}{r}_B(t) = (3 - t)\underset{\sim}{i} + (1 + t)\underset{\sim}{j} + 2t\underset{\sim}{k}\), \(t \ge 0\). (a) Show they collide, and find where. (b) Find the angle between their velocities, to 0.1°. (c) Find their distance apart at \(t = 0\).</p></div>
+<div class="pq-s"><p>(a) \(i\): \(1 + t = 3 - t \Rightarrow t = 1\). Check \(j\): \(2 = 2\) ✓, \(k\): \(2 = 2\) ✓. [1] Collide at \((2, 2, 2)\) when \(t = 1\). [1]</p><p>(b) \(\underset{\sim}{v}_A = (1, 2, -1)\), \(\underset{\sim}{v}_B = (-1, 1, 2)\); dot \(= -1\), magnitudes \(\sqrt6\). [1] \(\cos\theta = -\frac16\), \(\theta \approx 99.6°\). [1]</p><p>(c) \(\underset{\sim}{r}_B(0) - \underset{\sim}{r}_A(0) = (2, 1, -3)\). [1] Distance \(\sqrt{14}\). [1]</p></div>
+</div>
+<div class="pq" data-level="exam" data-marks="8" data-f="z = \dfrac{\bar x - \mu_0}{\sigma/\sqrt n} ;; \bar x \pm 1.96\dfrac{\sigma}{\sqrt n} ;; \operatorname{Var}(X - Y) = \operatorname{Var}X + \operatorname{Var}Y">
+<div class="pq-q"><p><strong>Q4 (inference).</strong> A café machine fills cups with volume \(N(\mu, 5^2)\) mL; the claim is \(\mu = 250\). A sample of 25 cups has \(\bar x = 247.6\). (a) State hypotheses to test whether the mean differs from the claim. (b) Find the p-value. (c) Conclude at the 5% and 1% levels. (d) Find a 95% CI for \(\mu\). (e) If \(\mu = 250\), find the probability that one cup has more than 5 mL more than another.</p></div>
+<div class="pq-s"><p>(a) \(H_0: \mu = 250\), \(H_1: \mu \ne 250\). [1]</p><p>(b) \(z = \frac{-2.4}{1} = -2.4\). [1] \(p = 2\Pr(Z &lt; -2.4) \approx 0.0164\). [1]</p><p>(c) Reject \(H_0\) at 5% (evidence the mean differs from 250 mL); do not reject at 1%. [1]</p><p>(d) \(247.6 \pm 1.96\): \((245.64, 249.56)\). [1]</p><p>(e) \(D = X_1 - X_2 \sim N(0, 50)\). [1] \(\Pr(D &gt; 5) = \Pr(Z &gt; 0.7071)\). [1] \(\approx 0.2398\). [1]</p></div>
+</div>
+
+<h2>How did you go?</h2>
+<p>Section A is 12 marks and Section B is 29. Lost marks in Section A usually come from one specific trap per question: re-read the explanations. In Section B, check you wrote a set-up line before every CAS answer. Weak spots: <a href="#de-moivre">roots of complex numbers</a>, <a href="#de-solve">solving DEs</a>, <a href="#vector-calculus">vector calculus</a>, <a href="#hypothesis">hypothesis tests</a>.</p>

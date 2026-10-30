@@ -1,0 +1,100 @@
+<!--
+id: da-scatter
+title: Scatterplots, correlation and causation
+short: Scatterplots & correlation
+summary: Scatterplots for two numerical variables, described by direction, form and strength; Pearson's correlation coefficient r, when it can be used and how to interpret it; and why association is not causation (confounding, common response, coincidence, observation vs experiment).
+keywords: scatterplot, scatter plot, scatter graph, direction, form, strength, positive, negative, linear, non-linear, strong, moderate, weak, outlier, Pearson correlation coefficient, correlation coefficient, r, correlation, causation, cause and effect, confounding variable, lurking variable, common response, coincidence, observational study, experiment, association is not causation
+dotpoints: scatterplots and their use in identifying and qualitatively describing the association between two numerical variables in terms of direction (positive/negative), form (linear/non-linear) and strength (strong/moderate/weak) | Pearson correlation coefficient, r, and its calculation and interpretation | cause and effect; the difference between observation and experimentation when collecting data and the need for experimentation to definitively determine cause and effect
+-->
+<h2>Describing a scatterplot</h2>
+<p>A <strong>scatterplot</strong> shows the association between two numerical variables, with the explanatory variable on the horizontal axis. Describe it in three words, always in this order.</p>
+<div class="tbl"><table>
+<thead><tr><th>Feature</th><th>Options</th><th>What to look for</th></tr></thead>
+<tbody>
+<tr><td><strong>Direction</strong></td><td>positive / negative / no association</td><td>Does the response tend to increase or decrease as the explanatory variable increases?</td></tr>
+<tr><td><strong>Form</strong></td><td>linear / non-linear</td><td>Do the points follow a straight line or a curve?</td></tr>
+<tr><td><strong>Strength</strong></td><td>strong / moderate / weak</td><td>How tightly do the points cluster around the pattern?</td></tr>
+</tbody></table></div>
+<figure class="fig">
+<svg viewBox="0 0 420 200" width="420" role="img" aria-label="Scatterplot of test score against hours of study: twelve points rising steadily from about 48 at 1 hour to 92 at 12 hours, a strong positive linear association">
+  <line x1="50" y1="170" x2="400" y2="170" class="s-ink"/><line x1="50" y1="20" x2="50" y2="170" class="s-ink"/>
+  <g class="t-sm t-mut" text-anchor="middle"><text x="134" y="186">3</text><text x="218" y="186">6</text><text x="302" y="186">9</text><text x="386" y="186">12</text></g>
+  <g class="t-sm t-mut" text-anchor="end"><text x="44" y="174">40</text><text x="44" y="124">60</text><text x="44" y="74">80</text><text x="44" y="24">100</text></g>
+  <text x="225" y="199" class="t-sm" text-anchor="middle">hours of study (explanatory)</text>
+  <text x="14" y="95" class="t-sm" text-anchor="middle" transform="rotate(-90 14 95)">test score (response)</text>
+  <g class="f-acc"><circle cx="78" cy="150" r="4"/><circle cx="106" cy="132.5" r="4"/><circle cx="134" cy="140" r="4"/><circle cx="162" cy="112.5" r="4"/><circle cx="190" cy="117.5" r="4"/><circle cx="218" cy="95" r="4"/><circle cx="246" cy="105" r="4"/><circle cx="274" cy="75" r="4"/><circle cx="302" cy="85" r="4"/><circle cx="330" cy="57.5" r="4"/><circle cx="358" cy="70" r="4"/><circle cx="386" cy="40" r="4"/></g>
+</svg>
+<figcaption>A strong, positive, linear association (r = 0.963). Students who study more tend to score higher.</figcaption>
+</figure>
+<aside class="c-exam" data-title="Exam tip: the full description"><p>“There is a <strong>strong, positive, linear</strong> association between hours of study and test score.” Name both variables. If there is an outlier, mention it too. If a question asks only for one feature (for example, the form), give just that.</p></aside>
+
+<h2>Pearson's correlation coefficient, r</h2>
+<p>The correlation coefficient \(r\) measures the <strong>strength and direction of a linear association</strong>, from \(-1\) (perfect negative) through 0 (no linear association) to \(+1\) (perfect positive). Your CAS gives \(r\) with the regression output.</p>
+<div class="eq"><div class="eq-label">Definition (calculated with technology)</div>\[ r = \frac{1}{n - 1}\sum \left(\frac{x - \bar x}{s_x}\right)\left(\frac{y - \bar y}{s_y}\right) \]<p>The average product of the z-scores: points in the top-right and bottom-left make \(r\) positive.</p></div>
+<div class="tbl"><table>
+<thead><tr><th>Value of r (a common guide)</th><th>Strength of linear association</th></tr></thead>
+<tbody>
+<tr><td>\(0.75 \le |r| \le 1\)</td><td>strong</td></tr>
+<tr><td>\(0.5 \le |r| &lt; 0.75\)</td><td>moderate</td></tr>
+<tr><td>\(0.25 \le |r| &lt; 0.5\)</td><td>weak</td></tr>
+<tr><td>\(|r| &lt; 0.25\)</td><td>no (linear) association</td></tr>
+</tbody></table></div>
+<aside class="c-trap" data-title="Trick alert: three conditions before using r"><p>\(r\) is only meaningful when (1) both variables are numerical, (2) the association is <strong>linear</strong>, and (3) there are <strong>no clear outliers</strong>. A curved scatterplot can have a perfect relationship and \(r \approx 0\); one outlier can turn a weak \(r\) into a strong one.</p></aside>
+<aside class="c-trap" data-title="Trick alert: r is not the gradient"><p>A steep line doesn't mean a large \(r\). \(r\) measures how close the points are to a line, not how steep it is. Swapping the axes doesn't change \(r\).</p></aside>
+
+<div class="we" data-title="Interpreting r" data-marks="2">
+<div class="we-q"><p>For 15 used cars, the correlation between age (years) and price ($) is \(r = -0.68\). Describe the association, assuming the scatterplot is linear with no outliers.</p></div>
+<div class="we-t"><p>The sign of \(r\) gives the direction; its size, compared with the guide, gives the strength.</p></div>
+<div class="we-s"><p>Negative sign: price tends to decrease as age increases. \(0.5 \le 0.68 &lt; 0.75\): moderate.</p></div>
+<div class="we-a"><p>A <strong>moderate, negative, linear</strong> association: older cars tend to be cheaper.</p></div>
+</div>
+
+<h2>Association is not causation</h2>
+<p>A strong association, even \(r = 0.99\), never proves that one variable <em>causes</em> the other. There are other possible explanations:</p>
+<div class="tbl"><table>
+<thead><tr><th>Explanation</th><th>What happens</th><th>Example</th></tr></thead>
+<tbody>
+<tr><td><strong>Common response</strong></td><td>A third variable drives both</td><td>Ice-cream sales and drownings both rise with hot weather</td></tr>
+<tr><td><strong>Confounding variable</strong></td><td>Another variable is mixed in with the explanatory one, so their effects can't be separated</td><td>People who drink coffee also smoke more, so a link between coffee and heart disease might be due to smoking</td></tr>
+<tr><td><strong>Coincidence</strong></td><td>The association is a chance pattern</td><td>The number of films an actor made each year and a country's cheese consumption</td></tr>
+<tr><td><strong>Reverse direction</strong></td><td>The response actually drives the “explanatory” variable</td><td>Cities with more police have more crime: more crime leads to hiring more police</td></tr>
+</tbody></table></div>
+<aside class="c-key" data-title="Key idea: only experiments show cause and effect"><p>In an <strong>observational study</strong> you record what happens without intervening, so other variables can't be controlled. In an <strong>experiment</strong> you deliberately change the explanatory variable (ideally with random allocation and a control group) while keeping everything else the same. Only a well-designed experiment can establish cause and effect.</p></aside>
+<aside class="c-exam" data-title="Exam tip: the causation answer"><p>“No. Although there is a strong positive association, this does not mean that X causes Y. A possible explanation is a third variable, such as Z, that affects both.” Always name a plausible third variable when asked for one.</p></aside>
+
+<h2>Practice</h2>
+<div class="mcq" data-ans="B" data-level="core">
+<div class="mcq-q"><p>A scatterplot shows points closely following a straight line sloping down from left to right. The best estimate of r is</p></div>
+<ol><li>0.9</li><li>−0.9</li><li>−0.3</li><li>0</li></ol>
+<div class="mcq-x"><p>Sloping down: negative. Close to a line: strong.</p></div>
+</div>
+<div class="mcq" data-ans="D" data-level="core">
+<div class="mcq-q"><p>Using the common guide, r = 0.42 indicates</p></div>
+<ol><li>a strong positive linear association</li><li>a moderate positive linear association</li><li>no association</li><li>a weak positive linear association</li></ol>
+<div class="mcq-x"><p>\(0.25 \le 0.42 &lt; 0.5\): weak.</p></div>
+</div>
+<div class="mcq" data-ans="C" data-level="trick">
+<div class="mcq-q"><p>The points on a scatterplot lie exactly on a U-shaped curve. Which statement is true?</p></div>
+<ol><li>r = 1 because the relationship is perfect</li><li>r = −1</li><li>r may be close to 0, so it is not a suitable measure here</li><li>r cannot be calculated for this data</li></ol>
+<div class="mcq-x"><p>\(r\) only measures linear association. A symmetric U-shape gives \(r\) near 0 even though the relationship is perfect.</p></div>
+</div>
+<div class="mcq" data-ans="A" data-level="hard">
+<div class="mcq-q"><p>Across Australian towns, the number of doctors is strongly positively associated with the number of deaths each year. The most likely explanation is</p></div>
+<ol><li>both depend on the population of the town</li><li>doctors cause deaths</li><li>deaths cause more doctors to be hired</li><li>it is a coincidence</li></ol>
+<div class="mcq-x"><p>Common response: larger towns have more doctors and more deaths.</p></div>
+</div>
+<div class="pq" data-level="core" data-marks="2">
+<div class="pq-q"><p>For 20 days, the correlation between daily maximum temperature and the number of drinks sold at a café is \(r = 0.86\). Describe the association, stating any assumption you make.</p></div>
+<div class="pq-s"><p>A strong, positive association: on hotter days more drinks tend to be sold. [1]</p><p>Calling it linear assumes the scatterplot shows a linear pattern with no outliers. [1]</p></div>
+</div>
+<div class="pq" data-level="exam" data-marks="2">
+<div class="pq-q"><p>A newspaper says: “Students who eat breakfast get better marks, so eating breakfast improves your marks.” Explain why this conclusion is not justified, and name a possible confounding variable.</p></div>
+<div class="pq-s"><p>The data come from observation, so an association between breakfast and marks does not show cause and effect. [1]</p><p>A possible confounding variable is family routine or income (for example, students with more structured home lives may both eat breakfast and study more). [1]</p></div>
+</div>
+<h2>Summary</h2>
+<ul>
+  <li data-q="Which three features describe a scatterplot, and in what order are they usually written?">Direction (positive/negative), form (linear/non-linear), strength (strong/moderate/weak), plus any outliers.</li>
+  <li data-q="What does Pearson's r measure? Give the common strength guide.">The strength and direction of a linear association, from −1 to 1. Strong ≥ 0.75, moderate 0.5–0.75, weak 0.25–0.5, none below 0.25 (in absolute value).</li>
+  <li data-q="What three conditions must hold before r is meaningful?">Both variables numerical, the association linear, and no clear outliers.</li>
+  <li data-q="Why doesn't a strong association prove cause and effect? What else could explain it, and what kind of study can show causation?">Possible common response, confounding variable, coincidence or reverse direction. Only a controlled experiment establishes causation.</li>
+</ul>

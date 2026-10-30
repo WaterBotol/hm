@@ -1,0 +1,87 @@
+<!--
+id: kinematics
+title: Kinematics: rectilinear motion
+short: Kinematics
+summary: Motion in a straight line: position, velocity and acceleration as derivatives, velocity–time graphs, displacement vs distance, constant acceleration formulas, and the forms of acceleration a = dv/dt = v dv/dx = d(½v²)/dx for when acceleration depends on time, velocity or position.
+keywords: kinematics, rectilinear motion, displacement, velocity, acceleration, distance travelled, velocity-time graph, area under v-t graph, constant acceleration, suvat, v dv/dx, d(1/2 v^2)/dx, acceleration as function of velocity, acceleration as function of position, terminal velocity, at rest, changes direction
+dotpoints: rectilinear motion: position, velocity and acceleration | velocity–time graphs | constant acceleration formulas | acceleration in the forms dv/dt, v dv/dx and d(½v²)/dx
+-->
+<h2>Position, velocity, acceleration</h2>
+<div class="eq"><div class="eq-label">Calculus links</div>\[ v = \frac{dx}{dt}, \qquad a = \frac{dv}{dt} = \frac{d^2x}{dt^2}, \qquad x = \int v\,dt, \qquad v = \int a\,dt \]</div>
+<aside class="c-def" data-title="Displacement vs distance"><p><strong>Displacement</strong> \(= \int_{t_1}^{t_2} v\,dt\) (signed). <strong>Distance</strong> \(= \int_{t_1}^{t_2} |v|\,dt\): split wherever \(v\) changes sign. "At rest" means \(v = 0\); "changes direction" means \(v\) changes sign.</p></aside>
+<div class="we" data-title="Distance with a change of direction" data-marks="4">
+<div class="we-q"><p>A particle moves with \(v = t^2 - 4t + 3\) m/s for \(0 \le t \le 4\). Find its displacement and the distance travelled.</p></div>
+<div class="we-t"><p>\(v = (t - 1)(t - 3)\), so it changes direction at \(t = 1\) and \(t = 3\). Split the distance integral there.</p></div>
+<div class="we-s"><p>\(x(t) - x(0) = \frac{t^3}{3} - 2t^2 + 3t\); values at \(t = 1, 3, 4\): \(\frac43,\ 0,\ \frac43\).</p></div>
+<div class="we-s"><p>Displacement \(= \frac43\) m. Distance \(= \frac43 + \left|0 - \frac43\right| + \frac43\).</p></div>
+<div class="we-a"><p>Displacement \(\frac43\) m; distance \(4\) m.</p></div>
+</div>
+
+<h2>Velocity–time graphs and constant acceleration</h2>
+<p>On a \(v\)–\(t\) graph: gradient = acceleration, signed area = displacement, total area = distance.</p>
+<div class="eq"><div class="eq-label">Constant acceleration</div>\[ v = u + at \qquad s = ut + \tfrac12at^2 \qquad v^2 = u^2 + 2as \qquad s = \tfrac12(u + v)t \qquad s = vt - \tfrac12at^2 \]<p>Only valid when \(a\) is constant. Otherwise use calculus.</p></div>
+<div class="we" data-title="Constant acceleration" data-marks="2">
+<div class="we-q"><p>A car travelling at 25 m/s brakes uniformly and stops in 50 m. Find the deceleration and stopping time.</p></div>
+<div class="we-t"><p>Known: \(u = 25\), \(v = 0\), \(s = 50\). Use \(v^2 = u^2 + 2as\).</p></div>
+<div class="we-s" data-f="v^2 = u^2 + 2as"><p>\(0 = 625 + 100a \Rightarrow a = -6.25\) m/s².</p></div>
+<div class="we-a"><p>Deceleration 6.25 m/s²; \(t = \frac{v - u}{a} = 4\) s.</p></div>
+</div>
+
+<h2>Acceleration in other forms</h2>
+<div class="eq"><div class="eq-label">Forms of acceleration</div>\[ a = \frac{dv}{dt} = v\frac{dv}{dx} = \frac{d}{dx}\left(\tfrac12 v^2\right) \]<p>Choose by what \(a\) depends on: \(a(t)\) → \(\frac{dv}{dt}\); \(a(x)\) → \(\frac{d}{dx}(\frac12v^2)\); \(a(v)\) → \(\frac{dv}{dt}\) (to find \(t\)) or \(v\frac{dv}{dx}\) (to find \(x\)).</p></div>
+<div class="we" data-title="Acceleration depending on position" data-marks="3">
+<div class="we-q"><p>A particle has \(a = -4x\), and \(v = 6\) when \(x = 0\). Find \(v\) in terms of \(x\).</p></div>
+<div class="we-t"><p>\(a\) is a function of \(x\), so use \(\frac{d}{dx}\left(\frac12v^2\right) = -4x\) and integrate with respect to \(x\).</p></div>
+<div class="we-s" data-f="a = \frac{d}{dx}\left(\tfrac12 v^2\right)"><p>\(\frac12v^2 = -2x^2 + c\); \(x = 0, v = 6 \Rightarrow c = 18\).</p></div>
+<div class="we-a"><p>\(v^2 = 36 - 4x^2\), so \(v = \pm\sqrt{36 - 4x^2}\), and the particle oscillates between \(x = \pm3\).</p></div>
+</div>
+<div class="we" data-title="Acceleration depending on velocity (resistance)" data-marks="4">
+<div class="we-q"><p>A boat moving at 10 m/s cuts its engine and decelerates with \(a = -0.5v\). Find (a) \(v\) in terms of \(t\), and (b) how far it travels before stopping.</p></div>
+<div class="we-t"><p>(a) \(\frac{dv}{dt} = -0.5v\): exponential decay. (b) For distance, use \(v\frac{dv}{dx} = -0.5v\), so \(\frac{dv}{dx} = -0.5\).</p></div>
+<div class="we-s"><p>(a) \(v = 10e^{-0.5t}\).</p></div>
+<div class="we-s"><p>(b) \(v = 10 - 0.5x\), so \(v = 0\) at \(x = 20\).</p></div>
+<div class="we-a"><p>(a) \(v = 10e^{-t/2}\); (b) 20 m (in the limit as \(t \to \infty\)).</p></div>
+</div>
+<aside class="c-trap"><p>Don't use constant acceleration formulas when \(a\) varies. And when \(a\) depends on \(v\), you can't integrate \(\frac{dv}{dt} = f(v)\) with respect to \(t\) directly: flip it to \(\frac{dt}{dv} = \frac{1}{f(v)}\).</p></aside>
+<aside class="c-exam"><p>Combined with forces from Unit 3/4 contexts, VCAA asks about falling objects with air resistance: \(a = g - kv^2\). Terminal velocity is where \(a = 0\): \(v_T = \sqrt{g/k}\). Give units and directions (state which way is positive).</p></aside>
+
+<h2>Practice</h2>
+<div class="mcq" data-ans="C" data-level="core">
+<div class="mcq-q"><p>A particle has \(x = t^3 - 6t^2 + 9t\). It is at rest when \(t =\)</p></div>
+<ol><li>0 and 3</li><li>2 only</li><li>1 and 3</li><li>3 only</li></ol>
+<div class="mcq-x"><p>\(v = 3t^2 - 12t + 9 = 3(t - 1)(t - 3)\).</p></div>
+</div>
+<div class="mcq" data-ans="B" data-level="core">
+<div class="mcq-q"><p>A stone is thrown up at 19.6 m/s (\(g = 9.8\)). Its maximum height is</p></div>
+<ol><li>9.8 m</li><li>19.6 m</li><li>39.2 m</li><li>2 m</li></ol>
+<div class="mcq-x"><p>\(0 = 19.6^2 - 2(9.8)s \Rightarrow s = 19.6\) m.</p></div>
+</div>
+<div class="mcq" data-ans="A" data-level="hard">
+<div class="mcq-q"><p>If \(v = x^2 + 1\), then the acceleration when \(x = 1\) is</p></div>
+<ol><li>4</li><li>2</li><li>3</li><li>8</li></ol>
+<div class="mcq-x"><p>\(a = v\frac{dv}{dx} = (x^2 + 1)(2x) = 2\times2 = 4\).</p></div>
+</div>
+<div class="mcq" data-ans="D" data-level="trick">
+<div class="mcq-q"><p>A body has \(v = 2 - t\) m/s. The distance travelled in the first 4 s is</p></div>
+<ol><li>0 m</li><li>8 m</li><li>2 m</li><li>4 m</li></ol>
+<div class="mcq-x"><p>Two triangles of area 2 either side of \(t = 2\): displacement 0, distance 4.</p></div>
+</div>
+<div class="pq" data-level="core" data-marks="3">
+<div class="pq-q"><p>A particle starts from rest at \(x = 0\) with \(a = 6t - 2\). Find \(x\) when \(t = 2\).</p></div>
+<div class="pq-s"><p>\(v = 3t^2 - 2t\) (\(v(0) = 0\)). [1]</p><p>\(x = t^3 - t^2\) (\(x(0) = 0\)). [1]</p><p>\(x(2) = 4\) m. [1]</p></div>
+</div>
+<div class="pq" data-level="hard" data-marks="4">
+<div class="pq-q"><p>A particle falling from rest has \(a = 10 - 0.1v^2\) (down positive). Find its terminal velocity, and an expression for the distance fallen when its speed is \(v\).</p></div>
+<div class="pq-s"><p>Terminal: \(0 = 10 - 0.1v^2 \Rightarrow v_T = 10\) m/s. [1]</p><p>\(v\frac{dv}{dx} = 10 - 0.1v^2 \Rightarrow \frac{dx}{dv} = \frac{v}{10 - 0.1v^2} = \frac{10v}{100 - v^2}\). [1]</p><p>\(x = -5\log_e(100 - v^2) + c\); \(x = 0\) at \(v = 0\) gives \(c = 5\log_e 100\). [1]</p><p>\(x = 5\log_e\dfrac{100}{100 - v^2}\), \(0 \le v &lt; 10\). [1]</p></div>
+</div>
+<div class="pq" data-level="exam" data-marks="3">
+<div class="pq-q"><p>A particle moves with \(a = -\frac{1}{x^2}\) for \(x &gt; 0\), and \(v = 2\) when \(x = 1\). Find \(v^2\) in terms of \(x\), and the largest \(x\) it reaches.</p></div>
+<div class="pq-s"><p>\(\frac12v^2 = \frac1x + c\). [1]</p><p>\(2 = 1 + c \Rightarrow c = 1\), so \(v^2 = \frac2x + 2\). [1]</p><p>\(v^2 &gt; 2\) for all \(x &gt; 0\), so it never stops: no maximum (it escapes, approaching speed \(\sqrt2\)). [1]</p></div>
+</div>
+<h2>Summary</h2>
+<ul>
+  <li data-q="How are position, velocity and acceleration related? What’s the difference between displacement and distance, and how do you find each?">\(v = \dot x\), \(a = \dot v\); displacement \(\int v\), distance \(\int|v|\) (split at sign changes).</li>
+  <li data-q="Write the constant acceleration formulas, and when you can use them.">Constant \(a\) only: \(v = u + at\), \(s = ut + \frac12at^2\), \(v^2 = u^2 + 2as\).</li>
+  <li data-q="Write two other forms of acceleration, and when you use them.">\(a = v\frac{dv}{dx} = \frac{d}{dx}(\frac12v^2)\) when \(a\) depends on \(x\) (or \(v\), to find distance).</li>
+  <li data-q="How do you find terminal velocity?">Terminal velocity: set \(a = 0\).</li>
+</ul>

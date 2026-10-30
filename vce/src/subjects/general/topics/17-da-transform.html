@@ -1,0 +1,111 @@
+<!--
+id: da-transform
+title: Transforming data to linearity
+short: Data transformations
+summary: Linearising curved scatterplots with a square, log (base 10) or reciprocal transformation applied to one axis only; choosing a transformation with the circle of transformations; comparing fits with r² and residual plots; and making predictions from the transformed least squares line.
+keywords: transformation, data transformation, linearise, linearize, non-linear, curved, circle of transformations, x squared, y squared, log x, log y, log base 10, reciprocal, 1/x, 1/y, transformed data, transformed equation, prediction with transformed data, residual plot, r squared comparison, concave
+dotpoints: data transformation and its use in transforming some forms of non-linear data to linearity using a square, logarithmic (base 10) or reciprocal transformation (applied to one axis only) | interpretation and use of the equation of the least squares line fitted to the transformed data to make predictions
+-->
+<h2>Why transform?</h2>
+<p>When a scatterplot (or its residual plot) shows a curve, a straight line is the wrong model. Instead of fitting a curve, we change the scale of <strong>one</strong> axis so the points straighten out, then fit a least squares line to the transformed data.</p>
+<div class="tbl"><table>
+<thead><tr><th>Transformation</th><th>Effect on that axis</th><th>Applied to x</th><th>Applied to y</th></tr></thead>
+<tbody>
+<tr><td>Square</td><td>stretches out large values</td><td>\(x^2\)</td><td>\(y^2\)</td></tr>
+<tr><td>Log (base 10)</td><td>compresses large values</td><td>\(\log_{10} x\)</td><td>\(\log_{10} y\)</td></tr>
+<tr><td>Reciprocal</td><td>compresses strongly (and reverses order)</td><td>\(\frac1x\)</td><td>\(\frac1y\)</td></tr>
+</tbody></table></div>
+
+<h2>The circle of transformations</h2>
+<p>Match the shape of the scatterplot to one of the four quarters of a circle. The quarter it sits in tells you which transformations to try.</p>
+<figure class="fig">
+<svg viewBox="0 0 440 260" width="440" role="img" aria-label="Circle of transformations. Top-right quarter: x squared or y squared. Top-left quarter: log x, 1 over x, or y squared. Bottom-left quarter: log x, 1 over x, log y or 1 over y. Bottom-right quarter: x squared, log y or 1 over y.">
+  <line x1="220" y1="20" x2="220" y2="240" class="s-mut"/><line x1="80" y1="130" x2="360" y2="130" class="s-mut"/>
+  <path d="M220 40 A90 90 0 0 1 310 130" class="s-acc" style="stroke-width:3"/>
+  <path d="M130 130 A90 90 0 0 1 220 40" class="s-n" style="stroke-width:3"/>
+  <path d="M130 130 A90 90 0 0 0 220 220" class="s-w" style="stroke-width:3"/>
+  <path d="M220 220 A90 90 0 0 0 310 130" class="s-v" style="stroke-width:3"/>
+  <text x="300" y="45" class="t-sm t-b">x² or y²</text>
+  <text x="20" y="45" class="t-sm t-b">log x, 1/x</text><text x="20" y="62" class="t-sm t-b">or y²</text>
+  <text x="20" y="215" class="t-sm t-b">log x, 1/x</text><text x="20" y="232" class="t-sm t-b">log y or 1/y</text>
+  <text x="300" y="215" class="t-sm t-b">x², log y</text><text x="300" y="232" class="t-sm t-b">or 1/y</text>
+  <g class="t-sm t-mut"><text x="364" y="134">x</text><text x="224" y="18">y</text></g>
+</svg>
+<figcaption>Right side of the circle: transform x upwards (\(x^2\)). Left side: transform x downwards (\(\log x\), \(\frac1x\)). Top: transform y upwards (\(y^2\)). Bottom: transform y downwards (\(\log y\), \(\frac1y\)).</figcaption>
+</figure>
+<div class="tbl"><table>
+<thead><tr><th>Scatterplot shape</th><th>Quarter</th><th>Try</th></tr></thead>
+<tbody>
+<tr><td>Increasing, curving upwards (concave up), like growth</td><td>bottom right</td><td>\(x^2\), \(\log y\), \(\frac1y\)</td></tr>
+<tr><td>Increasing, levelling off (concave down)</td><td>top left</td><td>\(\log x\), \(\frac1x\), \(y^2\)</td></tr>
+<tr><td>Decreasing, levelling off (concave up), like decay</td><td>bottom left</td><td>\(\log x\), \(\frac1x\), \(\log y\), \(\frac1y\)</td></tr>
+<tr><td>Decreasing, falling faster (concave down)</td><td>top right</td><td>\(x^2\), \(y^2\)</td></tr>
+</tbody></table></div>
+<div class="sim" data-sim="gmTransform"></div>
+<aside class="c-key" data-title="Key idea: choosing between transformations"><p>Usually more than one transformation is possible. Fit a line to each transformed data set and choose the one with the <strong>most random residual plot</strong> and the <strong>highest \(r^2\)</strong>. VCAA questions often give you the \(r^2\) values to compare.</p></aside>
+
+<h2>Predicting from a transformed equation</h2>
+<p>The transformed variable replaces x or y in the line. Substitute carefully, then undo the transformation at the end if y was transformed.</p>
+<div class="we" data-title="Log x transformation" data-marks="2">
+<div class="we-q"><p>The least squares line for a log transformation is \(\text{score} = 12.4 + 8.6 \times \log_{10}(\text{practice hours})\). Predict the score after 50 hours of practice.</p></div>
+<div class="we-t"><p>The explanatory variable has been transformed, so substitute \(\log_{10}(50)\), not 50.</p></div>
+<div class="we-s" data-f="y = a + b\log_{10} x"><p>\(\log_{10}(50) = 1.69897\), so \(12.4 + 8.6 \times 1.69897 = 27.01\).</p></div>
+<div class="we-a"><p>A score of about <strong>27.0</strong>.</p></div>
+</div>
+<div class="we" data-title="Reciprocal transformation" data-marks="1">
+<div class="we-q"><p>The time (hours) to finish a job is modelled by \(\text{time} = 0.8 + 24 \times \frac{1}{\text{workers}}\). Predict the time for 6 workers.</p></div>
+<div class="we-t"><p>Substitute \(\frac16\) for the transformed explanatory variable.</p></div>
+<div class="we-s" data-f="y = a + b\cdot\dfrac{1}{x}"><p>\(0.8 + 24 \times \frac16 = 0.8 + 4\).</p></div>
+<div class="we-a"><p><strong>4.8 hours</strong>.</p></div>
+</div>
+<div class="we" data-title="Log y transformation" data-marks="2">
+<div class="we-q"><p>Bacteria numbers (y) after x hours satisfy \(\log_{10}(y) = 1.2 + 0.15x\). Predict the number of bacteria after 5 hours.</p></div>
+<div class="we-t"><p>This time the <em>response</em> has been transformed: find \(\log_{10}(y)\), then undo the log with \(y = 10^{(\dots)}\).</p></div>
+<div class="we-s" data-f="\log_{10} y = a + bx"><p>\(\log_{10}(y) = 1.2 + 0.15 \times 5 = 1.95\).</p></div>
+<div class="we-s" data-f="y = 10^{\log_{10} y}"><p>\(y = 10^{1.95} \approx 89.1\).</p></div>
+<div class="we-a"><p>About <strong>89 bacteria</strong>.</p></div>
+</div>
+<div class="we" data-title="Squared transformation of y" data-marks="2">
+<div class="we-q"><p>A model is \(y^2 = 4.5 + 12.3x\). Predict y when \(x = 10\), given y is positive.</p></div>
+<div class="we-t"><p>Find \(y^2\) from the line, then take the square root.</p></div>
+<div class="we-s" data-f="y^2 = a + bx"><p>\(y^2 = 4.5 + 12.3 \times 10 = 127.5\).</p></div>
+<div class="we-a"><p>\(y = \sqrt{127.5} \approx\) <strong>11.29</strong>.</p></div>
+</div>
+<aside class="c-trap" data-title="Trick alert: the slope's units change"><p>After a transformation, the slope describes the change in the <em>transformed</em> variable. In \(\log_{10}(y) = 1.2 + 0.15x\), \(\log_{10}(y)\) (not y) increases by 0.15 per hour. Interpret slopes in terms of the transformed variable, exactly as written.</p></aside>
+
+<h2>Practice</h2>
+<div class="mcq" data-ans="B" data-level="core">
+<div class="mcq-q"><p>A scatterplot is increasing and curves upward (getting steeper). Which transformation is most likely to linearise it?</p></div>
+<ol><li>\(\log_{10} x\)</li><li>\(x^2\)</li><li>\(y^2\)</li><li>\(\frac1x\)</li></ol>
+<div class="mcq-x"><p>Bottom-right quarter of the circle: \(x^2\), \(\log y\) or \(\frac1y\).</p></div>
+</div>
+<div class="mcq" data-ans="D" data-level="core">
+<div class="mcq-q"><p>Using \(y = 5.2 + 3.1 \log_{10}(x)\), the predicted value when \(x = 1000\) is</p></div>
+<ol><li>3105.2</li><li>8.3</li><li>9.3</li><li>14.5</li></ol>
+<div class="mcq-x"><p>\(\log_{10}(1000) = 3\), so \(5.2 + 3.1 \times 3 = 14.5\).</p></div>
+</div>
+<div class="mcq" data-ans="A" data-level="trick">
+<div class="mcq-q"><p>A model is \(\frac1y = 0.02 + 0.004x\). When \(x = 20\), the predicted value of y is</p></div>
+<ol><li>10</li><li>0.1</li><li>0.08</li><li>12.5</li></ol>
+<div class="mcq-x"><p>\(\frac1y = 0.02 + 0.08 = 0.1\), so \(y = 10\). Don't forget to undo the reciprocal.</p></div>
+</div>
+<div class="mcq" data-ans="C" data-level="hard">
+<div class="mcq-q"><p>Three transformations of a data set give \(r^2\) values of 0.912 (\(\log_{10} x\)), 0.958 (\(\frac1x\)) and 0.874 (\(y^2\)), and all three residual plots look random. The best choice is</p></div>
+<ol><li>\(\log_{10} x\), because log transformations are always best</li><li>\(y^2\)</li><li>\(\frac1x\)</li><li>none, because the original data are non-linear</li></ol>
+<div class="mcq-x"><p>With random residual plots for all three, choose the highest \(r^2\): \(\frac1x\).</p></div>
+</div>
+<div class="pq" data-level="core" data-marks="2">
+<div class="pq-q"><p>The heart rate (beats per minute) of a runner after stopping is modelled by \(\text{rate} = 72 + 95 \times \frac{1}{\text{minutes}}\). Predict the rate 2.5 minutes after stopping.</p></div>
+<div class="pq-s"><p>\(\frac{1}{2.5} = 0.4\). [1]</p><p>\(72 + 95 \times 0.4 = 110\) beats per minute. [1]</p></div>
+</div>
+<div class="pq" data-level="exam" data-marks="3">
+<div class="pq-q"><p>The value of a collectable ($) is modelled by \(\log_{10}(\text{value}) = 2.05 + 0.031 \times \text{age}\), where age is in years. (a) Predict the value at 40 years. (b) A residual plot of the transformed data shows no pattern. What does this suggest?</p></div>
+<div class="pq-s"><p>(a) \(\log_{10}(\text{value}) = 2.05 + 0.031 \times 40 = 3.29\). [1] Value \(= 10^{3.29} \approx \$1950\). [1]</p><p>(b) The log transformation has linearised the data, so the linear model for the transformed data is appropriate. [1]</p></div>
+</div>
+<h2>Summary</h2>
+<ul>
+  <li data-q="List the six transformations used in General Maths. How many axes do you transform at once?">\(x^2\), \(\log_{10} x\), \(\frac1x\), \(y^2\), \(\log_{10} y\), \(\frac1y\): one axis only.</li>
+  <li data-q="How does the circle of transformations work (which side suggests which transformations)?">Right side: \(x^2\); left side: \(\log x\), \(\frac1x\); top: \(y^2\); bottom: \(\log y\), \(\frac1y\). Match the curve's shape to a quarter.</li>
+  <li data-q="How do you choose between several possible transformations?">Pick the one with the most random residual plot and the highest \(r^2\).</li>
+  <li data-q="How do you predict when the response variable has been log-transformed?">Find \(\log_{10} y\) from the line, then \(y = 10^{(\text{that value})}\).</li>
+</ul>

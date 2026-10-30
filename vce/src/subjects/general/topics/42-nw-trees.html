@@ -1,0 +1,69 @@
+<!--
+id: nw-trees
+title: Trees, spanning trees and Prim's algorithm
+short: Trees & Prim's algorithm
+summary: Trees and their properties (connected, no cycles, n − 1 edges); spanning trees; minimum spanning trees found by inspection or by Prim's algorithm; and using minimum spanning trees to solve minimum connector problems.
+keywords: tree, spanning tree, minimum spanning tree, minimal spanning tree, MST, Prim's algorithm, Prim, minimum connector problem, connect all, cable, pipes, network of roads, least total length, cheapest, n minus 1 edges, no cycles, connected, weighted graph, greedy algorithm, unique, tie
+dotpoints: trees and spanning trees | minimum spanning trees in a weighed connected graph and their determination by inspection or by Prim's algorithm | use of minimal spanning trees to solve minimal connector problems
+-->
+<h2>Trees and spanning trees</h2>
+<p>A <strong>tree</strong> is a connected graph with no cycles. A <strong>spanning tree</strong> of a graph is a subgraph that is a tree and includes <strong>every vertex</strong>.</p>
+<div class="eq"><div class="eq-label">Tree facts</div>\[ \text{a tree with } n \text{ vertices has } n - 1 \text{ edges} \]<p>Add any edge to a tree and you make a cycle. Remove any edge and it falls apart: every edge of a tree is a bridge.</p></div>
+<p>A <strong>minimum spanning tree</strong> (MST) is the spanning tree with the smallest total weight. It solves <strong>minimum connector problems</strong>: connecting every town, house or computer with the least total cable, pipe or road.</p>
+
+<h2>Prim's algorithm</h2>
+<div class="eq"><div class="eq-label">Prim's algorithm</div><ol><li>Start at any vertex.</li><li>Add the <strong>cheapest edge</strong> that joins a vertex already in the tree to one that isn't yet.</li><li>Repeat until every vertex is in the tree (\(n - 1\) edges). If edges tie, pick either.</li></ol></div>
+<figure class="fig"><svg viewBox="0 0 400 200" role="img" aria-label="Weighted graph: AB 4, AC 3, BC 2, BD 5, BE 8, CE 6, DE 4, DF 3, EF 5. Minimum spanning tree edges AC, BC, BD, DF, DE highlighted">
+<path d="M40 100 L140 40 M140 40 L260 40 M140 40 L260 160 M140 160 L260 160 M260 160 L360 100" class="s-mut" stroke-width="1.6" fill="none" stroke-dasharray="5 4"/>
+<path d="M40 100 L140 160 M140 40 L140 160 M140 40 L260 40 M260 40 L360 100 M260 40 L260 160" class="s-acc" stroke-width="3.2" fill="none"/>
+<g class="f-ink"><circle cx="40" cy="100" r="5"/><circle cx="140" cy="40" r="5"/><circle cx="140" cy="160" r="5"/><circle cx="260" cy="40" r="5"/><circle cx="260" cy="160" r="5"/><circle cx="360" cy="100" r="5"/></g>
+<text x="28" y="105" text-anchor="end" class="t-b">A</text><text x="140" y="26" text-anchor="middle" class="t-b">B</text><text x="140" y="183" text-anchor="middle" class="t-b">C</text><text x="260" y="26" text-anchor="middle" class="t-b">D</text><text x="260" y="183" text-anchor="middle" class="t-b">E</text><text x="372" y="105" class="t-b">F</text>
+<g class="t-sm"><text x="82" y="62" text-anchor="middle">4</text><text x="82" y="146" text-anchor="middle">3</text><text x="130" y="104" text-anchor="end">2</text><text x="200" y="32" text-anchor="middle">5</text><text x="212" y="94" text-anchor="middle">8</text><text x="200" y="176" text-anchor="middle">6</text><text x="270" y="104">4</text><text x="318" y="62" text-anchor="middle">3</text><text x="318" y="148" text-anchor="middle">5</text></g>
+</svg><figcaption>Cable costs (in thousands of dollars). The minimum spanning tree is shown in bold; dashed edges are not used.</figcaption></figure>
+<div class="we" data-title="Prim's algorithm step by step" data-marks="2">
+<div class="we-q"><p>Use Prim's algorithm, starting at A, to find the minimum spanning tree and its total cost.</p></div>
+<div class="we-t"><p>At each step, list the edges leaving the tree and take the cheapest.</p></div>
+<div class="we-s"><p>From {A}: AB 4, <strong>AC 3</strong>. From {A, C}: AB 4, <strong>CB 2</strong>, CE 6. From {A, B, C}: <strong>BD 5</strong>, BE 8, CE 6.</p></div>
+<div class="we-s"><p>From {A, B, C, D}: <strong>DF 3</strong>, DE 4, CE 6, BE 8. From {A, B, C, D, F}: <strong>DE 4</strong>, EF 5, CE 6, BE 8.</p></div>
+<div class="we-a"><p>Edges AC, BC, BD, DF and DE (5 edges for 6 vertices). Total \(3 + 2 + 5 + 3 + 4 = \) <strong>$17 000</strong>.</p></div>
+</div>
+<div class="sim" data-sim="gmNetwork" data-mode="prim"></div>
+<aside class="c-trap" data-title="Trick alert: an MST is not a shortest path"><p>The MST connects everything as cheaply as possible overall. It does <strong>not</strong> give the shortest route between two particular vertices: in the tree above, A to E is \(3 + 2 + 5 + 4 = 14\), but the road A–C–E is only 9. Shortest paths need Dijkstra's algorithm.</p></aside>
+<aside class="c-exam" data-title="Exam tip: ties and forced edges"><p>If two edges tie, there may be more than one MST, but they all have the same total weight. If a question says one edge <strong>must</strong> be included, put it in first, then continue Prim's from there. The total may go up.</p></aside>
+
+<h2>Practice</h2>
+<div class="mcq" data-ans="B" data-level="core">
+<div class="mcq-q"><p>A spanning tree for a connected graph with 12 vertices and 20 edges has</p></div>
+<ol><li>12 edges</li><li>11 edges</li><li>20 edges</li><li>19 edges</li></ol>
+<div class="mcq-x"><p>A tree with \(n\) vertices has \(n - 1\) edges. The number of edges in the original graph doesn't matter.</p></div>
+</div>
+<div class="mcq" data-ans="D" data-level="core">
+<div class="mcq-q"><p>Using Prim's algorithm starting at F in the network above, the first edge chosen is</p></div>
+<ol><li>EF</li><li>BC</li><li>DE</li><li>DF</li></ol>
+<div class="mcq-x"><p>F's edges are DF 3 and EF 5. BC is the cheapest edge overall, but it doesn't touch the tree yet.</p></div>
+</div>
+<div class="mcq" data-ans="A" data-level="trick">
+<div class="mcq-q"><p>Which statement about minimum spanning trees is true?</p></div>
+<ol><li>All minimum spanning trees of a graph have the same total weight</li><li>A minimum spanning tree contains the shortest route between any two vertices</li><li>A minimum spanning tree can contain a cycle if it's cheaper</li><li>Starting Prim's algorithm at a different vertex gives a different total</li></ol>
+<div class="mcq-x"><p>The MST may not be unique when weights tie, but its total weight is. B is false (A to E above), trees have no cycles, and Prim's gives the same total from any start.</p></div>
+</div>
+<div class="mcq" data-ans="B" data-level="hard">
+<div class="mcq-q"><p>In the network above, the council insists that cable CE (cost 6) is laid. The minimum total cost of connecting all six towns is now</p></div>
+<ol><li>$17 000</li><li>$18 000</li><li>$19 000</li><li>$23 000</li></ol>
+<div class="mcq-x"><p>Put CE in first, then continue Prim's: CB 2, AC 3, DE 4, DF 3. Total \(6 + 2 + 3 + 4 + 3 = 18\). CE replaces BD (5), so the cost rises by $1000.</p></div>
+</div>
+<div class="pq" data-level="core" data-marks="2">
+<div class="pq-q"><p>Run Prim's algorithm on the network above starting at F. List the edges in the order chosen and confirm the total.</p></div>
+<div class="pq-s"><p>DF 3, DE 4, DB 5, BC 2, CA 3. [1]</p><p>Total \(3 + 4 + 5 + 2 + 3 = 17\): the same $17 000. [1]</p></div>
+</div>
+<div class="pq" data-level="exam" data-marks="2">
+<div class="pq-q"><p>Cable BE (cost 8) is replaced by a cheaper option costing 1. Find the new minimum spanning tree's total cost.</p></div>
+<div class="pq-s"><p>Prim's from A: AC 3, CB 2, BE 1, DE 4, DF 3. [1]</p><p>Total \(3 + 2 + 1 + 4 + 3 = 13\), i.e. $13 000 (BD is no longer needed). [1]</p></div>
+</div>
+<h2>Summary</h2>
+<ul>
+  <li data-q="What is a tree, and how many edges does a tree with n vertices have?">A connected graph with no cycles; \(n - 1\) edges.</li>
+  <li data-q="Describe Prim's algorithm.">Start anywhere; repeatedly add the cheapest edge joining the tree to a new vertex; stop after \(n - 1\) edges.</li>
+  <li data-q="What problem does a minimum spanning tree solve, and what doesn't it solve?">Minimum connector problems (connect everything cheapest). It doesn't give shortest paths between two vertices.</li>
+  <li data-q="Is a minimum spanning tree unique? Does the starting vertex matter?">Not always unique when weights tie, but the total weight is fixed, whatever the starting vertex.</li>
+</ul>

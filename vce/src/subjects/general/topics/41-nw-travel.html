@@ -1,0 +1,89 @@
+<!--
+id: nw-travel
+title: Walks, trails, paths and Eulerian and Hamiltonian routes
+short: Eulerian & Hamiltonian
+summary: Walks, trails, paths, circuits and cycles; Eulerian trails and circuits and the degree conditions for them; Hamiltonian paths and cycles; and solving exploring and travelling problems, including the shortest route that covers every edge.
+keywords: walk, trail, path, circuit, cycle, open, closed, Eulerian trail, Eulerian circuit, Euler, every edge exactly once, odd vertices, even vertices, degree condition, Hamiltonian path, Hamiltonian cycle, every vertex exactly once, travelling problem, exploring problem, route, repeat an edge, postman, inspector, delivery, shortest route covering every road, Konigsberg
+dotpoints: the concepts, conventions and notations of walks, trails, paths, cycles and circuits | Eulerian trails and Eulerian circuits: the conditions for a graph to have a Eulerian trail or a Eulerian circuit, properties and applications | Hamiltonian paths and cycles: properties and applications
+-->
+<h2>Walks, trails, paths, circuits and cycles</h2>
+<figure class="fig"><svg viewBox="0 0 360 190" role="img" aria-label="Road network: P to Q 4, P to R 5, Q to R 3, Q to S 8, R to S 4, R to T 7, S to T 2">
+<path d="M50 95 L150 35 M50 95 L150 155 M150 35 L150 155 M150 35 L270 35 M150 155 L270 35 M150 155 L310 155 M270 35 L310 155" class="s-ink" stroke-width="1.8" fill="none"/>
+<g class="f-ink"><circle cx="50" cy="95" r="5"/><circle cx="150" cy="35" r="5"/><circle cx="150" cy="155" r="5"/><circle cx="270" cy="35" r="5"/><circle cx="310" cy="155" r="5"/></g>
+<text x="38" y="100" text-anchor="end" class="t-b">P</text><text x="150" y="22" text-anchor="middle" class="t-b">Q</text><text x="150" y="177" text-anchor="middle" class="t-b">R</text><text x="270" y="22" text-anchor="middle" class="t-b">S</text><text x="324" y="160" class="t-b">T</text>
+<g class="t-sm t-acc"><text x="92" y="56" text-anchor="middle">4</text><text x="92" y="144" text-anchor="middle">5</text><text x="140" y="100" text-anchor="end">3</text><text x="210" y="27" text-anchor="middle">8</text><text x="218" y="100" text-anchor="middle">4</text><text x="230" y="172" text-anchor="middle">7</text><text x="302" y="92">2</text></g>
+</svg><figcaption>Five towns and seven roads (distances in km). Degrees: P 2, Q 3, R 4, S 3, T 2.</figcaption></figure>
+<div class="tbl"><table>
+<thead><tr><th>Name</th><th>Repeat edges?</th><th>Repeat vertices?</th><th>Start = end?</th><th>Example above</th></tr></thead>
+<tbody>
+<tr><td>Walk</td><td>allowed</td><td>allowed</td><td>either</td><td>P–Q–R–P–Q</td></tr>
+<tr><td>Trail</td><td>no</td><td>allowed</td><td>no (open)</td><td>Q–P–R–Q–S</td></tr>
+<tr><td>Path</td><td>no</td><td>no</td><td>no (open)</td><td>P–Q–S–T</td></tr>
+<tr><td>Circuit</td><td>no</td><td>allowed</td><td>yes (closed trail)</td><td>R–P–Q–R–S–T–R</td></tr>
+<tr><td>Cycle</td><td>no</td><td>no (except start/end)</td><td>yes (closed path)</td><td>P–Q–R–P</td></tr>
+</tbody></table></div>
+<aside class="c-key" data-title="Key idea: each name is stricter than the last"><p>Every path is a trail and every trail is a walk. Every cycle is a circuit. A path can't repeat vertices, which automatically means it can't repeat edges.</p></aside>
+
+<h2>Eulerian trails and circuits: every edge once</h2>
+<p>An <strong>Eulerian trail</strong> uses every edge exactly once. An <strong>Eulerian circuit</strong> does the same and finishes where it started. Whether one exists depends only on the degrees.</p>
+<div class="eq"><div class="eq-label">Conditions (graph must be connected)</div>\[ \text{all vertices even} \;\Rightarrow\; \text{Eulerian circuit (start anywhere)} \]\[ \text{exactly two odd vertices} \;\Rightarrow\; \text{Eulerian trail (start at one odd vertex, finish at the other)} \]<p>More than two odd vertices: neither exists.</p></div>
+<div class="we" data-title="Finding an Eulerian trail" data-marks="2">
+<div class="we-q"><p>A road inspector wants to drive every road above exactly once. Is this possible? If so, where must the inspector start and finish? Give a route.</p></div>
+<div class="we-t"><p>Count odd vertices: Q (3) and S (3) are odd; P, R and T are even.</p></div>
+<div class="we-s"><p>Exactly two odd vertices, so an Eulerian trail exists from Q to S (or S to Q).</p></div>
+<div class="we-a"><p>Start at <strong>Q</strong> and finish at <strong>S</strong>, e.g. Q–P–R–Q–S–R–T–S. An Eulerian circuit isn't possible.</p></div>
+</div>
+<div class="we" data-title="Shortest route covering every road and returning" data-marks="2">
+<div class="we-q"><p>The inspector must now start and finish at Q, driving every road at least once. Find the minimum distance.</p></div>
+<div class="we-t"><p>A circuit needs all even degrees. Repeat the shortest route between the two odd vertices, Q and S: that makes them both even.</p></div>
+<div class="we-s"><p>Total of all roads: \(4 + 5 + 3 + 8 + 4 + 7 + 2 = 33\) km. Shortest Q to S: Q–R–S \(= 3 + 4 = 7\) km (shorter than the direct road, 8 km).</p></div>
+<div class="we-a"><p>\(33 + 7 = \) <strong>40 km</strong>, repeating roads QR and RS.</p></div>
+</div>
+
+<h2>Hamiltonian paths and cycles: every vertex once</h2>
+<p>A <strong>Hamiltonian path</strong> visits every vertex exactly once. A <strong>Hamiltonian cycle</strong> also returns to its start. There's no degree rule: find them by trial.</p>
+<div class="we" data-title="Hamiltonian routes" data-marks="2">
+<div class="we-q"><p>A courier must visit every town above exactly once and return to P. Find a route and its length.</p></div>
+<div class="we-t"><p>That's a Hamiltonian cycle. P has only two roads (to Q and R), so the cycle must use both.</p></div>
+<div class="we-s"><p>P–Q–S–T–R–P uses roads 4, 8, 2, 7 and 5. (The reverse, P–R–T–S–Q–P, is the same cycle.)</p></div>
+<div class="we-a"><p>P–Q–S–T–R–P, <strong>26 km</strong>. It doesn't need every road (QR and RS are unused).</p></div>
+</div>
+<aside class="c-trap" data-title="Trick alert: Euler = edges, Hamilton = vertices"><p>Eulerian: every <strong>edge</strong> once (think “E for edge”). Hamiltonian: every <strong>vertex</strong> once; edges can be skipped. Collecting rubbish down every street is Eulerian; visiting every shop is Hamiltonian.</p></aside>
+<aside class="c-exam" data-title="Exam tip: write routes as vertex lists"><p>Give routes as a sequence of vertices (e.g. Q–P–R–Q–S–R–T–S) and count the edges: an Eulerian trail on 7 edges has 8 vertices listed. Check every edge appears exactly once.</p></aside>
+
+<h2>Practice</h2>
+<div class="mcq" data-ans="C" data-level="core">
+<div class="mcq-q"><p>A connected graph has vertex degrees 2, 4, 3, 2, 3 and 4. It has</p></div>
+<ol><li>an Eulerian circuit</li><li>neither an Eulerian trail nor circuit</li><li>an Eulerian trail but not an Eulerian circuit</li><li>a Hamiltonian cycle for certain</li></ol>
+<div class="mcq-x"><p>Exactly two odd vertices (the two 3s): an Eulerian trail between them. Degrees tell you nothing certain about Hamiltonian cycles.</p></div>
+</div>
+<div class="mcq" data-ans="A" data-level="core">
+<div class="mcq-q"><p>In the road network above, the route Q–R–S–Q is a</p></div>
+<ol><li>cycle</li><li>path</li><li>Eulerian trail</li><li>Hamiltonian cycle</li></ol>
+<div class="mcq-x"><p>Closed, with no repeated edges or vertices (apart from start/end). It misses P and T, so it isn't Hamiltonian.</p></div>
+</div>
+<div class="mcq" data-ans="D" data-level="trick">
+<div class="mcq-q"><p>Which statement is always true?</p></div>
+<ol><li>A Hamiltonian cycle uses every edge</li><li>A trail never repeats a vertex</li><li>A graph with all even degrees has a Hamiltonian cycle</li><li>Every path is also a trail</li></ol>
+<div class="mcq-x"><p>A path repeats no vertices, so it can't repeat an edge. A trail may revisit a vertex, and Hamiltonian cycles skip edges.</p></div>
+</div>
+<div class="mcq" data-ans="B" data-level="hard">
+<div class="mcq-q"><p>A connected graph has four odd vertices. The minimum number of edges that must be added to give it an Eulerian circuit is</p></div>
+<ol><li>1</li><li>2</li><li>3</li><li>4</li></ol>
+<div class="mcq-x"><p>Each new edge fixes two odd vertices (pair them up): 2 edges make all four even.</p></div>
+</div>
+<div class="pq" data-level="core" data-marks="2">
+<div class="pq-q"><p>A road is built between P and S in the network above. (a) Which vertices are now odd? (b) Does the new graph have an Eulerian trail or circuit?</p></div>
+<div class="pq-s"><p>(a) P becomes 3 and S becomes 4; Q stays 3. Odd: P and Q. [1]</p><p>(b) Exactly two odd vertices: an Eulerian trail from P to Q (no circuit). [1]</p></div>
+</div>
+<div class="pq" data-level="exam" data-marks="2">
+<div class="pq-q"><p>Find a Hamiltonian path in the road network above that starts at T and has the shortest possible length.</p></div>
+<div class="pq-s"><p>There are six Hamiltonian paths from T, with lengths 13, 15, 18, 19, 23 and 24 km. For example T–S–R–Q–P \(= 2 + 4 + 3 + 4 = 13\) and T–S–Q–R–P \(= 2 + 8 + 3 + 5 = 18\). [1]</p><p>Shortest: <strong>T–S–R–Q–P, 13 km</strong>. [1]</p></div>
+</div>
+<h2>Summary</h2>
+<ul>
+  <li data-q="Define walk, trail, path, circuit and cycle.">Walk: anything goes. Trail: no repeated edges. Path: no repeated vertices. Circuit: closed trail. Cycle: closed path.</li>
+  <li data-q="State the conditions for an Eulerian circuit and an Eulerian trail.">Connected, and all vertices even: circuit. Exactly two odd vertices: trail, starting at one odd vertex and ending at the other.</li>
+  <li data-q="What is a Hamiltonian path and cycle? Is there a rule for when they exist?">Visits every vertex exactly once (a cycle returns to the start). No degree rule; find by inspection.</li>
+  <li data-q="How do you find the shortest closed route that covers every edge when there are two odd vertices?">Total of all edges + shortest path between the two odd vertices (those edges are repeated).</li>
+</ul>
