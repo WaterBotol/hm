@@ -29,6 +29,7 @@ dotpoints: circular functions sin, cos and tan and their graphs, including ampli
 <tr><td>Vertical asymptotes</td><td>none</td><td>none</td><td>\(x = \frac{\pi}{2} + m\pi\)</td></tr>
 <tr><td>Points of inflection</td><td>at the zeros</td><td>at the zeros</td><td>at the zeros (gradient 1)</td></tr>
 </tbody></table></div>
+<div class="eq"><div class="eq-label">Transformed tan</div>\[ y = a\tan\big(n(x - h)\big) + k:\quad \text{asymptotes } x = h + \frac{\pi}{2n} + \frac{m\pi}{n},\quad \text{inflections } \left(h + \frac{m\pi}{n},\ k\right),\quad m \in \mathbb{Z} \]<p>Period \(\frac{\pi}{|n|}\). E.g. \(y = 3\tan(2x) + 1\): asymptotes \(x = \frac{\pi}{4} + \frac{m\pi}{2}\), inflections at \(\left(\frac{m\pi}{2}, 1\right)\), period \(\frac{\pi}{2}\).</p></div>
 <div class="eq"><div class="eq-label">Transformed sin, cos and tan</div>\[ y = a\sin\big(n(x - h)\big) + k \]<p>Amplitude \(|a|\), period \(\frac{2\pi}{|n|}\), horizontal shift \(h\), centre line \(y = k\), range \([k - |a|,\ k + |a|]\). For \(y = a\tan(n(x - h)) + k\): period \(\frac{\pi}{|n|}\), with vertical asymptotes wherever \(n(x - h) = \frac{\pi}{2} + m\pi\) and points of inflection at \(x = h + \frac{m\pi}{n}\) on \(y = k\), halfway between the asymptotes. The period of a sum of trig terms is the lowest common multiple of their periods: \(\sin\!\left(\frac{\pi t}{6}\right) + \cos\!\left(\frac{\pi t}{3}\right)\) has periods 12 and 6, so its period is 12.</p></div>
 <div class="we" data-title="Sketch over a restricted domain" data-marks="4">
 <div class="we-q"><p>Sketch \(y = 2\sin\!\left(2x - \frac{\pi}{3}\right) + 1\) for \(x \in [0, \pi]\), labelling endpoints and \(x\)-intercepts with exact coordinates.</p></div>
@@ -87,6 +88,7 @@ dotpoints: circular functions sin, cos and tan and their graphs, including ampli
 <div class="we-a"><p><strong>(a) 5 m, 1 m, 12 h. (b) 4 hours in total</strong> (midnight to 2 am and 10 am to noon).</p></div>
 </div>
 
+<aside class="c-key" data-title="Trend plus a periodic part"><p>If \(f(t) = mt + g(t)\) where \(g\) has period \(P\), then \(f(t + P) = f(t) + mP\): each period the graph repeats, shifted up by \(mP\). E.g. \(f(t) = 5t + 20\cos\!\left(\frac{\pi t}{4}\right)\) has period-8 wiggles and rises 40 every 8 units. To sketch, draw one period and repeat it, stepping up by \(mP\) each time; label the endpoints.</p></aside>
 <div class="we" data-title="Fitting a sinusoidal model to its features" data-marks="3">
 <div class="we-q"><p>The temperature in a town varies sinusoidally over a day, from a minimum of 8 °C at 3 am (\(t = 3\)) to a maximum of 18 °C at 3 pm (\(t = 15\)). Find a rule \(T(t) = k - a\cos\big(n(t - h)\big)\), \(0 \le t \le 24\).</p></div>
 <div class="we-t"><p>The centre line is the average of the max and min, the amplitude is half their difference, and max to min is half a period. Start the cosine where you know the curve is at its minimum, which is why the rule uses \(-\cos\).</p></div>

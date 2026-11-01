@@ -33,6 +33,7 @@ dotpoints: conditional probability and independence | the addition and multiplic
 
 <h2>Tree diagrams and the law of total probability</h2>
 <div class="eq"><div class="eq-label">Law of total probability</div>\[ P(B) = P(B \mid A)P(A) + P(B \mid A')P(A') \]<p>Multiply along branches; add the branches that give the outcome you want.</p></div>
+<aside class="c-key" data-title="Trees with letters"><p>With \(P(A) = m\), \(P(B \mid A) = p\) and \(P(B \mid A') = q\): \(P(B) = mp + (1 - m)q\) and \(P(A \mid B) = \dfrac{mp}{mp + (1 - m)q}\). Multiple-choice options are often these expressions, so build the tree with letters rather than guessing.</p></aside>
 <div class="we" data-title="The false-positive problem (hard)" data-marks="4">
 <div class="we-q"><p>2% of a population has a disease. A test gives a positive result for 95% of people with the disease and for 10% of people without it. A randomly chosen person tests positive. Find the probability that they have the disease, correct to four decimal places.</p></div>
 <div class="we-t"><p>This is a “reverse conditional”: you know \(P(+ \mid D)\) but want \(P(D \mid +)\). Use the law of total probability to find \(P(+)\) from both branches, then the conditional probability formula.</p></div>
