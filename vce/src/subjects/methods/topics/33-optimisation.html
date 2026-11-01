@@ -70,6 +70,14 @@ dotpoints: application of differentiation to maximum and minimum problems, inclu
 <div class="we-a"><p><strong>Absolute max 18 (at \(x = 3\)); absolute min \(-2\) (at \(x = -2\) and \(x = 1\)).</strong> The local max of 2 isn't the absolute max.</p></div>
 </div>
 
+<div class="we" data-title="Greatest difference between two models" data-marks="3">
+<div class="we-q"><p>Two models are \(u(x) = 2\sin x + 3\) and \(v(x) = 0.5x + 2\) for \(0 \le x \le 5\). Find the greatest difference between them.</p></div>
+<div class="we-t"><p>The gap is \(|d(x)|\) where \(d(x) = u(x) - v(x)\). Its largest value is at a stationary point of \(d\) or at an endpoint, so find both and compare sizes, ignoring the sign. Where the curves cross, the gap is 0 (a minimum, not a candidate).</p></div>
+<div class="we-s" data-f="d(x) = u(x) - v(x),\ d&#x27;(x) = 0"><p>\(d(x) = 2\sin x - 0.5x + 1\), \(d'(x) = 2\cos x - 0.5 = 0 \Rightarrow \cos x = 0.25\): \(x \approx 1.318\), \(d \approx 2.277\); \(x \approx 4.965\), \(d \approx -3.419\).</p></div>
+<div class="we-s" data-f="\text{check the endpoints}"><p>Endpoints: \(d(0) = 1\), \(d(5) \approx -3.418\).</p></div>
+<div class="we-a"><p><strong>The greatest difference is about 3.419, at \(x \approx 4.965\)</strong> (\(v\) above \(u\) there). The endpoint gives 3.418, so close that skipping either check could cost the mark. CAS: <code>fMax(abs(u(x)-v(x)),x)|0≤x≤5</code>.</p></div>
+</div>
+
 <aside class="c-trap" data-title="Trick alert: optimisation traps">
 <ul>
   <li><strong>Forgetting the endpoints.</strong> Especially when a stationary point is outside the domain.</li>

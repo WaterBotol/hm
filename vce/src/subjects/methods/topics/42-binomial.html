@@ -59,6 +59,7 @@ dotpoints: Bernoulli trials and the binomial distribution Bi(n, p) | mean and va
 <div class="we-a" data-f="n = \dfrac{E(X)}{p}"><p><strong>\(p = 0.3\), \(n = \frac{6}{0.3} = 20\).</strong></p></div>
 </div>
 
+<aside class="c-key" data-title="Finding p from a probability"><p>Write the probability out with \(p\) and solve. E.g. \(X \sim \text{Bi}(10, p)\) with \(P(X = 0) = 0.2\): \((1 - p)^{10} = 0.2\), so \(p = 1 - 0.2^{0.1} \approx 0.1487\). CAS: <code>solve((1-p)^10=0.2,p)|0&lt;p&lt;1</code>. If CAS gives more than one value, keep those in \((0, 1)\).</p></aside>
 <aside class="c-trap" data-title="Trick alert: binomial traps">
 <ul>
   <li><strong>“At least 1” = \(1 - P(X = 0)\).</strong> Never add up 1, 2, 3, … by hand.</li>

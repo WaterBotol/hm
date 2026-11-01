@@ -42,6 +42,13 @@ dotpoints: continuous random variables and probability density functions | proba
 <div class="we-s" data-f="\int_0^m f(t)\,dt = \tfrac12"><p>Median: \(\int_0^m 0.5e^{-0.5t}dt = 1 - e^{-0.5m} = \frac12 \Rightarrow m = 2\log_e 2\).</p></div>
 <div class="we-a"><p><strong>\(P(T &gt; 2) = e^{-1} \approx 0.368\); median \(= 2\log_e 2 \approx 1.386\) min</strong> (less than the mean of 2 min: the long right tail pulls the mean up).</p></div>
 </div>
+<div class="we" data-title="Median of a piecewise pdf, and the mode" data-marks="3">
+<div class="we-q"><p>\(X\) has pdf \(f(x) = \frac{2x}{3}\) for \(0 \le x \le 1\), \(f(x) = \frac{3 - x}{3}\) for \(1 &lt; x \le 3\), and 0 elsewhere. Find the median and the mode.</p></div>
+<div class="we-t"><p>For the median, first find the area of the first piece to see which piece the median falls in, then solve in that piece, adding the area already used. The mode is where \(f\) is largest.</p></div>
+<div class="we-s" data-f="\text{area of the first piece}"><p>\(\int_0^1 \frac{2x}{3}\,dx = \frac13 &lt; \frac12\), so the median is in the second piece.</p></div>
+<div class="we-s" data-f="\tfrac13 + \int_1^m f(x)\,dx = \tfrac12"><p>\(\frac13 + \int_1^m \frac{3 - x}{3}\,dx = \frac12 \Rightarrow 3m - \frac{m^2}{2} - \frac52 = \frac12 \Rightarrow m^2 - 6m + 6 = 0 \Rightarrow m = 3 \pm \sqrt3\).</p></div>
+<div class="we-a"><p><strong>Median \(3 - \sqrt3 \approx 1.27\)</strong> (the other root is outside \([1, 3]\)); <strong>mode 1</strong>, where \(f\) peaks at \(\frac23\).</p></div>
+</div>
 <aside class="c-key" data-title="Transforming a pdf"><p>If \(f\) is a pdf, then \(g(x) = k\,f\!\left(\frac{x}{n}\right)\) (with \(n > 0\)) is a pdf only if \(kn = 1\), because the dilation by \(n\) from the \(y\)-axis multiplies the area by \(n\). Then \(g\) is the pdf of \(nX\): its mean is \(n\) times the mean of \(f\), and its standard deviation is \(n\) times the standard deviation of \(f\).</p></aside>
 
 

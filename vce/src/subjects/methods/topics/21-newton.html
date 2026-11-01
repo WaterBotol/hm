@@ -80,6 +80,21 @@ print a, b</code></pre></div>
 <div class="we-a"><p><strong>Output: 1.375, 1.5</strong> (an interval containing \(\sqrt2 \approx 1.414\)).</p></div>
 </div>
 
+<div class="we" data-title="An accumulator loop (trapezium sum)" data-marks="3">
+<div class="we-q"><p>State the output, and the purpose of line 7.</p>
+<pre class="code"><code>define f(x)
+    return x^2
+a ← 0, b ← 2, n ← 4
+h ← (b − a) / n
+sum ← f(a) + f(b)
+for i from 1 to n − 1
+    sum ← sum + 2 × f(a + i × h)
+end for
+print h / 2 × sum</code></pre></div>
+<div class="we-t"><p>A variable that starts with a value and has something added on each pass is an accumulator. Track it in a table: one row per pass of the loop.</p></div>
+<div class="we-s"><p>\(h = 0.5\); start sum \(= f(0) + f(2) = 4\). \(i = 1\): \(+2(0.25) = 4.5\); \(i = 2\): \(+2(1) = 6.5\); \(i = 3\): \(+2(2.25) = 11\).</p></div>
+<div class="we-a"><p><strong>Output \(0.25 \times 11 = 2.75\)</strong>: the trapezium estimate of \(\int_0^2 x^2\,dx\) with 4 strips. Line 7 adds twice each interior height. If an exam blanks out a line like this, ask what the formula needs that the loop isn't yet doing.</p></div>
+</div>
 <aside class="c-trap" data-title="Trick alert: algorithm traps">
 <ul>
   <li><strong>Count loop iterations carefully.</strong> <code>for i from 1 to 3</code> runs 3 times; a <code>while</code> loop checks its condition <em>before</em> each pass.</li>

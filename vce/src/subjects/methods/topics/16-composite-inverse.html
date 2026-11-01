@@ -32,7 +32,7 @@ dotpoints: sums, differences, products and composites of functions, and conditio
 
 <aside class="c-key" data-title="A linear inside is a transformation"><p>If \(f(x) = mx + c\), then \(g(f(x)) = g(mx + c)\) is just a transformation of \(g\): a dilation by factor \(\frac{1}{|m|}\) from the \(y\)-axis (a reflection in the \(y\)-axis too if \(m &lt; 0\)) and a horizontal translation. For example, \(y = g(c - x) = g\big(-(x - c)\big)\) is \(g\) reflected in the \(y\)-axis, then moved \(c\) units right.</p></aside>
 <h2>Inverse functions</h2>
-<p>Only <strong>one-to-one</strong> functions have inverse functions. To find \(f^{-1}\): swap \(x\) and \(y\), make \(y\) the subject, and pick the correct branch using the range of \(f^{-1}\).</p>
+<p>Only <strong>one-to-one</strong> functions have inverse functions. To find \(f^{-1}\): swap \(x\) and \(y\), make \(y\) the subject, and pick the correct branch using the range of \(f^{-1}\). If \(f\) is continuous and \(f'\) takes both signs on the domain, \(f\) turns around, so it isn't one-to-one and has no inverse function (until the domain is restricted). The inverse of a hyperbola \(y = \frac{a}{x - h} + k\) is another hyperbola with the asymptotes swapped: \(y = \frac{1}{x - 3} - 2\) (asymptotes \(x = 3\), \(y = -2\)) has inverse \(y = \frac{1}{x + 2} + 3\) (asymptotes \(x = -2\), \(y = 3\)).</p>
 <div class="eq"><div class="eq-label">Inverse facts</div>\[ \text{dom}\, f^{-1} = \text{ran}\, f \qquad \text{ran}\, f^{-1} = \text{dom}\, f \qquad f\big(f^{-1}(x)\big) = x \]<p>The graph of \(f^{-1}\) is the reflection of \(f\) in the line \(y = x\).</p></div>
 
 <div class="we" data-title="Restrict, then invert" data-marks="4">
@@ -63,6 +63,12 @@ dotpoints: sums, differences, products and composites of functions, and conditio
 <div class="we-t"><p>Reflecting both graphs in \(y = x\) reflects their intersection points too, so swap the coordinates. Check with the rules if you have them; if a question gives a line or curve, first decide whether it <em>is</em> one of the inverses.</p></div>
 <div class="we-s" data-f="(a, b) \text{ on both} \Rightarrow (b, a) \text{ on both inverses}"><p>Swap each point: \((-8, -2)\), \((0, 0)\), \((8, 2)\). Check: \(f^{-1}(x) = \sqrt[3]{x}\) and \(g^{-1}(x) = \frac x4\) give \(\sqrt[3]{8} = 2 = \frac84\) ✓.</p></div>
 <div class="we-a"><p><strong>\((-8, -2)\), \((0, 0)\) and \((8, 2)\).</strong></p></div>
+</div>
+<div class="we" data-title="Integral of an inverse: the rectangle trick" data-marks="2">
+<div class="we-q"><p>Use \(\int_0^1 e^x\,dx\) to find \(\int_1^e \log_e y\,dy\).</p></div>
+<div class="we-t"><p>For increasing \(f\) with \(f(a) = c\) and \(f(b) = d\), the region beside \(f^{-1}\) from \(c\) to \(d\) plus the region under \(f\) from \(a\) to \(b\) make up a big rectangle minus a small one: \(\int_c^d f^{-1}(y)\,dy = bd - ac - \int_a^b f(x)\,dx\).</p></div>
+<div class="we-s" data-f="\int_c^d f^{-1}(y)\,dy = bd - ac - \int_a^b f(x)\,dx"><p>\(f(x) = e^x\), \(a = 0\), \(b = 1\), \(c = 1\), \(d = e\): \(\int_1^e \log_e y\,dy = 1 \times e - 0 \times 1 - (e - 1)\).</p></div>
+<div class="we-a"><p><strong>1.</strong> Check: \(\big[y\log_e y - y\big]_1^e = 0 - (-1) = 1\) ✓. Sketch it: the trick is just areas of rectangles.</p></div>
 </div>
 <aside class="c-key" data-title="Area between f and its inverse"><p>If \(f\) and \(f^{-1}\) meet only on \(y = x\), at \(x = a\) and \(x = b\), the area between them is twice the area between \(f\) and \(y = x\): \(2\int_a^b |x - f(x)|\,dx\).</p></aside>
 <aside class="c-trap" data-title="Trick alert: composite and inverse traps">

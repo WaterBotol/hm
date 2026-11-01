@@ -51,11 +51,17 @@ dotpoints: approximate confidence intervals for a population proportion | the ma
 <h2>Using an interval to judge a claim</h2>
 <p>If a claimed value of \(p\) lies <strong>inside</strong> the interval, the data are consistent with the claim. If it's <strong>outside</strong>, the claim is doubtful (at that confidence level). An interval never <em>proves</em> the claim.</p>
 
+<div class="we" data-title="How many intervals contain p?" data-marks="2">
+<div class="we-q"><p>Twenty independent samples each give an approximate 95% confidence interval for \(p\). Find the probability that all 20 contain \(p\), and that at least 18 do.</p></div>
+<div class="we-t"><p>Each interval contains \(p\) with probability 0.95, independently, so the number that do is binomial.</p></div>
+<div class="we-s" data-f="Y \sim \text{Bi}(20, 0.95)"><p>\(P(Y = 20) = 0.95^{20}\); \(P(Y \ge 18)\) = <code>binomCdf(20,0.95,18,20)</code>.</p></div>
+<div class="we-a"><p><strong>\(0.95^{20} \approx 0.3585\); \(P(Y \ge 18) \approx 0.9245\).</strong> On average 19 of the 20 contain \(p\).</p></div>
+</div>
 <aside class="c-trap" data-title="Trick alert: confidence interval traps">
 <ul>
   <li><strong>Don't say “there's a 95% probability that \(p\) is in (0.24, 0.36)”.</strong> VCAA wants the “95% of such intervals” interpretation.</li>
   <li><strong>Higher confidence → wider interval; larger \(n\) → narrower.</strong> To halve the width, quadruple \(n\).</li>
-  <li><strong>Round sample sizes up</strong>, even from 1067.1.</li>
+  <li><strong>Round sample sizes up when designing for a margin of at most \(M\)</strong>, even from 1067.1. When recovering \(n\) from a given (rounded) interval, round to the nearest whole number instead.</li>
   <li><strong>The interval is about the population</strong>, not about future samples.</li>
 </ul>
 </aside>

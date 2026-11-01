@@ -29,7 +29,7 @@ dotpoints: circular functions sin, cos and tan and their graphs, including ampli
 <tr><td>Vertical asymptotes</td><td>none</td><td>none</td><td>\(x = \frac{\pi}{2} + m\pi\)</td></tr>
 <tr><td>Points of inflection</td><td>at the zeros</td><td>at the zeros</td><td>at the zeros (gradient 1)</td></tr>
 </tbody></table></div>
-<div class="eq"><div class="eq-label">Transformed sine and cosine</div>\[ y = a\sin\big(n(x - h)\big) + k \]<p>Amplitude \(|a|\), period \(\frac{2\pi}{n}\), horizontal shift \(h\), centre line \(y = k\), range \([k - |a|,\ k + |a|]\). For \(y = a\tan(n(x - h)) + k\): period \(\frac{\pi}{n}\), with vertical asymptotes wherever \(n(x - h) = \frac{\pi}{2} + m\pi\) and points of inflection at \(x = h + \frac{m\pi}{n}\) on \(y = k\), halfway between the asymptotes. The period of a sum of trig terms is the lowest common multiple of their periods: \(\sin\!\left(\frac{\pi t}{6}\right) + \cos\!\left(\frac{\pi t}{3}\right)\) has periods 12 and 6, so its period is 12.</p></div>
+<div class="eq"><div class="eq-label">Transformed sin, cos and tan</div>\[ y = a\sin\big(n(x - h)\big) + k \]<p>Amplitude \(|a|\), period \(\frac{2\pi}{|n|}\), horizontal shift \(h\), centre line \(y = k\), range \([k - |a|,\ k + |a|]\). For \(y = a\tan(n(x - h)) + k\): period \(\frac{\pi}{|n|}\), with vertical asymptotes wherever \(n(x - h) = \frac{\pi}{2} + m\pi\) and points of inflection at \(x = h + \frac{m\pi}{n}\) on \(y = k\), halfway between the asymptotes. The period of a sum of trig terms is the lowest common multiple of their periods: \(\sin\!\left(\frac{\pi t}{6}\right) + \cos\!\left(\frac{\pi t}{3}\right)\) has periods 12 and 6, so its period is 12.</p></div>
 <div class="we" data-title="Sketch over a restricted domain" data-marks="4">
 <div class="we-q"><p>Sketch \(y = 2\sin\!\left(2x - \frac{\pi}{3}\right) + 1\) for \(x \in [0, \pi]\), labelling endpoints and \(x\)-intercepts with exact coordinates.</p></div>
 <div class="we-t"><p>Write the rule in the form \(a\sin(n(x - h)) + k\) to read off amplitude, period, horizontal shift and centre line. For intercepts, solve over the transformed interval of the argument.</p></div>
@@ -87,13 +87,26 @@ dotpoints: circular functions sin, cos and tan and their graphs, including ampli
 <div class="we-a"><p><strong>(a) 5 m, 1 m, 12 h. (b) 4 hours in total</strong> (midnight to 2 am and 10 am to noon).</p></div>
 </div>
 
+<div class="we" data-title="Fitting a sinusoidal model to its features" data-marks="3">
+<div class="we-q"><p>The temperature in a town varies sinusoidally over a day, from a minimum of 8 °C at 3 am (\(t = 3\)) to a maximum of 18 °C at 3 pm (\(t = 15\)). Find a rule \(T(t) = k - a\cos\big(n(t - h)\big)\), \(0 \le t \le 24\).</p></div>
+<div class="we-t"><p>The centre line is the average of the max and min, the amplitude is half their difference, and max to min is half a period. Start the cosine where you know the curve is at its minimum, which is why the rule uses \(-\cos\).</p></div>
+<div class="we-s" data-f="k = \dfrac{\max + \min}{2},\ a = \dfrac{\max - \min}{2}"><p>\(k = \frac{18 + 8}{2} = 13\), \(a = \frac{18 - 8}{2} = 5\).</p></div>
+<div class="we-s" data-f="\text{period} = \dfrac{2\pi}{|n|}"><p>Min to max takes 12 h, so the period is 24 h and \(n = \frac{2\pi}{24} = \frac{\pi}{12}\). The minimum is at \(t = 3\), so \(h = 3\).</p></div>
+<div class="we-a"><p><strong>\(T(t) = 13 - 5\cos\!\left(\frac{\pi}{12}(t - 3)\right)\)</strong>. Check: \(T(15) = 13 - 5\cos\pi = 18\) ✓. The same curve is \(13 + 5\sin\!\left(\frac{\pi}{12}(t - 9)\right)\): VCAA accepts any correct form.</p></div>
+</div>
+<div class="we" data-title="Sum of the solutions, by symmetry" data-marks="2">
+<div class="we-q"><p>Find the sum of the solutions of \(\sin x = 0.3\) for \(x \in [0, 4\pi]\).</p></div>
+<div class="we-t"><p>Don't find each solution. On a sine graph, the two solutions in each cycle are symmetric about the line through the maximum (\(x = \frac{\pi}{2}\), then \(x = \frac{5\pi}{2}\)), so each pair adds to twice that \(x\)-value.</p></div>
+<div class="we-s" data-f="\text{pairs symmetric about } x = \tfrac{\pi}{2} + 2m\pi"><p>Two cycles, so four solutions: one pair sums to \(2 \times \frac{\pi}{2} = \pi\), the other to \(2 \times \frac{5\pi}{2} = 5\pi\).</p></div>
+<div class="we-a"><p><strong>\(6\pi\).</strong> CAS check: <code>sum(zeros(sin(x)-0.3,x)|0≤x≤4·π)</code> gives 18.8496 ≈ \(6\pi\).</p></div>
+</div>
 <aside class="c-trap" data-title="Trick alert: trig traps">
 <ul>
   <li><strong>Adjust the domain for the argument.</strong> Forgetting this is the number-one way students lose solutions.</li>
   <li><strong>\(\sin^2 x = \frac14\) means \(\sin x = \pm\frac12\):</strong> four solutions in \([0, 2\pi]\), not two.</li>
   <li><strong>Endpoints count.</strong> \(\sin x = 0\) on \([0, 2\pi]\) has three solutions: \(0, \pi, 2\pi\).</li>
   <li><strong>Calculator in radians!</strong> Degree mode is an instant zero in Methods.</li>
-  <li><strong>Tan's period is \(\frac{\pi}{n}\)</strong>, not \(\frac{2\pi}{n}\).</li>
+  <li><strong>Tan's period is \(\frac{\pi}{|n|}\)</strong>, not \(\frac{2\pi}{|n|}\).</li>
 </ul>
 </aside>
 
@@ -167,7 +180,7 @@ dotpoints: circular functions sin, cos and tan and their graphs, including ampli
 
 <h2>Summary</h2>
 <ul>
-  <li data-q="For \(y = a\sin(n(x - h)) + k\), give the amplitude, the period (and tan’s period) and the range.">\(y = a\sin(n(x - h)) + k\): amplitude \(|a|\), period \(\frac{2\pi}{n}\) (tan: \(\frac{\pi}{n}\)), range \([k - |a|, k + |a|]\).</li>
+  <li data-q="For \(y = a\sin(n(x - h)) + k\), give the amplitude, the period (and tan’s period) and the range.">\(y = a\sin(n(x - h)) + k\): amplitude \(|a|\), period \(\frac{2\pi}{|n|}\) (tan: \(\frac{\pi}{|n|}\)), range \([k - |a|, k + |a|]\).</li>
   <li data-q="List the steps for solving a trig equation on a restricted domain.">Solve: isolate, adjust the domain for the argument, reference angle, quadrants, then solve for \(x\).</li>
   <li data-q="Write the general solutions of \(\cos x = \cos\alpha\) and \(\tan x = \tan\alpha\).">General solutions: \(\cos\): \(2n\pi \pm \alpha\); \(\tan\): \(n\pi + \alpha\).</li>
 </ul>
