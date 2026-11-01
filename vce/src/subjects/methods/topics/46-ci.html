@@ -33,6 +33,13 @@ dotpoints: approximate confidence intervals for a population proportion | the ma
 <div class="we-s" data-f="M = z\sqrt{\dfrac{\hat p(1 - \hat p)}{n}}"><p>\(0.06 = 1.96\sqrt{\frac{0.58 \times 0.42}{n}} \Rightarrow n = \frac{1.96^2 \times 0.2436}{0.06^2} \approx 259.9\).</p></div>
 <div class="we-a"><p><strong>\(\hat p = 0.58\), \(M = 0.06\), \(n = 260\).</strong></p></div>
 </div>
+<div class="we" data-title="Finding the confidence level" data-marks="2">
+<div class="we-q"><p>A sample of 200 gives \(\hat p = 0.3\) and the interval \((0.2467,\ 0.3533)\). Find the level of confidence.</p></div>
+<div class="we-t"><p>The margin of error is \(z\) times the standard error, so dividing gives \(z\). The confidence level is the area between \(-z\) and \(z\) under the standard normal curve.</p></div>
+<div class="we-s" data-f="M = \tfrac12(\text{width}),\ z = \dfrac{M}{\text{SE}}"><p>\(M = 0.0533\); SE \(= \sqrt{\frac{0.3 \times 0.7}{200}} \approx 0.03240\); \(z = \frac{0.0533}{0.03240} \approx 1.645\).</p></div>
+<div class="we-a"><p>\(\Pr(-1.645 &lt; Z &lt; 1.645) \approx 0.90\): <strong>a 90% confidence interval</strong>. On CAS: <code>normCdf(-1.645,1.645)</code>.</p></div>
+</div>
+
 
 <div class="we" data-title="Choosing a sample size" data-marks="2">
 <div class="we-q"><p>A pollster wants a 95% margin of error of at most 3 percentage points and has no idea of \(p\). How many people should be surveyed?</p></div>

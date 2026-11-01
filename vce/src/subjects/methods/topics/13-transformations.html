@@ -56,6 +56,23 @@ dotpoints: transformations of the plane: dilations, reflections in the axes and 
 <div class="we-a"><p><strong>Domain \([-1, 2]\), range \([-3, 3]\); image point \((1, -2)\).</strong> Check: \(g(1) = -f(2) + 3 = -5 + 3 = -2\). ✓</p></div>
 </div>
 
+<div class="we" data-title="Choosing transformations to match points" data-marks="3">
+<div class="we-q"><p>The graph of \(y = f(x)\) has turning points at \((0, 0)\) and \((2, -4)\). Find a dilation from the \(y\)-axis and a translation that map them to \((1, 3)\) and \((7, -1)\) respectively.</p></div>
+<div class="we-t"><p>A dilation from the \(y\)-axis scales horizontal distances, so compare the horizontal gap between the points before and after; vertical gaps do the same for a dilation from the \(x\)-axis. Then translate one point into place and check the other.</p></div>
+<div class="we-s" data-f="\text{horizontal gap scales by the dilation factor}"><p>Horizontal gap: 2 before, 6 after, so dilate by factor 3 from the \(y\)-axis. Vertical gap: 4 before and after, so no vertical dilation.</p></div>
+<div class="we-s" data-f="(x, y) \to (3x + h,\ y + k)"><p>After the dilation \((0, 0) \to (0, 0)\) and \((2, -4) \to (6, -4)\). Translating 1 right and 3 up gives \((1, 3)\) ✓ and \((7, -1)\) ✓.</p></div>
+<div class="we-a"><p><strong>Dilation by factor 3 from the \(y\)-axis, then a translation 1 unit right and 3 units up</strong>: \((x, y) \to (3x + 1,\ y + 3)\), so the image is \(y = f\!\left(\frac{x - 1}{3}\right) + 3\).</p></div>
+</div>
+
+<h2>Families of functions with a parameter</h2>
+<p>A rule with a parameter, such as \(y = x^2 - 2kx + 3\), describes a whole family of graphs. Typical questions ask where a feature (a turning point, an intercept) lies as \(k\) varies, or which values of \(k\) give a property (one-to-one, no \(x\)-intercepts, a given number of solutions).</p>
+<div class="we" data-title="Where the turning points go" data-marks="3">
+<div class="we-q"><p>For \(y = x^2 - 2kx + 3\), find the turning point in terms of \(k\) and the curve it lies on as \(k\) varies. For which \(k\) are there no \(x\)-intercepts?</p></div>
+<div class="we-t"><p>Complete the square to read off the turning point. Its coordinates are given in terms of \(k\); eliminating \(k\) between them gives the curve all the turning points lie on.</p></div>
+<div class="we-s" data-f="x^2 - 2kx + 3 = (x - k)^2 + 3 - k^2"><p>Turning point \((k,\ 3 - k^2)\).</p></div>
+<div class="we-s" data-f="\text{eliminate } k"><p>\(x = k\) and \(y = 3 - k^2\), so \(y = 3 - x^2\).</p></div>
+<div class="we-a"><p><strong>Turning point \((k, 3 - k^2)\), on the parabola \(y = 3 - x^2\).</strong> No \(x\)-intercepts when the turning point is above the axis: \(3 - k^2 &gt; 0\), so \(-\sqrt3 &lt; k &lt; \sqrt3\) (the same as \(\Delta = 4k^2 - 12 &lt; 0\)).</p></div>
+</div>
 <aside class="c-trap" data-title="Trick alert: transformation traps">
 <ul>
   <li><strong>Horizontal changes act “backwards”.</strong> \(f(x - 3)\) moves right 3; \(f(2x)\) squashes by factor \(\frac12\) (dilation factor \(\frac12\) from the \(y\)-axis, not 2).</li>

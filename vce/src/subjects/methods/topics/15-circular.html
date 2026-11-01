@@ -18,7 +18,18 @@ dotpoints: circular functions sin, cos and tan and their graphs, including ampli
 <div class="eq"><div class="eq-label">Symmetry (quadrants 2, 3, 4)</div>\[ \sin(\pi - \theta) = \sin\theta \quad \sin(\pi + \theta) = -\sin\theta \quad \sin(2\pi - \theta) = -\sin\theta \]\[ \cos(\pi - \theta) = -\cos\theta \quad \cos(\pi + \theta) = -\cos\theta \quad \cos(2\pi - \theta) = \cos\theta \]\[ \sin\!\left(\tfrac{\pi}{2} - \theta\right) = \cos\theta \qquad \sin^2\theta + \cos^2\theta = 1 \]<p>Memory aid for the positive ratio in each quadrant, going anticlockwise from quadrant 1: <strong>A</strong>ll, <strong>S</strong>in, <strong>T</strong>an, <strong>C</strong>os.</p></div>
 
 <h2>Graphs</h2>
-<div class="eq"><div class="eq-label">Transformed sine and cosine</div>\[ y = a\sin\big(n(x - h)\big) + k \]<p>Amplitude \(|a|\), period \(\frac{2\pi}{n}\), horizontal shift \(h\), centre line \(y = k\), range \([k - |a|,\ k + |a|]\). For \(y = a\tan(n(x - h)) + k\): period \(\frac{\pi}{n}\), with vertical asymptotes wherever \(n(x - h) = \frac{\pi}{2} + m\pi\).</p></div>
+<div class="tbl"><table>
+<thead><tr><th>\(m \in \mathbb{Z}\)</th><th>\(y = \sin x\)</th><th>\(y = \cos x\)</th><th>\(y = \tan x\)</th></tr></thead>
+<tbody>
+<tr><td>Period</td><td>\(2\pi\)</td><td>\(2\pi\)</td><td>\(\pi\)</td></tr>
+<tr><td>Range</td><td>\([-1, 1]\)</td><td>\([-1, 1]\)</td><td>\(\mathbb{R}\)</td></tr>
+<tr><td>Zeros</td><td>\(m\pi\)</td><td>\(\frac{\pi}{2} + m\pi\)</td><td>\(m\pi\)</td></tr>
+<tr><td>Maximum 1 at</td><td>\(\frac{\pi}{2} + 2m\pi\)</td><td>\(2m\pi\)</td><td>none</td></tr>
+<tr><td>Minimum −1 at</td><td>\(\frac{3\pi}{2} + 2m\pi\)</td><td>\(\pi + 2m\pi\)</td><td>none</td></tr>
+<tr><td>Vertical asymptotes</td><td>none</td><td>none</td><td>\(x = \frac{\pi}{2} + m\pi\)</td></tr>
+<tr><td>Points of inflection</td><td>at the zeros</td><td>at the zeros</td><td>at the zeros (gradient 1)</td></tr>
+</tbody></table></div>
+<div class="eq"><div class="eq-label">Transformed sine and cosine</div>\[ y = a\sin\big(n(x - h)\big) + k \]<p>Amplitude \(|a|\), period \(\frac{2\pi}{n}\), horizontal shift \(h\), centre line \(y = k\), range \([k - |a|,\ k + |a|]\). For \(y = a\tan(n(x - h)) + k\): period \(\frac{\pi}{n}\), with vertical asymptotes wherever \(n(x - h) = \frac{\pi}{2} + m\pi\) and points of inflection at \(x = h + \frac{m\pi}{n}\) on \(y = k\), halfway between the asymptotes. The period of a sum of trig terms is the lowest common multiple of their periods: \(\sin\!\left(\frac{\pi t}{6}\right) + \cos\!\left(\frac{\pi t}{3}\right)\) has periods 12 and 6, so its period is 12.</p></div>
 <div class="we" data-title="Sketch over a restricted domain" data-marks="4">
 <div class="we-q"><p>Sketch \(y = 2\sin\!\left(2x - \frac{\pi}{3}\right) + 1\) for \(x \in [0, \pi]\), labelling endpoints and \(x\)-intercepts with exact coordinates.</p></div>
 <div class="we-t"><p>Write the rule in the form \(a\sin(n(x - h)) + k\) to read off amplitude, period, horizontal shift and centre line. For intercepts, solve over the transformed interval of the argument.</p></div>

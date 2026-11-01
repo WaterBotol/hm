@@ -52,7 +52,7 @@ dotpoints: exponential functions y = aˣ and y = eˣ, and logarithmic functions 
 </div>
 
 <div class="we" data-title="Finding an inverse" data-marks="3">
-<div class="we-q"><p>Find the inverse of \(f(x) = 2e^{x - 1} + 3\), stating its domain.</p></div>
+<div class="we-q"><p>Find the inverse of \(f: \mathbb{R} \to \mathbb{R},\ f(x) = 2e^{x - 1} + 3\), stating its domain.</p></div>
 <div class="we-t"><p>To find an inverse, swap \(x\) and \(y\) and make \(y\) the subject. The inverse's domain is the original function's range.</p></div>
 <div class="we-s" data-f="\text{swap } x \text{ and } y"><p>Swap: \(x = 2e^{y - 1} + 3 \Rightarrow e^{y - 1} = \dfrac{x - 3}{2}\).</p></div>
 <div class="we-s" data-f="e^u = v \iff u = \log_e v"><p>\(y - 1 = \log_e\!\left(\dfrac{x - 3}{2}\right)\).</p></div>
@@ -68,6 +68,15 @@ dotpoints: exponential functions y = aˣ and y = eˣ, and logarithmic functions 
 <div class="we-s" data-f="e^u = v \iff u = \log_e v"><p>(b) \(30 = 20 + 70e^{-kt} \Rightarrow e^{-kt} = \frac17 \Rightarrow t = \dfrac{\log_e 7}{k} = \dfrac{10\log_e 7}{\log_e 2}\).</p></div>
 <div class="we-a"><p><strong>(a) \(k = \frac{\log_e 2}{10} \approx 0.0693\); (b) \(t \approx 28.1\) minutes.</strong> The long-run temperature is 20 °C (room temperature), the horizontal asymptote.</p></div>
 </div>
+<div class="we" data-title="Fitting y = Aeᵏˣ through two points" data-marks="3">
+<div class="we-q"><p>The curve \(y = Ae^{kx}\) passes through \((2, 12)\) and \((5, 96)\). Find \(A\) and \(k\) exactly.</p></div>
+<div class="we-t"><p>Two points give two equations. Dividing one by the other cancels \(A\) and leaves a single exponential equation for \(k\).</p></div>
+<div class="we-s" data-f="\text{divide to eliminate } A"><p>\(12 = Ae^{2k}\) and \(96 = Ae^{5k}\). Divide: \(e^{3k} = 8\), so \(k = \frac13\log_e 8 = \log_e 2\).</p></div>
+<div class="we-s" data-f="\text{substitute back}"><p>\(A = \dfrac{12}{e^{2\log_e 2}} = \dfrac{12}{4} = 3\).</p></div>
+<div class="we-a"><p><strong>\(A = 3,\ k = \log_e 2\)</strong>, so \(y = 3e^{x\log_e 2} = 3 \times 2^x\).</p></div>
+</div>
+<aside class="c-key" data-title="Changing the base"><p>\(a^x = e^{x\log_e a}\), and \(e^{kx} = \left(e^k\right)^x\). To write \(e^{kx}\) as \(2^{cx}\), match exponents: \(kx = cx\log_e 2\), so \(c = \dfrac{k}{\log_e 2}\).</p></aside>
+
 
 <aside class="c-trap" data-title="Trick alert: exp and log traps">
 <ul>

@@ -2,36 +2,38 @@
 id: cas
 title: TI-Nspire CX II CAS commands
 short: CAS commands
-summary: The TI-Nspire CX II CAS commands for Methods Exam 2, by topic, with the exact syntax and an example of each: solving, defining functions, calculus, distributions and confidence intervals.
-keywords: CAS, TI-Nspire, CX II, calculator, commands, syntax, solve, nSolve, define, piecewise, derivative, integral, tangentLine, normalLine, fMax, fMin, limit, binomPdf, binomCdf, normCdf, invNorm, zInterval_1Prop, ClrAZ, exam 2
+summary: The TI-Nspire CX II CAS commands for Methods Exam 2, by question type, with the exact syntax and a checked example of each: solving, parameters, functions, calculus, distributions, inference and the traps that cost marks.
+keywords: CAS, TI-Nspire, CX II, calculator, commands, syntax, solve, nSolve, define, piecewise, derivative, integral, tangentLine, normalLine, fMax, fMin, limit, propFrac, binomPdf, binomCdf, normCdf, invNorm, zInterval_1Prop, randBin, ClearAZ, seq, exam 2
 special: reference
 -->
-<p>Everything here is typed in a Calculator page on the TI-Nspire CX II CAS. The examples are taken from this guide’s topic pages, so you can check each output against an answer you already know. Exam 1 is technology free: this page is for Exam 2.</p>
+<p>Typed in a Calculator page on the TI-Nspire CX II CAS. The examples come from this guide’s topic pages, so each output can be checked against an answer you already know. On paper, always write the equation you solved and the answer in the form asked, not just “by CAS”.</p>
 
 <h2>Set up</h2>
 <div class="tbl"><table>
 <thead><tr><th>To do this</th><th>Type or press</th></tr></thead>
 <tbody>
-<tr><td>Radians, real answers</td><td>Home ▸ Settings ▸ Document Settings: Angle <strong>Radian</strong>, Real or Complex <strong>Real</strong>, Calculation Mode <strong>Auto</strong></td></tr>
-<tr><td>Clear old definitions (start of every question)</td><td><code>ClrAZ</code> (menu ▸ Actions ▸ Clear a–z)</td></tr>
-<tr><td>Decimal answer</td><td><strong>ctrl + enter</strong>, or <code>approx(…)</code></td></tr>
-<tr><td>Use the last answer</td><td><code>ans</code> (ctrl + (−))</td></tr>
-<tr><td>“Such that” (with)</td><td><code>|</code> (from the ctrl + = palette), e.g. <code>f(x)|x=2</code></td></tr>
+<tr><td>Radians, real answers</td><td>doc ▸ Settings: Angle <strong>Radian</strong>, Real or Complex <strong>Real</strong>, Calculation Mode <strong>Auto</strong> (Home ▸ Settings ▸ Document Settings ▸ Make Default for new documents)</td></tr>
+<tr><td>Start each question clean</td><td>insert a new Problem (doc ▸ Insert ▸ Problem), or <code>ClearAZ</code> (menu ▸ Actions ▸ Clear a–z; single-letter names only)</td></tr>
+<tr><td>Decimal answer</td><td><strong>ctrl + enter</strong>, or type a decimal point (<code>2.</code>): decimals in give decimals out</td></tr>
+<tr><td>Last answer; “such that”</td><td><code>ans</code> (ctrl + (−)); <code>|</code> from the ctrl + = palette, e.g. <code>f(x)|x=2</code></td></tr>
 <tr><td>Define a function</td><td><code>Define f(x)=x^3-3·x</code> (menu ▸ Actions ▸ Define)</td></tr>
+<tr><td>Special symbols</td><td><code>e^(x)</code> from the e<sup>x</sup> key (the letter e is a variable); ∞ from the catalog’s symbols, or <code>1E99</code>; <code>&lt;=</code> and <code>&gt;=</code> become ≤ and ≥</td></tr>
 </tbody></table></div>
 
-<h2>Algebra and equations</h2>
+<h2>Algebra and parameters</h2>
 <div class="tbl"><table>
 <thead><tr><th>To do this</th><th>Type</th><th>Gives</th></tr></thead>
 <tbody>
 <tr><td>Solve</td><td><code>solve(x^2-5·x+6=0,x)</code></td><td>x = 2 or x = 3</td></tr>
 <tr><td>Solve on an interval</td><td><code>solve(2·sin(2·x)=1,x)|0≤x≤π</code></td><td>x = π/12 or x = 5π/12</td></tr>
-<tr><td>Solve numerically</td><td><code>nSolve(x^3+x-1=0,x)|0≤x≤1</code></td><td>0.682328</td></tr>
+<tr><td>Solve numerically</td><td><code>nSolve(x^3+x-1=0,x)|0≤x≤1</code> or with a guess <code>nSolve(x^3+x-1=0,x=0.5)</code></td><td>0.682328 (one solution only)</td></tr>
 <tr><td>Simultaneous equations</td><td><code>solve(2·x+y=5 and x-y=1,{x,y})</code></td><td>x = 2 and y = 1</td></tr>
-<tr><td>Factorise, expand</td><td><code>factor(2·x^3-3·x^2-11·x+6)</code>, <code>expand((x+1)^3)</code></td><td>(x − 3)(2x − 1)(x + 2)</td></tr>
-<tr><td>Remainder</td><td><code>polyRemainder(x^3+2·x+1,x-1,x)</code></td><td>4</td></tr>
+<tr><td>Factorise, expand</td><td><code>factor(2·x^3-3·x^2-11·x+6)</code>; <code>expand((x+1)^3)</code></td><td>(x − 3)(2x − 1)(x + 2); x³ + 3x² + 3x + 1</td></tr>
+<tr><td>Remainder; hyperbola form</td><td><code>polyRemainder(x^3+2·x+1,x-1,x)</code>; <code>propFrac((2·x+3)/(x+1),x)</code></td><td>4; 1/(x + 1) + 2</td></tr>
 <tr><td>Inequality</td><td><code>solve(1-0.9^n&gt;0.95,n)</code></td><td>n &gt; 28.4332, so n = 29</td></tr>
-<tr><td>Parameter values (discriminant)</td><td><code>solve(k^2-16&gt;0,k)</code> for two solutions of x² + kx + 4 = 0</td><td>k &lt; −4 or k &gt; 4</td></tr>
+<tr><td>k for a number of solutions</td><td><code>solve(k^2-16&gt;0,k)</code> (Δ of x² + kx + 4 &gt; 0)</td><td>k &lt; −4 or k &gt; 4</td></tr>
+<tr><td>Coefficients from conditions</td><td><code>Define p(x)=a·x^3+b·x^2+c·x+d</code>, <code>Define dp(x)=derivative(p(x),x)</code>, <code>solve(p(1)=5 and p(3)=1 and dp(1)=0 and dp(3)=0,{a,b,c,d})</code></td><td>a = 1, b = −6, c = 9, d = 1</td></tr>
+<tr><td>Check a functional equation</td><td><code>Define f(x)=e^(3·x)</code>, then <code>f(x+y)=f(x)·f(y)</code></td><td>true</td></tr>
 </tbody></table></div>
 
 <h2>Functions and graphs</h2>
@@ -40,57 +42,67 @@ special: reference
 <tbody>
 <tr><td>Hybrid function</td><td><code>Define g(x)=piecewise(x+3,x&lt;-1,x^2+1,-1≤x≤1,4-2·x,x&gt;1)</code> (or the template)</td><td>use g like any function</td></tr>
 <tr><td>Composite</td><td><code>f(g(x))</code></td><td>the rule of f∘g</td></tr>
-<tr><td>Inverse (swap, then solve)</td><td><code>solve(x=2·e^(y-1)+3,y)</code></td><td>y = ln((x − 3)/2) + 1, possibly in an equivalent form</td></tr>
+<tr><td>Inverse, choosing the branch</td><td><code>solve(x=(y-2)^2-3,y)|y≤2</code></td><td>y = 2 − √(x + 3)</td></tr>
 <tr><td>Image under a transformation</td><td><code>solve((y+2)/3=√((1-x)/2),y)</code></td><td>y = 3√((1 − x)/2) − 2</td></tr>
-<tr><td>Where f meets its inverse</td><td><code>Define f(x)=1-x^3</code>, then <code>solve(f(f(x))=x,x)</code></td><td>all five x-values (solving <code>f(x)=x</code> finds only the one on y = x)</td></tr>
-<tr><td>Zeros, turning points, intersections</td><td>Graphs page: menu ▸ Analyze Graph ▸ Zero / Minimum / Maximum / Intersection / Inflection</td><td></td></tr>
-<tr><td>Other functions</td><td><code>abs(x)</code>, <code>ln(x)</code>, <code>log(x,2)</code> (base 2), <code>e^(x)</code> (the e<sup>x</sup> key), <code>root(x,3)</code></td><td></td></tr>
+<tr><td>Where f meets its inverse</td><td><code>Define f(x)=1-x^3</code>, then <code>solve(f(f(x))=x,x)</code></td><td>all five x-values (<code>f(x)=x</code> finds only the one on y = x)</td></tr>
+<tr><td>Graphs page</td><td>menu ▸ Analyze Graph ▸ Zero / Minimum / Maximum / Intersection / Inflection; ctrl + T for a table; <code>f1(x)=x^2|0≤x≤3</code> restricts the domain</td><td>readings are approximate: confirm in Calculator</td></tr>
+<tr><td>Other functions</td><td><code>abs(x)</code>, <code>ln(x)</code>, <code>log(x,2)</code> (base 2), <code>root(x,3)</code></td><td></td></tr>
 </tbody></table></div>
 
 <h2>Calculus</h2>
 <div class="tbl"><table>
 <thead><tr><th>To do this</th><th>Type</th><th>Gives</th></tr></thead>
 <tbody>
-<tr><td>Derivative</td><td><code>derivative(f(x),x)</code> (or the d/dx template)</td><td>f′(x)</td></tr>
-<tr><td>Gradient at a point</td><td><code>derivative(f(x),x)|x=2</code></td><td>f′(2)</td></tr>
-<tr><td>Second derivative</td><td><code>derivative(f(x),x,2)</code></td><td>f″(x)</td></tr>
-<tr><td>Stationary points</td><td><code>solve(derivative(f(x),x)=0,x)</code>, then <code>f(…)</code> for each y</td><td></td></tr>
-<tr><td>Tangent, normal</td><td><code>tangentLine(x^3-2·x,x,1)</code>, <code>normalLine(x^3-2·x,x,1)</code></td><td>y = x − 2, y = −x</td></tr>
-<tr><td>Max or min on an interval</td><td><code>fMax(f(x),x)|0≤x≤3</code>, <code>fMin(f(x),x)|0≤x≤3</code></td><td>the x-value: then find f there, and check the endpoints</td></tr>
-<tr><td>Antiderivative</td><td><code>integral(f(x),x)</code> (or the ∫ template)</td><td>an antiderivative: add + c yourself</td></tr>
-<tr><td>Definite integral</td><td><code>integral(x^2-1,x,0,2)</code></td><td>2/3 (signed: split at the x-intercepts for area)</td></tr>
-<tr><td>Area between curves</td><td><code>integral(x-x^2,x,0,1)</code> (upper − lower)</td><td>1/6</td></tr>
+<tr><td>Derivative; at a point; second</td><td><code>derivative(f(x),x)</code>; <code>derivative(f(x),x)|x=2</code>; <code>derivative(f(x),x,2)</code></td><td>f′(x); f′(2); f″(x)</td></tr>
+<tr><td>Stationary points</td><td><code>Define df(x)=derivative(f(x),x)</code>, <code>solve(df(x)=0,x)</code>, then <code>f(x)|ans</code></td><td>x-values, then each y</td></tr>
+<tr><td>Where decreasing</td><td><code>solve(df(x)&lt;0,x)</code> for f(x) = x³ − 3x² − 9x + 5</td><td>−1 &lt; x &lt; 3 (write [−1, 3] for “strictly decreasing”)</td></tr>
+<tr><td>Tangent, normal</td><td><code>tangentLine(x^3-2·x,x,1)</code>, <code>normalLine(x^3-2·x,x,1)</code></td><td>x − 2 and −x: write y = x − 2, y = −x</td></tr>
+<tr><td>Tangent through an outside point</td><td>for y = x² through (1, −3): <code>Define f(x)=x^2</code>, <code>Define df(x)=derivative(f(x),x)</code>, then <code>solve(-3-f(a)=df(a)·(1-a),a)</code></td><td>a = −1 or a = 3</td></tr>
+<tr><td>Smooth join of a hybrid</td><td><code>Define p(x)=a·x^2+b</code>, <code>Define q(x)=4·x-1</code>, derivatives dp, dq, then <code>solve(p(1)=q(1) and dp(1)=dq(1),{a,b})</code></td><td>a = 2 and b = 1</td></tr>
+<tr><td>Max or min on an interval</td><td><code>fMax(f(x),x)|0≤x≤3</code>, then <code>f(x)|ans</code></td><td>the x-value (an endpoint if that’s where it is), then the value</td></tr>
+<tr><td>Greatest difference of two models</td><td><code>fMax(abs(f(x)-g(x)),x)|0≤x≤5</code>, then <code>abs(f(x)-g(x))|ans</code></td><td></td></tr>
+<tr><td>Antiderivative; definite integral</td><td><code>integral(f(x),x)</code> (add + c yourself); <code>integral(x^2-1,x,0,2)</code></td><td>2/3 (signed: split at the x-intercepts for area)</td></tr>
+<tr><td>Area between curves</td><td><code>integral(x-x^2,x,0,1)</code> (upper − lower, split where they cross)</td><td>1/6</td></tr>
 <tr><td>Average value</td><td><code>1/2·integral(e^(x),x,0,2)</code></td><td>(e² − 1)/2</td></tr>
+<tr><td>Solve for an integral’s limit</td><td><code>solve(integral(10·t,t,0,k)=45,k)|k&gt;0</code></td><td>k = 3</td></tr>
 <tr><td>Limit</td><td><code>limit((x^2-9)/(x-3),x,3)</code>; from the left/right add <code>,-1</code> or <code>,1</code></td><td>6</td></tr>
-<tr><td>Newton’s method</td><td><code>Define f(x)=x^3-2·x-5</code>, <code>Define nr(x)=x-f(x)/derivative(f(x),x)</code>, then <code>nr(2)</code>, then <code>nr(ans)</code> and press enter again</td><td>2.1, 2.094568, 2.094551, …</td></tr>
+<tr><td>Newton’s method</td><td><code>Define f(x)=x^3-2·x-5</code>; type <code>2.</code> and press enter; then <code>x-f(x)/derivative(f(x),x)|x=ans</code> and re-run it (▲, enter, enter) for each step</td><td>2.1, 2.094568, 2.094551</td></tr>
 <tr><td>Trapezium rule</td><td><code>Define f(x)=x^2</code>, then <code>0.5/2·(f(0)+2·sum(seq(f(0.5·i),i,1,3))+f(2))</code></td><td>2.75</td></tr>
 </tbody></table></div>
 
 <h2>Probability and statistics</h2>
-<p>The distributions are in menu ▸ Probability ▸ Distributions; confidence intervals are in menu ▸ Statistics ▸ Confidence Intervals.</p>
+<p>Distributions: menu ▸ Probability ▸ Distributions. Confidence intervals: menu ▸ Statistics ▸ Confidence Intervals.</p>
 <div class="tbl"><table>
 <thead><tr><th>To do this</th><th>Type</th><th>Gives</th></tr></thead>
 <tbody>
 <tr><td>Binomial P(X = x)</td><td><code>binomPdf(10,0.3,3)</code></td><td>0.2668</td></tr>
-<tr><td>Binomial P(a ≤ X ≤ b)</td><td><code>binomCdf(10,0.3,3,10)</code></td><td>0.6172 (P(X ≥ 3))</td></tr>
-<tr><td>Binomial P(X ≤ b)</td><td><code>binomCdf(10,0.3,2)</code></td><td>0.3828</td></tr>
-<tr><td>Normal P(a &lt; X &lt; b)</td><td><code>normCdf(180,∞,170,8)</code> (σ, not σ²)</td><td>0.1056</td></tr>
-<tr><td>Inverse normal</td><td><code>invNorm(0.9,170,8)</code> (area to the <strong>left</strong>)</td><td>180.25</td></tr>
-<tr><td>z for a percentile</td><td><code>invNorm(0.1)</code></td><td>−1.2816</td></tr>
-<tr><td>Unknown σ (or μ)</td><td><code>solve((40-50)/s=invNorm(0.1),s)</code></td><td>s = 7.80</td></tr>
-<tr><td>DRV mean and variance</td><td><code>sum({0,1,2,3}·{0.1,0.3,0.4,0.2})</code>, <code>sum({0,1,2,3}^2·{0.1,0.3,0.4,0.2})-1.7^2</code></td><td>1.7, 0.81</td></tr>
-<tr><td>CRV mean and median</td><td><code>integral(x·x^2/9,x,0,3)</code>, <code>solve(integral(t^2/9,t,0,m)=0.5,m)|0≤m≤3</code></td><td>9/4, m = 2.381</td></tr>
-<tr><td>Sample proportion (exact)</td><td><code>binomCdf(100,0.3,36,100)</code> for P(p̂ &gt; 0.35), n = 100</td><td>0.1161</td></tr>
-<tr><td>Simulate sample proportions</td><td><code>randBin(100,0.3,50)/100</code></td><td>50 simulated values of p̂ for n = 100, p = 0.3</td></tr>
+<tr><td>Binomial P(a ≤ X ≤ b), P(X ≤ b)</td><td><code>binomCdf(10,0.3,3,10)</code>; <code>binomCdf(10,0.3,2)</code></td><td>0.6172 (P(X ≥ 3)); 0.3828</td></tr>
+<tr><td>Conditional (binomial)</td><td><code>binomCdf(10,0.3,3,10)/binomCdf(10,0.3,1,10)</code></td><td>0.6352 = P(X ≥ 3 | X ≥ 1)</td></tr>
+<tr><td>Smallest n (table of values)</td><td><code>seq(1-0.9^n,n,27,30)</code></td><td>0.9419, 0.9477, 0.9529, 0.9576: n = 29</td></tr>
+<tr><td>Unknown p</td><td><code>solve((1-p)^10=0.2,p)|0&lt;p&lt;1</code> (write the formula out)</td><td>p = 0.1487</td></tr>
+<tr><td>Normal probability</td><td><code>normCdf(180,∞,170,8)</code> (lower, upper, μ, σ: not σ²)</td><td>0.1056</td></tr>
+<tr><td>Conditional (normal)</td><td><code>normCdf(180,∞,170,8)/normCdf(170,∞,170,8)</code></td><td>0.2113</td></tr>
+<tr><td>Inverse normal; z-value</td><td><code>invNorm(0.9,170,8)</code> (area to the <strong>left</strong>); <code>invNorm(0.1)</code></td><td>180.25; −1.2816</td></tr>
+<tr><td>Unknown σ</td><td><code>solve((40-50)/s=invNorm(0.1),s)</code></td><td>s = 7.80</td></tr>
+<tr><td>Unknown μ and σ</td><td><code>solve((30-m)/s=invNorm(0.2) and (60-m)/s=invNorm(0.9),{m,s})</code></td><td>m = 41.89, s = 14.13</td></tr>
+<tr><td>DRV mean and variance</td><td><code>sum({0,1,2,3}·{0.1,0.3,0.4,0.2})</code>; <code>sum({0,1,2,3}^2·{0.1,0.3,0.4,0.2})-1.7^2</code></td><td>1.7; 0.81</td></tr>
+<tr><td>CRV: k, mean, variance</td><td><code>solve(integral(k·x^2,x,0,3)=1,k)</code>; <code>integral(x·x^2/9,x,0,3)</code>; <code>integral(x^2·x^2/9,x,0,3)-(9/4)^2</code></td><td>k = 1/9; 9/4; 0.3375</td></tr>
+<tr><td>CRV: median, percentile</td><td><code>solve(integral(t^2/9,t,0,m)=0.5,m)|0≤m≤3</code> (0.25 for the 25th percentile)</td><td>m = 2.381 (1.890)</td></tr>
+<tr><td>Sample proportion, exact</td><td><code>binomCdf(100,0.3,36,100)</code> for P(p̂ &gt; 0.35), n = 100</td><td>0.1161</td></tr>
+<tr><td>Sample proportion, normal approximation</td><td><code>normCdf(0.35,∞,0.3,√(0.3·0.7/100))</code></td><td>0.1376</td></tr>
+<tr><td>Simulate sample proportions</td><td><code>randBin(100,0.3,50)/100</code></td><td>50 simulated values of p̂</td></tr>
 <tr><td>Confidence interval for p</td><td><code>zInterval_1Prop 60,200,0.95</code></td><td>stat.CLower = 0.2365, stat.CUpper = 0.3635</td></tr>
+<tr><td>Confidence level from an interval</td><td>z = margin ÷ standard error, then <code>normCdf(-1.645,1.645)</code></td><td>0.90, a 90% interval</td></tr>
 </tbody></table></div>
 
 <aside class="c-trap" data-title="CAS traps that cost marks">
 <ul>
-  <li><strong>Type the multiplication.</strong> <code>kx</code> is one variable called “kx”; type <code>k·x</code>. And <code>x(x+1)</code> is read as a function: type <code>x·(x+1)</code>.</li>
-  <li><strong>Clear a–z before each question</strong>, or an old definition of f or k leaks into the new one.</li>
-  <li><strong>Trig without a domain</strong> gives general solutions with <code>n1</code> (any integer). Add <code>|0≤x≤2·π</code>.</li>
+  <li><strong>Type the multiplication.</strong> <code>kx</code> is one variable called “kx”: type <code>k·x</code>. And <code>x(x+1)</code> is read as a function: type <code>x·(x+1)</code>.</li>
+  <li><strong>Old definitions leak.</strong> A new Problem for each question is safest; <code>ClearAZ</code> clears only single-letter names. Define stores the expression as it was, so redefine anything built from f after changing f.</li>
+  <li><strong>nSolve and fMax return one value.</strong> Restrict the domain to find each one, and for periodic models add the period to list every time in the domain.</li>
+  <li><strong>Trig without a domain</strong> gives general solutions with <code>n1</code> (any integer): add <code>|0≤x≤2·π</code>.</li>
   <li><strong>normCdf and invNorm take σ</strong>, not the variance, and invNorm wants the area to the left.</li>
-  <li><strong>CAS answers come in their own form.</strong> Convert to the exact form the question asks for, and write the setting-out a human marker needs: the equation you solved, not just “by CAS”.</li>
+  <li><strong>Rounding.</strong> “0.2 correct to 1 decimal place” means the value is in [0.15, 0.25): test the integers either side with <code>seq</code>.</li>
+  <li><strong>CAS answers come in their own form.</strong> Convert to the exact form asked, and write the setting-out a marker needs.</li>
 </ul>
 </aside>

@@ -58,6 +58,14 @@ dotpoints: graphs of polynomial functions and their key features | the factor an
 <div class="we-a"><p><strong>\(y = 2(x + 1)(x - 2)^2\)</strong> (expanded: \(y = 2x^3 - 6x^2 + 8\)).</p></div>
 </div>
 
+<div class="we" data-title="A cubic from its turning points (Exam 2 staple)" data-marks="4">
+<div class="we-q"><p>A cubic \(p(x) = ax^3 + bx^2 + cx + d\) has a local maximum at \((1, 5)\) and a local minimum at \((3, 1)\). Find \(a\), \(b\), \(c\) and \(d\).</p></div>
+<div class="we-t"><p>Each turning point gives two equations: the point is on the curve, \(p(h) = k\), and the gradient there is zero, \(p'(h) = 0\). Two turning points give four equations for the four unknowns.</p></div>
+<div class="we-s" data-f="p'(h) = 0 \text{ at each turning point}"><p>\(p'(x) = 3ax^2 + 2bx + c\) is zero at \(x = 1\) and \(x = 3\), so \(p'(x) = 3a(x - 1)(x - 3) = 3ax^2 - 12ax + 9a\). Matching coefficients: \(b = -6a\), \(c = 9a\).</p></div>
+<div class="we-s" data-f="p(h) = k"><p>\(p(3) = 27a - 54a + 27a + d = d\), so \(d = 1\). Then \(p(1) = a - 6a + 9a + 1 = 4a + 1 = 5\), so \(a = 1\).</p></div>
+<div class="we-a"><p><strong>\(a = 1,\ b = -6,\ c = 9,\ d = 1\)</strong>, so \(p(x) = x^3 - 6x^2 + 9x + 1\). On CAS: <code>Define p(x)=a·x^3+b·x^2+c·x+d</code>, <code>Define dp(x)=derivative(p(x),x)</code>, then <code>solve(p(1)=5 and p(3)=1 and dp(1)=0 and dp(3)=0,{a,b,c,d})</code>.</p></div>
+</div>
+
 <div class="we" data-title="Biquadratic (quartic in disguise)" data-marks="2">
 <div class="we-q"><p>Solve \(x^4 - 5x^2 + 4 = 0\).</p></div>
 <div class="we-t"><p>A quartic with only \(x^4\) and \(x^2\) terms is a quadratic in \(x^2\). Substitute \(u = x^2\), solve, then go back to \(x\), rejecting any negative \(u\).</p></div>

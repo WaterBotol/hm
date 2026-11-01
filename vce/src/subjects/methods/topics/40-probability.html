@@ -48,6 +48,14 @@ dotpoints: conditional probability and independence | the addition and multiplic
 <div class="we-s" data-f="P(A \cap B) = P(A)P(B \mid A) ;; \text{add the separate orders}"><p>\(P(RB) + P(BR) = \frac58 \times \frac37 + \frac38 \times \frac57\).</p></div>
 <div class="we-a"><p><strong>\(= \frac{30}{56} = \frac{15}{28}\).</strong> Don't forget both orders.</p></div>
 </div>
+<div class="we" data-title="Independent trials with different probabilities" data-marks="3">
+<div class="we-q"><p>Three independent traffic lights are green with probabilities 0.5, 0.4 and 0.2. \(Y\) is the number of green lights. Find the probability distribution of \(Y\) and \(E(Y)\).</p></div>
+<div class="we-t"><p>With a different probability on each trial, \(Y\) is not binomial (\(p\) isn't constant). List the arrangements for each value, multiply along each one, and add.</p></div>
+<div class="we-s" data-f="P(A \cap B \cap C) = P(A)P(B)P(C)"><p>\(P(Y = 0) = 0.5 \times 0.6 \times 0.8 = 0.24\); \(P(Y = 3) = 0.5 \times 0.4 \times 0.2 = 0.04\).</p></div>
+<div class="we-s" data-f="\text{add the arrangements}"><p>\(P(Y = 1) = 0.5 \times 0.6 \times 0.8 + 0.5 \times 0.4 \times 0.8 + 0.5 \times 0.6 \times 0.2 = 0.24 + 0.16 + 0.06 = 0.46\); then \(P(Y = 2) = 1 - 0.24 - 0.46 - 0.04 = 0.26\).</p></div>
+<div class="we-a"><p><strong>\(P(Y = 0, 1, 2, 3) = 0.24,\ 0.46,\ 0.26,\ 0.04\)</strong>; \(E(Y) = 0.5 + 0.4 + 0.2 = 1.1\) (expected values add even though \(Y\) isn't binomial). CAS check: <code>expand((0.5+0.5·t)·(0.6+0.4·t)·(0.8+0.2·t))</code> gives \(0.24 + 0.46t + 0.26t^2 + 0.04t^3\): the coefficients are the distribution.</p></div>
+</div>
+
 
 <aside class="c-trap" data-title="Trick alert: probability traps">
 <ul>

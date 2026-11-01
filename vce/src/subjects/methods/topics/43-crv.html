@@ -42,6 +42,8 @@ dotpoints: continuous random variables and probability density functions | proba
 <div class="we-s" data-f="\int_0^m f(t)\,dt = \tfrac12"><p>Median: \(\int_0^m 0.5e^{-0.5t}dt = 1 - e^{-0.5m} = \frac12 \Rightarrow m = 2\log_e 2\).</p></div>
 <div class="we-a"><p><strong>\(P(T &gt; 2) = e^{-1} \approx 0.368\); median \(= 2\log_e 2 \approx 1.386\) min</strong> (less than the mean of 2 min: the long right tail pulls the mean up).</p></div>
 </div>
+<aside class="c-key" data-title="Transforming a pdf"><p>If \(f\) is a pdf, then \(g(x) = k\,f\!\left(\frac{x}{n}\right)\) (with \(n > 0\)) is a pdf only if \(kn = 1\), because the dilation by \(n\) from the \(y\)-axis multiplies the area by \(n\). Then \(g\) is the pdf of \(nX\): its mean is \(n\) times the mean of \(f\), and its standard deviation is \(n\) times the standard deviation of \(f\).</p></aside>
+
 
 <aside class="c-trap" data-title="Trick alert: pdf traps">
 <ul>
