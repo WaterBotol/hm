@@ -2003,3 +2003,15 @@ html.sh-dragging, html.sh-dragging * { cursor: grabbing !important; -webkit-user
 @keyframes shFlash { from { box-shadow: 0 0 0 2px rgba(0, 122, 255, 0.55); } }
 .sh-flash { animation: shFlash 1.3s ease-out; }
 @media (prefers-reduced-motion: reduce) { .sh-flash { animation: none; } .sh-ghost { rotate: none; } }
+
+/* Methods bound reference page */
+.br-dl { margin: 14px 0; padding: 12px 15px; border-radius: 14px; background: var(--fill); font-size: 14.5px; }
+.br-dl a { font-weight: 600; }
+.br-sub { color: var(--muted); font-size: 14px; margin-top: -4px; }
+.br-q { margin: 0 0 22px; }
+.br-q .ex-stim { margin: 12px 0 8px; }
+.br-stat { font-size: 13px; font-weight: 600; color: var(--muted); }
+details.br-a { border: 1px solid var(--line); border-radius: var(--radius); padding: 10px 14px; }
+details.br-a summary { cursor: pointer; font-weight: 600; color: var(--accent); }
+details.br-a[open] summary { margin-bottom: 8px; }
+.br-m { color: var(--muted); font-size: 0.92em; }
