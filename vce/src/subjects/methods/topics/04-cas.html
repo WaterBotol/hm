@@ -32,6 +32,7 @@ special: reference
 <tr data-topic="polynomials"><td>Factorise, expand; roots</td><td><code>factor(2·x^3-3·x^2-11·x+6)</code>; <code>expand((x+1)^3)</code>; <code>zeros(x^3-2·x^2-5·x+6,x)</code></td><td>(x − 3)(2x − 1)(x + 2); x³ + 3x² + 3x + 1; {−2, 1, 3}</td></tr>
 <tr data-topic="power"><td>Remainder; hyperbola form; turning-point form</td><td><code>polyRemainder(x^3+2·x+1,x-1,x)</code>; <code>propFrac((2·x+3)/(x+1),x)</code>; <code>completeSquare(x^2-6·x+5,x)</code></td><td>4; 1/(x + 1) + 2; (x − 3)² − 4</td></tr>
 <tr data-topic="binomial" data-find="Find the smallest n"><td>Inequality</td><td><code>solve(1-0.9^n&gt;0.95,n)</code></td><td>n &gt; 28.4332, so n = 29</td></tr>
+<tr data-topic="circular" data-find="Inequalities in a hidden quadratic"><td>Quadratic inequality (then use the range)</td><td><code>solve(2·a^2+a-1&gt;0,a)</code> with a = sin x</td><td>a &lt; −1 or a &gt; 1/2, so sin x &gt; 1/2</td></tr>
 <tr data-topic="polynomials" data-find="How many solutions"><td>k for a number of solutions</td><td><code>solve(k^2-16&gt;0,k)</code> (Δ of x² + kx + 4 &gt; 0)</td><td>k &lt; −4 or k &gt; 4</td></tr>
 <tr data-topic="polynomials" data-find="A cubic from its turning points"><td>Coefficients from conditions</td><td><code>Define p(x)=a·x^3+b·x^2+c·x+d</code>, <code>Define dp(x)=derivative(p(x),x)</code>, <code>solve(p(1)=5 and p(3)=1 and dp(1)=0 and dp(3)=0,{a,b,c,d})</code></td><td>a = 1, b = −6, c = 9, d = 1</td></tr>
 <tr data-topic="functional-eq"><td>Check a functional equation</td><td><code>Define f(x)=e^(3·x)</code>, then <code>f(x+y)=f(x)·f(y)</code></td><td>true (anything else isn’t a proof that it fails: test values)</td></tr>
@@ -62,7 +63,8 @@ special: reference
 <tr data-topic="diff-rules"><td>Derivative; at a point; second</td><td><code>derivative(f(x),x)</code>; <code>df(2)</code>; <code>derivative(f(x),x,2)</code></td><td>3x² − 6x − 9; −9; 6x − 6</td></tr>
 <tr data-topic="diff-apps" data-find="Stationary points and their nature"><td>Stationary points</td><td><code>exp▶list(solve(df(x)=0,x),x)</code>, then <code>f(ans)</code></td><td>{−1, 3}, then {10, −22}: (−1, 10) and (3, −22)</td></tr>
 <tr data-topic="diff-apps" data-find="Stationary points and their nature"><td>Where decreasing</td><td><code>solve(df(x)&lt;0,x)</code></td><td>−1 &lt; x &lt; 3 (write [−1, 3] for “strictly decreasing”)</td></tr>
-<tr data-topic="diff-apps" data-find="Greatest rate of change"><td>Inflection; greatest rate of change</td><td><code>solve(derivative(f(x),x,2)=0,x)</code>, then <code>df(1)</code>; on an interval <code>fMax(df(x),x)|0≤x≤5</code> or <code>fMin(df(x),x)|0≤x≤5</code></td><td>x = 1; gradient −12 there (the steepest descent)</td></tr>
+<tr data-topic="diff-apps" data-find="Greatest rate of change"><td>Inflection point</td><td><code>solve(derivative(f(x),x,2)=0,x)</code>, then <code>df(1)</code></td><td>x = 1; gradient −12 there</td></tr>
+<tr data-topic="diff-apps" data-find="Greatest rate of change"><td>Greatest rate of change on an interval</td><td>steepest descent <code>fMin(df(x),x)|0≤x≤5</code>; steepest ascent <code>fMax(df(x),x)|0≤x≤5</code>, then <code>df(x)|ans</code> for each</td><td>x = 1, −12; x = 5 (an endpoint), 36</td></tr>
 <tr data-topic="diff-apps" data-find="Tangents and normals"><td>Tangent, normal</td><td><code>tangentLine(x^3-2·x,x,1)</code>, <code>normalLine(x^3-2·x,x,1)</code></td><td>x − 2 and −x: write y = x − 2, y = −x</td></tr>
 <tr data-topic="diff-apps" data-find="Tangents and normals"><td>Tangent through an outside point</td><td>for y = x² through (1, −3): <code>Define w(x)=x^2</code>, <code>Define dw(x)=derivative(w(x),x)</code>, then <code>solve(-3-w(a)=dw(a)·(1-a),a)</code></td><td>a = −1 or a = 3</td></tr>
 <tr data-topic="limits" data-find="A smooth join"><td>Smooth join of a hybrid (join at x = 1)</td><td><code>Define p(x)=a·x^2+b</code>, <code>Define q(x)=4·x-1</code>, <code>Define dp(x)=derivative(p(x),x)</code>, <code>Define dq(x)=derivative(q(x),x)</code>, then <code>solve(p(1)=q(1) and dp(1)=dq(1),{a,b})</code></td><td>a = 2 and b = 1</td></tr>
@@ -95,6 +97,7 @@ special: reference
 <tr data-topic="binomial"><td>Unknown p</td><td><code>solve((1-p)^10=0.2,p)|0&lt;p&lt;1</code> (write the formula out)</td><td>p = 0.1487</td></tr>
 <tr data-topic="crv"><td>CRV: k, mean, variance</td><td><code>solve(integral(k·x^2,x,0,3)=1,k)</code>; <code>integral(x·x^2/9,x,0,3)</code>; <code>integral(x^2·x^2/9,x,0,3)-(9/4)^2</code></td><td>k = 1/9; 9/4; 0.3375</td></tr>
 <tr data-topic="crv"><td>CRV: median, percentile</td><td><code>solve(integral(t^2/9,t,0,m)=0.5,m)|0≤m≤3</code> (0.25 for the 25th percentile)</td><td>m = 2.381 (1.890)</td></tr>
+<tr data-topic="crv"><td>A parameter inside an integral, tabulated</td><td><code>seq(integral(t^2/9,t,k,3),k,0,3,0.5)</code> (low, high, step)</td><td>1, 0.9954, 0.9630, 0.875, 0.7037, 0.4213, 0: P(X &gt; k) for each k</td></tr>
 <tr data-topic="crv"><td>Piecewise pdf, conditional</td><td><code>Define f(x)=piecewise(x,0≤x≤1,2-x,1&lt;x≤2)</code>, then <code>integral(f(x),x,1.5,2)/integral(f(x),x,1,2)</code></td><td>0.25 = P(X &gt; 1.5 | X &gt; 1)</td></tr>
 <tr data-topic="normal" data-find="Probability and percentile"><td>Normal probability</td><td><code>normCdf(180,∞,170,8)</code> (lower, upper, μ, σ: not σ²)</td><td>0.1056</td></tr>
 <tr data-topic="normal" data-find="Conditional normal"><td>Conditional (normal)</td><td><code>normCdf(180,∞,170,8)/normCdf(170,∞,170,8)</code></td><td>0.2113</td></tr>
@@ -120,6 +123,7 @@ special: reference
   <li><strong>Trig without a domain</strong> gives general solutions with <code>n1</code> (any integer): add <code>|0≤x≤2·π</code>.</li>
   <li><strong>normCdf and invNorm take σ</strong>, not the variance, and invNorm wants the area to the left.</li>
   <li><strong>Rounding.</strong> If Pr = 0.2 “correct to 1 decimal place”, the true value is in [0.15, 0.25). Don’t solve = 0.2 exactly for an integer like n or k: tabulate the candidates with <code>seq</code> and keep every one in the interval. Store unrounded values (→) and round only at the end.</li>
+  <li><strong>No rounding stated means exact.</strong> In Section B, if no decimal places are given, the answer must be exact: enter fractions (not decimals) so CAS stays exact, or use <code>exact()</code>.</li>
   <li><strong>CAS answers come in their own form.</strong> Convert to the exact form asked, and write the setting-out a marker needs.</li>
 </ul>
 </aside>

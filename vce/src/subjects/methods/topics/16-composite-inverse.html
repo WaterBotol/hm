@@ -58,7 +58,13 @@ dotpoints: sums, differences, products and composites of functions, and conditio
 <figcaption>\(y = 1 - x^3\) and its inverse \(y = \sqrt[3]{1 - x}\) meet at five points. Only one is on \(y = x\); the other four are two pairs swapped across it.</figcaption>
 </figure>
 
-<aside class="c-key" data-title="Two more inverse facts"><p>If \(f\) and \(g\) meet at \((a, b)\), then \(f^{-1}\) and \(g^{-1}\) meet at \((b, a)\). If \(f\) and \(f^{-1}\) meet only on \(y = x\), at \(x = a\) and \(x = b\), the area between them is twice the area between \(f\) and \(y = x\): \(2\int_a^b |x - f(x)|\,dx\).</p></aside>
+<div class="we" data-title="Where two inverses meet" data-marks="2">
+<div class="we-q"><p>\(f(x) = x^3\) and \(g(x) = 4x\) meet at \((-2, -8)\), \((0, 0)\) and \((2, 8)\). Where do \(f^{-1}\) and \(g^{-1}\) meet?</p></div>
+<div class="we-t"><p>Reflecting both graphs in \(y = x\) reflects their intersection points too, so swap the coordinates. Check with the rules if you have them; if a question gives a line or curve, first decide whether it <em>is</em> one of the inverses.</p></div>
+<div class="we-s" data-f="(a, b) \text{ on both} \Rightarrow (b, a) \text{ on both inverses}"><p>Swap each point: \((-8, -2)\), \((0, 0)\), \((8, 2)\). Check: \(f^{-1}(x) = \sqrt[3]{x}\) and \(g^{-1}(x) = \frac x4\) give \(\sqrt[3]{8} = 2 = \frac84\) ✓.</p></div>
+<div class="we-a"><p><strong>\((-8, -2)\), \((0, 0)\) and \((8, 2)\).</strong></p></div>
+</div>
+<aside class="c-key" data-title="Area between f and its inverse"><p>If \(f\) and \(f^{-1}\) meet only on \(y = x\), at \(x = a\) and \(x = b\), the area between them is twice the area between \(f\) and \(y = x\): \(2\int_a^b |x - f(x)|\,dx\).</p></aside>
 <aside class="c-trap" data-title="Trick alert: composite and inverse traps">
 <ul>
   <li><strong>\(f^{-1}(x) \ne \frac{1}{f(x)}\).</strong> The inverse undoes \(f\); the reciprocal is something else.</li>

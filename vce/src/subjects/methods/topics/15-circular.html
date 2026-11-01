@@ -74,6 +74,7 @@ dotpoints: circular functions sin, cos and tan and their graphs, including ampli
 <div class="we-s" data-f="\text{solve each on } [0, 2\pi]"><p>\(\sin x = 1\): \(x = \frac{\pi}{2}\). \(\sin x = -\frac12\): third and fourth quadrants, \(x = \frac{7\pi}{6}, \frac{11\pi}{6}\).</p></div>
 <div class="we-a"><p><strong>\(x = \frac{\pi}{2}, \frac{7\pi}{6}, \frac{11\pi}{6}\).</strong> The same move works for \(e^{2x} - 3e^x + 2 = 0\) (\(a = e^x &gt; 0\)) and for \(\cos^2 x\) or \(\tan x\) quadratics.</p></div>
 </div>
+<aside class="c-key" data-title="Inequalities in a hidden quadratic"><p>Solve the quadratic inequality in \(a\) first, then intersect with the range of \(a\). E.g. \(2\sin^2 x + \sin x - 1 &gt; 0\): \((2a - 1)(a + 1) &gt; 0\) gives \(a &lt; -1\) or \(a &gt; \frac12\). Since \(-1 \le \sin x \le 1\), only \(\sin x &gt; \frac12\) is possible, so on \([0, 2\pi]\): \(\frac{\pi}{6} &lt; x &lt; \frac{5\pi}{6}\). CAS: <code>solve(2·a^2+a-1&gt;0,a)</code> gives a &lt; −1 or a &gt; 1/2.</p></aside>
 <aside class="c-key" data-title="Showing there are no solutions: use the range"><p>To show an equation has no solutions, show the two sides can never be equal. E.g. \(\cos x = x^2 + 1.5\) has none, because \(\cos x \le 1 &lt; 1.5 \le x^2 + 1.5\). Similarly, \(\sin(\sin 2x) = 1\) has none: \(|\sin 2x| \le 1 &lt; \frac{\pi}{2}\), and \(\sin\theta = 1\) needs \(\theta = \frac{\pi}{2} + 2n\pi\).</p></aside>
 
 <h2>Periodic models</h2>
