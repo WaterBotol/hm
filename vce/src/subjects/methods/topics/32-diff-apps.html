@@ -40,7 +40,15 @@ dotpoints: equations of tangents and normals | average and instantaneous rates o
 </div>
 
 <h2>Rates of change</h2>
-<p><strong>Average</strong> rate of change over \([a, b]\) = \(\dfrac{f(b) - f(a)}{b - a}\) (gradient of a secant). <strong>Instantaneous</strong> rate at \(x = a\) = \(f'(a)\) (gradient of the tangent). Read the question carefully: VCAA asks for both, often in the same question.</p>
+<p><strong>Average</strong> rate of change over \([a, b]\) = \(\dfrac{f(b) - f(a)}{b - a}\) (gradient of a secant). The <strong>instantaneous</strong> rate at \(x = a\) is \(f'(a)\) (gradient of the tangent). Read the question carefully: VCAA asks for both, often in the same question.</p>
+<div class="we" data-title="Average vs instantaneous rate (Exam 2 style)" data-marks="4">
+<div class="we-q"><p>A drink cools so that its temperature after \(t\) minutes is \(T(t) = 80e^{-0.2t} + 20\) °C. Find (a) the average rate of change over the first 5 minutes, (b) the instantaneous rate at \(t = 5\), and (c) when the instantaneous rate equals the average rate in (a).</p></div>
+<div class="we-t"><p>Average rate uses two function values (a secant); instantaneous rate uses the derivative (a tangent). Part (c) sets the derivative equal to the number from (a).</p></div>
+<div class="we-s" data-f="\dfrac{T(b) - T(a)}{b - a}"><p>(a) \(\dfrac{T(5) - T(0)}{5} = \dfrac{80e^{-1} - 80}{5} = -16\left(1 - e^{-1}\right) \approx -10.11\) °C/min.</p></div>
+<div class="we-s" data-f="T&#x27;(a)"><p>(b) \(T'(t) = -16e^{-0.2t}\), so \(T'(5) = -16e^{-1} \approx -5.89\) °C/min.</p></div>
+<div class="we-s" data-f="\text{solve } T&#x27;(t) = \text{average rate}"><p>(c) \(-16e^{-0.2t} = -16\left(1 - e^{-1}\right) \Rightarrow t = -5\log_e\left(1 - e^{-1}\right) \approx 2.29\).</p></div>
+<div class="we-a"><p><strong>(a) −10.11 °C/min; (b) −5.89 °C/min; (c) \(t \approx 2.29\) min.</strong> Units on rates: °C per minute.</p></div>
+</div>
 
 <h2>Stationary points and their nature</h2>
 <p>Stationary points occur where \(f'(x) = 0\). Classify with a <strong>sign diagram of \(f'\)</strong> or with the <strong>second derivative</strong>:</p>
@@ -49,9 +57,16 @@ dotpoints: equations of tangents and normals | average and instantaneous rates o
 <tbody>
 <tr><td>\(+\ \to\ -\)</td><td>\(&lt; 0\)</td><td>local maximum</td></tr>
 <tr><td>\(-\ \to\ +\)</td><td>\(&gt; 0\)</td><td>local minimum</td></tr>
-<tr><td>\(+\ \to\ +\) or \(-\ \to\ -\)</td><td>\(= 0\): the test fails, so use the sign test (it could be a max, min or inflection)</td><td>stationary point of inflection</td></tr>
+<tr><td>\(+\ \to\ +\) or \(-\ \to\ -\)</td><td>usually 0, but \(f''(a) = 0\) on its own decides nothing: use the sign test</td><td>stationary point of inflection</td></tr>
 </tbody></table></div>
 <aside class="c-trap" data-title="f''(a) = 0 doesn't prove an inflection"><p>\(f(x) = x^4\) has \(f'(0) = 0\) and \(f''(0) = 0\), but \((0, 0)\) is a local <em>minimum</em>. When the second derivative is 0, go back to the sign test.</p></aside>
+<div class="we" data-title="A gradient table, VCAA style" data-marks="3">
+<div class="we-q"><p>For \(f(x) = x^4 - 4x^3\), find the stationary points and use a gradient table to state their nature.</p></div>
+<div class="we-t"><p>VCAA's gradient table lists \(x\)-values just left of, at and just right of each stationary point, with the actual value of \(f'(x)\) at each, then the slope. Pick test values between the stationary points.</p></div>
+<div class="we-s" data-f="f&#x27;(x) = 0"><p>\(f'(x) = 4x^3 - 12x^2 = 4x^2(x - 3) = 0 \Rightarrow x = 0\) or \(x = 3\). \(f(0) = 0\), \(f(3) = 81 - 108 = -27\).</p></div>
+<div class="we-s" data-f="\text{evaluate } f&#x27; \text{ either side}"><p>Gradient table:</p><div class="tbl"><table><tbody><tr><td>\(x\)</td><td>\(-1\)</td><td>\(0\)</td><td>\(1\)</td><td>\(3\)</td><td>\(4\)</td></tr><tr><td>\(f'(x)\)</td><td>\(-16\)</td><td>\(0\)</td><td>\(-8\)</td><td>\(0\)</td><td>\(64\)</td></tr><tr><td>slope</td><td>\(\searrow\)</td><td>\(\rightarrow\)</td><td>\(\searrow\)</td><td>\(\rightarrow\)</td><td>\(\nearrow\)</td></tr></tbody></table></div></div>
+<div class="we-a"><p><strong>\((0, 0)\) is a stationary point of inflection (negative on both sides); \((3, -27)\) is a local minimum.</strong> Here \(f''(0) = 0\) as well, which on its own proves nothing.</p></div>
+</div>
 <div class="we" data-title="Full curve sketch of a cubic" data-marks="5">
 <div class="we-q"><p>For \(f(x) = x^3 - 3x^2 - 9x + 5\), find the stationary points and their nature, the point of inflection, and the intervals where \(f\) is strictly decreasing.</p></div>
 <div class="we-t"><p>Stationary points are where \(f'(x) = 0\). The second derivative tells you the concavity there: concave down is a max, concave up is a min. A point of inflection is where the concavity changes, i.e. \(f''\) changes sign.</p></div>
@@ -79,13 +94,31 @@ dotpoints: equations of tangents and normals | average and instantaneous rates o
 <div class="we-a"><p><strong>Local max \(\left(1, \frac1e\right)\); inflection \(\left(2, \frac{2}{e^2}\right)\).</strong></p></div>
 </div>
 
+<div class="we" data-title="Greatest rate of change: inflection or endpoint" data-marks="3">
+<div class="we-q"><p>The depth of water in a channel is \(h(t) = -t^3 + 6t^2 + 15\) m, \(0 \le t \le 5\) hours. When is the depth increasing most rapidly, and at what rate? When is it decreasing most rapidly?</p></div>
+<div class="we-t"><p>"Increasing most rapidly" means the maximum of \(h'\), so set \(h''(t) = 0\) (an inflection point of \(h\)) and also check the endpoints, because on a closed interval the extreme rate can sit at an end.</p></div>
+<div class="we-s" data-f="\text{max of } h&#x27;: h&#x27;&#x27;(t) = 0"><p>\(h'(t) = -3t^2 + 12t\), \(h''(t) = -6t + 12 = 0 \Rightarrow t = 2\), and \(h'(2) = 12\).</p></div>
+<div class="we-s" data-f="\text{check the endpoints}"><p>Endpoints: \(h'(0) = 0\), \(h'(5) = -75 + 60 = -15\). CAS: <code>fMax(derivative(h(t),t),t)|0≤t≤5</code> and <code>fMin(…)</code>.</p></div>
+<div class="we-a"><p><strong>Increasing most rapidly at \(t = 2\) h, at 12 m/h; decreasing most rapidly at \(t = 5\) h (the endpoint), at 15 m/h.</strong></p></div>
+</div>
+
 <h2>Sketching the gradient function</h2>
-<ul>
-  <li>Stationary points of \(f\) → \(x\)-intercepts of \(f'\).</li>
-  <li>\(f\) increasing → \(f'\) above the axis; \(f\) decreasing → \(f'\) below.</li>
-  <li>Inflection points of \(f\) → turning points of \(f'\).</li>
-  <li>Corners/cusps of \(f\) → open circles or gaps in \(f'\). Vertical asymptotes stay as asymptotes.</li>
-</ul>
+<p>Read across a row to match a graph with its gradient graph (or, reading right to left, \(f'\) back to \(f\); the same table links an antiderivative \(F\) to \(f\)).</p>
+<div class="tbl"><table>
+<thead><tr><th>On the graph of \(f\)</th><th>On the graph of \(f'\)</th></tr></thead>
+<tbody>
+<tr><td>increasing / decreasing</td><td>above / below the \(x\)-axis</td></tr>
+<tr><td>local max / local min</td><td>crosses the axis \(+ \to -\) / \(- \to +\)</td></tr>
+<tr><td>stationary point of inflection</td><td>touches the axis without crossing</td></tr>
+<tr><td>non-stationary point of inflection</td><td>a turning point not on the axis</td></tr>
+<tr><td>concave up / concave down</td><td>increasing / decreasing</td></tr>
+<tr><td>straight-line section, gradient \(m\)</td><td>horizontal section at height \(m\)</td></tr>
+<tr><td>corner or cusp</td><td>a jump (open circles), \(f'\) undefined there</td></tr>
+<tr><td>vertical tangent</td><td>vertical asymptote</td></tr>
+<tr><td>vertical asymptote</td><td>vertical asymptote at the same \(x\)</td></tr>
+<tr><td>horizontal asymptote</td><td>\(f' \to 0\) (approaches the \(x\)-axis)</td></tr>
+</tbody></table></div>
+<aside class="c-exam" data-title="“Which graph could be f′?”"><p>Mark the \(x\)-values of every stationary point of \(f\) first and rule out any option that isn't zero exactly there. Then check the sign between them. That usually leaves one option; use concavity (where \(f'\) turns) only to break a tie.</p></aside>
 
 <aside class="c-deep" data-title="Going deeper: linear approximation (not in the 2023–2027 study design)">
 <div class="eq"><div class="eq-label">Linear approximation</div>\[ f(x + h) \approx f(x) + h\,f'(x) \]<p>Use the tangent line to estimate nearby values. Example: \(\sqrt{16.2} \approx 4 + 0.2\cdot\frac{1}{2\sqrt{16}} = 4.025\) (true value 4.0249…).</p></div>

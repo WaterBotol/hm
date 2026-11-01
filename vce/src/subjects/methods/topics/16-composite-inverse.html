@@ -27,7 +27,7 @@ dotpoints: sums, differences, products and composites of functions, and conditio
 <div class="we-t"><p>Find the range of the inner function on its domain first, then see what the outer function does to that set.</p></div>
 <div class="we-s" data-f="\text{ran } f \text{ on its domain}"><p>\(f\) has its maximum 2 at \(x = 0\) (inside the domain) and its minimum at an endpoint: \(f(-1) = 1\), \(f(2) = -2\). So \(\text{ran}\, f = [-2, 2]\).</p></div>
 <div class="we-s" data-f="g \text{ increasing} \Rightarrow \text{apply } g \text{ to the ends}"><p>\(g(x) = e^x\) is increasing, so it maps \([-2, 2]\) onto \([e^{-2}, e^2]\).</p></div>
-<div class="we-a"><p><strong>\(\text{ran}(g \circ f) = [e^{-2}, e^2]\)</strong>. Using only the endpoints of the domain gives \(g(f(-1)) = e\) and \(g(f(2)) = e^{-2}\), which misses the maximum \(e^2\) from \(x = 0\).</p></div>
+<div class="we-a"><p><strong>\(\text{ran}(g \circ f) = [e^{-2}, e^2]\)</strong>. Using only the endpoints of the domain gives \(g(f(-1)) = e\) and \(g(f(2)) = e^{-2}\), which misses the maximum \(e^2\) from \(x = 0\). If the outer function is <strong>decreasing</strong>, the ends swap: \(e^{-x}\) maps \([-4, \infty)\) onto \((0, e^4]\), and an end that's never reached stays open.</p></div>
 </div>
 
 <aside class="c-key" data-title="A linear inside is a transformation"><p>If \(f(x) = mx + c\), then \(g(f(x)) = g(mx + c)\) is just a transformation of \(g\): a dilation by factor \(\frac{1}{|m|}\) from the \(y\)-axis (a reflection in the \(y\)-axis too if \(m &lt; 0\)) and a horizontal translation. For example, \(y = g(c - x) = g\big(-(x - c)\big)\) is \(g\) reflected in the \(y\)-axis, then moved \(c\) units right.</p></aside>

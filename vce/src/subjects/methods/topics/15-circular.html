@@ -67,6 +67,15 @@ dotpoints: circular functions sin, cos and tan and their graphs, including ampli
 </div>
 <div class="eq"><div class="eq-label">General solutions (\(n \in \mathbb{Z}\))</div>\[ \sin x = a:\ x = 2n\pi + \sin^{-1}a \ \text{ or } \ x = (2n + 1)\pi - \sin^{-1}a \]\[ \cos x = a:\ x = 2n\pi \pm \cos^{-1}a \qquad \tan x = a:\ x = n\pi + \tan^{-1}a \]</div>
 
+<div class="we" data-title="A hidden quadratic in sin x" data-marks="3">
+<div class="we-q"><p>Solve \(2\sin^2 x - \sin x - 1 = 0\) for \(x \in [0, 2\pi]\).</p></div>
+<div class="we-t"><p>Let \(a = \sin x\): it's a quadratic in \(a\). Solve for \(a\), throw away any value outside \([-1, 1]\), then solve each trig equation on the interval.</p></div>
+<div class="we-s" data-f="\text{let } a = \sin x"><p>\(2a^2 - a - 1 = (2a + 1)(a - 1) = 0 \Rightarrow \sin x = -\frac12\) or \(\sin x = 1\).</p></div>
+<div class="we-s" data-f="\text{solve each on } [0, 2\pi]"><p>\(\sin x = 1\): \(x = \frac{\pi}{2}\). \(\sin x = -\frac12\): third and fourth quadrants, \(x = \frac{7\pi}{6}, \frac{11\pi}{6}\).</p></div>
+<div class="we-a"><p><strong>\(x = \frac{\pi}{2}, \frac{7\pi}{6}, \frac{11\pi}{6}\).</strong> The same move works for \(e^{2x} - 3e^x + 2 = 0\) (\(a = e^x &gt; 0\)) and for \(\cos^2 x\) or \(\tan x\) quadratics.</p></div>
+</div>
+<aside class="c-key" data-title="Showing there are no solutions: use the range"><p>To show an equation has no solutions, show the two sides can never be equal. E.g. \(\cos x = x^2 + 1.5\) has none, because \(\cos x \le 1 &lt; 1.5 \le x^2 + 1.5\). Similarly, \(\sin(\sin 2x) = 1\) has none: \(|\sin 2x| \le 1 &lt; \frac{\pi}{2}\), and \(\sin\theta = 1\) needs \(\theta = \frac{\pi}{2} + 2n\pi\).</p></aside>
+
 <h2>Periodic models</h2>
 <div class="we" data-title="Tide model (Exam 2 style)" data-marks="4">
 <div class="we-q"><p>The depth of water in a harbour is \(D(t) = 3 + 2\cos\!\left(\frac{\pi t}{6}\right)\) metres, \(t\) hours after midnight. (a) State the maximum and minimum depths and the period. (b) For how long in the first 12 hours is the depth at least 4 m?</p></div>

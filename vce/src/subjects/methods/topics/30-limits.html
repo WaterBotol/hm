@@ -58,6 +58,13 @@ dotpoints: the concept of a limit and the derivative as the limit of the gradien
 <div class="we-a"><p><strong>\((-3, -2) \cup (-2, 2) \cup (2, 3)\).</strong></p></div>
 </div>
 
+<div class="we" data-title="Writing the derivative of a hybrid" data-marks="2">
+<div class="we-q"><p>Let \(f(x) = \begin{cases} x^2, & 0 \le x \le 2 \\ 8 - 2x, & 2 &lt; x \le 4 \end{cases}\). Write \(f'(x)\) as a hybrid function, with its domain.</p></div>
+<div class="we-t"><p>Differentiate each piece on the <strong>open</strong> version of its interval. At the join, include the point only if the function is continuous there and both gradients agree; leave out the endpoints of the domain.</p></div>
+<div class="we-s" data-f="\text{differentiate each piece}"><p>Left piece: \(2x\), giving 4 at \(x = 2\). Right piece: \(-2\). The pieces meet (both 4) but the gradients differ, so there's a corner at \(x = 2\).</p></div>
+<div class="we-a"><p><strong>\(f'(x) = \begin{cases} 2x, & 0 &lt; x &lt; 2 \\ -2, & 2 &lt; x &lt; 4 \end{cases}\)</strong>, with domain \((0, 2) \cup (2, 4)\). If the join were smooth, you'd include \(x = 2\) in one piece.</p></div>
+</div>
+
 <aside class="c-trap" data-title="Trick alert: limit and differentiability traps">
 <ul>
   <li><strong>Continuous doesn't mean differentiable.</strong> Every corner is continuous.</li>

@@ -13,7 +13,7 @@ keywords: real exam questions, past exam questions, vcaa questions, ranked by di
 <div class="mcq" data-ans="C" data-t="limits" data-fac="42">
 <div class="mcq-q"><p class="src"><span class="src-tag">2023 VCAA Exam 2 · Section A · Question 9</span> <a class="src-link" href="https://www.vcaa.vic.edu.au/sites/default/files/Documents/exams/mathematics/2023/2023MM2-w.pdf#page=5" target="_blank" rel="noopener">Open in the exam PDF (p. 5) ↗</a></p><p>Value of a that makes a tan/sin hybrid continuous and smooth at x = 2π</p></div>
 <ol><li></li><li></li><li></li><li></li><li></li></ol>
-<div class="mcq-x"><p>Continuity needs \(\sin(2\pi a) = 0\). Smoothness needs \(a\cos(2\pi a) = \frac12\) (the gradient of \(\tan\frac x2\) there). So \(a = -\frac12\).</p></div>
+<div class="mcq-x"><p>Continuity needs \(\sin(2\pi a) = 0\), so \(a = \frac n2\) for an integer \(n\). Smoothness needs \(a\cos(2\pi a) = \frac12\) (the gradient of \(\tan\frac x2\) at \(2\pi\) is \(\frac12\sec^2\pi = \frac12\)), i.e. \(\frac n2(-1)^n = \frac12\), which holds only for \(n = -1\). So \(a = -\frac12\) (\(a = \frac12\) gives \(-\frac12\)).</p></div>
 <div class="ex-rep"><p><strong>42% of Victorian students got this right.</strong> Choices: A 7% · B 9% · C 42% · D 31% · E 10%. The most popular wrong answer was D (31%).</p></div>
 </div>
 <div class="mcq" data-ans="E" data-t="diff-rules" data-fac="22">
@@ -161,7 +161,7 @@ keywords: real exam questions, past exam questions, vcaa questions, ranked by di
 <div class="exp" data-marks="2" data-part="d.ii" data-avg="0.4">
 <div class="exp-q"><p>All possible values of n</p></div>
 <ul class="mk"><li>Continuity at t = 20: \(h(40 + n) = 135\), so \(\cos\left(\frac{\pi(40 + n)}{15}\right) = -1\)</li><li>\(n = 30j - 25,\ j \in Z\)</li></ul>
-<div class="exp-a"><p>\(n = 5 + 30j\) for integer j. A general solution was required.</p></div>
+<div class="exp-a"><p>\(n = 30j - 25\) for integer j (the same set as \(n = 5 + 30j\)). A general solution was required.</p></div>
 <div class="ex-rep"><p><strong>State average 0.4 / 2 (20%)</strong>; 12% scored full marks.</p><p class="ln">Mark distribution: 0: 76% · 1: 12% · 2: 12%</p></div>
 </div>
 <div class="exp" data-marks="3" data-part="d.iii" data-avg="1.2">
@@ -263,7 +263,7 @@ keywords: real exam questions, past exam questions, vcaa questions, ranked by di
 <div class="exp" data-marks="1" data-part="e" data-avg="0">
 <div class="exp-q"><p>Smallest k for which h meets the inverse of \(h_1\) (2 d.p.)</p></div>
 <ul class="mk"><li>\(k \approx 1.27\)</li></ul>
-<div class="exp-a"><p>Find the k where the curves just touch (a tangency condition). The state averaged 0.0/1.</p></div>
+<div class="exp-a"><p>\(h_1\) is increasing, so it meets its inverse on \(y = x\). The smallest k is where \(h\) just touches \(y = x\): solve \(h(x) = x\) and \(h'(x) = 1\) simultaneously for x and k. The state averaged 0.0/1.</p></div>
 <div class="ex-rep"><p><strong>State average 0 / 1 (0%)</strong>; 4% scored full marks.</p><p class="ln">Mark distribution: 0: 96% · 1: 4%</p></div>
 </div>
 <div class="exp" data-marks="2" data-part="f" data-avg="0.3">

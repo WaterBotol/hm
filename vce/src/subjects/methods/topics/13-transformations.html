@@ -63,6 +63,14 @@ dotpoints: transformations of the plane: dilations, reflections in the axes and 
 <div class="we-s" data-f="(x, y) \to (3x + h,\ y + k)"><p>After the dilation \((0, 0) \to (0, 0)\) and \((2, -4) \to (6, -4)\). Translating 1 right and 3 up gives \((1, 3)\) ✓ and \((7, -1)\) ✓.</p></div>
 <div class="we-a"><p><strong>Dilation by factor 3 from the \(y\)-axis, then a translation 1 unit right and 3 units up</strong>: \((x, y) \to (3x + 1,\ y + 3)\), so the image is \(y = f\!\left(\frac{x - 1}{3}\right) + 3\).</p></div>
 </div>
+<aside class="c-key" data-title="When the order of the points flips, reflect"><p>If the image points are in the opposite left–right order, the map needs a <strong>reflection in the \(y\)-axis</strong>; opposite up–down order needs a <strong>reflection in the \(x\)-axis</strong>. E.g. \(A(1, 2)\), \(B(3, -2)\) to \(A'(4, 2)\), \(B'(0, -2)\): \(A\) was left of \(B\) and is now right of it, and the gap doubles, so reflect in the \(y\)-axis, dilate by 2 from the \(y\)-axis and translate 6 right: \((x, y) \to (6 - 2x,\ y)\), image \(y = f\!\left(\frac{6 - x}{2}\right)\).</p></aside>
+<div class="we" data-title="The inverse transformation: mapping g back to f" data-marks="2">
+<div class="we-q"><p>The graph of \(y = g(x)\), where \(g(x) = 2f(3x - 6) + 1\), is the image of \(y = f(x)\). Find the transformation that maps \(g\) back to \(f\).</p></div>
+<div class="we-t"><p>Write the mapping from \(f\) to \(g\) with the dash method, then make \(x\) and \(y\) the subjects: that reverses the mapping. In words, undo the steps in reverse order.</p></div>
+<div class="we-s" data-f="y&#x27; = 2y + 1,\ x = 3x&#x27; - 6"><p>\(f \to g\): \(y' = 2y + 1\) and \(3x' - 6 = x\), so \((x, y) \to \left(\frac{x + 6}{3},\ 2y + 1\right)\).</p></div>
+<div class="we-s" data-f="\text{make } x, y \text{ the subjects}"><p>Reverse: \(x = 3x' - 6\), \(y = \frac{y' - 1}{2}\), so \(g \to f\) is \((x, y) \to \left(3x - 6,\ \frac{y - 1}{2}\right)\).</p></div>
+<div class="we-a"><p><strong>Dilate by factor 3 from the \(y\)-axis, then translate 6 units left; translate 1 unit down, then dilate by factor \(\frac12\) from the \(x\)-axis.</strong> Check: \(f(x) = \frac{g\left(\frac{x + 6}{3}\right) - 1}{2}\).</p></div>
+</div>
 
 <h2>Families of functions with a parameter</h2>
 <p>A rule with a parameter, such as \(y = x^2 - 2kx + 3\), describes a whole family of graphs. Typical questions ask where a feature (a turning point, an intercept) lies as \(k\) varies, or which values of \(k\) give a property (one-to-one, no \(x\)-intercepts, a given number of solutions).</p>
@@ -72,6 +80,21 @@ dotpoints: transformations of the plane: dilations, reflections in the axes and 
 <div class="we-s" data-f="x^2 - 2kx + 3 = (x - k)^2 + 3 - k^2"><p>Turning point \((k,\ 3 - k^2)\).</p></div>
 <div class="we-s" data-f="\text{eliminate } k"><p>\(x = k\) and \(y = 3 - k^2\), so \(y = 3 - x^2\).</p></div>
 <div class="we-a"><p><strong>Turning point \((k, 3 - k^2)\), on the parabola \(y = 3 - x^2\).</strong> No \(x\)-intercepts when the turning point is above the axis: \(3 - k^2 &gt; 0\), so \(-\sqrt3 &lt; k &lt; \sqrt3\) (the same as \(\Delta = 4k^2 - 12 &lt; 0\)).</p></div>
+</div>
+<div class="we" data-title="Parameter conditions: increasing, common points, stationary points" data-marks="4">
+<div class="we-q"><p>(a) For which \(k\) is \(f(x) = x^3 + kx^2 + 3x\) strictly increasing for all \(x\)? (b) Find the points that every member of \(y = kx^2 - (k + 2)x + 2\) passes through. (c) How many stationary points does \(g(x) = x^3 - 3kx\) have, as \(k\) varies?</p></div>
+<div class="we-t"><p>(a) Strictly increasing everywhere means \(f'(x) \ge 0\) for all \(x\) (zero only at isolated points), so the quadratic \(f'\) has \(\Delta \le 0\). (b) Collect the \(k\) terms: a point is on every member when the coefficient of \(k\) is 0. (c) Count solutions of \(g'(x) = 0\).</p></div>
+<div class="we-s" data-f="f&#x27;(x) \ge 0 \text{ for all } x \iff \Delta \le 0"><p>(a) \(f'(x) = 3x^2 + 2kx + 3\); \(\Delta = 4k^2 - 36 \le 0 \Rightarrow -3 \le k \le 3\).</p></div>
+<div class="we-s" data-f="k(\ldots) + (\ldots): \text{ coefficient of } k = 0"><p>(b) \(y = k(x^2 - x) + 2 - 2x\). Independent of \(k\) when \(x^2 - x = 0\): \(x = 0, y = 2\) and \(x = 1, y = 0\).</p></div>
+<div class="we-s" data-f="g&#x27;(x) = 0"><p>(c) \(g'(x) = 3x^2 - 3k = 0 \Rightarrow x^2 = k\).</p></div>
+<div class="we-a"><p><strong>(a) \(-3 \le k \le 3\) (the ends are included: \(f'\) touches 0 once). (b) \((0, 2)\) and \((1, 0)\). (c) Two if \(k &gt; 0\), one (a stationary point of inflection at the origin) if \(k = 0\), none if \(k &lt; 0\).</strong></p></div>
+</div>
+<div class="we" data-title="When does f meet its inverse? (tangency)" data-marks="3">
+<div class="we-q"><p>For which values of \(k\) does the graph of \(f(x) = e^x + k\) intersect the graph of its inverse?</p></div>
+<div class="we-t"><p>\(f\) is increasing, so \(f\) and \(f^{-1}\) can only meet on \(y = x\). The boundary case is where \(y = f(x)\) just touches \(y = x\): solve \(f(x) = x\) and \(f'(x) = 1\) together.</p></div>
+<div class="we-s" data-f="f(x) = x \text{ and } f&#x27;(x) = 1"><p>\(e^x = 1 \Rightarrow x = 0\); then \(e^0 + k = 0 \Rightarrow k = -1\). CAS: <code>solve(e^(x)+k=x and e^(x)=1,{x,k})</code>.</p></div>
+<div class="we-s" data-f="\text{decide which side of the boundary works}"><p>Lowering the curve (smaller \(k\)) makes it cross \(y = x\) twice; raising it lifts it clear of the line.</p></div>
+<div class="we-a"><p><strong>\(k \le -1\)</strong> (one meeting point at \(k = -1\), two for \(k &lt; -1\)). The same "touch \(y = x\)" idea finds the smallest or largest parameter in Section B questions on inverses.</p></div>
 </div>
 <aside class="c-trap" data-title="Trick alert: transformation traps">
 <ul>

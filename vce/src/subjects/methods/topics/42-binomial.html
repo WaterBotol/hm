@@ -33,7 +33,7 @@ dotpoints: Bernoulli trials and the binomial distribution Bi(n, p) | mean and va
 <div class="we-t"><p>A binomial counts successes in \(n\) independent trials, each with the same probability \(p\). “At least” is easiest via the complement. For a conditional, the intersection is often just the smaller event.</p></div>
 <div class="we-s" data-f="P(X = x) = \dbinom nx p^x(1 - p)^{n - x}"><p>(a) \(\binom{10}{3}(0.3)^3(0.7)^7 = 120 \times 0.027 \times 0.0823543 \approx 0.2668\).</p></div>
 <div class="we-s" data-f="P(X \ge a) = 1 - P(X \le a - 1)"><p>(b) \(P(X \ge 3) = 1 - P(X \le 2) \approx 1 - 0.3828 = 0.6172\) (CAS: binomCdf).</p></div>
-<div class="we-s" data-f="P(A \mid B) = \dfrac{P(A \cap B)}{P(B)} ;; P(X \ge 1) = 1 - (1 - p)^n"><p>(c) \(P(X \ge 3 \mid X \ge 1) = \dfrac{P(X \ge 3)}{P(X \ge 1)} = \dfrac{0.6172}{1 - 0.7^{10}} = \dfrac{0.6172}{0.9718}\).</p></div>
+<div class="we-s" data-f="P(A \mid B) = \dfrac{P(A \cap B)}{P(B)} ;; P(X \ge 1) = 1 - (1 - p)^n"><p>(c) \(P(X \ge 3 \mid X \ge 1) = \dfrac{P(X \ge 3)}{P(X \ge 1)} = \dfrac{0.61722}{1 - 0.7^{10}} = \dfrac{0.61722}{0.97175} \approx 0.6352\) (keep unrounded values until the end).</p></div>
 <div class="we-a"><p><strong>(a) 0.2668, (b) 0.6172, (c) 0.6352.</strong> In (c), “at least 3” is already inside “at least 1”, so the intersection is just \(P(X \ge 3)\).</p></div>
 </div>
 
@@ -43,6 +43,13 @@ dotpoints: Bernoulli trials and the binomial distribution Bi(n, p) | mean and va
 <div class="we-s" data-f="P(X \ge 1) = 1 - (1 - p)^n"><p>\(P(X \ge 1) = 1 - 0.9^n &gt; 0.95 \Rightarrow 0.9^n &lt; 0.05\).</p></div>
 <div class="we-s" data-f="a^n &lt; b \Rightarrow n &gt; \dfrac{\log_e b}{\log_e a} \ (0 &lt; a &lt; 1)"><p>\(n &gt; \dfrac{\log_e 0.05}{\log_e 0.9} \approx 28.43\). (The inequality flips because \(\log_e 0.9 &lt; 0\).)</p></div>
 <div class="we-a"><p><strong>\(n = 29\).</strong> Always round <em>up</em> for “smallest \(n\)”. Check: \(1 - 0.9^{28} \approx 0.948\) (too small), \(1 - 0.9^{29} \approx 0.953\) ✓.</p></div>
+</div>
+
+<div class="we" data-title="An integer from a rounded probability" data-marks="2">
+<div class="we-q"><p>\(X \sim \text{Bi}(n, 0.1)\). For which values of \(n\) is \(P(X \ge 1) = 0.8\), correct to one decimal place?</p></div>
+<div class="we-t"><p>"0.8 correct to 1 d.p." means the true value lies in \([0.75, 0.85)\). Don't solve \(= 0.8\) exactly; tabulate the candidates and keep every \(n\) in the interval.</p></div>
+<div class="we-s" data-f="\text{rounded value } 0.8 \iff [0.75,\ 0.85)"><p>\(P(X \ge 1) = 1 - 0.9^n\). CAS: <code>seq(1-0.9^n,n,13,19)</code> gives 0.7458, 0.7712, 0.7941, 0.8147, 0.8332, 0.8499, 0.8649.</p></div>
+<div class="we-a"><p><strong>\(n = 14, 15, 16, 17, 18\).</strong> \(n = 18\) counts: 0.8499 rounds to 0.8. Give every value unless the question asks for the smallest or largest.</p></div>
 </div>
 
 <div class="we" data-title="Find n and p from the mean and variance" data-marks="2">
