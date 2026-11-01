@@ -1,0 +1,95 @@
+<!--
+id: cas
+title: TI-Nspire CX II CAS commands
+short: CAS commands
+summary: The TI-Nspire CX II CAS commands for Methods Exam 2, by topic, with the exact syntax and an example of each: solving, defining functions, calculus, distributions and confidence intervals.
+keywords: CAS, TI-Nspire, CX II, calculator, commands, syntax, solve, nSolve, define, piecewise, derivative, integral, tangentLine, normalLine, fMax, fMin, limit, binomPdf, binomCdf, normCdf, invNorm, zInterval_1Prop, ClrAZ, exam 2
+special: reference
+-->
+<p>Everything here is typed in a Calculator page on the TI-Nspire CX II CAS. The examples are taken from this guide’s topic pages, so you can check each output against an answer you already know. Exam 1 is technology free: this page is for Exam 2.</p>
+
+<h2>Set up</h2>
+<div class="tbl"><table>
+<thead><tr><th>To do this</th><th>Type or press</th></tr></thead>
+<tbody>
+<tr><td>Radians, real answers</td><td>Home ▸ Settings ▸ Document Settings: Angle <strong>Radian</strong>, Real or Complex <strong>Real</strong>, Calculation Mode <strong>Auto</strong></td></tr>
+<tr><td>Clear old definitions (start of every question)</td><td><code>ClrAZ</code> (menu ▸ Actions ▸ Clear a–z)</td></tr>
+<tr><td>Decimal answer</td><td><strong>ctrl + enter</strong>, or <code>approx(…)</code></td></tr>
+<tr><td>Use the last answer</td><td><code>ans</code> (ctrl + (−))</td></tr>
+<tr><td>“Such that” (with)</td><td><code>|</code> (from the ctrl + = palette), e.g. <code>f(x)|x=2</code></td></tr>
+<tr><td>Define a function</td><td><code>Define f(x)=x^3-3·x</code> (menu ▸ Actions ▸ Define)</td></tr>
+</tbody></table></div>
+
+<h2>Algebra and equations</h2>
+<div class="tbl"><table>
+<thead><tr><th>To do this</th><th>Type</th><th>Gives</th></tr></thead>
+<tbody>
+<tr><td>Solve</td><td><code>solve(x^2-5·x+6=0,x)</code></td><td>x = 2 or x = 3</td></tr>
+<tr><td>Solve on an interval</td><td><code>solve(2·sin(2·x)=1,x)|0≤x≤π</code></td><td>x = π/12 or x = 5π/12</td></tr>
+<tr><td>Solve numerically</td><td><code>nSolve(x^3+x-1=0,x)|0≤x≤1</code></td><td>0.682328</td></tr>
+<tr><td>Simultaneous equations</td><td><code>solve(2·x+y=5 and x-y=1,{x,y})</code></td><td>x = 2 and y = 1</td></tr>
+<tr><td>Factorise, expand</td><td><code>factor(2·x^3-3·x^2-11·x+6)</code>, <code>expand((x+1)^3)</code></td><td>(x − 3)(2x − 1)(x + 2)</td></tr>
+<tr><td>Remainder</td><td><code>polyRemainder(x^3+2·x+1,x-1,x)</code></td><td>4</td></tr>
+<tr><td>Inequality</td><td><code>solve(1-0.9^n&gt;0.95,n)</code></td><td>n &gt; 28.4332, so n = 29</td></tr>
+<tr><td>Parameter values (discriminant)</td><td><code>solve(k^2-16&gt;0,k)</code> for two solutions of x² + kx + 4 = 0</td><td>k &lt; −4 or k &gt; 4</td></tr>
+</tbody></table></div>
+
+<h2>Functions and graphs</h2>
+<div class="tbl"><table>
+<thead><tr><th>To do this</th><th>Type</th><th>Gives</th></tr></thead>
+<tbody>
+<tr><td>Hybrid function</td><td><code>Define g(x)=piecewise(x+3,x&lt;-1,x^2+1,-1≤x≤1,4-2·x,x&gt;1)</code> (or the template)</td><td>use g like any function</td></tr>
+<tr><td>Composite</td><td><code>f(g(x))</code></td><td>the rule of f∘g</td></tr>
+<tr><td>Inverse (swap, then solve)</td><td><code>solve(x=2·e^(y-1)+3,y)</code></td><td>y = ln((x − 3)/2) + 1, possibly in an equivalent form</td></tr>
+<tr><td>Image under a transformation</td><td><code>solve((y+2)/3=√((1-x)/2),y)</code></td><td>y = 3√((1 − x)/2) − 2</td></tr>
+<tr><td>Where f meets its inverse</td><td><code>Define f(x)=1-x^3</code>, then <code>solve(f(f(x))=x,x)</code></td><td>all five x-values (solving <code>f(x)=x</code> finds only the one on y = x)</td></tr>
+<tr><td>Zeros, turning points, intersections</td><td>Graphs page: menu ▸ Analyze Graph ▸ Zero / Minimum / Maximum / Intersection / Inflection</td><td></td></tr>
+<tr><td>Other functions</td><td><code>abs(x)</code>, <code>ln(x)</code>, <code>log(x,2)</code> (base 2), <code>e^(x)</code> (the e<sup>x</sup> key), <code>root(x,3)</code></td><td></td></tr>
+</tbody></table></div>
+
+<h2>Calculus</h2>
+<div class="tbl"><table>
+<thead><tr><th>To do this</th><th>Type</th><th>Gives</th></tr></thead>
+<tbody>
+<tr><td>Derivative</td><td><code>derivative(f(x),x)</code> (or the d/dx template)</td><td>f′(x)</td></tr>
+<tr><td>Gradient at a point</td><td><code>derivative(f(x),x)|x=2</code></td><td>f′(2)</td></tr>
+<tr><td>Second derivative</td><td><code>derivative(f(x),x,2)</code></td><td>f″(x)</td></tr>
+<tr><td>Stationary points</td><td><code>solve(derivative(f(x),x)=0,x)</code>, then <code>f(…)</code> for each y</td><td></td></tr>
+<tr><td>Tangent, normal</td><td><code>tangentLine(x^3-2·x,x,1)</code>, <code>normalLine(x^3-2·x,x,1)</code></td><td>y = x − 2, y = −x</td></tr>
+<tr><td>Max or min on an interval</td><td><code>fMax(f(x),x)|0≤x≤3</code>, <code>fMin(f(x),x)|0≤x≤3</code></td><td>the x-value: then find f there, and check the endpoints</td></tr>
+<tr><td>Antiderivative</td><td><code>integral(f(x),x)</code> (or the ∫ template)</td><td>an antiderivative: add + c yourself</td></tr>
+<tr><td>Definite integral</td><td><code>integral(x^2-1,x,0,2)</code></td><td>2/3 (signed: split at the x-intercepts for area)</td></tr>
+<tr><td>Area between curves</td><td><code>integral(x-x^2,x,0,1)</code> (upper − lower)</td><td>1/6</td></tr>
+<tr><td>Average value</td><td><code>1/2·integral(e^(x),x,0,2)</code></td><td>(e² − 1)/2</td></tr>
+<tr><td>Limit</td><td><code>limit((x^2-9)/(x-3),x,3)</code>; from the left/right add <code>,-1</code> or <code>,1</code></td><td>6</td></tr>
+<tr><td>Newton’s method</td><td><code>Define f(x)=x^3-2·x-5</code>, <code>Define nr(x)=x-f(x)/derivative(f(x),x)</code>, then <code>nr(2)</code>, then <code>nr(ans)</code> and press enter again</td><td>2.1, 2.094568, 2.094551, …</td></tr>
+<tr><td>Trapezium rule</td><td><code>Define f(x)=x^2</code>, then <code>0.5/2·(f(0)+2·sum(seq(f(0.5·i),i,1,3))+f(2))</code></td><td>2.75</td></tr>
+</tbody></table></div>
+
+<h2>Probability and statistics</h2>
+<p>The distributions are in menu ▸ Probability ▸ Distributions; confidence intervals are in menu ▸ Statistics ▸ Confidence Intervals.</p>
+<div class="tbl"><table>
+<thead><tr><th>To do this</th><th>Type</th><th>Gives</th></tr></thead>
+<tbody>
+<tr><td>Binomial P(X = x)</td><td><code>binomPdf(10,0.3,3)</code></td><td>0.2668</td></tr>
+<tr><td>Binomial P(a ≤ X ≤ b)</td><td><code>binomCdf(10,0.3,3,10)</code></td><td>0.6172 (P(X ≥ 3))</td></tr>
+<tr><td>Binomial P(X ≤ b)</td><td><code>binomCdf(10,0.3,2)</code></td><td>0.3828</td></tr>
+<tr><td>Normal P(a &lt; X &lt; b)</td><td><code>normCdf(180,∞,170,8)</code> (σ, not σ²)</td><td>0.1056</td></tr>
+<tr><td>Inverse normal</td><td><code>invNorm(0.9,170,8)</code> (area to the <strong>left</strong>)</td><td>180.25</td></tr>
+<tr><td>z for a percentile</td><td><code>invNorm(0.1)</code></td><td>−1.2816</td></tr>
+<tr><td>Unknown σ (or μ)</td><td><code>solve((40-50)/s=invNorm(0.1),s)</code></td><td>s = 7.80</td></tr>
+<tr><td>DRV mean and variance</td><td><code>sum({0,1,2,3}·{0.1,0.3,0.4,0.2})</code>, <code>sum({0,1,2,3}^2·{0.1,0.3,0.4,0.2})-1.7^2</code></td><td>1.7, 0.81</td></tr>
+<tr><td>CRV mean and median</td><td><code>integral(x·x^2/9,x,0,3)</code>, <code>solve(integral(t^2/9,t,0,m)=0.5,m)|0≤m≤3</code></td><td>9/4, m = 2.381</td></tr>
+<tr><td>Sample proportion (exact)</td><td><code>binomCdf(100,0.3,36,100)</code> for P(p̂ &gt; 0.35), n = 100</td><td>0.1161</td></tr>
+<tr><td>Confidence interval for p</td><td><code>zInterval_1Prop 60,200,0.95</code></td><td>stat.CLower = 0.2365, stat.CUpper = 0.3635</td></tr>
+</tbody></table></div>
+
+<aside class="c-trap" data-title="CAS traps that cost marks">
+<ul>
+  <li><strong>Type the multiplication.</strong> <code>kx</code> is one variable called “kx”; type <code>k·x</code>. And <code>x(x+1)</code> is read as a function: type <code>x·(x+1)</code>.</li>
+  <li><strong>Clear a–z before each question</strong>, or an old definition of f or k leaks into the new one.</li>
+  <li><strong>Trig without a domain</strong> gives general solutions with <code>n1</code> (any integer). Add <code>|0≤x≤2·π</code>.</li>
+  <li><strong>normCdf and invNorm take σ</strong>, not the variance, and invNorm wants the area to the left.</li>
+  <li><strong>CAS answers come in their own form.</strong> Convert to the exact form the question asks for, and write the setting-out a human marker needs: the equation you solved, not just “by CAS”.</li>
+</ul>
+</aside>
