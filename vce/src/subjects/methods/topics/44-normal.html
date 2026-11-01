@@ -3,7 +3,7 @@ id: normal
 title: The normal distribution
 short: Normal distribution
 summary: The normal curve, standardising with z-scores, the 68–95–99.7% rule, probabilities and inverse-normal (percentile) problems, finding an unknown mean or standard deviation, conditional normal probabilities and combining normal with binomial.
-keywords: normal distribution, bell curve, standard normal, z score, standardise, standardize, 68 95 99.7, empirical rule, inverse normal, percentile, quantile, find mean, find standard deviation, conditional normal, normcdf, invnorm, N(mu, sigma^2), symmetric
+keywords: normal distribution, bell curve, standard normal, effect of mean and standard deviation on the graph, points of inflection, z score, standardise, standardize, 68 95 99.7, empirical rule, inverse normal, percentile, quantile, find mean, find standard deviation, conditional normal, normcdf, invnorm, N(mu, sigma^2), symmetric
 dotpoints: the normal distribution N(μ, σ²) and the standard normal distribution | standardisation and the 68–95–99.7% rule | calculation of probabilities and quantiles, including finding unknown parameters
 -->
 <h2>The normal curve</h2>
@@ -13,6 +13,8 @@ dotpoints: the normal distribution N(μ, σ²) and the standard normal distribut
 <thead><tr><th>Interval</th><th>\(\mu \pm \sigma\)</th><th>\(\mu \pm 2\sigma\)</th><th>\(\mu \pm 3\sigma\)</th></tr></thead>
 <tbody><tr><td>Approx. probability</td><td>68%</td><td>95%</td><td>99.7%</td></tr></tbody></table></div>
 <div class="sim" data-sim="normal"></div>
+<h2>How \(\mu\) and \(\sigma\) change the graph</h2>
+<p>Changing \(\mu\) translates the curve left or right without changing its shape. A larger \(\sigma\) gives a lower, wider curve and a smaller \(\sigma\) a taller, narrower one: the total area is always 1. The peak height is \(\frac{1}{\sigma\sqrt{2\pi}}\), and the points of inflection are at \(x = \mu \pm \sigma\). The standard normal \(Z \sim \text{N}(0, 1)\) has \(\mu = 0\) and \(\sigma = 1\).</p>
 
 <div class="we" data-title="Probability and percentile" data-marks="3">
 <div class="we-q"><p>Heights of adult men are \(X \sim \text{N}(170, 8^2)\) cm. Find (a) \(P(X &gt; 180)\), (b) the height exceeded by only 10% of men.</p></div>

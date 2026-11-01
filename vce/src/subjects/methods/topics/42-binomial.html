@@ -3,9 +3,13 @@ id: binomial
 title: The binomial distribution
 short: Binomial distribution
 summary: Bernoulli trials and the binomial model, the formula and when to use it, mean and variance, 'at least' questions via complements, finding n or p, conditional binomial probabilities and the most likely value.
-keywords: binomial distribution, bernoulli trial, success, failure, independent trials, nCr, combinations, binomial formula, E(X) = np, variance np(1-p), at least one, at most, complement, find n, find p, conditional binomial, mode, cumulative, binompdf, binomcdf
+keywords: binomial distribution, bernoulli trial, bernoulli random variable, shape of binomial graph, skew, success, failure, independent trials, nCr, combinations, binomial formula, E(X) = np, variance np(1-p), at least one, at most, complement, find n, find p, conditional binomial, mode, cumulative, binompdf, binomcdf
 dotpoints: Bernoulli trials and the binomial distribution Bi(n, p) | mean and variance of the binomial distribution | applications, including finding n and p and conditional probabilities
 -->
+<h2>Bernoulli trials</h2>
+<p>A <strong>Bernoulli trial</strong> has exactly two outcomes: success, scored \(X = 1\), with probability \(p\), and failure, scored \(X = 0\), with probability \(1 - p\).</p>
+<div class="eq"><div class="eq-label">Bernoulli random variable</div>\[ P(X = 1) = p \qquad P(X = 0) = 1 - p \qquad E(X) = p \qquad \operatorname{Var}(X) = p(1 - p) \]<p>A binomial variable counts the successes in \(n\) independent Bernoulli trials with the same \(p\), which is why its mean and variance are \(n\) times these: \(np\) and \(np(1 - p)\).</p></div>
+
 <h2>When is it binomial?</h2>
 <p>\(X \sim \text{Bi}(n, p)\) counts the number of successes when:</p>
 <ol>
@@ -16,6 +20,13 @@ dotpoints: Bernoulli trials and the binomial distribution Bi(n, p) | mean and va
 </ol>
 <div class="eq"><div class="eq-label">Binomial distribution</div>\[ P(X = x) = \binom{n}{x}p^x(1 - p)^{n - x},\quad x = 0, 1, \ldots, n \qquad E(X) = np \qquad \operatorname{Var}(X) = np(1 - p) \]<p>\(\binom{n}{x} = \frac{n!}{x!(n - x)!}\) counts the arrangements of \(x\) successes among \(n\) trials. For example \(\binom{5}{2} = 10\).</p></div>
 <div class="sim" data-sim="binomial"></div>
+<h2>How \(n\) and \(p\) change the graph</h2>
+<ul>
+  <li>\(p = 0.5\): symmetric about the mean \(np\).</li>
+  <li>\(p &lt; 0.5\): positively skewed (tail to the right). \(p &gt; 0.5\): negatively skewed (tail to the left).</li>
+  <li>Larger \(n\): the peak moves right (mean \(np\)), the spread grows (sd \(\sqrt{np(1 - p)}\)) and the shape becomes more symmetric.</li>
+  <li>The most likely value (the mode) is close to the mean \(np\).</li>
+</ul>
 
 <div class="we" data-title="Exactly, at least, at most" data-marks="4">
 <div class="we-q"><p>30% of customers buy a coffee. Ten customers are chosen at random. Find the probability that (a) exactly 3 buy coffee, (b) at least 3 buy coffee, (c) given at least one buys coffee, at least 3 do.</p></div>

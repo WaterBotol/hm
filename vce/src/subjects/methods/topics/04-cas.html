@@ -81,6 +81,7 @@ special: reference
 <tr><td>DRV mean and variance</td><td><code>sum({0,1,2,3}·{0.1,0.3,0.4,0.2})</code>, <code>sum({0,1,2,3}^2·{0.1,0.3,0.4,0.2})-1.7^2</code></td><td>1.7, 0.81</td></tr>
 <tr><td>CRV mean and median</td><td><code>integral(x·x^2/9,x,0,3)</code>, <code>solve(integral(t^2/9,t,0,m)=0.5,m)|0≤m≤3</code></td><td>9/4, m = 2.381</td></tr>
 <tr><td>Sample proportion (exact)</td><td><code>binomCdf(100,0.3,36,100)</code> for P(p̂ &gt; 0.35), n = 100</td><td>0.1161</td></tr>
+<tr><td>Simulate sample proportions</td><td><code>randBin(100,0.3,50)/100</code></td><td>50 simulated values of p̂ for n = 100, p = 0.3</td></tr>
 <tr><td>Confidence interval for p</td><td><code>zInterval_1Prop 60,200,0.95</code></td><td>stat.CLower = 0.2365, stat.CUpper = 0.3635</td></tr>
 </tbody></table></div>
 

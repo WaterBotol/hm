@@ -3,7 +3,7 @@ id: sampling
 title: Sampling & sample proportions
 short: Sample proportions
 summary: Populations and samples, random sampling and bias, the sample proportion p̂ as a random variable, its mean and standard deviation, the exact (binomial) distribution vs the normal approximation, and how sample size affects variability.
-keywords: sample, population, parameter, statistic, random sample, bias, sample proportion, p hat, population proportion, sampling distribution, standard deviation of p hat, standard error, normal approximation, binomial exact, sample size, simulation, variability
+keywords: sample, population, parameter, statistic, simulation, simulate sample proportions, randBin, random sample, bias, sample proportion, p hat, population proportion, sampling distribution, standard deviation of p hat, standard error, normal approximation, binomial exact, sample size, simulation, variability
 dotpoints: random sampling, populations and samples, and sources of bias | the sample proportion p̂ as a random variable; its mean and standard deviation | the approximate normality of the distribution of p̂ for large samples, and the exact distribution via the binomial
 -->
 <h2>Populations, samples and bias</h2>
@@ -17,6 +17,10 @@ dotpoints: random sampling, populations and samples, and sources of bias | the s
 <h2>The distribution of \(\hat p\)</h2>
 <div class="eq"><div class="eq-label">Sample proportion</div>\[ \hat P = \frac{X}{n},\ X \sim \text{Bi}(n, p) \qquad E(\hat P) = p \qquad \operatorname{sd}(\hat P) = \sqrt{\frac{p(1 - p)}{n}} \]<p>For large \(n\) (a common guide is \(np \ge 10\) and \(n(1 - p) \ge 10\)), \(\hat P\) is approximately \(\text{N}\!\left(p, \frac{p(1 - p)}{n}\right)\).</p></div>
 <aside class="c-key"><p>Quadrupling the sample size <strong>halves</strong> the standard deviation of \(\hat P\) (because of the \(\sqrt{n}\)). Diminishing returns: going from \(n = 100\) to \(n = 400\) helps as much as going from 400 to 1600.</p></aside>
+
+<h2>Simulating sample proportions</h2>
+<p>A simulation draws many random samples of size \(n\) from a population with proportion \(p\) and records \(\hat p\) for each. A dot plot or histogram of the results shows the distribution of \(\hat P\): centred near \(p\), with spread close to \(\sqrt{\frac{p(1 - p)}{n}}\), and more bell-shaped as \(n\) grows. A bigger \(n\) shrinks the spread; with \(p\) near 0 or 1, small samples give a skewed distribution.</p>
+<p>Simulated confidence intervals show the other key idea: every sample gives a different interval, and about 95% of 95% intervals contain the true \(p\). On the TI-Nspire CX II CAS, <code>randBin(100,0.3,50)/100</code> gives 50 simulated sample proportions for \(n = 100\) and \(p = 0.3\).</p>
 
 <div class="we" data-title="Mean and sd of p̂" data-marks="2">
 <div class="we-q"><p>30% of a town's households own a dog. Random samples of 100 households are taken. Find the mean and standard deviation of \(\hat P\).</p></div>
