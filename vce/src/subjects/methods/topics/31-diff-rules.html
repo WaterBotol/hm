@@ -49,6 +49,7 @@ dotpoints: derivatives of xⁿ, eˣ, logₑx, sin x, cos x and tan x | the chain
 <div class="we-a" data-f="\sin\tfrac\pi2 = 1,\ \cos\tfrac\pi2 = 0"><p>\(f'\!\left(\frac{\pi}{2}\right) = 2\cdot\frac{\pi}{2}\cdot 1 + \frac{\pi^2}{4}\cdot 0 = \boldsymbol{\pi}\).</p></div>
 </div>
 
+<aside class="c-key" data-title="Tricky: f′(g(x)) means f′ evaluated at g(x)" data-tricky="1"><p>For \(h(x) = f(g(x))\) the chain rule is \(h'(x) = f'(g(x)) \cdot g'(x)\): the derivative of the outer function, <strong>evaluated at the inner function's value</strong>, times the derivative of the inner. With a table, at \(x = 2\): first find \(g(2)\), then look up \(f'\) <em>at that number</em>, then multiply by \(g'(2)\).</p><p>E.g. \(g(2) = 5\), \(g'(2) = 3\), \(f'(5) = 4\): \(h'(2) = f'(5) \times 3 = 12\). The common slip is to use \(f'(2)\). The same pattern gives \(\dfrac{d}{dx}\sqrt{f(x)} = \dfrac{f'(x)}{2\sqrt{f(x)}}\): the outer derivative \(\frac{1}{2\sqrt{u}}\) at \(u = f(x)\), times \(f'(x)\).</p></aside>
 <div class="we" data-title="Derivatives from a table (Exam 1 style)" data-marks="3">
 <div class="we-q"><p>The table gives values of \(f\), \(g\) and their derivatives.</p>
 <div class="tbl"><table><thead><tr><th>\(x\)</th><th>\(f(x)\)</th><th>\(f'(x)\)</th><th>\(g(x)\)</th><th>\(g'(x)\)</th></tr></thead><tbody><tr><td>1</td><td>3</td><td>−2</td><td>2</td><td>5</td></tr><tr><td>2</td><td>4</td><td>7</td><td>1</td><td>−3</td></tr></tbody></table></div>

@@ -14,6 +14,7 @@ dotpoints: conditional probability and independence | the addition and multiplic
 </div>
 <aside class="c-trap" data-title="Mutually exclusive ≠ independent"><p>If \(A\) and \(B\) are mutually exclusive and both have non-zero probability, they're <em>dependent</em>: knowing \(A\) happened tells you \(B\) definitely didn't. \(P(A \cap B) = 0 \ne P(A)P(B)\).</p></aside>
 
+<aside class="c-key" data-title="Tricky: what “given” actually does" data-tricky="1"><p>\(P(A \mid B)\) asks: <em>among only the cases where \(B\) happened</em>, what fraction also have \(A\)? The "given" part <strong>becomes the new total</strong>, so it goes on the bottom: \(P(A \mid B) = \dfrac{P(A \cap B)}{P(B)}\). With counts it is just "of those who …": 120 of the 200 who passed were girls, so \(P(\text{girl} \mid \text{passed}) = \frac{120}{200}\).</p><p>That is why \(P(A \mid B)\) and \(P(B \mid A)\) differ: the denominators are different groups. "<strong>Given that</strong> …", "<strong>of those who</strong> …" and "if it is known that …" all mean the thing after it goes underneath.</p></aside>
 <h2>Karnaugh maps (probability tables)</h2>
 <p>A 2 × 2 table with totals is the fastest tool when there are two events. Fill in what you know; every row and column must add up.</p>
 <div class="we" data-title="Karnaugh map and independence" data-marks="3">

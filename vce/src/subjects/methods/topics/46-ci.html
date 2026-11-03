@@ -26,6 +26,7 @@ dotpoints: approximate confidence intervals for a population proportion | the ma
 <div class="we-a" data-f="(\hat p - M,\ \hat p + M)"><p><strong>\((0.5575,\ 0.6825)\).</strong> The 95% interval is \((0.5724, 0.6676)\). More confidence needs a wider net.</p></div>
 </div>
 
+<aside class="c-key" data-title="Tricky: reading an interval (a, b) backwards" data-tricky="1"><p>An approximate interval \(\hat p \pm z\sqrt{\hat p(1 - \hat p)/n}\) is symmetric, so from \((a, b)\) you can read three things: the <strong>sample proportion</strong> \(\hat p = \frac{a + b}{2}\), the <strong>margin of error</strong> \(M = \frac{b - a}{2}\), and then either the <strong>confidence level</strong> (find \(z = M \div\) standard error, then the central area between \(\pm z\)) or the <strong>sample size</strong> (rearrange \(M = z\sqrt{\hat p(1 - \hat p)/n}\) for \(n\)). The number of successes \(n\hat p\) should be a whole number: use that to check \(n\).</p></aside>
 <div class="we" data-title="Working backwards from an interval (hard)" data-marks="3">
 <div class="we-q"><p>An approximate 95% confidence interval for \(p\) is \((0.52, 0.64)\). Find \(\hat p\), the margin of error and the sample size.</p></div>
 <div class="we-t"><p>An interval is symmetric about \(\hat p\), so \(\hat p\) is the midpoint and the margin is half the width. Put both into the margin formula and solve for \(n\), rounding up.</p></div>

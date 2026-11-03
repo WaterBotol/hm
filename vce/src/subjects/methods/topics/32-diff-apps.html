@@ -15,6 +15,7 @@ dotpoints: equations of tangents and normals | average and instantaneous rates o
 <div class="we-s" data-f="y - y_1 = m(x - x_1) ;; m_{\text{normal}} = -\dfrac{1}{f&#x27;(a)}"><p>Tangent: \(y + 1 = 1(x - 1) \Rightarrow y = x - 2\). Normal gradient \(= -1\): \(y + 1 = -(x - 1) \Rightarrow y = -x\).</p></div>
 <div class="we-a"><p><strong>Tangent \(y = x - 2\); normal \(y = -x\).</strong></p></div>
 </div>
+<aside class="c-key" data-title="Tricky: a tangent from an outside point: the point of contact is the unknown" data-tricky="1"><p>If the given point isn't on the curve, you can't use it to find the gradient. Instead call the <strong>point of contact</strong> \((a, f(a))\). The tangent there is \(y - f(a) = f'(a)(x - a)\). Now force this line through the given point: substitute its coordinates and you get an equation in \(a\) alone. <strong>Each solution \(a\) is one tangent</strong>, so "how many tangents" means "how many solutions for \(a\)".</p></aside>
 <div class="we" data-title="Tangents through a point not on the curve (hard)" data-marks="4">
 <div class="we-q"><p>Find the equations of the tangents to \(y = x^2\) that pass through the point \((1, -3)\).</p></div>
 <div class="we-t"><p>If the given point isn't on the curve, you don't know where the tangent touches. Call the point of contact \((a, f(a))\), write the tangent in terms of \(a\), then force it through the given point to solve for \(a\).</p></div>
@@ -126,6 +127,7 @@ dotpoints: equations of tangents and normals | average and instantaneous rates o
 <p>It was in the previous study design, so it turns up in older exams. The current study design doesn't list it, but it's just the tangent line, so it's a quick read.</p>
 </aside>
 
+<aside class="c-key" data-title="Tricky: where is f increasing or decreasing? (endpoints in or out)" data-tricky="1"><p>Find the stationary points, then test the sign of \(f'\) between them. For \(f(x) = x^3 - 3x^2 - 9x + 5\), \(f'(x) = 3(x + 1)(x - 3) < 0\) for \(-1 < x < 3\). VCAA includes the stationary points when asked where \(f\) is <strong>strictly increasing or decreasing</strong>: \(f\) is strictly decreasing on \([-1, 3]\), because it keeps falling right through the stationary ends. A question about where the <strong>gradient is negative</strong> (\(f'(x) < 0\)) wants the open interval \((-1, 3)\).</p><p>Wording decides the brackets, so copy the question's wording into your answer. Also, "strictly increasing for all \(x\)" allows \(f' = 0\) at isolated points (\(x^3\) is strictly increasing although \(f'(0) = 0\)), so the condition is \(f' \ge 0\), not \(f' > 0\).</p></aside>
 <aside class="c-trap" data-title="Trick alert: curve-sketching traps">
 <ul>
   <li><strong>Stationary point ≠ turning point.</strong> Turning points are only the maxima and minima; stationary inflections also have \(f' = 0\).</li>

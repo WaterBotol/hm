@@ -42,6 +42,7 @@ dotpoints: antiderivatives of polynomials, xⁿ, (ax + b)ⁿ, eˣ, 1/x, sin and 
 
 <h2>Antidifferentiation by recognition</h2>
 <p>This is an Exam 1 staple: “Differentiate \(g(x)\). Hence find an antiderivative of \(h(x)\).” Differentiate, rearrange so the thing you want is on its own, then antidifferentiate both sides.</p>
+<aside class="c-key" data-title="Tricky: how a “hence” antiderivative works" data-tricky="1"><p>"Differentiate \(x\log_e x\). Hence find \(\int \log_e x\,dx\)" is one idea in two steps. Differentiating gives \(\log_e x + 1\), so \(\int (\log_e x + 1)\,dx = x\log_e x\). That contains the thing you want <em>plus extra</em>. Split the integral and move the extra over: \(\int \log_e x\,dx = x\log_e x - \int 1\,dx = x\log_e x - x + c\).</p><p>The plan is always: differentiate what they give you, spot the target integrand inside the result, rearrange. Don't reach for a technique you haven't been given.</p></aside>
 <div class="we" data-title="Hence find ∫ log x dx" data-marks="3">
 <div class="we-q"><p>Find \(\dfrac{d}{dx}(x\log_e x)\). Hence find \(\displaystyle\int\log_e x\,dx\).</p></div>
 <div class="we-t"><p>“Hence” questions use antidifferentiation by recognition: if you know \(\frac{d}{dx}F(x) = f(x) + g(x)\), then integrating both sides gives \(F(x) = \int f + \int g\). Rearrange for the integral you want.</p></div>

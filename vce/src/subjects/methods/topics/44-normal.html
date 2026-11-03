@@ -38,6 +38,7 @@ dotpoints: the normal distribution N(μ, σ²) and the standard normal distribut
 <div class="we-a"><p><strong>\(\sigma = \frac{10}{1.2816} \approx 7.80\) g.</strong></p></div>
 </div>
 
+<aside class="c-key" data-title="Tricky: unknown μ and σ — standardise, then use the sign to check" data-tricky="1"><p>Each given probability becomes one equation. For \(P(X < a) = p\): find \(z = \text{invNorm}(p)\), then \(\dfrac{a - \mu}{\sigma} = z\). Two conditions give two equations that are linear in \(\mu\) and \(\sigma\): \(a - \mu = z_1\sigma\) and \(b - \mu = z_2\sigma\). Subtract to get \(\sigma = \dfrac{b - a}{z_2 - z_1}\), then back-substitute for \(\mu\).</p><p>Sign check before you trust the algebra: a probability <strong>below 0.5 means \(z < 0\)</strong>, so \(a\) must be <em>less than</em> \(\mu\); above 0.5 means \(z > 0\) and \(a > \mu\). If your \(\mu\) lands on the wrong side of \(a\), a sign slipped. And \(\sigma\) must come out positive.</p></aside>
 <div class="we" data-title="Finding μ and σ together (hard)" data-marks="4">
 <div class="we-q"><p>For a normal variable, \(P(X &lt; 30) = 0.2\) and \(P(X &gt; 60) = 0.1\). Find \(\mu\) and \(\sigma\).</p></div>
 <div class="we-t"><p>Two known percentiles give two standardising equations. Both unknowns appear linearly, so solve them simultaneously.</p></div>

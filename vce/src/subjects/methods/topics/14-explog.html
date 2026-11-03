@@ -75,6 +75,7 @@ dotpoints: exponential functions y = aˣ and y = eˣ, and logarithmic functions 
 <div class="we-s" data-f="\text{substitute back}"><p>\(A = \dfrac{12}{e^{2\log_e 2}} = \dfrac{12}{4} = 3\).</p></div>
 <div class="we-a"><p><strong>\(A = 3,\ k = \log_e 2\)</strong>, so \(y = 3e^{x\log_e 2} = 3 \times 2^x\).</p></div>
 </div>
+<aside class="c-key" data-title="Tricky: what each part of a model y = A·eᵏˣ + c means" data-tricky="1"><p>\(c\) is the <strong>horizontal asymptote</strong>: the value the model settles to (a cooling drink's room temperature). \(A\) is the <em>distance from the asymptote at \(x = 0\)</em>, so the starting value is \(A + c\), not \(A\). The sign of \(k\) decides whether that distance grows or shrinks: \(k < 0\) means the gap to \(c\) shrinks, and the time for it to halve is \(\dfrac{\log_e 2}{|k|}\) whatever the starting gap (for growth, \(k > 0\), the time to double is \(\dfrac{\log_e 2}{k}\)).</p><p>To fit a model through two points when \(c = 0\), write one equation per point and <strong>divide them</strong> to cancel \(A\): \(\dfrac{Ae^{kx_2}}{Ae^{kx_1}} = e^{k(x_2 - x_1)} = \dfrac{y_2}{y_1}\), then take logs. With a \(+c\), subtract \(c\) from each \(y\) first.</p></aside>
 <aside class="c-key" data-title="Changing the base"><p>\(a^x = e^{x\log_e a}\), and \(e^{kx} = \left(e^k\right)^x\). To write \(e^{kx}\) as \(2^{cx}\), match exponents: \(kx = cx\log_e 2\), so \(c = \dfrac{k}{\log_e 2}\).</p></aside>
 
 
