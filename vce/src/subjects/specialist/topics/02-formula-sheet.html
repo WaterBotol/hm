@@ -1,0 +1,60 @@
+<!--
+id: formula-sheet
+title: Specialist formula sheet & must-knows
+short: Formula sheet
+summary: The key results for proof, circular functions, complex numbers, calculus, differential equations, kinematics, vectors and statistics, grouped by topic, with notes on which are on the VCAA formula sheet and which you must know.
+keywords: formula, formulas, formula sheet, cheat sheet, identities, double angle, compound angle, reciprocal trig, inverse trig derivatives, de moivre, complex roots, integration rules, by parts, arc length, surface area, volume of revolution, euler's method, kinematics, cross product, dot product, vector resolute, confidence interval, sample mean
+special: reference
+-->
+<p>VCAA provides a Specialist formula sheet in both exams (mensuration, circular-function identities, calculus rules, complex numbers, vectors, mechanics and statistics). Fluency still matters: in Exam 1 you won't have time to derive things. Treat this page as a revision summary and check the current official sheet on the VCAA website before your exam.</p>
+
+<h2>Logic, functions and identities</h2>
+<div class="fs-grid">
+  <div class="fs-card" data-kw="induction proof contrapositive converse"><h4>Proof</h4>\[ P \Rightarrow Q \equiv \lnot Q \Rightarrow \lnot P \]<p>Converse \(Q \Rightarrow P\) is a different statement. Induction: base case, assume \(n = k\), prove \(n = k + 1\). <a href="#proof">Proof</a> · <a href="#induction">Induction</a></p></div>
+  <div class="fs-card" data-kw="reciprocal trig sec cosec cot pythagorean identities"><h4>Reciprocal functions</h4>\[ \sec x = \tfrac{1}{\cos x}\quad \operatorname{cosec} x = \tfrac{1}{\sin x}\quad \cot x = \tfrac{\cos x}{\sin x} \]\[ 1 + \tan^2 x = \sec^2 x \qquad 1 + \cot^2 x = \operatorname{cosec}^2 x \]<p><a href="#circular">Circular functions</a></p></div>
+  <div class="fs-card" data-kw="compound angle double angle"><h4>Compound and double angles</h4>\[ \sin(x \pm y) = \sin x\cos y \pm \cos x\sin y \]\[ \cos(x \pm y) = \cos x\cos y \mp \sin x\sin y \]\[ \sin 2x = 2\sin x\cos x \quad \cos 2x = 2\cos^2 x - 1 = 1 - 2\sin^2 x \]<p><a href="#circular">Circular functions</a></p></div>
+  <div class="fs-card" data-kw="inverse trig arcsin arccos arctan domain range"><h4>Inverse circular functions</h4>\[ \sin^{-1}: [-1, 1] \to \left[-\tfrac\pi2, \tfrac\pi2\right] \quad \cos^{-1}: [-1, 1] \to [0, \pi] \quad \tan^{-1}: \mathbb{R} \to \left(-\tfrac\pi2, \tfrac\pi2\right) \]<p><a href="#circular">Circular functions</a></p></div>
+  <div class="fs-card" data-kw="partial fractions repeated irreducible"><h4>Partial fractions</h4>\[ \frac{px + q}{(x - a)(x - b)} = \frac{A}{x - a} + \frac{B}{x - b} \]\[ \frac{\cdots}{(x - a)^2} \to \frac{A}{x - a} + \frac{B}{(x - a)^2} \quad \frac{\cdots}{x^2 + c} \to \frac{Bx + C}{x^2 + c} \]<p><a href="#partial-fractions">Partial fractions</a></p></div>
+</div>
+
+<h2>Complex numbers</h2>
+<div class="fs-grid">
+  <div class="fs-card" data-kw="polar form cis modulus argument conjugate"><h4>Polar form</h4>\[ z = x + yi = r\operatorname{cis}\theta,\quad r = |z| = \sqrt{x^2 + y^2},\quad \operatorname{Arg} z \in (-\pi, \pi] \]\[ z\bar z = |z|^2 \qquad z_1z_2 = r_1r_2\operatorname{cis}(\theta_1 + \theta_2) \]<p><a href="#complex">Complex numbers</a></p></div>
+  <div class="fs-card" data-kw="de moivre roots of unity nth roots"><h4>De Moivre and roots</h4>\[ (r\operatorname{cis}\theta)^n = r^n\operatorname{cis}(n\theta) \]\[ z^n = a\operatorname{cis}\phi:\ z = a^{1/n}\operatorname{cis}\left(\tfrac{\phi + 2k\pi}{n}\right),\ k = 0, \dots, n - 1 \]<p><a href="#de-moivre">De Moivre</a></p></div>
+  <div class="fs-card" data-kw="conjugate root theorem polynomial factor"><h4>Polynomials</h4><p>Real coefficients ⇒ non-real roots come in conjugate pairs, giving real quadratic factors \(z^2 - 2\operatorname{Re}(\alpha)z + |\alpha|^2\). <a href="#complex-poly">Complex polynomials</a></p></div>
+  <div class="fs-card" data-kw="locus circle line ray argand region"><h4>Loci</h4>\[ |z - a| = r \ \text{(circle)} \quad |z - a| = |z - b| \ \text{(perp. bisector)} \quad \operatorname{Arg}(z - a) = \theta \ \text{(ray)} \]<p><a href="#complex-plane">Subsets of the plane</a></p></div>
+</div>
+
+<h2>Calculus</h2>
+<div class="fs-grid">
+  <div class="fs-card" data-kw="derivatives inverse trig tan sec"><h4>Derivatives to know</h4>\[ \tfrac{d}{dx}\tan x = \sec^2 x \quad \tfrac{d}{dx}\sin^{-1}\tfrac xa = \tfrac{1}{\sqrt{a^2 - x^2}} \quad \tfrac{d}{dx}\cos^{-1}\tfrac xa = \tfrac{-1}{\sqrt{a^2 - x^2}} \quad \tfrac{d}{dx}\tan^{-1}\tfrac xa = \tfrac{a}{a^2 + x^2} \]<p><a href="#diff-techniques">Differentiation</a></p></div>
+  <div class="fs-card" data-kw="implicit differentiation second derivative parametric"><h4>Implicit and parametric</h4>\[ \frac{dy}{dx} = \frac{dy/dt}{dx/dt} \qquad \frac{d^2y}{dx^2} = \frac{\frac{d}{dt}\left(\frac{dy}{dx}\right)}{dx/dt} \]<p><a href="#implicit">Implicit differentiation</a></p></div>
+  <div class="fs-card" data-kw="antiderivatives substitution inverse trig integrals"><h4>Integrals to know</h4>\[ \int\frac{dx}{\sqrt{a^2 - x^2}} = \sin^{-1}\tfrac xa + c \quad \int\frac{a\,dx}{a^2 + x^2} = \tan^{-1}\tfrac xa + c \]\[ \int\sin^2 x\,dx = \tfrac x2 - \tfrac{\sin 2x}{4} + c \quad \int f'(g(x))g'(x)\,dx = f(g(x)) + c \]<p><a href="#antidiff">Antidifferentiation</a></p></div>
+  <div class="fs-card" data-kw="integration by parts"><h4>By parts</h4>\[ \int u\frac{dv}{dx}\,dx = uv - \int v\frac{du}{dx}\,dx \]<p><a href="#by-parts">By parts</a></p></div>
+  <div class="fs-card" data-kw="volume revolution area between curves washer"><h4>Areas and volumes</h4>\[ A = \int_a^b (f - g)\,dx \qquad V_x = \pi\int_a^b y^2\,dx \qquad V_y = \pi\int_c^d x^2\,dy \]<p><a href="#areas-volumes">Areas &amp; volumes</a></p></div>
+  <div class="fs-card" data-kw="arc length surface area parametric"><h4>Arc length and surface area</h4>\[ s = \int\sqrt{1 + (y')^2}\,dx = \int\sqrt{\dot x^2 + \dot y^2}\,dt \qquad S = 2\pi\int y\sqrt{1 + (y')^2}\,dx \]<p><a href="#arc-length">Arc length</a></p></div>
+</div>
+
+<h2>Differential equations and kinematics</h2>
+<div class="fs-grid">
+  <div class="fs-card" data-kw="euler's method step size"><h4>Euler's method</h4>\[ y_{n+1} = y_n + h f(x_n, y_n),\quad x_{n+1} = x_n + h \]<p><a href="#de">DEs &amp; Euler</a></p></div>
+  <div class="fs-card" data-kw="separation of variables logistic"><h4>Solving DEs</h4>\[ \frac{dy}{dx} = f(x)g(y) \Rightarrow \int\frac{dy}{g(y)} = \int f(x)\,dx \qquad P = \frac{K}{1 + \left(\frac{K}{P_0} - 1\right)e^{-rt}} \]<p><a href="#de-solve">Solving DEs</a></p></div>
+  <div class="fs-card" data-kw="kinematics constant acceleration v dv/dx"><h4>Kinematics</h4>\[ a = \frac{dv}{dt} = v\frac{dv}{dx} = \frac{d}{dx}\left(\tfrac12v^2\right) \]\[ v = u + at \quad s = ut + \tfrac12at^2 \quad v^2 = u^2 + 2as \quad s = \tfrac12(u + v)t \]<p><a href="#kinematics">Kinematics</a></p></div>
+</div>
+
+<h2>Vectors</h2>
+<div class="fs-grid">
+  <div class="fs-card" data-kw="dot product angle magnitude"><h4>Scalar product</h4>\[ \underset{\sim}{a}\cdot\underset{\sim}{b} = a_1b_1 + a_2b_2 + a_3b_3 = |\underset{\sim}{a}||\underset{\sim}{b}|\cos\theta \]<p><a href="#vectors">Vectors</a></p></div>
+  <div class="fs-card" data-kw="vector resolute projection scalar resolute"><h4>Resolutes</h4>\[ \text{scalar: } \underset{\sim}{a}\cdot\hat{\underset{\sim}{b}} \qquad \text{vector: } \frac{\underset{\sim}{a}\cdot\underset{\sim}{b}}{\underset{\sim}{b}\cdot\underset{\sim}{b}}\,\underset{\sim}{b} \]<p><a href="#vectors">Vectors</a></p></div>
+  <div class="fs-card" data-kw="cross product area normal"><h4>Vector product</h4>\[ |\underset{\sim}{a}\times\underset{\sim}{b}| = |\underset{\sim}{a}||\underset{\sim}{b}|\sin\theta \]<p>Perpendicular to both; magnitude = parallelogram area. <a href="#cross-planes">Cross product &amp; planes</a></p></div>
+  <div class="fs-card" data-kw="line plane equation normal"><h4>Lines and planes</h4>\[ \underset{\sim}{r} = \underset{\sim}{a} + t\underset{\sim}{d} \qquad \underset{\sim}{r}\cdot\underset{\sim}{n} = \underset{\sim}{a}\cdot\underset{\sim}{n} \ \Leftrightarrow\ ax + by + cz = d \]<p><a href="#cross-planes">Cross product &amp; planes</a></p></div>
+  <div class="fs-card" data-kw="velocity speed vector calculus"><h4>Vector calculus</h4>\[ \underset{\sim}{v} = \dot{\underset{\sim}{r}},\quad \underset{\sim}{a} = \ddot{\underset{\sim}{r}},\quad \text{speed} = |\underset{\sim}{v}|,\quad \text{distance} = \int|\underset{\sim}{v}|\,dt \]<p><a href="#vector-calculus">Vector calculus</a></p></div>
+</div>
+
+<h2>Statistics</h2>
+<div class="fs-grid">
+  <div class="fs-card" data-kw="linear combination variance expectation"><h4>Linear combinations</h4>\[ E(aX + bY) = aE(X) + bE(Y) \]\[ \operatorname{Var}(aX + bY) = a^2\operatorname{Var}(X) + b^2\operatorname{Var}(Y) \ \text{(independent)} \]<p><a href="#linear-combos">Linear combinations</a></p></div>
+  <div class="fs-card" data-kw="sample mean standard error clt"><h4>Sample mean</h4>\[ E(\bar X) = \mu \qquad \operatorname{sd}(\bar X) = \frac{\sigma}{\sqrt n} \]<p><a href="#sample-mean">Sample means</a></p></div>
+  <div class="fs-card" data-kw="confidence interval z 1.96"><h4>Confidence interval</h4>\[ \bar x \pm z\frac{\sigma}{\sqrt n},\quad z_{90} = 1.6449,\ z_{95} = 1.96,\ z_{99} = 2.5758 \]<p><a href="#ci-mean">Confidence intervals</a></p></div>
+  <div class="fs-card" data-kw="hypothesis test z statistic p-value"><h4>Hypothesis test</h4>\[ z = \frac{\bar x - \mu_0}{\sigma/\sqrt n} \]<p>Reject \(H_0\) if \(p &lt; \alpha\). <a href="#hypothesis">Hypothesis tests</a></p></div>
+</div>

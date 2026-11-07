@@ -1,0 +1,88 @@
+<!--
+id: areas-volumes
+title: Areas between curves and volumes of revolution
+short: Areas & volumes
+summary: Areas of regions bounded by curves (integrating with respect to x or y), and volumes of solids of revolution about either coordinate axis using discs and washers, including regions bounded by two curves and the set-ups VCAA expects you to show.
+keywords: area between curves, area bounded, integrate with respect to y, volume of revolution, solid of revolution, disc method, washer method, rotate about x-axis, rotate about y-axis, pi integral y squared, pi integral x squared, hollow solid, region, bounded region
+dotpoints: application of integration, areas of regions bounded by curves | volumes of solids of revolution of a region about either coordinate axis
+-->
+<h2>Areas between curves</h2>
+<div class="eq"><div class="eq-label">Upper minus lower</div>\[ A = \int_a^b \big(f(x) - g(x)\big)\,dx \quad \text{where } f(x) \ge g(x) \text{ on } [a, b] \]<p>Find the intersections for the terminals. If the curves cross inside the interval, split the integral. Area is always positive.</p></div>
+<div class="we" data-title="Area between a parabola and a line" data-marks="3">
+<div class="we-q"><p>Find the area enclosed by \(y = x^2\) and \(y = 2x + 3\).</p></div>
+<div class="we-t"><p>Solve for the intersections, decide which graph is on top (test a point between), then integrate top minus bottom.</p></div>
+<div class="we-s"><p>\(x^2 = 2x + 3 \Rightarrow (x - 3)(x + 1) = 0\): \(x = -1, 3\). At \(x = 0\) the line is higher.</p></div>
+<div class="we-s"><p>\(A = \int_{-1}^{3} (2x + 3 - x^2)\,dx = \left[x^2 + 3x - \frac{x^3}{3}\right]_{-1}^{3}\).</p></div>
+<div class="we-a"><p>\(= (9 + 9 - 9) - (1 - 3 + \frac13) = 9 + \frac53 = \frac{32}{3}\).</p></div>
+</div>
+<div class="we" data-title="Integrating with respect to y" data-marks="3">
+<div class="we-q"><p>Find the area bounded by \(y = \log_e x\), the \(y\)-axis, and the lines \(y = 0\) and \(y = 1\).</p></div>
+<div class="we-t"><p>The region sits between the \(y\)-axis and the curve, so it's easier as horizontal strips: \(x = e^y\), integrated from \(y = 0\) to \(y = 1\).</p></div>
+<div class="we-s"><p>\(A = \int_0^1 e^y\,dy\).</p></div>
+<div class="we-a"><p>\(= e - 1\).</p></div>
+</div>
+
+<h2>Volumes of revolution</h2>
+<div class="eq"><div class="eq-label">Discs</div>\[ \text{about the } x\text{-axis: } V = \pi\int_a^b y^2\,dx \qquad \text{about the } y\text{-axis: } V = \pi\int_c^d x^2\,dy \]</div>
+<div class="eq"><div class="eq-label">Washers (region between two curves)</div>\[ V = \pi\int_a^b \big(y_{\text{outer}}^2 - y_{\text{inner}}^2\big)\,dx \]<p>Square each radius separately: it's \(\pi(R^2 - r^2)\), never \(\pi(R - r)^2\).</p></div>
+<div class="we" data-title="Discs about the x-axis" data-marks="2">
+<div class="we-q"><p>The region under \(y = \sqrt{x}\) from \(x = 0\) to \(x = 4\) is rotated about the \(x\)-axis. Find the volume.</p></div>
+<div class="we-t"><p>Each slice is a disc of radius \(y = \sqrt x\) and thickness \(dx\).</p></div>
+<div class="we-s" data-f="V = \pi\int_a^b y^2\,dx"><p>\(V = \pi\int_0^4 x\,dx = \pi\left[\frac{x^2}{2}\right]_0^4\).</p></div>
+<div class="we-a"><p>\(= 8\pi\) cubic units.</p></div>
+</div>
+<div class="we" data-title="Rotation about the y-axis" data-marks="3">
+<div class="we-q"><p>The region bounded by \(y = x^2\), the \(y\)-axis and \(y = 4\) (for \(x \ge 0\)) is rotated about the \(y\)-axis. Find the volume.</p></div>
+<div class="we-t"><p>Rotating about the \(y\)-axis uses horizontal discs of radius \(x\), so write \(x^2\) in terms of \(y\) and integrate with \(y\) terminals.</p></div>
+<div class="we-s" data-f="V = \pi\int_c^d x^2\,dy"><p>\(x^2 = y\): \(V = \pi\int_0^4 y\,dy\).</p></div>
+<div class="we-a"><p>\(= \pi\left[\frac{y^2}{2}\right]_0^4 = 8\pi\).</p></div>
+</div>
+<div class="we" data-title="Washers" data-marks="4">
+<div class="we-q"><p>The region between \(y = x\) and \(y = x^2\) is rotated about the \(x\)-axis. Find the volume.</p></div>
+<div class="we-t"><p>They meet at \(x = 0\) and \(x = 1\). On \((0, 1)\), \(x &gt; x^2\), so \(y = x\) is the outer radius and \(y = x^2\) the inner.</p></div>
+<div class="we-s"><p>\(V = \pi\int_0^1 (x^2 - x^4)\,dx\).</p></div>
+<div class="we-s"><p>\(= \pi\left[\frac{x^3}{3} - \frac{x^5}{5}\right]_0^1 = \pi\left(\frac13 - \frac15\right)\).</p></div>
+<div class="we-a"><p>\(= \frac{2\pi}{15}\).</p></div>
+</div>
+<aside class="c-trap"><p>Two common errors: (1) \(\pi\int(y_1 - y_2)^2dx\) instead of \(\pi\int(y_1^2 - y_2^2)dx\); (2) rotating about the \(y\)-axis but integrating \(y^2\,dx\). Match the axis: about \(x\) → \(dx\) and \(y^2\); about \(y\) → \(dy\) and \(x^2\).</p></aside>
+<aside class="c-exam"><p>Exam 2 often asks you to "write down a definite integral that gives the volume" (marks for the integral alone, then CAS for the value). Write \(\pi\), the squared function, and correct terminals explicitly. Real-world versions: a vase, bowl or wine glass, with units and sometimes a rate of filling (combining with related rates).</p></aside>
+
+<h2>Practice</h2>
+<div class="mcq" data-ans="B" data-level="core">
+<div class="mcq-q"><p>The area between \(y = \sin x\) and the \(x\)-axis from \(x = 0\) to \(x = 2\pi\) is</p></div>
+<ol><li>0</li><li>4</li><li>2</li><li>\(2\pi\)</li></ol>
+<div class="mcq-x"><p>Split at \(\pi\): \(2 + |-2| = 4\). The integral alone gives 0.</p></div>
+</div>
+<div class="mcq" data-ans="A" data-level="core">
+<div class="mcq-q"><p>The region under \(y = e^x\) from \(x = 0\) to \(x = 1\) is rotated about the \(x\)-axis. The volume is</p></div>
+<ol><li>\(\frac{\pi}{2}(e^2 - 1)\)</li><li>\(\pi(e - 1)\)</li><li>\(\pi(e^2 - 1)\)</li><li>\(\frac\pi2 e^2\)</li></ol>
+<div class="mcq-x"><p>\(\pi\int_0^1 e^{2x}dx = \frac\pi2(e^2 - 1)\).</p></div>
+</div>
+<div class="mcq" data-ans="D" data-level="trick">
+<div class="mcq-q"><p>The region between \(y = 2\) and \(y = 1\) for \(0 \le x \le 3\) is rotated about the \(x\)-axis. The volume is</p></div>
+<ol><li>\(3\pi\)</li><li>\(\pi\)</li><li>\(12\pi\)</li><li>\(9\pi\)</li></ol>
+<div class="mcq-x"><p>Washer: \(\pi\int_0^3 (4 - 1)dx = 9\pi\). Using \((2 - 1)^2\) gives the wrong answer A.</p></div>
+</div>
+<div class="mcq" data-ans="C" data-level="hard">
+<div class="mcq-q"><p>The curve \(y = \sqrt{4 - x^2}\) for \(-2 \le x \le 2\) is rotated about the \(x\)-axis. The volume is</p></div>
+<ol><li>\(8\pi\)</li><li>\(\frac{16\pi}{3}\)</li><li>\(\frac{32\pi}{3}\)</li><li>\(4\pi\)</li></ol>
+<div class="mcq-x"><p>A sphere of radius 2: \(\pi\int_{-2}^2(4 - x^2)dx = \frac{32\pi}{3} = \frac43\pi(2)^3\).</p></div>
+</div>
+<div class="pq" data-level="core" data-marks="3">
+<div class="pq-q"><p>Find the area enclosed by \(y = x^2 - 4\) and \(y = 0\).</p></div>
+<div class="pq-s"><p>Intersections \(x = \pm2\); the curve is below the axis between them. [1]</p><p>\(A = \int_{-2}^{2}(0 - (x^2 - 4))\,dx = \left[4x - \frac{x^3}{3}\right]_{-2}^{2}\). [1]</p><p>\(= \frac{16}{3} - \left(-\frac{16}{3}\right) = \frac{32}{3}\). [1]</p></div>
+</div>
+<div class="pq" data-level="hard" data-marks="3">
+<div class="pq-q"><p>The region bounded by \(y = \sec x\), the \(x\)-axis, \(x = 0\) and \(x = \frac\pi4\) is rotated about the \(x\)-axis. Find the exact volume.</p></div>
+<div class="pq-s"><p>\(V = \pi\int_0^{\pi/4}\sec^2 x\,dx\). [1]</p><p>\(= \pi\big[\tan x\big]_0^{\pi/4}\). [1]</p><p>\(= \pi\). [1]</p></div>
+</div>
+<div class="pq" data-level="exam" data-marks="4">
+<div class="pq-q"><p>A bowl is formed by rotating \(y = x^2\) for \(0 \le x \le 2\) about the \(y\)-axis (units cm). Find its volume when filled to depth \(h\) cm, and the volume when full.</p></div>
+<div class="pq-s"><p>About the \(y\)-axis: \(x^2 = y\). [1]</p><p>\(V(h) = \pi\int_0^h y\,dy = \frac{\pi h^2}{2}\). [1]</p><p>Full: \(y\) at \(x = 2\) is 4, so \(h = 4\). [1]</p><p>\(V = 8\pi \approx 25.1\) cm³. [1]</p></div>
+</div>
+<h2>Summary</h2>
+<ul>
+  <li data-q="How do you find the area between curves with respect to \(x\), and with respect to \(y\)?">Area: \(\int(\text{top} - \text{bottom})\,dx\), or right minus left in \(dy\); split where curves cross.</li>
+  <li data-q="Write the volume formulas for rotating about the \(x\)-axis and about the \(y\)-axis.">About the \(x\)-axis: \(\pi\int y^2\,dx\); about the \(y\)-axis: \(\pi\int x^2\,dy\).</li>
+  <li data-q="Write the washer formula, and the common wrong version to avoid.">Washers: \(\pi\int(R^2 - r^2)\), never \(\pi\int(R - r)^2\).</li>
+</ul>

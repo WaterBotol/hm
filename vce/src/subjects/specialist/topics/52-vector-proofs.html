@@ -1,0 +1,71 @@
+<!--
+id: vector-proofs
+title: Vector proofs in geometry
+short: Vector proofs
+summary: Using vectors to prove geometric results: midpoints and ratio division, parallelograms and diagonals, collinearity, perpendicular diagonals of a rhombus, the angle in a semicircle, and the medians of a triangle.
+keywords: vector proof, geometric proof, midpoint, ratio, divides in the ratio, parallelogram, diagonals bisect, rhombus diagonals perpendicular, angle in a semicircle, medians, centroid, collinear, concurrent, prove using vectors, quadrilateral midpoints, Varignon
+dotpoints: proofs of geometric results using vectors, including parallelograms, rhombuses, midpoints and the angle in a semicircle
+-->
+<h2>The toolkit</h2>
+<aside class="c-key"><p>Translate geometry into vectors:</p><ul><li>Midpoint \(M\) of \(AB\): \(\underset{\sim}{m} = \frac12(\underset{\sim}{a} + \underset{\sim}{b})\). Point dividing \(AB\) in ratio \(m:n\): \(\frac{n\underset{\sim}{a} + m\underset{\sim}{b}}{m + n}\).</li><li>Parallel / equal length: \(\overrightarrow{PQ} = k\overrightarrow{RS}\) (\(k = 1\) means equal and parallel).</li><li>Perpendicular: dot product zero. Equal lengths: \(|\underset{\sim}{u}|^2 = \underset{\sim}{u}\cdot\underset{\sim}{u}\).</li></ul></aside>
+<div class="we" data-title="Midpoints of a quadrilateral form a parallelogram" data-marks="3">
+<div class="we-q"><p>\(OABC\) is any quadrilateral; \(P, Q, R, S\) are the midpoints of \(OA, AB, BC, CO\). Prove \(PQRS\) is a parallelogram.</p></div>
+<div class="we-t"><p>Use position vectors from \(O\): \(\underset{\sim}{a}, \underset{\sim}{b}, \underset{\sim}{c}\). Show \(\overrightarrow{PQ} = \overrightarrow{SR}\).</p></div>
+<div class="we-s"><p>\(\underset{\sim}{p} = \frac12\underset{\sim}{a}\), \(\underset{\sim}{q} = \frac12(\underset{\sim}{a} + \underset{\sim}{b})\), so \(\overrightarrow{PQ} = \frac12\underset{\sim}{b}\).</p></div>
+<div class="we-s"><p>\(\underset{\sim}{s} = \frac12\underset{\sim}{c}\), \(\underset{\sim}{r} = \frac12(\underset{\sim}{b} + \underset{\sim}{c})\), so \(\overrightarrow{SR} = \frac12\underset{\sim}{b}\).</p></div>
+<div class="we-a"><p>\(\overrightarrow{PQ} = \overrightarrow{SR}\): one pair of opposite sides is equal and parallel, so \(PQRS\) is a parallelogram. \(\blacksquare\)</p></div>
+</div>
+<div class="we" data-title="Diagonals of a rhombus are perpendicular" data-marks="3">
+<div class="we-q"><p>\(OABC\) is a rhombus with \(\overrightarrow{OA} = \underset{\sim}{a}\), \(\overrightarrow{OC} = \underset{\sim}{c}\). Prove its diagonals are perpendicular.</p></div>
+<div class="we-t"><p>Diagonals \(\overrightarrow{OB} = \underset{\sim}{a} + \underset{\sim}{c}\) and \(\overrightarrow{CA} = \underset{\sim}{a} - \underset{\sim}{c}\). A rhombus has \(|\underset{\sim}{a}| = |\underset{\sim}{c}|\).</p></div>
+<div class="we-s"><p>\((\underset{\sim}{a} + \underset{\sim}{c})\cdot(\underset{\sim}{a} - \underset{\sim}{c}) = \underset{\sim}{a}\cdot\underset{\sim}{a} - \underset{\sim}{c}\cdot\underset{\sim}{c} = |\underset{\sim}{a}|^2 - |\underset{\sim}{c}|^2\).</p></div>
+<div class="we-a"><p>\(= 0\) since \(|\underset{\sim}{a}| = |\underset{\sim}{c}|\). Non-zero vectors with zero dot product are perpendicular. \(\blacksquare\)</p></div>
+</div>
+<div class="we" data-title="Angle in a semicircle" data-marks="4">
+<div class="we-q"><p>\(AB\) is a diameter of a circle with centre \(O\), and \(P\) is any other point on the circle. Prove \(\angle APB = 90°\).</p></div>
+<div class="we-t"><p>From \(O\): \(\overrightarrow{OA} = \underset{\sim}{a}\), \(\overrightarrow{OB} = -\underset{\sim}{a}\), \(\overrightarrow{OP} = \underset{\sim}{p}\), with \(|\underset{\sim}{p}| = |\underset{\sim}{a}| = r\).</p></div>
+<div class="we-s"><p>\(\overrightarrow{PA} = \underset{\sim}{a} - \underset{\sim}{p}\), \(\overrightarrow{PB} = -\underset{\sim}{a} - \underset{\sim}{p}\).</p></div>
+<div class="we-s"><p>\(\overrightarrow{PA}\cdot\overrightarrow{PB} = -(\underset{\sim}{a} - \underset{\sim}{p})\cdot(\underset{\sim}{a} + \underset{\sim}{p}) = -(|\underset{\sim}{a}|^2 - |\underset{\sim}{p}|^2)\).</p></div>
+<div class="we-a"><p>\(= -(r^2 - r^2) = 0\), so \(PA \perp PB\). \(\blacksquare\)</p></div>
+</div>
+<div class="we" data-title="Medians meet two-thirds of the way" data-marks="4">
+<div class="we-q"><p>In triangle \(OAB\), \(M\) is the midpoint of \(AB\). Show that the point \(G\) two-thirds of the way from \(O\) to \(M\) is \(\frac13(\underset{\sim}{a} + \underset{\sim}{b})\), and explain why all three medians pass through \(G\).</p></div>
+<div class="we-t"><p>Compute \(G\) on one median; the result is symmetric in all three vertices (with \(O\) at the origin), so it lies on every median.</p></div>
+<div class="we-s"><p>\(\underset{\sim}{g} = \frac23\underset{\sim}{m} = \frac23\cdot\frac12(\underset{\sim}{a} + \underset{\sim}{b}) = \frac13(\underset{\sim}{a} + \underset{\sim}{b})\).</p></div>
+<div class="we-s"><p>In general, with an arbitrary origin, this is \(\frac13(\underset{\sim}{o} + \underset{\sim}{a} + \underset{\sim}{b})\), which doesn't depend on which vertex we started from.</p></div>
+<div class="we-a"><p>The same point lies \(\frac23\) along each median, so the medians are concurrent at the centroid. \(\blacksquare\)</p></div>
+</div>
+<aside class="c-trap"><p>A proof needs a conclusion sentence linking the vector fact back to the geometry ("so \(PQ\) is parallel and equal to \(SR\)..."). Also state \(|\underset{\sim}{a}| = |\underset{\sim}{c}|\) or similar facts as given properties: don't assume what you're proving.</p></aside>
+<aside class="c-exam"><p>These typically appear as scaffolded Exam 1 parts: express a vector in terms of \(\underset{\sim}{a}\) and \(\underset{\sim}{b}\), then "hence prove". Use earlier parts even if you couldn't do them.</p></aside>
+
+<h2>Practice</h2>
+<div class="mcq" data-ans="B" data-level="core">
+<div class="mcq-q"><p>\(P\) divides \(AB\) in the ratio \(1:2\). Then \(\underset{\sim}{p} =\)</p></div>
+<ol><li>\(\frac13\underset{\sim}{a} + \frac23\underset{\sim}{b}\)</li><li>\(\frac23\underset{\sim}{a} + \frac13\underset{\sim}{b}\)</li><li>\(\frac12(\underset{\sim}{a} + \underset{\sim}{b})\)</li><li>\(\underset{\sim}{a} + \frac12\underset{\sim}{b}\)</li></ol>
+<div class="mcq-x"><p>\(\underset{\sim}{p} = \underset{\sim}{a} + \frac13(\underset{\sim}{b} - \underset{\sim}{a})\), closer to \(A\).</p></div>
+</div>
+<div class="mcq" data-ans="C" data-level="core">
+<div class="mcq-q"><p>\(OABC\) is a parallelogram with \(\overrightarrow{OA} = \underset{\sim}{a}\), \(\overrightarrow{OC} = \underset{\sim}{c}\). Then \(\overrightarrow{AC} =\)</p></div>
+<ol><li>\(\underset{\sim}{a} + \underset{\sim}{c}\)</li><li>\(\underset{\sim}{a} - \underset{\sim}{c}\)</li><li>\(\underset{\sim}{c} - \underset{\sim}{a}\)</li><li>\(2\underset{\sim}{c}\)</li></ol>
+<div class="mcq-x"><p>End minus start.</p></div>
+</div>
+<div class="mcq" data-ans="A" data-level="hard">
+<div class="mcq-q"><p>For a parallelogram spanned by \(\underset{\sim}{a}\) and \(\underset{\sim}{c}\), the diagonals have equal length exactly when</p></div>
+<ol><li>\(\underset{\sim}{a}\cdot\underset{\sim}{c} = 0\)</li><li>\(|\underset{\sim}{a}| = |\underset{\sim}{c}|\)</li><li>\(\underset{\sim}{a} = \underset{\sim}{c}\)</li><li>never</li></ol>
+<div class="mcq-x"><p>\(|\underset{\sim}{a} + \underset{\sim}{c}|^2 - |\underset{\sim}{a} - \underset{\sim}{c}|^2 = 4\underset{\sim}{a}\cdot\underset{\sim}{c}\): equal iff it's a rectangle.</p></div>
+</div>
+<div class="pq" data-level="core" data-marks="3">
+<div class="pq-q"><p>Prove that the diagonals of a parallelogram \(OABC\) bisect each other.</p></div>
+<div class="pq-s"><p>\(\underset{\sim}{b} = \underset{\sim}{a} + \underset{\sim}{c}\); midpoint of \(OB\) is \(\frac12(\underset{\sim}{a} + \underset{\sim}{c})\). [1]</p><p>Midpoint of \(AC\) is \(\frac12(\underset{\sim}{a} + \underset{\sim}{c})\). [1]</p><p>Same point, so each diagonal passes through the other's midpoint. [1]</p></div>
+</div>
+<div class="pq" data-level="exam" data-marks="4">
+<div class="pq-q"><p>In triangle \(OAB\), \(P\) and \(Q\) are the midpoints of \(OA\) and \(OB\). Prove \(PQ\) is parallel to \(AB\) and half its length.</p></div>
+<div class="pq-s"><p>\(\underset{\sim}{p} = \frac12\underset{\sim}{a}\), \(\underset{\sim}{q} = \frac12\underset{\sim}{b}\). [1]</p><p>\(\overrightarrow{PQ} = \frac12(\underset{\sim}{b} - \underset{\sim}{a})\). [1]</p><p>\(\overrightarrow{AB} = \underset{\sim}{b} - \underset{\sim}{a}\), so \(\overrightarrow{PQ} = \frac12\overrightarrow{AB}\). [1]</p><p>Scalar multiple ⇒ parallel, and \(|PQ| = \frac12|AB|\). \(\blacksquare\) [1]</p></div>
+</div>
+<h2>Summary</h2>
+<ul>
+  <li data-q="Write the position vector of the midpoint of \(AB\), and of the point dividing \(AB\) in the ratio \(m:n\).">Midpoint \(\frac12(\underset{\sim}{a} + \underset{\sim}{b})\); ratio \(m:n\) gives \(\frac{n\underset{\sim}{a} + m\underset{\sim}{b}}{m + n}\).</li>
+  <li data-q="In vector proofs, how do you show two lines are parallel, perpendicular, or that you’re working with a length?">Parallel: scalar multiple. Perpendicular: dot = 0. Length: \(|\underset{\sim}{u}|^2 = \underset{\sim}{u}\cdot\underset{\sim}{u}\).</li>
+  <li data-q="Which dot-product expansion proves the rhombus-diagonals and angle-in-a-semicircle results?">\((\underset{\sim}{a} + \underset{\sim}{c})\cdot(\underset{\sim}{a} - \underset{\sim}{c}) = |\underset{\sim}{a}|^2 - |\underset{\sim}{c}|^2\) does rhombus and semicircle proofs.</li>
+  <li data-q="How must every vector proof end?">Finish with a geometric conclusion sentence.</li>
+</ul>

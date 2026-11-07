@@ -1,0 +1,48 @@
+<!--
+id: formula-sheet
+title: General Maths formula sheet & must-knows
+short: Formula sheet
+summary: The key results for data analysis, recursion and financial modelling, matrices, and networks and decision mathematics, grouped by area, with notes on which are on the VCAA formula sheet and which you must know yourself.
+keywords: formula, formulas, formula sheet, cheat sheet, z score, standardised score, fences, least squares, residual, seasonal index, deseasonalise, recurrence relation, effective interest rate, compound interest, depreciation, perpetuity, determinant, inverse matrix, transition matrix, Leslie matrix, Euler's formula, sum of degrees, tree, Eulerian, Hamiltonian, Prim, Dijkstra, Hungarian, critical path, float
+special: reference
+-->
+<p>VCAA provides the same formula sheet in both General Maths exams. It's short: the cards tagged <strong>on the sheet</strong> below are on it; everything else you need to know (or put in your bound reference). Check the current official sheet on the VCAA website before your exam.</p>
+
+<h2>Data analysis</h2>
+<div class="fs-grid">
+  <div class="fs-card" data-kw="z score standardised score"><h4>Standardised scores</h4>\[ z = \frac{x - \bar x}{s_x} \]<p>On the sheet. \(x = \bar x + z s_x\). <a href="#da-normal">Normal model</a></p></div>
+  <div class="fs-card" data-kw="normal 68 95 99.7 rule"><h4>The 68–95–99.7% rule</h4><p>68%, 95% and 99.7% within 1, 2 and 3 standard deviations of the mean. Bands: 34%, 13.5%, 2.35%, 0.15%. Not on the sheet. <a href="#da-normal">Normal model</a></p></div>
+  <div class="fs-card" data-kw="fences outliers boxplot iqr"><h4>Boxplot fences</h4>\[ Q_1 - 1.5 \times \text{IQR} \qquad Q_3 + 1.5 \times \text{IQR} \]<p>On the sheet. \(\text{IQR} = Q_3 - Q_1\); range = max − min. <a href="#da-summary">Summary statistics</a></p></div>
+  <div class="fs-card" data-kw="least squares line slope intercept"><h4>Least squares line</h4>\[ y = a + bx,\quad b = r\frac{s_y}{s_x},\quad a = \bar y - b\bar x \]<p>On the sheet. Passes through \((\bar x, \bar y)\). <a href="#da-regression">Least squares</a></p></div>
+  <div class="fs-card" data-kw="residual coefficient of determination r squared correlation"><h4>Residuals</h4>\[ \text{residual} = \text{actual} - \text{predicted} \]<p>On the sheet. \(r^2\) = proportion of variation explained; \(|r| \ge 0.75\) strong, \(0.5\)–\(0.75\) moderate, \(0.25\)–\(0.5\) weak (a common guide, not on the sheet). <a href="#da-residuals">Residuals</a></p></div>
+  <div class="fs-card" data-kw="seasonal index deseasonalise"><h4>Seasonal indices</h4>\[ \text{seasonal index} = \frac{\text{actual}}{\text{deseasonalised}} \]<p>The index formula is on the sheet; the rearrangements aren't: deseasonalised = actual ÷ index, actual = deseasonalised × index. Indices add to the number of seasons. <a href="#da-seasonal">Seasonal indices</a></p></div>
+  <div class="fs-card" data-kw="moving mean centring median smoothing"><h4>Smoothing</h4><p>Odd \(n\): mean of \(n\) consecutive values at the middle time. Even \(n\): average two neighbouring \(n\)-point means to centre. Medians: odd \(n\) only. Not on the sheet. <a href="#da-timeseries">Time series</a></p></div>
+  <div class="fs-card" data-kw="transformation circle log reciprocal squared"><h4>Transformations</h4><p>Circle of transformations: \(x^2\) or \(y^2\) for curves bending one way, \(\log\) or reciprocal for the other. Pick the one that straightens the plot and leaves random residuals. Not on the sheet. <a href="#da-transform">Transformations</a></p></div>
+</div>
+
+<h2>Recursion and financial modelling</h2>
+<div class="fs-grid">
+  <div class="fs-card" data-kw="recurrence relation first order linear"><h4>Recurrence relations</h4>\[ u_0 = a,\qquad u_{n+1} = Ru_n + d \]<p>On the sheet. Compound interest \(d = 0\); loan/annuity \(d &lt; 0\); investment \(d &gt; 0\). <a href="#rf-recurrence">Recurrence</a></p></div>
+  <div class="fs-card" data-kw="effective interest rate nominal"><h4>Effective interest rate</h4>\[ r_{\text{effective}} = \left[\left(1 + \frac{r}{100n}\right)^n - 1\right] \times 100\% \]<p>On the sheet. More compounding periods per year means a higher effective rate. <a href="#rf-interest">Interest</a></p></div>
+  <div class="fs-card" data-kw="simple interest compound interest depreciation flat rate unit cost reducing balance"><h4>Interest and depreciation</h4>\[ \text{simple: } d = \tfrac{r}{100}V_0 \qquad \text{compound: } R = 1 + \tfrac{r}{100k} \]\[ \text{reducing balance: } R = 1 - \tfrac{r}{100} \qquad \text{flat rate, unit cost: } R = 1,\ d = -(\text{loss per year}) \]<p>Not on the sheet. <a href="#rf-depreciation">Depreciation</a></p></div>
+  <div class="fs-card" data-kw="finance solver signs tvm"><h4>Finance Solver signs</h4><p>Loan: PV +, Pmt −, FV 0. Investment: PV −, Pmt −, FV +. Annuity: PV −, Pmt +, FV 0. Not on the sheet. <a href="#rf-tvm">Finance Solver</a></p></div>
+  <div class="fs-card" data-kw="perpetuity interest only"><h4>Perpetuities</h4>\[ d = \frac{r}{100k}V_0 \qquad V_0 = d \div \frac{r}{100k} \]<p>Not on the sheet. <a href="#rf-annuities">Annuities</a></p></div>
+</div>
+
+<h2>Matrices</h2>
+<div class="fs-grid">
+  <div class="fs-card" data-kw="determinant inverse singular 2 by 2"><h4>Determinant and inverse</h4>\[ \det A = ad - bc \qquad A^{-1} = \frac{1}{\det A}\begin{bmatrix} d &amp; -b \\ -c &amp; a \end{bmatrix} \]<p>On the sheet. No inverse if \(\det A = 0\). \(AX = B \Rightarrow X = A^{-1}B\). <a href="#mx-inverse">Inverses</a></p></div>
+  <div class="fs-card" data-kw="transition matrix leslie culling restocking recurrence"><h4>Transition, Leslie and culling</h4>\[ S_{n+1} = TS_n + B \qquad S_{n+1} = LS_n \]<p>The recurrences are on the sheet. Not on it: \(S_n = T^nS_0\) (only without \(B\)); columns of \(T\) add to 1; Leslie birth rates in row 1, survival rates below the diagonal. <a href="#mx-transition">Transition</a> · <a href="#mx-leslie">Leslie</a></p></div>
+  <div class="fs-card" data-kw="order product defined arithmetic"><h4>Matrix arithmetic</h4><p>\((m \times n)(n \times p) = (m \times p)\): inner numbers must match. \(AB \ne BA\) in general. Not on the sheet. <a href="#mx-basics">Matrix arithmetic</a></p></div>
+  <div class="fs-card" data-kw="communication dominance permutation"><h4>Communication and dominance</h4><p>\(C^2\): two-step links. Rank with row sums of \(D\), then \(D + D^2\). \(PA\) reorders rows, \(AP\) reorders columns. Not on the sheet. <a href="#mx-binary">Binary matrices</a></p></div>
+</div>
+
+<h2>Networks and decision mathematics</h2>
+<div class="fs-grid">
+  <div class="fs-card" data-kw="euler formula planar faces"><h4>Euler's formula</h4>\[ v + f = e + 2 \]<p>On the sheet. Connected planar graphs only; count the outside face. <a href="#nw-graphs">Graphs</a></p></div>
+  <div class="fs-card" data-kw="sum of degrees complete graph tree edges"><h4>Graph facts</h4><p>Sum of degrees = \(2e\). \(K_n\) has \(\frac{n(n-1)}{2}\) edges. A tree with \(n\) vertices has \(n - 1\) edges. Not on the sheet. <a href="#nw-trees">Trees</a></p></div>
+  <div class="fs-card" data-kw="eulerian trail circuit hamiltonian"><h4>Eulerian and Hamiltonian</h4><p>Eulerian circuit: all degrees even. Eulerian trail: exactly two odd vertices (start and end there). Hamiltonian: every vertex once, no rule. Not on the sheet. <a href="#nw-travel">Travel</a></p></div>
+  <div class="fs-card" data-kw="flow cut capacity max flow min cut"><h4>Flow</h4><p>Cut capacity: only edges from the source side to the sink side. Maximum flow = minimum cut. Not on the sheet. <a href="#nw-flow">Flow</a></p></div>
+  <div class="fs-card" data-kw="prim dijkstra hungarian algorithm"><h4>Algorithms</h4><p>Prim: cheapest edge to a new vertex. Dijkstra: make the smallest label permanent, update neighbours. Hungarian: reduce rows, columns; cover zeros; adjust; allocate. Not on the sheet. <a href="#nw-shortest">Dijkstra</a> · <a href="#nw-matching">Hungarian</a></p></div>
+  <div class="fs-card" data-kw="critical path est lst float dummy"><h4>Critical path</h4><p>EST = max of predecessors' (EST + duration); LST = min of followers' LST − duration; float = LST − EST. Critical path = longest path (zero float). Not on the sheet. <a href="#nw-cpa">Critical path</a></p></div>
+</div>

@@ -1,0 +1,71 @@
+<!--
+id: glossary
+title: General Maths glossary
+short: Glossary
+summary: Precise definitions of the key terms in General Mathematics Units 3 and 4, each linked to the topic where it's explained.
+keywords: glossary, definitions, terms, vocabulary, meaning, define, definition, general maths terms
+special: reference
+-->
+<p>Definitions written the way VCAA uses them. Click the link after each for the full explanation.</p>
+<h2>Data analysis</h2>
+<dl class="gloss">
+  <dt>Categorical variable</dt><dd>Data that names a group: nominal (no order, e.g. eye colour) or ordinal (ordered, e.g. small/medium/large). <a href="#da-types">Data types</a></dd>
+  <dt>Numerical variable</dt><dd>Data that is a count or measurement: discrete (counted) or continuous (measured). <a href="#da-types">Data types</a></dd>
+  <dt>Five-number summary</dt><dd>Minimum, \(Q_1\), median, \(Q_3\), maximum: the values a boxplot is drawn from. <a href="#da-summary">Summary statistics</a></dd>
+  <dt>Outlier</dt><dd>A value below \(Q_1 - 1.5 \times \text{IQR}\) or above \(Q_3 + 1.5 \times \text{IQR}\). <a href="#da-summary">Summary statistics</a></dd>
+  <dt>Standardised score (z-score)</dt><dd>The number of standard deviations a value is above (positive) or below (negative) the mean. <a href="#da-normal">Normal model</a></dd>
+  <dt>Explanatory variable</dt><dd>The variable used to explain or predict changes in the other; it goes on the horizontal axis. <a href="#da-assoc">Associations</a></dd>
+  <dt>Response variable</dt><dd>The variable whose values are being explained or predicted; it goes on the vertical axis. <a href="#da-assoc">Associations</a></dd>
+  <dt>Pearson's correlation coefficient (r)</dt><dd>A number from −1 to 1 measuring the strength and direction of a <em>linear</em> association. <a href="#da-scatter">Scatterplots</a></dd>
+  <dt>Coefficient of determination (r²)</dt><dd>The proportion of the variation in the response variable explained by the variation in the explanatory variable. <a href="#da-regression">Least squares</a></dd>
+  <dt>Least squares line</dt><dd>The line that minimises the sum of the squared residuals. <a href="#da-regression">Least squares</a></dd>
+  <dt>Residual</dt><dd>Actual value − predicted value: the vertical distance from a point to the line. <a href="#da-residuals">Residuals</a></dd>
+  <dt>Interpolation / extrapolation</dt><dd>Predicting inside / outside the range of the data. Extrapolation is unreliable. <a href="#da-regression">Least squares</a></dd>
+  <dt>Causation</dt><dd>A change in one variable directly producing a change in the other. Correlation alone never shows it. <a href="#da-scatter">Scatterplots</a></dd>
+  <dt>Seasonality</dt><dd>A regular pattern in a time series that repeats over a fixed calendar period. <a href="#da-timeseries">Time series</a></dd>
+  <dt>Seasonal index</dt><dd>How a season compares with an average season: actual ÷ deseasonalised. An index of 1.2 means 20% above average. <a href="#da-seasonal">Seasonal indices</a></dd>
+  <dt>Smoothing</dt><dd>Replacing each value with a moving mean or median to reduce fluctuations and show the trend. <a href="#da-timeseries">Time series</a></dd>
+</dl>
+<h2>Recursion and financial modelling</h2>
+<dl class="gloss">
+  <dt>Recurrence relation</dt><dd>A rule giving each term from the one before, plus a starting value: \(u_0 = a\), \(u_{n+1} = Ru_n + d\). <a href="#rf-recurrence">Recurrence</a></dd>
+  <dt>Flat rate depreciation</dt><dd>The value falls by a fixed percentage of the purchase price each year (a straight line). <a href="#rf-depreciation">Depreciation</a></dd>
+  <dt>Unit cost depreciation</dt><dd>The value falls by a fixed amount per unit of use (e.g. per kilometre). <a href="#rf-depreciation">Depreciation</a></dd>
+  <dt>Reducing balance depreciation</dt><dd>The value falls by a fixed percentage of its current value each year. <a href="#rf-depreciation">Depreciation</a></dd>
+  <dt>Effective interest rate</dt><dd>The annual rate that, compounded once a year, gives the same interest as the nominal rate compounded more often. <a href="#rf-interest">Interest</a></dd>
+  <dt>Reducing balance loan</dt><dd>A loan where interest is charged on the balance and regular payments reduce it. <a href="#rf-loans">Loans</a></dd>
+  <dt>Interest-only loan</dt><dd>Payments equal the interest each period, so the balance never falls. <a href="#rf-loans">Loans</a></dd>
+  <dt>Annuity</dt><dd>A lump sum invested to pay a regular income until it runs out. <a href="#rf-annuities">Annuities</a></dd>
+  <dt>Perpetuity</dt><dd>An annuity that pays only the interest, so it lasts forever. <a href="#rf-annuities">Annuities</a></dd>
+  <dt>Annuity investment</dt><dd>An investment with regular additional deposits. <a href="#rf-investments">Investments</a></dd>
+</dl>
+<h2>Matrices</h2>
+<dl class="gloss">
+  <dt>Order</dt><dd>The size of a matrix, rows × columns. <a href="#mx-basics">Matrix arithmetic</a></dd>
+  <dt>Identity matrix</dt><dd>A square matrix with 1s on the leading diagonal and 0s elsewhere: \(AI = IA = A\). <a href="#mx-basics">Matrix arithmetic</a></dd>
+  <dt>Determinant</dt><dd>A number calculated from a square matrix; for 2 × 2, \(ad - bc\). Zero means no inverse. <a href="#mx-inverse">Inverses</a></dd>
+  <dt>Singular matrix</dt><dd>A square matrix with determinant 0, so it has no inverse. <a href="#mx-inverse">Inverses</a></dd>
+  <dt>Permutation matrix</dt><dd>A square binary matrix with exactly one 1 in each row and column; it rearranges rows or columns. <a href="#mx-binary">Binary matrices</a></dd>
+  <dt>Dominance matrix</dt><dd>A binary matrix where element \((i, j)\) is 1 if \(i\) beat \(j\). <a href="#mx-binary">Binary matrices</a></dd>
+  <dt>Transition matrix</dt><dd>A matrix of the proportions moving between states each period: columns are “from”, rows are “to”. <a href="#mx-transition">Transition</a></dd>
+  <dt>Regular transition matrix</dt><dd>One where some power has no zero elements; it reaches the same steady state from any start. <a href="#mx-transition">Transition</a></dd>
+  <dt>Steady state</dt><dd>The state matrix that no longer changes noticeably from one period to the next. <a href="#mx-transition">Transition</a></dd>
+  <dt>Leslie matrix</dt><dd>A matrix for an age-structured population: birth rates in the first row, survival rates below the leading diagonal. <a href="#mx-leslie">Leslie</a></dd>
+</dl>
+<h2>Networks and decision mathematics</h2>
+<dl class="gloss">
+  <dt>Degree</dt><dd>The number of edge ends at a vertex (a loop counts 2). <a href="#nw-graphs">Graphs</a></dd>
+  <dt>Bridge</dt><dd>An edge whose removal disconnects a graph. <a href="#nw-graphs">Graphs</a></dd>
+  <dt>Planar graph</dt><dd>A graph that can be drawn with no edges crossing. <a href="#nw-graphs">Graphs</a></dd>
+  <dt>Isomorphic graphs</dt><dd>The same graph drawn differently: same vertices, edges and connections. <a href="#nw-graphs">Graphs</a></dd>
+  <dt>Trail / path</dt><dd>A walk with no repeated edges / no repeated vertices. <a href="#nw-travel">Travel</a></dd>
+  <dt>Circuit / cycle</dt><dd>A closed trail / closed path. <a href="#nw-travel">Travel</a></dd>
+  <dt>Eulerian trail</dt><dd>A trail using every edge exactly once. <a href="#nw-travel">Travel</a></dd>
+  <dt>Hamiltonian path</dt><dd>A path visiting every vertex exactly once. <a href="#nw-travel">Travel</a></dd>
+  <dt>Spanning tree</dt><dd>A subgraph that is a tree and includes every vertex. <a href="#nw-trees">Trees</a></dd>
+  <dt>Cut</dt><dd>A line separating the source from the sink in a flow network. <a href="#nw-flow">Flow</a></dd>
+  <dt>Bipartite graph</dt><dd>Two groups of vertices with edges only between the groups. <a href="#nw-matching">Matching</a></dd>
+  <dt>Dummy activity</dt><dd>A zero-time activity that shows a dependency in an activity network. <a href="#nw-cpa">Critical path</a></dd>
+  <dt>Float</dt><dd>How long a non-critical activity can be delayed without delaying the project: LST − EST. <a href="#nw-cpa">Critical path</a></dd>
+  <dt>Critical path</dt><dd>The longest path through an activity network; its activities have zero float. <a href="#nw-cpa">Critical path</a></dd>
+</dl>

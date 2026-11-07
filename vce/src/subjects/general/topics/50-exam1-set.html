@@ -1,0 +1,122 @@
+<!--
+id: exam1-set
+title: Exam 1 practice set (multiple choice)
+short: Exam 1 practice set
+summary: Twenty mixed multiple-choice questions in the style of VCAA General Mathematics Exam 1, split across the four areas in the exam's proportions, with worked explanations.
+keywords: exam 1, multiple choice, practice exam, mixed questions, past exam style, general maths, data analysis questions, finance questions, matrices questions, networks questions, exam practice
+dotpoints: mixed multiple-choice practice across all areas of study
+-->
+<aside class="c-exam" data-title="How to use this set"><p>Exam 1 is 40 multiple-choice questions (options A–D) in 1 hour 30 minutes, with CAS and your bound reference. This set is half an exam in the same proportions: 8 data analysis, 4 recursion and finance, 4 matrices and 4 networks. Allow about 45 minutes. Each wrong option matches a common error, so check your answer isn't the trap.</p></aside>
+
+<h2>Data analysis</h2>
+<div class="mcq" data-ans="C" data-level="core">
+<div class="mcq-q"><p><strong>Q1.</strong> A survey records each person's postcode. Postcode is</p></div>
+<ol><li>numerical discrete</li><li>numerical continuous</li><li>categorical nominal</li><li>categorical ordinal</li></ol>
+<div class="mcq-x"><p>A postcode is a label for a place: arithmetic on it means nothing, and there's no natural order. Numbers can be categorical.</p></div>
+</div>
+<div class="mcq" data-ans="A" data-level="core">
+<div class="mcq-q"><p><strong>Q2.</strong> For the data 12, 15, 17, 18, 20, 22, 25, 26, 41, the upper fence is</p></div>
+<ol><li>39.75</li><li>38.5</li><li>25.5</li><li>40.25</li></ol>
+<div class="mcq-x"><p>Median 20. \(Q_1\) = median of 12, 15, 17, 18 = 16; \(Q_3\) = median of 22, 25, 26, 41 = 25.5. IQR = 9.5, so the upper fence is \(25.5 + 1.5 \times 9.5 = 39.75\) (and 41 is an outlier).</p></div>
+</div>
+<div class="mcq" data-ans="B" data-level="core">
+<div class="mcq-q"><p><strong>Q3.</strong> Adult heights are approximately normal with mean 170 cm and standard deviation 8 cm. The percentage of adults taller than 186 cm is closest to</p></div>
+<ol><li>5%</li><li>2.5%</li><li>16%</li><li>0.15%</li></ol>
+<div class="mcq-x"><p>186 is 2 standard deviations above the mean: \(\frac{100 - 95}{2} = 2.5\%\) lie above it.</p></div>
+</div>
+<div class="mcq" data-ans="D" data-level="core">
+<div class="mcq-q"><p><strong>Q4.</strong> A test has mean 65 and standard deviation 4. A score of 59 has a standardised score of</p></div>
+<ol><li>−6</li><li>1.5</li><li>−0.67</li><li>−1.5</li></ol>
+<div class="mcq-x"><p>\(z = \frac{59 - 65}{4} = -1.5\).</p></div>
+</div>
+<div class="mcq" data-ans="A" data-level="core">
+<div class="mcq-q"><p><strong>Q5.</strong> For two variables, \(r = 0.8\), \(\bar x = 10\), \(s_x = 2\), \(\bar y = 40\) and \(s_y = 5\). The least squares line is</p></div>
+<ol><li>\(y = 20 + 2x\)</li><li>\(y = 36.8 + 0.32x\)</li><li>\(y = 40 + 2x\)</li><li>\(y = 20 + 2.5x\)</li></ol>
+<div class="mcq-x"><p>\(b = 0.8 \times \frac52 = 2\), \(a = 40 - 2 \times 10 = 20\). B uses \(\frac{s_x}{s_y}\); D forgets \(r\).</p></div>
+</div>
+<div class="mcq" data-ans="C" data-level="trick">
+<div class="mcq-q"><p><strong>Q6.</strong> The correlation between hours of screen time (explanatory) and hours of sleep is \(r = -0.9\). Which statement is correct?</p></div>
+<ol><li>90% of the variation in sleep is explained by screen time</li><li>−81% of the variation in sleep is explained by screen time</li><li>81% of the variation in sleep is explained by the variation in screen time</li><li>More screen time causes less sleep</li></ol>
+<div class="mcq-x"><p>\(r^2 = 0.81\), and it's never negative. Correlation doesn't show causation.</p></div>
+</div>
+<div class="mcq" data-ans="B" data-level="core">
+<div class="mcq-q"><p><strong>Q7.</strong> The least squares line is \(y = 3.2 + 1.5x\). For the data point \((10, 17)\), the residual is</p></div>
+<ol><li>1.2</li><li>−1.2</li><li>18.2</li><li>−0.8</li></ol>
+<div class="mcq-x"><p>Predicted \(3.2 + 15 = 18.2\); residual \(= 17 - 18.2 = -1.2\) (actual − predicted).</p></div>
+</div>
+<div class="mcq" data-ans="D" data-level="hard">
+<div class="mcq-q"><p><strong>Q8.</strong> Quarterly sales were 20, 28, 35, 25 and 23 (Q1 to Q5). The 4-point centred moving mean for Q3 is</p></div>
+<ol><li>27</li><li>27.75</li><li>35</li><li>27.375</li></ol>
+<div class="mcq-x"><p>\(\frac{20 + 28 + 35 + 25}{4} = 27\) and \(\frac{28 + 35 + 25 + 23}{4} = 27.75\) sit either side of Q3; centre them: \(\frac{27 + 27.75}{2} = 27.375\).</p></div>
+</div>
+
+<h2>Recursion and financial modelling</h2>
+<div class="mcq" data-ans="C" data-level="core">
+<div class="mcq-q"><p><strong>Q9.</strong> \(V_0 = 5000\), \(V_{n+1} = 1.02V_n - 200\). The value of \(V_2\) is</p></div>
+<ol><li>4900</li><li>4600</li><li>4798</li><li>5202</li></ol>
+<div class="mcq-x"><p>\(V_1 = 5100 - 200 = 4900\); \(V_2 = 4998 - 200 = 4798\).</p></div>
+</div>
+<div class="mcq" data-ans="B" data-level="core">
+<div class="mcq-q"><p><strong>Q10.</strong> The effective annual interest rate for 6% per annum compounding monthly is closest to</p></div>
+<ol><li>6.00%</li><li>6.17%</li><li>6.50%</li><li>0.50%</li></ol>
+<div class="mcq-x"><p>\(\left[(1 + \frac{6}{1200})^{12} - 1\right] \times 100\% = 6.17\%\).</p></div>
+</div>
+<div class="mcq" data-ans="A" data-level="trick">
+<div class="mcq-q"><p><strong>Q11.</strong> A $30 000 machine depreciates by 15% of its value each year. After 3 years its value is closest to</p></div>
+<ol><li>$18 424</li><li>$16 500</li><li>$25 500</li><li>$13 500</li></ol>
+<div class="mcq-x"><p>Reducing balance: \(30\,000 \times 0.85^3 = 18\,423.75\). B is flat rate (15% of the purchase price each year).</p></div>
+</div>
+<div class="mcq" data-ans="D" data-level="hard">
+<div class="mcq-q"><p><strong>Q12.</strong> A $250 000 loan at 5.4% per annum compounding monthly is repaid with monthly payments of $1520.32 over 25 years. The interest paid in the first year is closest to</p></div>
+<ol><li>$13 500.00</li><li>$18 243.84</li><li>$4863.03</li><li>$13 380.81</li></ol>
+<div class="mcq-x"><p>After 12 payments (N = 12, I% = 5.4, PV = 250 000, Pmt = −1520.32): FV = −245 136.97, so the principal repaid is 4863.03. Interest = \(12 \times 1520.32 - 4863.03 = 13\,380.81\).</p></div>
+</div>
+
+<h2>Matrices</h2>
+<div class="mcq" data-ans="B" data-level="core">
+<div class="mcq-q"><p><strong>Q13.</strong> \(A\) is a 2 × 3 matrix and \(B\) is a 3 × 4 matrix. Which statement is true?</p></div>
+<ol><li>\(BA\) is a 4 × 2 matrix</li><li>\(AB\) is a 2 × 4 matrix</li><li>\(A + B\) is defined</li><li>\(AB\) is a 3 × 3 matrix</li></ol>
+<div class="mcq-x"><p>\((2 \times 3)(3 \times 4) = 2 \times 4\). \(BA\) needs \(4 = 2\), so it isn't defined.</p></div>
+</div>
+<div class="mcq" data-ans="C" data-level="core">
+<div class="mcq-q"><p><strong>Q14.</strong> \(\begin{bmatrix} 3 &amp; 2 \\ 4 &amp; k \end{bmatrix}\) has no inverse when \(k\) equals</p></div>
+<ol><li>0</li><li>\(-\frac83\)</li><li>\(\frac83\)</li><li>6</li></ol>
+<div class="mcq-x"><p>\(\det = 3k - 8 = 0\), so \(k = \frac83\).</p></div>
+</div>
+<div class="mcq" data-ans="A" data-level="trick">
+<div class="mcq-q"><p><strong>Q15.</strong> \(T = \begin{bmatrix} 0.7 &amp; 0.4 \\ 0.3 &amp; 0.6 \end{bmatrix}\) (columns this week, rows next week) and \(S_0 = \begin{bmatrix} 200 \\ 300 \end{bmatrix}\). Then \(S_1\) is</p></div>
+<ol><li>\(\begin{bmatrix} 260 \\ 240 \end{bmatrix}\)</li><li>\(\begin{bmatrix} 230 \\ 260 \end{bmatrix}\)</li><li>\(\begin{bmatrix} 140 \\ 180 \end{bmatrix}\)</li><li>\(\begin{bmatrix} 300 \\ 200 \end{bmatrix}\)</li></ol>
+<div class="mcq-x"><p>\(0.7(200) + 0.4(300) = 260\); \(0.3(200) + 0.6(300) = 240\). B uses the transpose of \(T\).</p></div>
+</div>
+<div class="mcq" data-ans="D" data-level="hard">
+<div class="mcq-q"><p><strong>Q16.</strong> A Leslie matrix is \(\begin{bmatrix} 0 &amp; 2 &amp; 1 \\ 0.5 &amp; 0 &amp; 0 \\ 0 &amp; 0.4 &amp; 0 \end{bmatrix}\) and the initial state is 100, 60 and 40 females in age groups 1, 2 and 3. After one period, age group 1 contains</p></div>
+<ol><li>50 females</li><li>100 females</li><li>120 females</li><li>160 females</li></ol>
+<div class="mcq-x"><p>Row 1 holds the birth rates: \(2(60) + 1(40) = 160\). (C counts only age group 2's births; A is the survivors into group 2.)</p></div>
+</div>
+
+<h2>Networks and decision mathematics</h2>
+<div class="mcq" data-ans="B" data-level="core">
+<div class="mcq-q"><p><strong>Q17.</strong> A connected planar graph has 7 vertices and 11 edges. The number of faces is</p></div>
+<ol><li>4</li><li>6</li><li>16</li><li>20</li></ol>
+<div class="mcq-x"><p>\(7 + f = 11 + 2\), so \(f = 6\).</p></div>
+</div>
+<div class="mcq" data-ans="A" data-level="core">
+<div class="mcq-q"><p><strong>Q18.</strong> Which list of vertex degrees, for a connected graph, guarantees an Eulerian circuit?</p></div>
+<ol><li>2, 4, 2, 4, 6</li><li>2, 3, 3, 4</li><li>1, 2, 3, 4, 4</li><li>3, 3, 3, 3</li></ol>
+<div class="mcq-x"><p>An Eulerian circuit needs every degree even. B has two odd vertices (a trail only).</p></div>
+</div>
+<div class="mcq" data-ans="C" data-level="trick">
+<div class="mcq-q"><p><strong>Q19.</strong> A cut crosses edges of capacity 5 and 8 going from the source side to the sink side, and one edge of capacity 3 going from the sink side to the source side. The capacity of the cut is</p></div>
+<ol><li>16</li><li>10</li><li>13</li><li>5</li></ol>
+<div class="mcq-x"><p>Only edges from the source side to the sink side count: \(5 + 8 = 13\).</p></div>
+</div>
+<div class="mcq" data-ans="D" data-level="hard">
+<div class="mcq-q"><p><strong>Q20.</strong> Activity D has an earliest starting time of 6 days and a duration of 3 days. Its only following activity has a latest starting time of 12 days. The float of D is</p></div>
+<ol><li>0 days</li><li>6 days</li><li>9 days</li><li>3 days</li></ol>
+<div class="mcq-x"><p>LST of D \(= 12 - 3 = 9\). Float \(= 9 - 6 = 3\) days.</p></div>
+</div>
+<h2>Summary</h2>
+<ul>
+  <li data-q="Which three things should you check in every multiple-choice answer?">Rows vs columns (and transposes), the periodic rate (per month vs per year), and whether the option matches a common error.</li>
+  <li data-q="What are the Exam 1 numbers?">40 questions in 90 minutes: 16 data analysis, 8 recursion and finance, 8 matrices, 8 networks.</li>
+</ul>

@@ -1,0 +1,91 @@
+<!--
+id: mx-binary
+title: Binary, permutation, communication and dominance matrices
+short: Binary & dominance matrices
+summary: Binary matrices; permutation matrices and how pre- and post-multiplying rearranges rows or columns; communication matrices for one-step links and C² for two-step (redundant) links; and dominance matrices, D², D + D² and ranking players in round-robin tournaments.
+keywords: binary matrix, permutation matrix, rearrange rows, rearrange columns, pre-multiply, post-multiply, coded message, communication matrix, one-step communication, two-step communication, redundant communication, C squared, C plus C squared, dominance matrix, one-step dominance, two-step dominance, D squared, D plus D squared, ranking, round robin tournament, wins, losses, row sum, column sum
+dotpoints: binary and permutation matrices, and their properties and applications | communication and dominance matrices and their use in analysing communication systems and ranking players in round-robin tournaments
+-->
+<h2>Binary and permutation matrices</h2>
+<p>A <strong>binary matrix</strong> has every element 0 or 1. It records yes/no information: is there a link, did this player win, is this person available.</p>
+<p>A <strong>permutation matrix</strong> is a square binary matrix with <strong>exactly one 1 in each row and each column</strong>. Multiplying by it rearranges things without changing them.</p>
+<div class="eq"><div class="eq-label">What a permutation matrix does</div>\[ PA \text{ rearranges the rows of } A \qquad\qquad AP \text{ rearranges the columns of } A \]<p>Row \(i\) of \(PA\) is the row of \(A\) picked out by the 1 in row \(i\) of \(P\). The identity matrix is a permutation matrix that changes nothing.</p></div>
+<div class="we" data-title="Decoding with a permutation matrix" data-marks="1">
+<div class="we-q"><p>Find \(PM\) for \(P = \begin{bmatrix} 0 &amp; 0 &amp; 0 &amp; 1 \\ 1 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 1 &amp; 0 \\ 0 &amp; 1 &amp; 0 &amp; 0 \end{bmatrix}\) and \(M = \begin{bmatrix} E \\ M \\ A \\ T \end{bmatrix}\).</p></div>
+<div class="we-t"><p>Each row of \(P\) has a single 1. Its column number says which element of \(M\) goes in that row.</p></div>
+<div class="we-s"><p>Row 1 has its 1 in column 4: T. Row 2, column 1: E. Row 3, column 3: A. Row 4, column 2: M.</p></div>
+<div class="we-a"><p>\(PM = \begin{bmatrix} T \\ E \\ A \\ M \end{bmatrix}\).</p></div>
+</div>
+<aside class="c-trap" data-title="Trick alert: post-multiplying uses columns"><p>For a row matrix, \(\begin{bmatrix} N &amp; O &amp; W \end{bmatrix}\begin{bmatrix} 0 &amp; 0 &amp; 1 \\ 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \end{bmatrix} = \begin{bmatrix} O &amp; W &amp; N \end{bmatrix}\). Now read <strong>down each column</strong> of \(P\): column 1 has its 1 in row 2 (O), column 2 in row 3 (W), column 3 in row 1 (N).</p></aside>
+
+<h2>Communication matrices</h2>
+<p>A <strong>communication matrix</strong> \(C\) records who can send a message <strong>directly</strong> to whom: \(c_{ij} = 1\) if \(i\) can contact \(j\) in one step, otherwise 0. The leading diagonal is all 0s (nobody messages themselves).</p>
+<figure class="fig"><svg viewBox="0 0 320 170" role="img" aria-label="Communication network: A to B, A to D, B to A, B to C, C to D, D to A and D to B">
+<defs><marker id="gmc-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="f-acc"/></marker></defs>
+<path d="M78 40 L232 40" class="s-acc" stroke-width="1.6" marker-end="url(#gmc-ar)" marker-start="url(#gmc-ar)"/>
+<path d="M260 58 L260 112" class="s-acc" stroke-width="1.6" marker-end="url(#gmc-ar)"/>
+<path d="M78 130 L232 130" class="s-acc" stroke-width="1.6" marker-start="url(#gmc-ar)"/>
+<path d="M60 58 L60 112" class="s-acc" stroke-width="1.6" marker-end="url(#gmc-ar)" marker-start="url(#gmc-ar)"/>
+<path d="M76 118 L242 52" class="s-acc" stroke-width="1.6" marker-end="url(#gmc-ar)"/>
+<circle cx="60" cy="40" r="16" class="f-accsoft s-acc"/><text x="60" y="45" text-anchor="middle" class="t-b">A</text>
+<circle cx="260" cy="40" r="16" class="f-accsoft s-acc"/><text x="260" y="45" text-anchor="middle" class="t-b">B</text>
+<circle cx="260" cy="130" r="16" class="f-accsoft s-acc"/><text x="260" y="135" text-anchor="middle" class="t-b">C</text>
+<circle cx="60" cy="130" r="16" class="f-accsoft s-acc"/><text x="60" y="135" text-anchor="middle" class="t-b">D</text>
+</svg><figcaption>A → B, A → D, B → A, B → C, C → D, D → A, D → B. Double arrows mean both directions.</figcaption></figure>
+<div class="eq"><div class="eq-label">One-step and two-step communication</div>\[ C = \begin{bmatrix} 0 &amp; 1 &amp; 0 &amp; 1 \\ 1 &amp; 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 1 \\ 1 &amp; 1 &amp; 0 &amp; 0 \end{bmatrix} \qquad C^2 = \begin{bmatrix} 2 &amp; 1 &amp; 1 &amp; 0 \\ 0 &amp; 1 &amp; 0 &amp; 2 \\ 1 &amp; 1 &amp; 0 &amp; 0 \\ 1 &amp; 1 &amp; 1 &amp; 1 \end{bmatrix} \]<p>Rows and columns are in the order A, B, C, D. Rows are senders, columns are receivers. \(C^2\) counts the two-step links (through exactly one other person); \(C + C^2\) counts the ways in one <em>or</em> two steps.</p></div>
+<div class="we" data-title="Reading C²" data-marks="2">
+<div class="we-q"><p>Using the network above: (a) in how many ways can B send a message to D through exactly one other person? (b) What does the 2 in row A, column A of \(C^2\) mean?</p></div>
+<div class="we-t"><p>Element \((i, j)\) of \(C^2\) is the number of two-step routes from \(i\) to \(j\). Check by listing them.</p></div>
+<div class="we-s"><p>(a) Row B, column D of \(C^2\) is 2: B → A → D and B → C → D.</p></div>
+<div class="we-s"><p>(b) A can get a message back to itself in two steps in 2 ways: A → B → A and A → D → A.</p></div>
+<div class="we-a"><p>(a) <strong>2 ways</strong>. (b) Two two-step routes from A back to A. These are <strong>redundant</strong> links: they waste a message.</p></div>
+</div>
+
+<h2>Dominance matrices</h2>
+<p>In a <strong>round-robin tournament</strong> every player plays every other player once. A <strong>dominance matrix</strong> \(D\) has \(d_{ij} = 1\) if \(i\) beat \(j\). With no draws, exactly one of \(d_{ij}\) and \(d_{ji}\) is 1 for each pair.</p>
+<div class="eq"><div class="eq-label">Ranking with dominance</div>\[ \text{one-step dominance} = \text{row sums of } D \quad \text{(wins)} \qquad \text{two-step dominance} = \text{row sums of } D^2 \]\[ \text{total dominance} = \text{row sums of } D + D^2 \]<p>Rank by one-step dominance first (most wins). If players tie, use the totals from \(D + D^2\). Column sums of \(D\) are losses.</p></div>
+<div class="we" data-title="Ranking a round robin" data-marks="3">
+<div class="we-q"><p>Four players: A beat B and C; B beat C and D; C beat D; D beat A. Write the dominance matrix and rank the players.</p></div>
+<div class="we-t"><p>A two-step dominance means A beat someone who beat D. It rewards beating strong players.</p></div>
+<div class="we-s"><p>\(D = \begin{bmatrix} 0 &amp; 1 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 1 &amp; 1 \\ 0 &amp; 0 &amp; 0 &amp; 1 \\ 1 &amp; 0 &amp; 0 &amp; 0 \end{bmatrix}\): one-step dominances A 2, B 2, C 1, D 1. Both pairs are tied.</p></div>
+<div class="we-s" data-f="D + D^2"><p>\(D^2 = \begin{bmatrix} 0 &amp; 0 &amp; 1 &amp; 2 \\ 1 &amp; 0 &amp; 0 &amp; 1 \\ 1 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 1 &amp; 0 \end{bmatrix}\), \(D + D^2 = \begin{bmatrix} 0 &amp; 1 &amp; 2 &amp; 2 \\ 1 &amp; 0 &amp; 1 &amp; 2 \\ 1 &amp; 0 &amp; 0 &amp; 1 \\ 1 &amp; 1 &amp; 1 &amp; 0 \end{bmatrix}\). Row sums: 5, 4, 2, 3.</p></div>
+<div class="we-a"><p>Ranking: <strong>A, B, D, C</strong>. D beats C on the tie-break because D beat A, the strongest player.</p></div>
+</div>
+<aside class="c-exam" data-title="Exam tip: say which matrix you used"><p>If one-step dominances already separate everyone, that ranking stands. When asked to “use two-step dominances” or to break a tie, show the row sums of \(D + D^2\) (not just \(D^2\)) unless the question says otherwise.</p></aside>
+
+<h2>Practice</h2>
+<div class="mcq" data-ans="C" data-level="core">
+<div class="mcq-q"><p>Which of these is a permutation matrix?</p></div>
+<ol><li>\(\begin{bmatrix} 1 &amp; 1 \\ 0 &amp; 0 \end{bmatrix}\)</li><li>\(\begin{bmatrix} 1 &amp; 0 \\ 0 &amp; 0 \end{bmatrix}\)</li><li>\(\begin{bmatrix} 0 &amp; 1 \\ 1 &amp; 0 \end{bmatrix}\)</li><li>\(\begin{bmatrix} 0 &amp; 2 \\ 1 &amp; 0 \end{bmatrix}\)</li></ol>
+<div class="mcq-x"><p>Binary, square, exactly one 1 in every row and every column. A has two 1s in row 1; B has an empty row; D isn't binary.</p></div>
+</div>
+<div class="mcq" data-ans="B" data-level="core">
+<div class="mcq-q"><p>In a dominance matrix for a 5-player round robin with no draws, the sum of all the elements is</p></div>
+<ol><li>5</li><li>10</li><li>20</li><li>25</li></ol>
+<div class="mcq-x"><p>Every match produces exactly one 1. There are \(\frac{5 \times 4}{2} = 10\) matches.</p></div>
+</div>
+<div class="mcq" data-ans="D" data-level="trick">
+<div class="mcq-q"><p>For the communication matrix \(C\) above, the number of ways D can send a message to C in one or two steps is</p></div>
+<ol><li>0</li><li>2</li><li>3</li><li>1</li></ol>
+<div class="mcq-x"><p>D can't reach C directly (\(c_{DC} = 0\)), but row D, column C of \(C^2\) is 1: D → B → C. Total \(0 + 1 = 1\).</p></div>
+</div>
+<div class="mcq" data-ans="A" data-level="hard">
+<div class="mcq-q"><p>\(Q = \begin{bmatrix} 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 1 \\ 1 &amp; 0 &amp; 0 \end{bmatrix}\) and \(R = \begin{bmatrix} X \\ Y \\ Z \end{bmatrix}\). The matrix \(Q^2R\) is</p></div>
+<ol><li>\(\begin{bmatrix} Z \\ X \\ Y \end{bmatrix}\)</li><li>\(\begin{bmatrix} Y \\ Z \\ X \end{bmatrix}\)</li><li>\(\begin{bmatrix} X \\ Y \\ Z \end{bmatrix}\)</li><li>\(\begin{bmatrix} Z \\ Y \\ X \end{bmatrix}\)</li></ol>
+<div class="mcq-x"><p>\(QR = \begin{bmatrix} Y \\ Z \\ X \end{bmatrix}\); applying \(Q\) again gives \(\begin{bmatrix} Z \\ X \\ Y \end{bmatrix}\). (Or find \(Q^2\) on CAS first.)</p></div>
+</div>
+<div class="pq" data-level="core" data-marks="2">
+<div class="pq-q"><p>In the round robin above, how many matches did C lose, and which element of \(D^2\) shows that A has two two-step dominances over D? List them.</p></div>
+<div class="pq-s"><p>Column C of \(D\) sums to 2: C lost 2 matches (to A and B). [1]</p><p>Row A, column D of \(D^2\) is 2: A → B → D and A → C → D. [1]</p></div>
+</div>
+<div class="pq" data-level="exam" data-marks="3">
+<div class="pq-q"><p>Three towers P, Q and R: P can send to Q, Q can send to P and R, and R can send to P. (a) Write the communication matrix \(C\) (order P, Q, R). (b) Find \(C^2\). (c) How many ways can R send a message to Q in exactly two steps?</p></div>
+<div class="pq-s"><p>(a) \(C = \begin{bmatrix} 0 &amp; 1 &amp; 0 \\ 1 &amp; 0 &amp; 1 \\ 1 &amp; 0 &amp; 0 \end{bmatrix}\). [1]</p><p>(b) \(C^2 = \begin{bmatrix} 1 &amp; 0 &amp; 1 \\ 1 &amp; 1 &amp; 0 \\ 0 &amp; 1 &amp; 0 \end{bmatrix}\). [1]</p><p>(c) Row R, column Q of \(C^2\) is 1 (R → P → Q). [1]</p></div>
+</div>
+<h2>Summary</h2>
+<ul>
+  <li data-q="What is a permutation matrix, and what do PA and AP do?">A square binary matrix with exactly one 1 in each row and column. \(PA\) rearranges the rows of \(A\); \(AP\) rearranges its columns.</li>
+  <li data-q="What do the elements of a communication matrix C and of C² count?">\(c_{ij} = 1\) if \(i\) can contact \(j\) directly. \(C^2\) counts two-step links; \(C + C^2\) counts links in one or two steps. Diagonal entries of \(C^2\) are redundant links.</li>
+  <li data-q="How do you rank players with a dominance matrix?">Row sums of \(D\) (wins) first; break ties with row sums of \(D + D^2\), which add two-step dominances.</li>
+  <li data-q="In a dominance matrix, what do the column sums mean, and what is the total of all elements for n players?">Column sums are losses. The total is the number of matches, \(\frac{n(n-1)}{2}\).</li>
+</ul>

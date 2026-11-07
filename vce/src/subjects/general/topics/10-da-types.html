@@ -1,0 +1,139 @@
+<!--
+id: da-types
+title: Types of data and displaying distributions
+short: Data types & displays
+summary: Categorical (nominal, ordinal) and numerical (discrete, continuous) variables; frequency tables and bar charts; dot plots, stem plots and histograms; describing shape, centre, spread and outliers; and reading a log (base 10) scale.
+keywords: types of data, categorical, nominal, ordinal, numerical, discrete, continuous, frequency table, percentage frequency, bar chart, segmented bar chart, dot plot, stem plot, stem and leaf, split stem, histogram, shape, symmetric, positively skewed, negatively skewed, mode, modal, outlier, log scale, log base 10, logarithmic scale, orders of magnitude, describing a distribution
+dotpoints: types of data | representation, display and description of the distributions of categorical variables: data tables, frequency tables and bar charts | representation, display and description of the distributions of numerical variables: dot plots, stem plots, histograms | the use of a logarithmic (base 10) scale to display data ranging over several orders of magnitude and their interpretation in terms of powers of ten | use of the distribution(s) of one or more categorical or numerical variables to answer statistical questions
+-->
+<h2>Categorical and numerical data</h2>
+<p>Every statistical question starts with the variable. Its type decides which displays and summaries you are allowed to use.</p>
+<div class="tbl"><table>
+<thead><tr><th>Type</th><th>Sub-type</th><th>What it means</th><th>Examples</th></tr></thead>
+<tbody>
+<tr><td rowspan="2"><strong>Categorical</strong><br>(groups or labels)</td><td>Nominal</td><td>Categories with no natural order</td><td>eye colour, sport played, postcode, payment method</td></tr>
+<tr><td>Ordinal</td><td>Categories with a natural order</td><td>shirt size (S, M, L), satisfaction (poor → excellent), year level</td></tr>
+<tr><td rowspan="2"><strong>Numerical</strong><br>(quantities)</td><td>Discrete</td><td>Counts: only certain values</td><td>number of siblings, goals scored, cars in a car park</td></tr>
+<tr><td>Continuous</td><td>Measurements: any value in a range</td><td>height, time, mass, temperature</td></tr>
+</tbody></table></div>
+<aside class="c-trap" data-title="Trick alert: numbers that are categorical"><p>A variable recorded with numbers is not automatically numerical. Postcodes, phone numbers and jersey numbers are <strong>nominal</strong>: averaging them is meaningless. A rating such as “1 = strongly disagree … 5 = strongly agree” is <strong>ordinal</strong>. Ask: does arithmetic on these numbers make sense?</p></aside>
+<aside class="c-trap" data-title="Trick alert: age can go either way"><p>Age in years (17, 18, 19) is numerical. Age group (“under 18”, “18–25”, “over 25”) is ordinal categorical. Read how the variable was actually recorded.</p></aside>
+
+<h2>Displaying categorical data</h2>
+<p>A <strong>frequency table</strong> lists each category and its count. A <strong>percentage frequency</strong> is the count divided by the total, times 100. Display one categorical variable with a <strong>bar chart</strong> (bars separated by gaps) or a single <strong>percentage segmented bar chart</strong> (one bar split into segments that add to 100%).</p>
+<div class="eq"><div class="eq-label">Percentage frequency</div>\[ \text{percentage} = \frac{\text{frequency}}{\text{total}} \times 100\% \]</div>
+<figure class="fig">
+<svg viewBox="0 0 440 200" width="440" role="img" aria-label="A bar chart of travel mode with bars for car 12, bus 7, train 5, bike 4 and walk 2, beside a percentage segmented bar chart of the same data">
+  <line x1="40" y1="170" x2="250" y2="170" class="s-ink"/><line x1="40" y1="20" x2="40" y2="170" class="s-ink"/>
+  <g class="t-sm t-mut"><text x="34" y="174" text-anchor="end">0</text><text x="34" y="124" text-anchor="end">5</text><text x="34" y="74" text-anchor="end">10</text></g>
+  <line x1="40" y1="120" x2="250" y2="120" class="s-line"/><line x1="40" y1="70" x2="250" y2="70" class="s-line"/>
+  <rect x="52" y="50" width="28" height="120" class="f-acc"/><rect x="92" y="100" width="28" height="70" class="f-acc"/><rect x="132" y="120" width="28" height="50" class="f-acc"/><rect x="172" y="130" width="28" height="40" class="f-acc"/><rect x="212" y="150" width="28" height="20" class="f-acc"/>
+  <g class="t-sm" text-anchor="middle"><text x="66" y="186">car</text><text x="106" y="186">bus</text><text x="146" y="186">train</text><text x="186" y="186">bike</text><text x="226" y="186">walk</text></g>
+  <text x="145" y="14" text-anchor="middle" class="t-sm t-b">Bar chart (counts)</text>
+  <rect x="320" y="20" width="44" height="60" class="f-acc"/><rect x="320" y="80" width="44" height="35" class="f-n" style="opacity:.55"/><rect x="320" y="115" width="44" height="25" class="f-w" style="opacity:.7"/><rect x="320" y="140" width="44" height="20" class="f-v" style="opacity:.6"/><rect x="320" y="160" width="44" height="10" class="f-mut"/>
+  <g class="t-sm"><text x="372" y="54">car 40%</text><text x="372" y="101">bus 23%</text><text x="372" y="131">train 17%</text><text x="372" y="154">bike 13%</text><text x="372" y="172">walk 7%</text></g>
+  <text x="342" y="14" text-anchor="middle" class="t-sm t-b">Segmented bar (%)</text>
+</svg>
+<figcaption>Travel mode for 30 students. The segmented bar shows the same data as percentages of the total.</figcaption>
+</figure>
+<p>The <strong>mode</strong> (modal category) is the category with the highest frequency. For categorical data, describe the distribution by naming the most and least common categories and giving their percentages.</p>
+
+<h2>Displaying numerical data</h2>
+<p><strong>Dot plots</strong> (one dot per value) suit small discrete data sets. <strong>Stem plots</strong> keep every data value while showing shape: the stem is the leading digit(s), each leaf one trailing digit, and a key is essential. <strong>Split stems</strong> (e.g. leaves 0–4 and 5–9 on separate rows) stretch out a crowded plot. <strong>Histograms</strong> group values into intervals (bins) with no gaps between bars, and suit large or continuous data sets.</p>
+<div class="tbl"><table>
+<thead><tr><th>Display</th><th>Best for</th><th>Keeps raw values?</th></tr></thead>
+<tbody>
+<tr><td>Dot plot</td><td>Small discrete data sets</td><td>Yes</td></tr>
+<tr><td>Stem plot</td><td>Small to medium data sets (up to about 50 values)</td><td>Yes</td></tr>
+<tr><td>Histogram</td><td>Large data sets, continuous data</td><td>No (only counts per interval)</td></tr>
+</tbody></table></div>
+<aside class="c-trap" data-title="Trick alert: histogram bins"><p>A bar from 20 to 25 holds values with \(20 \le x &lt; 25\). A value of exactly 25 belongs in the <em>next</em> bar. When a question asks how many values are “less than 25”, add the bars up to and including the 20–25 bar.</p></aside>
+
+<h2>Describing a distribution</h2>
+<p>For a numerical variable, describe <strong>shape</strong>, <strong>centre</strong>, <strong>spread</strong> and <strong>outliers</strong>.</p>
+<figure class="fig">
+<svg viewBox="0 0 440 130" width="440" role="img" aria-label="Three histogram shapes: negatively skewed with a tail to the left, symmetric, and positively skewed with a tail to the right">
+  <g class="f-accsoft" style="stroke:var(--accent);stroke-width:1">
+    <rect x="15" y="95" width="16" height="15"/><rect x="31" y="85" width="16" height="25"/><rect x="47" y="70" width="16" height="40"/><rect x="63" y="45" width="16" height="65"/><rect x="79" y="30" width="16" height="80"/><rect x="95" y="40" width="16" height="70"/>
+    <rect x="165" y="90" width="16" height="20"/><rect x="181" y="60" width="16" height="50"/><rect x="197" y="30" width="16" height="80"/><rect x="213" y="30" width="16" height="80"/><rect x="229" y="60" width="16" height="50"/><rect x="245" y="90" width="16" height="20"/>
+    <rect x="315" y="40" width="16" height="70"/><rect x="331" y="30" width="16" height="80"/><rect x="347" y="45" width="16" height="65"/><rect x="363" y="70" width="16" height="40"/><rect x="379" y="85" width="16" height="25"/><rect x="395" y="95" width="16" height="15"/>
+  </g>
+  <line x1="10" y1="110" x2="430" y2="110" class="s-ink"/>
+  <g class="t-sm" text-anchor="middle"><text x="63" y="126">negatively skewed</text><text x="213" y="126">symmetric</text><text x="363" y="126">positively skewed</text></g>
+  <text x="30" y="20" class="t-sm t-mut">← tail</text><text x="372" y="20" class="t-sm t-mut">tail →</text>
+</svg>
+<figcaption>The skew is named after the side the tail points to, not where the peak is.</figcaption>
+</figure>
+<ul>
+  <li><strong>Shape:</strong> symmetric, positively skewed (tail to the right, towards higher values) or negatively skewed (tail to the left). Mention if it has more than one peak.</li>
+  <li><strong>Centre:</strong> the median (or the mean for symmetric data).</li>
+  <li><strong>Spread:</strong> the range or IQR (or the standard deviation for symmetric data).</li>
+  <li><strong>Outliers:</strong> values that sit well apart from the rest. Check them with the fence rule on the <a href="#da-summary">boxplots page</a>.</li>
+</ul>
+<aside class="c-exam" data-title="Exam tip: describe in context"><p>“The distribution of travel times is positively skewed with a median of 22 minutes and an IQR of 15 minutes. There are two possible outliers at 75 and 82 minutes.” Every number has a unit and the variable is named.</p></aside>
+
+<h2>Log (base 10) scales</h2>
+<p>When data range over several orders of magnitude (e.g. animal body masses from grams to tonnes, city populations), a normal histogram squashes almost everything into the first bar. Plotting \(\log_{10}(x)\) spreads the data out. Each step of 1 on a log scale is a <strong>multiplication by 10</strong>.</p>
+<div class="eq"><div class="eq-label">Converting to and from a log scale</div>\[ \log_{10}(x) = k \quad\Longleftrightarrow\quad x = 10^{k} \]<p>A log value of 3 means \(10^3 = 1000\). A log value of 2.5 means \(10^{2.5} \approx 316\).</p></div>
+<figure class="fig">
+<svg viewBox="0 0 440 90" width="440" role="img" aria-label="A number line labelled with log values 0 to 5 above and the matching values 1, 10, 100, 1000, 10 000 and 100 000 below">
+  <line x1="30" y1="45" x2="410" y2="45" class="s-ink"/>
+  <g class="s-ink"><line x1="40" y1="39" x2="40" y2="51"/><line x1="110" y1="39" x2="110" y2="51"/><line x1="180" y1="39" x2="180" y2="51"/><line x1="250" y1="39" x2="250" y2="51"/><line x1="320" y1="39" x2="320" y2="51"/><line x1="390" y1="39" x2="390" y2="51"/></g>
+  <g class="t-sm t-acc" text-anchor="middle"><text x="40" y="30">0</text><text x="110" y="30">1</text><text x="180" y="30">2</text><text x="250" y="30">3</text><text x="320" y="30">4</text><text x="390" y="30">5</text></g>
+  <g class="t-sm" text-anchor="middle"><text x="40" y="68">1</text><text x="110" y="68">10</text><text x="180" y="68">100</text><text x="250" y="68">1000</text><text x="320" y="68">10 000</text><text x="390" y="68">100 000</text></g>
+  <text x="420" y="34" class="t-sm t-mut" text-anchor="end">log₁₀(x)</text><text x="420" y="84" class="t-sm t-mut" text-anchor="end">x</text>
+</svg>
+<figcaption>Equal steps on the log scale are equal <em>ratios</em> (×10), not equal differences.</figcaption>
+</figure>
+
+<div class="we" data-title="Reading a log-scale histogram" data-marks="2">
+<div class="we-q"><p>A histogram shows \(\log_{10}(\text{population})\) for 50 towns. One bar covers log values from 3.5 to 4.0 and contains 9 towns. What range of populations does this bar represent, and what percentage of the towns is it?</p></div>
+<div class="we-t"><p>Undo the log on each end of the interval: \(x = 10^{k}\). The percentage uses the total number of towns.</p></div>
+<div class="we-s" data-f="x = 10^{k}"><p>\(10^{3.5} \approx 3162\) and \(10^{4} = 10\,000\).</p></div>
+<div class="we-s" data-f="\text{percentage} = \dfrac{\text{frequency}}{\text{total}} \times 100\%"><p>\(\frac{9}{50} \times 100\% = 18\%\).</p></div>
+<div class="we-a"><p>Populations from about <strong>3162 up to (but not including) 10 000</strong>; <strong>18%</strong> of the towns.</p></div>
+</div>
+
+<div class="we" data-title="Median from a stem plot" data-marks="2">
+<div class="we-q"><p>A stem plot (key: 3 | 4 = 34 minutes) shows the times 19 students took to finish a quiz. Row by row the leaves are: 1 | 5 8 9, 2 | 0 2 4 4 7, 3 | 1 3 3 5 6 8, 4 | 0 2 6, 5 | 1 9. Find the median and describe the shape.</p></div>
+<div class="we-t"><p>With \(n\) values, the median is the \(\frac{n + 1}{2}\)th value in order. Stem plots are already ordered.</p></div>
+<div class="we-s" data-f="\text{median position} = \dfrac{n + 1}{2}"><p>\(\frac{19 + 1}{2} = 10\): the 10th value. Counting: 3 values in the 10s, 5 in the 20s (8 so far), then 31, 33. The 10th value is 33.</p></div>
+<div class="we-a"><p>Median = <strong>33 minutes</strong>. The distribution is roughly <strong>symmetric</strong> (the 30s row is the longest, with similar tails either side) with no obvious outliers.</p></div>
+</div>
+
+<h2>Practice</h2>
+<div class="mcq" data-ans="C" data-level="core">
+<div class="mcq-q"><p>Which variable is ordinal?</p></div>
+<ol><li>Number of pets owned</li><li>Postcode</li><li>Level of agreement (low, medium, high)</li><li>Body temperature in °C</li></ol>
+<div class="mcq-x"><p>Low/medium/high are categories with a natural order. Postcode is nominal; the other two are numerical.</p></div>
+</div>
+<div class="mcq" data-ans="B" data-level="core">
+<div class="mcq-q"><p>A histogram's tail stretches out to the right towards high values. The distribution is</p></div>
+<ol><li>negatively skewed</li><li>positively skewed</li><li>symmetric</li><li>bimodal</li></ol>
+<div class="mcq-x"><p>Skew is named after the tail: tail to the right (positive end) = positively skewed.</p></div>
+</div>
+<div class="mcq" data-ans="D" data-level="trick">
+<div class="mcq-q"><p>On a histogram of \(\log_{10}(\text{mass in grams})\), an animal plotted at 4 is how many times heavier than one plotted at 2?</p></div>
+<ol><li>2</li><li>20</li><li>2 times as heavy plus 100 g</li><li>100</li></ol>
+<div class="mcq-x"><p>\(10^4 \div 10^2 = 100\). Two steps on a log scale = ×10 × 10.</p></div>
+</div>
+<div class="mcq" data-ans="A" data-level="hard">
+<div class="mcq-q"><p>Shoe sizes are recorded for 200 students as 6, 6.5, 7, …, 12. The most suitable description is</p></div>
+<ol><li>numerical discrete</li><li>numerical continuous</li><li>categorical nominal</li><li>categorical ordinal only, so no histogram is possible</li></ol>
+<div class="mcq-x"><p>Shoe sizes are quantities that can only take certain values (half-size steps), so they are numerical discrete. Foot length would be continuous.</p></div>
+</div>
+<div class="pq" data-level="core" data-marks="2">
+<div class="pq-q"><p>In a survey of 80 people, 28 preferred tea, 36 preferred coffee and 16 preferred neither. Find the percentage that preferred coffee and name the modal category.</p></div>
+<div class="pq-s"><p>\(\frac{36}{80} \times 100\% = 45\%\). [1]</p><p>Modal category: coffee. [1]</p></div>
+</div>
+<div class="pq" data-level="exam" data-marks="2">
+<div class="pq-q"><p>A histogram of \(\log_{10}(\text{annual income in dollars})\) has an interval from 4.6 to 4.8. Write the incomes this interval represents, to the nearest dollar.</p></div>
+<div class="pq-s"><p>\(10^{4.6} \approx 39\,811\). [1]</p><p>\(10^{4.8} \approx 63\,096\): incomes from about $39 811 to $63 096. [1]</p></div>
+</div>
+<h2>Summary</h2>
+<ul>
+  <li data-q="Name the two types of categorical variable and the two types of numerical variable, with an example of each.">Categorical: nominal (no order) or ordinal (ordered). Numerical: discrete (counts) or continuous (measurements).</li>
+  <li data-q="Which displays suit a categorical variable, and which suit a numerical variable?">Categorical: frequency tables, bar charts, segmented bar charts. Numerical: dot plots, stem plots, histograms.</li>
+  <li data-q="What four features do you describe for a numerical distribution? How is skew named?">Shape, centre, spread, outliers. Skew is named by the side of the tail (tail right = positive skew).</li>
+  <li data-q="How do you convert a log₁₀ value back to the original scale? What does one step on a log scale represent?">\(x = 10^{k}\). Each step of 1 is a factor of 10.</li>
+</ul>

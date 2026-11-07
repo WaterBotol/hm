@@ -1,0 +1,20 @@
+{
+  "id": "specialist",
+  "prefix": "sm",
+  "name": "Specialist Mathematics",
+  "short": "Specialist",
+  "design": "Study design 2023–2027",
+  "blurb": "Proof, complex numbers, vectors, advanced calculus, differential equations and statistical inference.",
+  "groups": [
+    { "id": "start", "eyebrow": "Start here", "title": "", "map": false, "topics": ["home", "exam-technique", "formula-sheet"] },
+    { "id": "dm", "eyebrow": "Discrete mathematics", "title": "Logic and proof", "quiz": true, "topics": ["logic", "proof", "induction"] },
+    { "id": "frg", "eyebrow": "Functions, relations & graphs", "title": "Rational functions, quotients and circular functions", "quiz": true, "topics": ["circular", "partial-fractions", "rational-graphs"] },
+    { "id": "ans", "eyebrow": "Algebra, number & structure", "title": "Complex numbers", "quiz": true, "topics": ["complex", "de-moivre", "complex-poly", "complex-plane"] },
+    { "id": "calc", "eyebrow": "Calculus", "title": "Techniques, applications, differential equations and kinematics", "quiz": true, "topics": ["diff-techniques", "implicit", "antidiff", "by-parts", "areas-volumes", "arc-length", "de", "de-solve", "kinematics"] },
+    { "id": "sm", "eyebrow": "Space & measurement", "title": "Vectors, lines, planes and vector calculus", "quiz": true, "topics": ["vectors", "cross-planes", "vector-proofs", "vector-curves", "vector-calculus"] },
+    { "id": "stats", "eyebrow": "Data analysis, probability & statistics", "title": "Linear combinations, sample means and inference", "quiz": true, "topics": ["linear-combos", "sample-mean", "ci-mean", "hypothesis"] },
+    { "id": "exam", "eyebrow": "Exam practice", "title": "Mixed exam-style questions", "quiz": true, "topics": ["exam1-set", "exam2-set"] },
+    { "id": "exams", "eyebrow": "Exam practice", "title": "Full practice exams: easier → medium → harder", "map": false, "topics": ["exam1-easy", "exam2-easy", "exam1-medium", "exam2-medium", "exam1-hard", "exam2-hard"] },
+    { "id": "ref", "eyebrow": "Reference", "title": "", "map": false, "topics": ["glossary"] }
+  ]
+}

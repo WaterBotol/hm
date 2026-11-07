@@ -1,0 +1,99 @@
+<!--
+id: mx-transition
+title: Transition matrices and steady states
+short: Transition matrices
+summary: Transition diagrams and transition matrices (columns are “from”, rows are “to”); state matrices and the recurrence relation Sₙ₊₁ = TSₙ; finding Sₙ = TⁿS₀ with CAS; regular transition matrices; and identifying the equilibrium (steady) state informally.
+keywords: transition matrix, transition diagram, state matrix, initial state, S0, S n plus 1 equals T S n, T to the power n, recurrence relation, this month, next month, from, to, columns add to 1, proportions, percentages, Markov, regular transition matrix, equilibrium, steady state, long term, long run, stable, number who change, switch
+dotpoints: use of the matrix recurrence relation: S0 = initial state matrix, Sn+1 = TSn or Sn+1 = LSn where T is a transition matrix, L is a Leslie matrix, and Sn is a column state matrix, to generate a sequence of state matrices (assuming the next state only relies on the current state) | informal identification of the equilibrium state matrix in the case of regular transition matrices (no noticeable change from one state matrix to the next state matrix) | use of transition diagrams, their associated transition matrices and state matrices to model the transitions between states in discrete dynamical situations and their application to model and analyse practical situations such as the modelling and analysis of an insect population comprising eggs, juveniles and adults
+-->
+<h2>Transition diagrams and matrices</h2>
+<p>A <strong>transition matrix</strong> \(T\) describes how a fixed population moves between states each time period. The <strong>columns</strong> are where you are now (“from”, this period) and the <strong>rows</strong> are where you go (“to”, next period).</p>
+<figure class="fig"><svg viewBox="0 0 340 150" role="img" aria-label="Transition diagram: cinema A keeps 0.8 and sends 0.2 to B; cinema B keeps 0.7 and sends 0.3 to A">
+<defs><marker id="gmt-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="f-acc"/></marker></defs>
+<circle cx="90" cy="85" r="28" class="f-accsoft s-acc"/><text x="90" y="90" text-anchor="middle" class="t-b">A</text>
+<circle cx="250" cy="85" r="28" class="f-accsoft s-acc"/><text x="250" y="90" text-anchor="middle" class="t-b">B</text>
+<path d="M116 72 Q170 45 224 72" class="s-acc" stroke-width="1.6" fill="none" marker-end="url(#gmt-ar)"/>
+<path d="M224 98 Q170 125 116 98" class="s-acc" stroke-width="1.6" fill="none" marker-end="url(#gmt-ar)"/>
+<path d="M70 64 C40 20 100 14 98 56" class="s-acc" stroke-width="1.6" fill="none" marker-end="url(#gmt-ar)"/>
+<path d="M270 64 C300 20 240 14 242 56" class="s-acc" stroke-width="1.6" fill="none" marker-end="url(#gmt-ar)"/>
+<text x="170" y="48" text-anchor="middle" class="t-sm">0.2</text>
+<text x="170" y="132" text-anchor="middle" class="t-sm">0.3</text>
+<text x="44" y="24" text-anchor="middle" class="t-sm">0.8</text>
+<text x="296" y="24" text-anchor="middle" class="t-sm">0.7</text>
+</svg><figcaption>Each week, 80% of cinema A's customers return to A and 20% switch to B; 70% of B's return and 30% switch to A.</figcaption></figure>
+<div class="eq"><div class="eq-label">The transition matrix for the diagram</div>\[ T = \begin{array}{cl} \text{this week} &amp; \\ \begin{array}{cc} A &amp; \quad B \end{array} &amp; \\ \begin{bmatrix} 0.8 &amp; 0.3 \\ 0.2 &amp; 0.7 \end{bmatrix} &amp; \!\!\begin{array}{l} A \\ B \end{array} \text{next week} \end{array} \]<p>Each column adds to 1: everyone in a state goes somewhere.</p></div>
+<aside class="c-trap" data-title="Trick alert: read down a column"><p>“20% of A's customers switch to B” goes in <strong>column A, row B</strong>. Students who write it in row A, column B get the transpose, and every answer after that is wrong. If your columns don't add to 1, you've built it sideways.</p></aside>
+
+<h2>Generating state matrices</h2>
+<p>A <strong>state matrix</strong> \(S_n\) is a column matrix of how many are in each state after \(n\) periods.</p>
+<div class="eq"><div class="eq-label">Transition matrix recurrence relation (on the formula sheet)</div>\[ S_0 = \text{initial state}, \qquad S_{n+1} = T S_n \qquad\Rightarrow\qquad S_n = T^n S_0 \]</div>
+<div class="we" data-title="States after a few weeks" data-marks="3">
+<div class="we-q"><p>This week 500 people go to cinema A and 500 to cinema B. (a) Find \(S_1\) and \(S_3\). (b) How many of A's customers switch to B in the first week?</p></div>
+<div class="we-t"><p>Multiply by \(T\) once for \(S_1\); use \(T^3 S_0\) on CAS for \(S_3\). For (b), the number moving from A to B is the A → B proportion times the number at A.</p></div>
+<div class="we-s" data-f="S_{n+1} = T S_n"><p>\(S_1 = \begin{bmatrix} 0.8 &amp; 0.3 \\ 0.2 &amp; 0.7 \end{bmatrix}\begin{bmatrix} 500 \\ 500 \end{bmatrix} = \begin{bmatrix} 400 + 150 \\ 100 + 350 \end{bmatrix} = \begin{bmatrix} 550 \\ 450 \end{bmatrix}\).</p></div>
+<div class="we-s" data-f="S_n = T^n S_0"><p>\(S_3 = T^3 S_0 = \begin{bmatrix} 587.5 \\ 412.5 \end{bmatrix}\).</p></div>
+<div class="we-s"><p>(b) \(0.2 \times 500 = 100\).</p></div>
+<div class="we-a"><p>(a) \(S_1\): 550 at A, 450 at B. \(S_3\): about 588 at A, 413 at B (round sensibly, keeping the total at 1000). (b) <strong>100 people</strong>.</p></div>
+</div>
+<div class="sim" data-sim="gmMarkov"></div>
+
+<h2>Steady state</h2>
+<p>For many transition matrices, the state matrices stop changing noticeably after enough periods. This is the <strong>equilibrium</strong> or <strong>steady state</strong>.</p>
+<div class="tbl"><table>
+<thead><tr><th>Week \(n\)</th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>…</th><th>50</th></tr></thead>
+<tbody>
+<tr><td>Cinema A</td><td>500</td><td>550</td><td>575</td><td>587.5</td><td>593.8</td><td>596.9</td><td>…</td><td>600</td></tr>
+<tr><td>Cinema B</td><td>500</td><td>450</td><td>425</td><td>412.5</td><td>406.3</td><td>403.1</td><td>…</td><td>400</td></tr>
+</tbody></table></div>
+<div class="we" data-title="Finding the steady state" data-marks="1">
+<div class="we-q"><p>Find the long-term number of customers at each cinema.</p></div>
+<div class="we-t"><p>Calculate \(T^n S_0\) for a large \(n\) (say 50, then 51) and check the answer has stopped changing.</p></div>
+<div class="we-s" data-f="S_n = T^n S_0"><p>\(T^{50} S_0 = \begin{bmatrix} 600 \\ 400 \end{bmatrix}\) and \(T^{51} S_0\) is the same.</p></div>
+<div class="we-a"><p><strong>600 at A and 400 at B</strong>. Check: \(0.8(600) + 0.3(400) = 600\). At equilibrium, the 120 moving A → B balance the 120 moving B → A.</p></div>
+</div>
+<aside class="c-def" data-title="Regular transition matrices"><p>\(T\) is <strong>regular</strong> if some power \(T^n\) has no zero elements. A regular \(T\) always settles to the same steady state (as proportions), whatever \(S_0\) is. \(\begin{bmatrix} 0 &amp; 1 \\ 1 &amp; 0 \end{bmatrix}\) is not regular: its powers swap back and forth, and the states flip every period instead of settling.</p></aside>
+<div class="we" data-title="Three states" data-marks="2">
+<div class="we-q"><p>600 students choose lunch from the canteen (C), home (H) or the shops (S) each day, with \(T = \begin{bmatrix} 0.6 &amp; 0.2 &amp; 0.1 \\ 0.3 &amp; 0.7 &amp; 0.2 \\ 0.1 &amp; 0.1 &amp; 0.7 \end{bmatrix}\) (order C, H, S) and \(S_0 = \begin{bmatrix} 300 \\ 200 \\ 100 \end{bmatrix}\). Find \(S_2\) and the long-term state.</p></div>
+<div class="we-t"><p>Same method: \(T^2 S_0\), then a large power.</p></div>
+<div class="we-s"><p>\(S_1 = \begin{bmatrix} 230 \\ 250 \\ 120 \end{bmatrix}\), \(S_2 = T^2 S_0 = \begin{bmatrix} 200 \\ 268 \\ 132 \end{bmatrix}\).</p></div>
+<div class="we-s"><p>\(T^{50}S_0 = \begin{bmatrix} 175 \\ 275 \\ 150 \end{bmatrix}\).</p></div>
+<div class="we-a"><p>Day 2: 200 canteen, 268 home, 132 shops. Long term: <strong>175, 275 and 150</strong>.</p></div>
+</div>
+<aside class="c-exam" data-title="Exam tip: words to watch"><p>“In the long term”, “eventually” and “equilibrium” all mean steady state. Questions sometimes ask for the first period where a state reaches a value: generate \(T^n S_0\) for \(n = 1, 2, 3, \dots\) and stop at the first one that passes it. If the state matrix gives percentages or proportions, the steady state is in the same units.</p></aside>
+
+<h2>Practice</h2>
+<div class="mcq" data-ans="B" data-level="core">
+<div class="mcq-q"><p>Each month 10% of members of gym X move to gym Y and 25% of Y's members move to X; everyone else stays. With columns and rows in order X, Y, the transition matrix is</p></div>
+<ol><li>\(\begin{bmatrix} 0.9 &amp; 0.1 \\ 0.25 &amp; 0.75 \end{bmatrix}\)</li><li>\(\begin{bmatrix} 0.9 &amp; 0.25 \\ 0.1 &amp; 0.75 \end{bmatrix}\)</li><li>\(\begin{bmatrix} 0.1 &amp; 0.25 \\ 0.9 &amp; 0.75 \end{bmatrix}\)</li><li>\(\begin{bmatrix} 0.75 &amp; 0.1 \\ 0.25 &amp; 0.9 \end{bmatrix}\)</li></ol>
+<div class="mcq-x"><p>Column X: stay 0.9, move to Y 0.1. Column Y: move to X 0.25, stay 0.75. Columns add to 1.</p></div>
+</div>
+<div class="mcq" data-ans="A" data-level="core">
+<div class="mcq-q"><p>Using that matrix with \(S_0 = \begin{bmatrix} 700 \\ 300 \end{bmatrix}\), \(S_1\) is</p></div>
+<ol><li>\(\begin{bmatrix} 705 \\ 295 \end{bmatrix}\)</li><li>\(\begin{bmatrix} 660 \\ 340 \end{bmatrix}\)</li><li>\(\begin{bmatrix} 630 \\ 225 \end{bmatrix}\)</li><li>\(\begin{bmatrix} 700 \\ 300 \end{bmatrix}\)</li></ol>
+<div class="mcq-x"><p>\(0.9(700) + 0.25(300) = 705\); \(0.1(700) + 0.75(300) = 295\).</p></div>
+</div>
+<div class="mcq" data-ans="D" data-level="trick">
+<div class="mcq-q"><p>A transition matrix gives \(S_{n+1} = TS_n\). To find \(S_4\) from \(S_0\), calculate</p></div>
+<ol><li>\(4TS_0\)</li><li>\(T^4 + S_0\)</li><li>\(S_0T^4\)</li><li>\(T^4S_0\)</li></ol>
+<div class="mcq-x"><p>\(S_0\) is a column matrix, so \(T\) goes on the left: \(S_4 = T^4 S_0\). \(S_0T^4\) isn't even defined.</p></div>
+</div>
+<div class="mcq" data-ans="C" data-level="hard">
+<div class="mcq-q"><p>For the gyms, the long-term number at X (from 1000 members in total) is closest to</p></div>
+<ol><li>500</li><li>700</li><li>714</li><li>750</li></ol>
+<div class="mcq-x"><p>\(T^{50}S_0 \approx \begin{bmatrix} 714.3 \\ 285.7 \end{bmatrix}\). Check: \(0.1 \times 714.3 \approx 0.25 \times 285.7 \approx 71.4\) moving each way.</p></div>
+</div>
+<div class="pq" data-level="core" data-marks="2">
+<div class="pq-q"><p>From the cinema matrix, (a) what percentage of B's customers stay at B each week? (b) Of the 450 at B in week 1, how many are expected at A in week 2?</p></div>
+<div class="pq-s"><p>(a) 70%. [1]</p><p>(b) \(0.3 \times 450 = 135\). [1]</p></div>
+</div>
+<div class="pq" data-level="exam" data-marks="3">
+<div class="pq-q"><p>An insect population is in three stages: egg (E), juvenile (J) and adult (A). Each week, 40% of eggs hatch into juveniles and the rest stay eggs; 50% of juveniles become adults and the rest stay juveniles; adults stay adults. (a) Write \(T\) (order E, J, A). (b) Starting with 1000 eggs only, how many adults are there after 2 weeks? (c) Is \(T\) regular?</p></div>
+<div class="pq-s"><p>(a) \(T = \begin{bmatrix} 0.6 &amp; 0 &amp; 0 \\ 0.4 &amp; 0.5 &amp; 0 \\ 0 &amp; 0.5 &amp; 1 \end{bmatrix}\). [1]</p><p>(b) \(S_1 = \begin{bmatrix} 600 \\ 400 \\ 0 \end{bmatrix}\), \(S_2 = \begin{bmatrix} 360 \\ 440 \\ 200 \end{bmatrix}\): 200 adults. [1]</p><p>(c) No: the zeros above the diagonal stay in every power (nothing ever moves back to egg or juvenile). In the long run everything becomes an adult. [1]</p></div>
+</div>
+<h2>Summary</h2>
+<ul>
+  <li data-q="In a transition matrix, what do the columns and rows represent, and what do the columns add to?">Columns are “from” (this period); rows are “to” (next period). Each column adds to 1.</li>
+  <li data-q="Write the transition matrix recurrence relation and how to get Sₙ directly.">\(S_{n+1} = TS_n\), so \(S_n = T^nS_0\).</li>
+  <li data-q="How do you find the steady state informally?">Calculate \(T^nS_0\) for a large \(n\) and check it no longer changes (compare with \(n + 1\)).</li>
+  <li data-q="What is a regular transition matrix?">One where some power has no zero elements; it settles to the same steady state whatever the starting state.</li>
+</ul>

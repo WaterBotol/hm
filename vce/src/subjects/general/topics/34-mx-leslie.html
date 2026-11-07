@@ -1,0 +1,77 @@
+<!--
+id: mx-leslie
+title: Leslie matrices, culling and restocking
+short: Leslie, culling & restocking
+summary: Extending transition models with Sₙ₊₁ = TSₙ + B for culling and restocking; Leslie matrices for age-structured populations (birth rates in the first row, survival rates below the diagonal); generating state matrices with Sₙ₊₁ = LSₙ; and describing long-term population growth or decline.
+keywords: Leslie matrix, Leslie, age groups, age structure, birth rate, fecundity, survival rate, first row, sub diagonal, female population, S n plus 1 equals L S n, population growth, growth rate, increasing population, decreasing population, culling, restocking, adding, removing, S n plus 1 equals T S n plus B, B matrix, column matrix, negative element, population model
+dotpoints: use of the matrix recurrence relation: S0 = initial state matrix, Sn+1 = TSn or Sn+1 = LSn where T is a transition matrix, L is a Leslie matrix, and Sn is a column state matrix, to generate a sequence of state matrices (assuming the next state only relies on the current state) | use of the matrix recurrence relation S0 = initial state matrix, Sn+1 = TSn + B to extend modelling to populations that include culling and restocking
+-->
+<h2>Culling and restocking: Sₙ₊₁ = TSₙ + B</h2>
+<p>A plain transition matrix keeps the total fixed. To model a population where some are <strong>added</strong> (restocking) or <strong>removed</strong> (culling) every period, add a column matrix \(B\) after the transition.</p>
+<div class="eq"><div class="eq-label">With culling and restocking (on the formula sheet)</div>\[ S_0 = \text{initial state}, \qquad S_{n+1} = T S_n + B \]<p>Positive elements of \(B\) are added each period; negative elements are removed. The order matters: transition first, then add \(B\).</p></div>
+<div class="we" data-title="Fish in two ponds" data-marks="3">
+<div class="we-q"><p>Two connected ponds, P and Q, hold 400 and 600 fish. Each month 10% of P's fish move to Q and 20% of Q's move to P. After the move, 50 fish are added to P and 30 are caught from Q. (a) Write \(T\) and \(B\). (b) Find the numbers in each pond after 2 months.</p></div>
+<div class="we-t"><p>Build \(T\) as usual (columns = from). \(B\) holds +50 for P and −30 for Q. Apply the rule one step at a time: \(T^nS_0\) does <strong>not</strong> work once \(B\) is involved.</p></div>
+<div class="we-s"><p>(a) \(T = \begin{bmatrix} 0.9 &amp; 0.2 \\ 0.1 &amp; 0.8 \end{bmatrix}\), \(B = \begin{bmatrix} 50 \\ -30 \end{bmatrix}\), \(S_0 = \begin{bmatrix} 400 \\ 600 \end{bmatrix}\).</p></div>
+<div class="we-s" data-f="S_{n+1} = T S_n + B"><p>\(S_1 = \begin{bmatrix} 360 + 120 \\ 40 + 480 \end{bmatrix} + \begin{bmatrix} 50 \\ -30 \end{bmatrix} = \begin{bmatrix} 530 \\ 490 \end{bmatrix}\).</p></div>
+<div class="we-s" data-f="S_{n+1} = T S_n + B"><p>\(S_2 = \begin{bmatrix} 477 + 98 \\ 53 + 392 \end{bmatrix} + \begin{bmatrix} 50 \\ -30 \end{bmatrix} = \begin{bmatrix} 625 \\ 415 \end{bmatrix}\).</p></div>
+<div class="we-a"><p>After 2 months: <strong>625 in P and 415 in Q</strong>. The total grows by \(50 - 30 = 20\) fish every month (1000, 1020, 1040).</p></div>
+</div>
+<aside class="c-trap" data-title="Trick alert: no shortcut with B"><p>\(S_n = T^nS_0\) only works without \(B\). With culling or restocking, use the recurrence step by step (CAS: store \(S\), then repeat \(T \times S + B \to S\)). Also check whether a question culls or adds <em>before</em> or <em>after</em> the transition; the formula sheet version is after.</p></aside>
+
+<h2>Leslie matrices</h2>
+<p>A <strong>Leslie matrix</strong> \(L\) models a population (usually females only) split into <strong>age groups</strong> of equal width. Each period, every age group has babies and some of each group survive into the next group.</p>
+<div class="eq"><div class="eq-label">Leslie matrix for three age groups (recurrence on the formula sheet)</div>\[ L = \begin{bmatrix} b_1 &amp; b_2 &amp; b_3 \\ s_1 &amp; 0 &amp; 0 \\ 0 &amp; s_2 &amp; 0 \end{bmatrix} \qquad S_0 = \text{initial state}, \qquad S_{n+1} = L S_n \]<p><strong>First row</strong>: birth rates \(b_i\) (average female offspring per female in each age group). <strong>Below the leading diagonal</strong>: survival rates \(s_i\) (proportion of group \(i\) that survives into group \(i + 1\)). Every other element is 0.</p></div>
+<aside class="c-key" data-title="Key idea: Leslie columns don't add to 1"><p>Unlike a transition matrix, a Leslie matrix creates new members (births) and loses some (deaths), so the total changes. The last group has no survival rate out of it: those animals don't survive to the next period.</p></aside>
+<div class="we" data-title="Generating an age-structured population" data-marks="3">
+<div class="we-q"><p>Females of a small mammal are in three age groups: 0–1, 1–2 and 2–3 years. Each year, a female aged 1–2 has 1.6 female offspring on average and one aged 2–3 has 0.8; none are born to the youngest group. Half of the 0–1 group survive to 1–2, and 60% of the 1–2 group survive to 2–3. Start with 200, 100 and 50 females. Find the population after 1 and 2 years.</p></div>
+<div class="we-t"><p>Birth rates go in row 1; survival rates sit just below the leading diagonal.</p></div>
+<div class="we-s"><p>\(L = \begin{bmatrix} 0 &amp; 1.6 &amp; 0.8 \\ 0.5 &amp; 0 &amp; 0 \\ 0 &amp; 0.6 &amp; 0 \end{bmatrix}\), \(S_0 = \begin{bmatrix} 200 \\ 100 \\ 50 \end{bmatrix}\).</p></div>
+<div class="we-s" data-f="S_{n+1} = L S_n"><p>\(S_1 = \begin{bmatrix} 1.6(100) + 0.8(50) \\ 0.5(200) \\ 0.6(100) \end{bmatrix} = \begin{bmatrix} 200 \\ 100 \\ 60 \end{bmatrix}\). \(S_2 = L S_1 = \begin{bmatrix} 208 \\ 100 \\ 60 \end{bmatrix}\).</p></div>
+<div class="we-a"><p>After 1 year: 200, 100, 60 (total 360). After 2 years: <strong>208, 100, 60</strong> (total 368).</p></div>
+</div>
+<div class="tbl"><table>
+<thead><tr><th>Year \(n\)</th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>…</th><th>10</th></tr></thead>
+<tbody>
+<tr><td>Total females</td><td>350</td><td>360</td><td>368</td><td>372</td><td>380.8</td><td>…</td><td>422.2</td></tr>
+<tr><td>Growth on previous year</td><td>–</td><td>×1.029</td><td>×1.022</td><td>×1.011</td><td>×1.024</td><td>…</td><td>×1.018</td></tr>
+</tbody></table></div>
+<p>The year-to-year growth wobbles at first and then settles to about ×1.018 (1.8% growth per year). The <strong>proportions</strong> in each age group also settle (here about 56%, 28% and 16%).</p>
+<aside class="c-exam" data-title="Exam tip: increasing or decreasing?"><p>To decide whether a Leslie population is growing in the long run, compare totals at two large \(n\) values (e.g. \(n = 50\) and \(n = 51\)). A ratio above 1 means growth. Round final answers to whole animals only when the question asks, and keep unrounded values for the next step.</p></aside>
+
+<h2>Practice</h2>
+<div class="mcq" data-ans="C" data-level="core">
+<div class="mcq-q"><p>In the Leslie matrix \(\begin{bmatrix} 0.2 &amp; 1.4 &amp; 0.5 \\ 0.7 &amp; 0 &amp; 0 \\ 0 &amp; 0.4 &amp; 0 \end{bmatrix}\), the proportion of the second age group that survives into the third is</p></div>
+<ol><li>1.4</li><li>0.7</li><li>0.4</li><li>0.5</li></ol>
+<div class="mcq-x"><p>Survival from group 2 to group 3 is in row 3, column 2.</p></div>
+</div>
+<div class="mcq" data-ans="A" data-level="core">
+<div class="mcq-q"><p>With \(T = \begin{bmatrix} 0.9 &amp; 0.2 \\ 0.1 &amp; 0.8 \end{bmatrix}\), \(B = \begin{bmatrix} 50 \\ -30 \end{bmatrix}\) and \(S_2 = \begin{bmatrix} 625 \\ 415 \end{bmatrix}\), \(S_3\) is</p></div>
+<ol><li>\(\begin{bmatrix} 695.5 \\ 364.5 \end{bmatrix}\)</li><li>\(\begin{bmatrix} 645.5 \\ 394.5 \end{bmatrix}\)</li><li>\(\begin{bmatrix} 625 \\ 415 \end{bmatrix}\)</li><li>\(\begin{bmatrix} 745.5 \\ 334.5 \end{bmatrix}\)</li></ol>
+<div class="mcq-x"><p>\(TS_2 = \begin{bmatrix} 645.5 \\ 394.5 \end{bmatrix}\), then add \(B\). B forgets to add \(B\).</p></div>
+</div>
+<div class="mcq" data-ans="D" data-level="trick">
+<div class="mcq-q"><p>For \(S_{n+1} = TS_n + B\), which statement is true?</p></div>
+<ol><li>\(S_3 = T^3S_0 + 3B\)</li><li>\(S_3 = T^3(S_0 + B)\)</li><li>\(S_3 = T^3S_0 + B\)</li><li>\(S_3\) must be found by applying the rule three times</li></ol>
+<div class="mcq-x"><p>Each added \(B\) is itself transitioned in later steps, so none of the shortcuts work. Apply the rule step by step.</p></div>
+</div>
+<div class="mcq" data-ans="B" data-level="hard">
+<div class="mcq-q"><p>A population has Leslie matrix \(\begin{bmatrix} 0 &amp; 2 \\ 0.4 &amp; 0 \end{bmatrix}\). In the long run, this population</p></div>
+<ol><li>grows by 20% every period</li><li>shrinks, because each young female produces on average \(0.4 \times 2 = 0.8\) daughters</li><li>stays the same size</li><li>doubles every period</li></ol>
+<div class="mcq-x"><p>A newborn survives with probability 0.4 and then has 2 daughters: 0.8 per female over two periods, below replacement. Check on CAS: totals fall over time.</p></div>
+</div>
+<div class="pq" data-level="core" data-marks="2">
+<div class="pq-q"><p>Using the mammal Leslie matrix and \(S_2 = \begin{bmatrix} 208 \\ 100 \\ 60 \end{bmatrix}\), find \(S_3\). How many females in the 0–1 group are newborns from the 2–3 group?</p></div>
+<div class="pq-s"><p>\(S_3 = \begin{bmatrix} 1.6(100) + 0.8(60) \\ 0.5(208) \\ 0.6(100) \end{bmatrix} = \begin{bmatrix} 208 \\ 104 \\ 60 \end{bmatrix}\). [1]</p><p>\(0.8 \times 60 = 48\). [1]</p></div>
+</div>
+<div class="pq" data-level="exam" data-marks="3">
+<div class="pq-q"><p>A wildlife park models its female kangaroos in two age groups, 0–2 years and 2–4 years, with \(L = \begin{bmatrix} 0.4 &amp; 1.2 \\ 0.5 &amp; 0 \end{bmatrix}\). Each period, 20 young females are added after breeding, so \(S_{n+1} = LS_n + B\). Start with 100 in the young group and 200 in the older group. (a) Write \(B\). (b) Find the numbers after two periods.</p></div>
+<div class="pq-s"><p>(a) \(B = \begin{bmatrix} 20 \\ 0 \end{bmatrix}\). [1]</p><p>(b) \(S_1 = \begin{bmatrix} 40 + 240 + 20 \\ 50 \end{bmatrix} = \begin{bmatrix} 300 \\ 50 \end{bmatrix}\). [1]</p><p>\(S_2 = \begin{bmatrix} 120 + 60 + 20 \\ 150 \end{bmatrix} = \begin{bmatrix} 200 \\ 150 \end{bmatrix}\). [1]</p></div>
+</div>
+<h2>Summary</h2>
+<ul>
+  <li data-q="Write the recurrence relation for culling and restocking, and say what the elements of B mean.">\(S_{n+1} = TS_n + B\). Positive elements are added (restocked); negative elements are removed (culled).</li>
+  <li data-q="Why can't you use TⁿS₀ when there is a B matrix?">Each period's \(B\) is transitioned in later periods, so you must apply the rule step by step.</li>
+  <li data-q="Where are the birth rates and survival rates in a Leslie matrix?">Birth rates are in the first row. Survival rates are just below the leading diagonal (row \(i + 1\), column \(i\)).</li>
+  <li data-q="How do you tell whether a Leslie population grows in the long run?">Compare totals at two large \(n\) values: a ratio above 1 means growth, below 1 means decline. The age-group proportions also settle.</li>
+</ul>

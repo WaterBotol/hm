@@ -1,0 +1,100 @@
+<!--
+id: by-parts
+title: Integration by parts
+short: Integration by parts
+summary: Integration by parts from the product rule, choosing u and dv (LIATE), definite integrals by parts, repeated parts, the cyclic trick for integrals like ∫eˣ sin x dx, and integrating log and inverse circular functions on their own.
+keywords: integration by parts, by parts, product rule, u dv, LIATE, ∫x e^x, ∫x sin x, ∫ln x, integral of log, ∫arctan x, ∫arcsin x, repeated integration by parts, cyclic integral, e^x sin x, reduction, definite integral by parts
+dotpoints: integration by parts
+-->
+<h2>The formula</h2>
+<div class="eq"><div class="eq-label">Integration by parts</div>\[ \int u\,\frac{dv}{dx}\,dx = uv - \int v\,\frac{du}{dx}\,dx \qquad \int_a^b u\,v'\,dx = \big[uv\big]_a^b - \int_a^b u'\,v\,dx \]<p>It's the product rule \((uv)' = u'v + uv'\) integrated and rearranged.</p></div>
+<aside class="c-key"><p>Choose \(u\) to be the part that gets <strong>simpler when differentiated</strong>, and \(\frac{dv}{dx}\) the part you can integrate. A common order for \(u\) is LIATE: Logs, Inverse circular, Algebraic (polynomials), Trig, Exponentials.</p></aside>
+
+<h2>Polynomial × exponential or trig</h2>
+<div class="we" data-title="∫ x eˣ dx" data-marks="2">
+<div class="we-q"><p>Find \(\displaystyle\int x e^{2x}\,dx\).</p></div>
+<div class="we-t"><p>Let \(u = x\) (it differentiates to 1) and \(v' = e^{2x}\) (easy to integrate).</p></div>
+<div class="we-s" data-f="\int u v&#x27; dx = uv - \int u&#x27;v\,dx"><p>\(u = x,\ u' = 1;\ v' = e^{2x},\ v = \frac12 e^{2x}\).</p></div>
+<div class="we-a"><p>\(\frac12 xe^{2x} - \int\frac12 e^{2x}dx = \frac12 xe^{2x} - \frac14 e^{2x} + c\).</p></div>
+</div>
+<div class="we" data-title="Definite integral by parts" data-marks="3">
+<div class="we-q"><p>Evaluate \(\displaystyle\int_0^{\pi/2} x\cos x\,dx\).</p></div>
+<div class="we-t"><p>\(u = x\), \(v' = \cos x\). Evaluate the \(uv\) term at the terminals, then the remaining integral.</p></div>
+<div class="we-s"><p>\(v = \sin x\): \(\big[x\sin x\big]_0^{\pi/2} - \int_0^{\pi/2}\sin x\,dx\).</p></div>
+<div class="we-s"><p>\(= \frac\pi2 - \big[-\cos x\big]_0^{\pi/2} = \frac\pi2 - (0 + 1)\).</p></div>
+<div class="we-a"><p>\(= \frac{\pi}{2} - 1\).</p></div>
+</div>
+
+<h2>Log and inverse circular functions on their own</h2>
+<p>Write the integrand as (function) × 1 and take \(v' = 1\).</p>
+<div class="we" data-title="∫ log x dx" data-marks="2">
+<div class="we-q"><p>Find \(\displaystyle\int \log_e x\,dx\).</p></div>
+<div class="we-t"><p>You can't integrate \(\log_e x\) directly, but you can differentiate it. So \(u = \log_e x\), \(v' = 1\).</p></div>
+<div class="we-s"><p>\(u' = \frac1x,\ v = x\): \(x\log_e x - \int x\cdot\frac1x\,dx\).</p></div>
+<div class="we-a"><p>\(= x\log_e x - x + c\).</p></div>
+</div>
+<div class="we" data-title="∫ arctan x dx" data-marks="3">
+<div class="we-q"><p>Find \(\displaystyle\int \tan^{-1}x\,dx\).</p></div>
+<div class="we-t"><p>\(u = \tan^{-1}x\), \(v' = 1\). The leftover integral is a substitution giving a log.</p></div>
+<div class="we-s"><p>\(x\tan^{-1}x - \int\frac{x}{1 + x^2}dx\).</p></div>
+<div class="we-a"><p>\(= x\tan^{-1}x - \frac12\log_e(1 + x^2) + c\).</p></div>
+</div>
+
+<h2>Repeated and cyclic integration by parts</h2>
+<div class="we" data-title="Twice: ∫ x² eˣ dx" data-marks="3">
+<div class="we-q"><p>Find \(\displaystyle\int x^2e^x\,dx\).</p></div>
+<div class="we-t"><p>Each application reduces the power of \(x\) by one, so do it twice.</p></div>
+<div class="we-s"><p>\(x^2e^x - \int 2xe^x\,dx\).</p></div>
+<div class="we-s"><p>\(\int 2xe^x\,dx = 2xe^x - 2e^x\).</p></div>
+<div class="we-a"><p>\(x^2e^x - 2xe^x + 2e^x + c = e^x(x^2 - 2x + 2) + c\).</p></div>
+</div>
+<div class="we" data-title="Cyclic: ∫ eˣ sin x dx" data-marks="4">
+<div class="we-q"><p>Find \(I = \displaystyle\int e^x\sin x\,dx\).</p></div>
+<div class="we-t"><p>Parts twice brings back the original integral. Call it \(I\) and solve the equation for \(I\). Keep the same choice (exponential as \(v'\)) both times.</p></div>
+<div class="we-s"><p>\(u = \sin x,\ v' = e^x\): \(I = e^x\sin x - \int e^x\cos x\,dx\).</p></div>
+<div class="we-s"><p>\(\int e^x\cos x\,dx = e^x\cos x + \int e^x\sin x\,dx = e^x\cos x + I\).</p></div>
+<div class="we-s"><p>\(I = e^x\sin x - e^x\cos x - I\).</p></div>
+<div class="we-a"><p>\(I = \frac12 e^x(\sin x - \cos x) + c\).</p></div>
+</div>
+<aside class="c-trap"><p>Sign errors in the \(-\int v\,u'\) term are the classic slip, especially with trig (\(\int\sin x = -\cos x\)). In the cyclic method, switching which function is \(u\) on the second round undoes the first step and gives \(I = I\).</p></aside>
+<aside class="c-exam"><p>VCAA often scaffolds: "Show that \(\frac{d}{dx}(x\log_e x) = \log_e x + 1\) and hence find \(\int\log_e x\,dx\)". That's integration by parts in disguise: integrate both sides and rearrange.</p></aside>
+
+<h2>Practice</h2>
+<div class="mcq" data-ans="C" data-level="core">
+<div class="mcq-q"><p>For \(\displaystyle\int x\sin(3x)\,dx\) by parts, the best choice is</p></div>
+<ol><li>\(u = \sin 3x,\ v' = x\)</li><li>\(u = x\sin 3x,\ v' = 1\)</li><li>\(u = x,\ v' = \sin 3x\)</li><li>\(u = 3x,\ v' = \sin x\)</li></ol>
+<div class="mcq-x"><p>Differentiating \(x\) simplifies it; \(\sin 3x\) integrates easily.</p></div>
+</div>
+<div class="mcq" data-ans="A" data-level="core">
+<div class="mcq-q"><p>\(\displaystyle\int x e^{-x}\,dx\) is</p></div>
+<ol><li>\(-xe^{-x} - e^{-x} + c\)</li><li>\(xe^{-x} - e^{-x} + c\)</li><li>\(-xe^{-x} + e^{-x} + c\)</li><li>\(\frac12 x^2e^{-x} + c\)</li></ol>
+<div class="mcq-x"><p>\(u = x,\ v = -e^{-x}\): \(-xe^{-x} + \int e^{-x}dx = -xe^{-x} - e^{-x}\).</p></div>
+</div>
+<div class="mcq" data-ans="D" data-level="hard">
+<div class="mcq-q"><p>\(\displaystyle\int_1^e \log_e x\,dx\) equals</p></div>
+<ol><li>\(e\)</li><li>\(e - 1\)</li><li>\(0\)</li><li>\(1\)</li></ol>
+<div class="mcq-x"><p>\([x\log_e x - x]_1^e = (e - e) - (0 - 1) = 1\).</p></div>
+</div>
+<div class="mcq" data-ans="B" data-level="exam">
+<div class="mcq-q"><p>Given \(\frac{d}{dx}(x\sin x) = \sin x + x\cos x\), \(\displaystyle\int x\cos x\,dx\) equals</p></div>
+<ol><li>\(x\sin x - \sin x + c\)</li><li>\(x\sin x + \cos x + c\)</li><li>\(x\sin x - \cos x + c\)</li><li>\(\sin x + x\cos x + c\)</li></ol>
+<div class="mcq-x"><p>Integrate both sides: \(x\sin x = -\cos x + \int x\cos x\,dx\).</p></div>
+</div>
+<div class="pq" data-level="core" data-marks="2">
+<div class="pq-q"><p>Find \(\displaystyle\int x\log_e x\,dx\).</p></div>
+<div class="pq-s"><p>\(u = \log_e x,\ v' = x\): \(\frac{x^2}{2}\log_e x - \int\frac{x^2}{2}\cdot\frac1x dx\). [1]</p><p>\(= \frac{x^2}{2}\log_e x - \frac{x^2}{4} + c\). [1]</p></div>
+</div>
+<div class="pq" data-level="hard" data-marks="3">
+<div class="pq-q"><p>Evaluate \(\displaystyle\int_0^1 \sin^{-1}x\,dx\).</p></div>
+<div class="pq-s"><p>\(\big[x\sin^{-1}x\big]_0^1 - \int_0^1\frac{x}{\sqrt{1 - x^2}}dx\). [1]</p><p>\(= \frac\pi2 - \big[-\sqrt{1 - x^2}\big]_0^1 = \frac\pi2 - (0 + 1)\). [1]</p><p>\(= \frac\pi2 - 1\). [1]</p></div>
+</div>
+<div class="pq" data-level="exam" data-marks="4">
+<div class="pq-q"><p>Find \(\displaystyle\int e^{2x}\cos x\,dx\).</p></div>
+<div class="pq-s"><p>\(I = \frac12 e^{2x}\cos x + \frac12\int e^{2x}\sin x\,dx\) (\(u = \cos x\)). [1]</p><p>\(\int e^{2x}\sin x\,dx = \frac12 e^{2x}\sin x - \frac12 I\). [1]</p><p>\(I = \frac12 e^{2x}\cos x + \frac14 e^{2x}\sin x - \frac14 I\). [1]</p><p>\(I = \frac{e^{2x}}{5}(2\cos x + \sin x) + c\). [1]</p></div>
+</div>
+<h2>Summary</h2>
+<ul>
+  <li data-q="Write the integration by parts formula and the rule for choosing \(u\).">\(\int uv' = uv - \int u'v\); \(u\) simplifies on differentiating (LIATE).</li>
+  <li data-q="How do you integrate \(\log_e x\), \(\tan^{-1}x\) or \(\sin^{-1}x\) on its own?">\(\log_e x\), \(\tan^{-1}x\), \(\sin^{-1}x\) alone: use \(v' = 1\).</li>
+  <li data-q="How many times do you apply parts to (polynomial of degree \(n\)) × \(e^x\)? What’s the trick for \(e^{ax}\times\) trig?">Polynomial degree \(n\): parts \(n\) times. \(e^{ax}\times\) trig: cyclic, solve for \(I\).</li>
+</ul>

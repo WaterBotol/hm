@@ -1,0 +1,128 @@
+<!--
+id: logic
+title: Logic: statements, implications and quantifiers
+short: Logic & quantifiers
+summary: Conjectures, connectives, implications, the converse, inverse and contrapositive, necessary and sufficient conditions, "if and only if", and the quantifiers "for all" and "there exists", including how to negate them and disprove a claim with a counterexample.
+keywords: logic, proposition, statement, conjecture, implication, if then, converse, inverse, contrapositive, negation, necessary, sufficient, if and only if, iff, equivalence, quantifier, for all, there exists, counterexample, truth table, and, or, not
+dotpoints: conjecture: making a statement to be proved or disproved | implications, equivalences and if and only if statements (necessary and sufficient conditions) | quantifiers ‘for all’ and ‘there exists’, examples and counter-examples
+-->
+<h2>Statements and connectives</h2>
+<p>A <strong>statement</strong> (proposition) is a sentence that is either true or false, such as "7 is prime" or "every even number is a multiple of 4". A <strong>conjecture</strong> is a statement that hasn't been proved or disproved yet. Statements are joined with connectives:</p>
+<div class="tbl"><table>
+<thead><tr><th>Connective</th><th>Symbol</th><th>True when</th></tr></thead>
+<tbody>
+<tr><td>not \(P\)</td><td>\(\neg P\)</td><td>\(P\) is false</td></tr>
+<tr><td>\(P\) and \(Q\)</td><td>\(P \wedge Q\)</td><td>both are true</td></tr>
+<tr><td>\(P\) or \(Q\)</td><td>\(P \vee Q\)</td><td>at least one is true (inclusive or)</td></tr>
+<tr><td>if \(P\) then \(Q\)</td><td>\(P \Rightarrow Q\)</td><td>every case except \(P\) true and \(Q\) false</td></tr>
+<tr><td>\(P\) if and only if \(Q\)</td><td>\(P \Leftrightarrow Q\)</td><td>\(P\) and \(Q\) have the same truth value</td></tr>
+</tbody></table></div>
+<aside class="c-trap"><p>An implication \(P \Rightarrow Q\) is <strong>only false when \(P\) is true and \(Q\) is false</strong>. "If \(x &gt; 5\) then \(x &gt; 2\)" is true even for \(x = 1\): a false hypothesis can't break an implication. Students often think \(P \Rightarrow Q\) is false whenever \(P\) is false.</p></aside>
+
+<h2>Converse, inverse and contrapositive</h2>
+<div class="eq"><div class="eq-label">Four related statements</div>\[ \begin{aligned} &amp;\text{Implication:} &amp;&amp; P \Rightarrow Q\\ &amp;\text{Converse:} &amp;&amp; Q \Rightarrow P\\ &amp;\text{Inverse:} &amp;&amp; \neg P \Rightarrow \neg Q\\ &amp;\text{Contrapositive:} &amp;&amp; \neg Q \Rightarrow \neg P \end{aligned} \]<p>An implication and its contrapositive are <strong>logically equivalent</strong> (always the same truth value). The converse and the inverse are equivalent to each other, but not to the original.</p></div>
+<aside class="c-key"><p>To prove \(P \Rightarrow Q\) you may prove the contrapositive \(\neg Q \Rightarrow \neg P\) instead. Proving the converse proves nothing about the original. "If \(n^2\) is even then \(n\) is even" is easiest via its contrapositive: "if \(n\) is odd then \(n^2\) is odd".</p></aside>
+
+<div class="we" data-title="Write the converse and contrapositive" data-marks="2">
+<div class="we-q"><p>Consider "If a quadrilateral is a square, then its diagonals are equal". Write its converse and contrapositive, and state whether each is true.</p></div>
+<div class="we-t"><p>Swap the parts for the converse. Swap <em>and</em> negate both for the contrapositive. The contrapositive always matches the original's truth value, so only the converse needs separate checking.</p></div>
+<div class="we-s"><p>Converse: "If a quadrilateral's diagonals are equal, then it is a square". <strong>False</strong>: a non-square rectangle has equal diagonals.</p></div>
+<div class="we-a"><p>Contrapositive: "If a quadrilateral's diagonals are not equal, then it is not a square". <strong>True</strong>, because the original is true.</p></div>
+</div>
+
+<h2>Necessary, sufficient, and "if and only if"</h2>
+<p>In \(P \Rightarrow Q\), \(P\) is <strong>sufficient</strong> for \(Q\) (knowing \(P\) is enough to guarantee \(Q\)), and \(Q\) is <strong>necessary</strong> for \(P\) (you can't have \(P\) without \(Q\)).</p>
+<div class="eq"><div class="eq-label">Equivalence</div>\[ P \Leftrightarrow Q \quad\text{means}\quad (P \Rightarrow Q) \wedge (Q \Rightarrow P) \]<p>\(P\) is necessary <em>and</em> sufficient for \(Q\). To prove an "if and only if" statement, prove <strong>both directions</strong>.</p></div>
+<div class="we" data-title="Necessary or sufficient?" data-marks="2">
+<div class="we-q"><p>For an integer \(n\): is "\(n\) is divisible by 6" necessary, sufficient, both or neither for "\(n\) is even"?</p></div>
+<div class="we-t"><p>Test each direction. If divisible by 6 always gives even, it's sufficient. If even always gives divisible by 6, it would also be necessary.</p></div>
+<div class="we-s"><p>Divisible by 6 \(\Rightarrow\) \(n = 6k = 2(3k)\), so even. True: <strong>sufficient</strong>.</p></div>
+<div class="we-a"><p>Even \(\Rightarrow\) divisible by 6 fails for \(n = 4\). So it's <strong>sufficient but not necessary</strong>.</p></div>
+</div>
+
+<h2>Quantifiers and their negations</h2>
+<div class="eq"><div class="eq-label">For all, there exists</div>\[ \forall x\ P(x):\ \text{"for every } x,\ P(x)\text{"} \qquad \exists x\ P(x):\ \text{"there is at least one } x \text{ with } P(x)\text{"} \]
+\[ \neg\big(\forall x\ P(x)\big) \equiv \exists x\ \neg P(x) \qquad \neg\big(\exists x\ P(x)\big) \equiv \forall x\ \neg P(x) \]</div>
+<p>Negating swaps the quantifier and negates the inside. The negation of "all swans are white" is "there is a swan that is not white", not "no swans are white".</p>
+<aside class="c-key"><p><strong>One counterexample disproves a "for all" statement.</strong> No number of examples proves it. A "there exists" statement is proved by one example, and disproved only by a general argument.</p></aside>
+<aside class="c-trap"><p>De Morgan's laws trip people up when negating compound statements: \(\neg(P \wedge Q) \equiv \neg P \vee \neg Q\) and \(\neg(P \vee Q) \equiv \neg P \wedge \neg Q\). So the negation of "\(x &gt; 0\) and \(x &lt; 1\)" is "\(x \le 0\) or \(x \ge 1\)". The negation of \(P \Rightarrow Q\) is \(P \wedge \neg Q\), not another implication.</p></aside>
+<div class="we" data-title="Negate a quantified statement and disprove it" data-marks="3">
+<div class="we-q"><p>Conjecture: "For all natural numbers \(n\), \(n^2 + n + 41\) is prime." Write the negation and decide which is true.</p></div>
+<div class="we-t"><p>The negation swaps "for all" with "there exists" and negates "is prime". Since a single counterexample is enough, try values that make the expression factorise. At \(n = 40\) the expression becomes \(40\cdot 41 + 41\).</p></div>
+<div class="we-s"><p>Negation: "There exists a natural number \(n\) such that \(n^2 + n + 41\) is not prime."</p></div>
+<div class="we-s" data-f="n^2 + n + 41 = n(n + 1) + 41"><p>Take \(n = 40\): \(40^2 + 40 + 41 = 40\cdot 41 + 41 = 41^2 = 1681\), which is not prime.</p></div>
+<div class="we-a"><p>So the <strong>negation is true</strong> and the conjecture is false. (It works for \(n = 0, 1, \dots, 39\), which shows why checking examples is never a proof.)</p></div>
+</div>
+
+<h2>Truth tables</h2>
+<p>A truth table lists every combination of truth values. Two statements are equivalent when their columns match in every row.</p>
+<div class="tbl"><table>
+<thead><tr><th>\(P\)</th><th>\(Q\)</th><th>\(P \Rightarrow Q\)</th><th>\(\neg Q \Rightarrow \neg P\)</th><th>\(Q \Rightarrow P\)</th></tr></thead>
+<tbody>
+<tr><td>T</td><td>T</td><td>T</td><td>T</td><td>T</td></tr>
+<tr><td>T</td><td>F</td><td>F</td><td>F</td><td>T</td></tr>
+<tr><td>F</td><td>T</td><td>T</td><td>T</td><td>F</td></tr>
+<tr><td>F</td><td>F</td><td>T</td><td>T</td><td>T</td></tr>
+</tbody></table></div>
+<p>The implication and contrapositive columns agree in every row; the converse doesn't.</p>
+<aside class="c-exam"><p>VCAA multiple-choice questions often give a statement and ask which option is its contrapositive, converse or negation, or which is logically equivalent. Write the structure with \(P\) and \(Q\) first, then match. Watch "not all" (\(\exists\ \neg\)) versus "none" (\(\forall\ \neg\)).</p></aside>
+
+<h2>Practice</h2>
+<div class="mcq" data-ans="C" data-level="core">
+<div class="mcq-q"><p>The contrapositive of "if \(x^2 = 4\) then \(x = 2\)" is</p></div>
+<ol><li>if \(x = 2\) then \(x^2 = 4\)</li><li>if \(x^2 \ne 4\) then \(x \ne 2\)</li><li>if \(x \ne 2\) then \(x^2 \ne 4\)</li><li>\(x^2 = 4\) and \(x \ne 2\)</li></ol>
+<div class="mcq-x"><p>Swap and negate both parts. (A is the converse, B the inverse, D the negation.) Here the original and contrapositive are both false: \(x = -2\).</p></div>
+</div>
+
+<div class="mcq" data-ans="B" data-level="trick">
+<div class="mcq-q"><p>The negation of "every student in the class passed" is</p></div>
+<ol><li>every student in the class failed</li><li>at least one student in the class did not pass</li><li>no student in the class passed</li><li>at least one student in the class passed</li></ol>
+<div class="mcq-x"><p>\(\neg(\forall x\ P(x)) \equiv \exists x\ \neg P(x)\). "Not all passed" means "some didn't".</p></div>
+</div>
+
+<div class="mcq" data-ans="D" data-level="core">
+<div class="mcq-q"><p>The statement \(P \Rightarrow Q\) is false only when</p></div>
+<ol><li>\(P\) is false and \(Q\) is true</li><li>both are false</li><li>both are true</li><li>\(P\) is true and \(Q\) is false</li></ol>
+<div class="mcq-x"><p>An implication only breaks when the hypothesis holds but the conclusion doesn't.</p></div>
+</div>
+
+<div class="mcq" data-ans="A" data-level="hard">
+<div class="mcq-q"><p>For real \(x\), the condition \(x &gt; 3\) is ____ for \(x^2 &gt; 9\).</p></div>
+<ol><li>sufficient but not necessary</li><li>necessary but not sufficient</li><li>necessary and sufficient</li><li>neither necessary nor sufficient</li></ol>
+<div class="mcq-x"><p>\(x &gt; 3 \Rightarrow x^2 &gt; 9\) (sufficient), but \(x = -4\) gives \(x^2 &gt; 9\) without \(x &gt; 3\) (not necessary).</p></div>
+</div>
+
+<div class="mcq" data-ans="C" data-level="trick">
+<div class="mcq-q"><p>The negation of "\(\exists x \in \mathbb{R}\) such that \(x^2 &lt; 0\)" is</p></div>
+<ol><li>\(\exists x \in \mathbb{R}\) such that \(x^2 \ge 0\)</li><li>\(\forall x \in \mathbb{R},\ x^2 &lt; 0\)</li><li>\(\forall x \in \mathbb{R},\ x^2 \ge 0\)</li><li>\(\forall x \in \mathbb{R},\ x^2 &gt; 0\)</li></ol>
+<div class="mcq-x"><p>Swap \(\exists\) to \(\forall\) and negate \(&lt;\) to \(\ge\) (not \(&gt;\): zero counts).</p></div>
+</div>
+
+<div class="mcq" data-ans="B" data-level="exam">
+<div class="mcq-q"><p>Which statement is logically equivalent to "if a function is differentiable at \(a\), then it is continuous at \(a\)"?</p></div>
+<ol><li>If a function is continuous at \(a\), then it is differentiable at \(a\).</li><li>If a function is not continuous at \(a\), then it is not differentiable at \(a\).</li><li>If a function is not differentiable at \(a\), then it is not continuous at \(a\).</li><li>A function is differentiable at \(a\) and not continuous at \(a\).</li></ol>
+<div class="mcq-x"><p>Only the contrapositive is equivalent. A is the converse (false: \(|x|\) at 0), C the inverse, D the negation.</p></div>
+</div>
+
+<div class="pq" data-level="core" data-marks="2">
+<div class="pq-q"><p>Write the converse, inverse and contrapositive of "if \(n\) is a multiple of 4, then \(n\) is even", and state which are true.</p></div>
+<div class="pq-s"><p>Converse: if \(n\) is even then \(n\) is a multiple of 4 (false, \(n = 6\)). Inverse: if \(n\) is not a multiple of 4 then \(n\) is not even (false, \(n = 6\)). [1]</p><p>Contrapositive: if \(n\) is not even then \(n\) is not a multiple of 4 (true, like the original). [1]</p></div>
+</div>
+
+<div class="pq" data-level="hard" data-marks="2">
+<div class="pq-q"><p>Disprove: "for all real \(a\) and \(b\), \(\sqrt{a^2 + b^2} = a + b\)".</p></div>
+<div class="pq-s"><p>A single counterexample suffices. [1]</p><p>\(a = 3, b = 4\): \(\sqrt{25} = 5 \ne 7\). So the statement is false. [1]</p></div>
+</div>
+
+<div class="pq" data-level="exam" data-marks="3">
+<div class="pq-q"><p>Let \(P\): "\(m\) and \(n\) are both odd" and \(Q\): "\(mn\) is odd", for integers \(m, n\). Show that \(P \Leftrightarrow Q\).</p></div>
+<div class="pq-s"><p>(\(\Rightarrow\)) \(m = 2a + 1,\ n = 2b + 1\): \(mn = 4ab + 2a + 2b + 1 = 2(2ab + a + b) + 1\), odd. [1]</p><p>(\(\Leftarrow\)) Contrapositive: if \(m\) or \(n\) is even, say \(m = 2a\), then \(mn = 2(an)\) is even. So \(mn\) odd forces both odd. [1]</p><p>Both directions hold, so \(P \Leftrightarrow Q\). [1]</p></div>
+</div>
+
+<h2>Summary</h2>
+<ul>
+  <li data-q="When exactly is the implication \(P \Rightarrow Q\) false?">\(P \Rightarrow Q\) is false only when \(P\) is true and \(Q\) is false.</li>
+  <li data-q="Write the contrapositive and the converse of \(P \Rightarrow Q\). Which one is equivalent to the original?">Contrapositive \(\neg Q \Rightarrow \neg P\) is equivalent to \(P \Rightarrow Q\); the converse is not.</li>
+  <li data-q="In \(P \Rightarrow Q\), which statement is necessary and which is sufficient? What does “if and only if” require?">\(P\) sufficient for \(Q\), \(Q\) necessary for \(P\); "iff" needs both directions.</li>
+  <li data-q="How do you negate a statement with “for all” or “there exists”, and how many counterexamples disprove a “for all” statement?">Negating swaps \(\forall \leftrightarrow \exists\) and negates the inside; one counterexample kills a "for all".</li>
+</ul>

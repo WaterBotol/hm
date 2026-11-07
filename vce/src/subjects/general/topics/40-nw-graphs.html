@@ -1,0 +1,85 @@
+<!--
+id: nw-graphs
+title: Graphs, networks and Euler's formula
+short: Graphs & Euler's formula
+summary: Graph terminology (vertex, edge, loop, multiple edges, degree, simple, connected, complete, bridge, subgraph); the sum of degrees; directed graphs and weighted networks; isomorphic graphs; planar graphs, faces and Euler's formula v + f = e + 2; and adjacency matrices for graphs and digraphs.
+keywords: graph, network, vertex, vertices, node, edge, arc, loop, multiple edges, parallel edges, degree, odd vertex, even vertex, isolated vertex, sum of degrees, handshaking, simple graph, connected graph, complete graph, K n, bridge, subgraph, isomorphic, planar graph, face, faces, region, outer face, Euler's formula, v plus f equals e plus 2, digraph, directed graph, weighted graph, adjacency matrix
+dotpoints: the concepts, conventions and terminology of graphs including planar graphs and Euler's rule, and directed (digraphs) and networks | use of matrices to represent graphs, digraphs and networks and their application
+-->
+<h2>Graph vocabulary</h2>
+<p>A <strong>graph</strong> is a set of <strong>vertices</strong> (dots) joined by <strong>edges</strong> (lines). Only the connections matter: how long or curved an edge is drawn doesn't.</p>
+<figure class="fig"><svg viewBox="0 0 360 180" role="img" aria-label="Graph with vertices A to E: edges AB, AC, BC, BD, CD, DE and a loop at E">
+<path d="M70 40 L170 40 M70 40 L70 140 M170 40 L70 140 M170 40 L170 140 M70 140 L170 140 M170 140 L270 140" class="s-ink" stroke-width="1.8" fill="none"/>
+<path d="M270 140 C285 104 338 112 330 142 C324 168 286 170 270 140" class="s-ink" stroke-width="1.8" fill="none"/>
+<g class="f-ink"><circle cx="70" cy="40" r="5"/><circle cx="170" cy="40" r="5"/><circle cx="70" cy="140" r="5"/><circle cx="170" cy="140" r="5"/><circle cx="270" cy="140" r="5"/></g>
+<text x="58" y="34" text-anchor="end" class="t-b">A</text><text x="182" y="34" class="t-b">B</text><text x="58" y="156" text-anchor="end" class="t-b">C</text><text x="168" y="162" text-anchor="middle" class="t-b">D</text><text x="262" y="162" text-anchor="middle" class="t-b">E</text>
+<text x="312" y="100" text-anchor="middle" class="t-sm t-mut">loop</text>
+<text x="222" y="130" text-anchor="middle" class="t-sm t-mut">bridge</text>
+</svg><figcaption>Five vertices and seven edges (the loop at E counts as one edge).</figcaption></figure>
+<div class="tbl"><table>
+<thead><tr><th>Term</th><th>Meaning</th><th>In the graph above</th></tr></thead>
+<tbody>
+<tr><td>Degree</td><td>number of edge ends at a vertex; a loop adds 2</td><td>A 2, B 3, C 3, D 3, E 3</td></tr>
+<tr><td>Loop</td><td>an edge from a vertex back to itself</td><td>at E</td></tr>
+<tr><td>Multiple edges</td><td>two or more edges joining the same pair of vertices</td><td>none</td></tr>
+<tr><td>Simple graph</td><td>no loops and no multiple edges</td><td>not simple (loop)</td></tr>
+<tr><td>Connected</td><td>you can get from every vertex to every other</td><td>yes</td></tr>
+<tr><td>Bridge</td><td>an edge whose removal disconnects the graph</td><td>DE</td></tr>
+<tr><td>Complete graph \(K_n\)</td><td>simple; every pair of vertices joined; \(\frac{n(n-1)}{2}\) edges</td><td>A, B, C form a \(K_3\) subgraph</td></tr>
+<tr><td>Subgraph</td><td>part of a graph: some of its vertices and edges</td><td>triangle BCD</td></tr>
+</tbody></table></div>
+<div class="eq"><div class="eq-label">Sum of degrees</div>\[ \text{sum of degrees} = 2 \times \text{number of edges} \]<p>Every edge has two ends. So the sum of degrees is always even, and every graph has an even number of odd-degree vertices. Above: \(2 + 3 + 3 + 3 + 3 = 14 = 2 \times 7\).</p></div>
+<aside class="c-def" data-title="Digraphs, networks and isomorphic graphs"><p>A <strong>directed graph</strong> (digraph) has arrows: each edge goes one way. A <strong>network</strong> (weighted graph) has a number on each edge, such as distance, time, cost or capacity. Two graphs are <strong>isomorphic</strong> if they are the same graph drawn differently: same number of vertices and edges, same degrees, and the same connections.</p></aside>
+
+<h2>Planar graphs and Euler's formula</h2>
+<p>A graph is <strong>planar</strong> if it can be drawn with no edges crossing. A planar drawing splits the page into <strong>faces</strong> (regions), and the infinite outside region counts as one face.</p>
+<div class="eq"><div class="eq-label">Euler's formula for connected planar graphs (on the formula sheet)</div>\[ v + f = e + 2 \]<p>\(v\) vertices, \(f\) faces (including the outside), \(e\) edges. Above: \(5 + 4 = 7 + 2\). The faces are triangle ABC, triangle BCD, the inside of the loop and the outside.</p></div>
+<div class="we" data-title="Using Euler's formula" data-marks="1">
+<div class="we-q"><p>A connected planar graph has 8 vertices and 12 edges. How many faces does it have?</p></div>
+<div class="we-t"><p>Substitute into \(v + f = e + 2\).</p></div>
+<div class="we-s" data-f="v + f = e + 2"><p>\(8 + f = 12 + 2\).</p></div>
+<div class="we-a"><p>\(f = 6\) faces (including the outer face).</p></div>
+</div>
+<aside class="c-trap" data-title="Trick alert: crossing edges"><p>A graph drawn with crossings may still be planar: redraw an edge around the outside. \(K_4\) drawn as a square with both diagonals crosses once, but it's planar (\(4 + 4 = 6 + 2\)). \(K_5\) can never be drawn without a crossing. And Euler's formula only applies to a <strong>connected</strong> planar graph.</p></aside>
+
+<h2>Adjacency matrices</h2>
+<p>An <strong>adjacency matrix</strong> records how many edges directly join each pair of vertices. For an undirected graph it is symmetric. VCAA convention: a loop is recorded as <strong>1</strong> on the leading diagonal.</p>
+<div class="eq"><div class="eq-label">Adjacency matrix for the graph above (order A, B, C, D, E)</div>\[ \begin{bmatrix} 0 &amp; 1 &amp; 1 &amp; 0 &amp; 0 \\ 1 &amp; 0 &amp; 1 &amp; 1 &amp; 0 \\ 1 &amp; 1 &amp; 0 &amp; 1 &amp; 0 \\ 0 &amp; 1 &amp; 1 &amp; 0 &amp; 1 \\ 0 &amp; 0 &amp; 0 &amp; 1 &amp; 1 \end{bmatrix} \]<p>For a digraph, the element in row \(i\), column \(j\) counts arrows from \(i\) to \(j\), so the matrix needn't be symmetric. Multiple edges show up as 2, 3, …</p></div>
+<aside class="c-exam" data-title="Exam tip: counting edges from a matrix"><p>Number of edges = (sum of the elements off the leading diagonal) ÷ 2 + (number of loops). Don't halve the loops: each loop appears only once in the matrix.</p></aside>
+
+<h2>Practice</h2>
+<div class="mcq" data-ans="B" data-level="core">
+<div class="mcq-q"><p>A graph has vertices of degree 1, 2, 2, 3 and 4. The number of edges is</p></div>
+<ol><li>12</li><li>6</li><li>5</li><li>24</li></ol>
+<div class="mcq-x"><p>Sum of degrees \(= 12 = 2e\), so \(e = 6\).</p></div>
+</div>
+<div class="mcq" data-ans="D" data-level="core">
+<div class="mcq-q"><p>A connected planar graph has 6 faces and 10 edges. The number of vertices is</p></div>
+<ol><li>4</li><li>14</li><li>18</li><li>6</li></ol>
+<div class="mcq-x"><p>\(v + 6 = 10 + 2\), so \(v = 6\).</p></div>
+</div>
+<div class="mcq" data-ans="A" data-level="trick">
+<div class="mcq-q"><p>Which list of vertex degrees is impossible for a graph?</p></div>
+<ol><li>1, 2, 2, 3, 3</li><li>1, 1, 2, 2</li><li>2, 2, 2, 2</li><li>3, 3, 3, 3</li></ol>
+<div class="mcq-x"><p>The sum of degrees must be even (it equals \(2e\)), but \(1 + 2 + 2 + 3 + 3 = 11\). Put another way, it has three odd vertices, and a graph always has an even number of them. D is \(K_4\).</p></div>
+</div>
+<div class="mcq" data-ans="C" data-level="hard">
+<div class="mcq-q"><p>The complete graph \(K_6\) has</p></div>
+<ol><li>6 edges</li><li>12 edges</li><li>15 edges</li><li>30 edges</li></ol>
+<div class="mcq-x"><p>\(\frac{6 \times 5}{2} = 15\). Each of the 6 vertices has degree 5, and the sum of degrees 30 counts every edge twice.</p></div>
+</div>
+<div class="pq" data-level="core" data-marks="2">
+<div class="pq-q"><p>A graph has adjacency matrix \(\begin{bmatrix} 0 &amp; 2 &amp; 1 \\ 2 &amp; 0 &amp; 1 \\ 1 &amp; 1 &amp; 1 \end{bmatrix}\) (order P, Q, R). How many edges does it have, and what is the degree of R?</p></div>
+<div class="pq-s"><p>Off-diagonal sum \(= 8\), so \(4\) edges, plus 1 loop: <strong>5 edges</strong>. [1]</p><p>R: edges to P and Q (2) plus the loop (2): <strong>degree 4</strong>. [1]</p></div>
+</div>
+<div class="pq" data-level="exam" data-marks="2">
+<div class="pq-q"><p>A connected planar graph has 7 vertices, each of degree 4. How many faces does it have?</p></div>
+<div class="pq-s"><p>Sum of degrees \(= 28\), so \(e = 14\). [1]</p><p>\(7 + f = 14 + 2\), so \(f = 9\). [1]</p></div>
+</div>
+<h2>Summary</h2>
+<ul>
+  <li data-q="How is the degree of a vertex counted, and what is the sum of the degrees of a graph?">Count edge ends; a loop adds 2. The sum of degrees is twice the number of edges.</li>
+  <li data-q="What is a bridge, a simple graph and a complete graph Kₙ?">A bridge is an edge whose removal disconnects the graph. Simple: no loops or multiple edges. \(K_n\): every pair joined, \(\frac{n(n-1)}{2}\) edges.</li>
+  <li data-q="State Euler's formula and when it applies.">\(v + f = e + 2\) for a connected planar graph, counting the outer face.</li>
+  <li data-q="How are loops and digraphs shown in an adjacency matrix?">A loop is a 1 on the leading diagonal. For a digraph, row \(i\) column \(j\) counts arrows from \(i\) to \(j\) (not symmetric).</li>
+</ul>
