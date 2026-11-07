@@ -302,7 +302,7 @@
     if (framed) {
       const pr = $('[data-act="print"]', slot), dl = $('[data-act="download"]', slot);
       pr.className = 'btn'; dl.className = 'btn primary'; dl.after(pr);
-      $('.sh-printhint', slot).textContent = 'Printing straight from this window may be blocked here: download the file, open it in your browser and print at 100% scale, margins “None”, double-sided.';
+      $('.sh-printhint', slot).textContent = 'Download the file, open it in your browser and print at 100% scale, margins “None”, double-sided. If downloads are blocked for you, use Print and choose “Save as PDF”.';
     }
     wire();
     drawSheetBar(); drawSettings(); drawLib(); layout();
@@ -971,7 +971,7 @@
     const fallback = () => { const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = name; document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 4000); };
     dlCap().then(dl => {
       if (!dl) { fallback(); return; }
-      dl.save({ filename: name, data: blob }).then(() => A.toast('Saved ' + name), err => { if (!err || err.code !== 'declined') fallback(); });
+      dl.save({ filename: name, data: blob }).then(() => A.toast('Saved ' + name), err => { if (err && err.code === 'declined') return; if (err && /not_granted|not_allowed|forbidden|org|policy|denied/i.test(String(err.code || '') + ' ' + String(err.message || ''))) { A.toast('Downloads here are for members only: opening Print instead (choose “Save as PDF”)'); doPrint(); return; } fallback(); });
     });
   }
 
